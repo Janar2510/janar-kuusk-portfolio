@@ -1,0 +1,126 @@
+/* ProfileCard.css - Exact implementation from your React code */
+
+/* Container provides perspective for 3D tilt and holds CSS variables */
+.profile-card-wrap {
+  perspective: 1000px;
+  --pointer-x: 50%;
+  --pointer-y: 50%;
+  --rotateX: 0deg;
+  --rotateY: 0deg;
+  --card-opacity: 0.6;  /* darker base opacity for subtle glow effect */
+  --inner-gradient: linear-gradient(145deg, rgba(20, 20, 40, 0.8) 0%, rgba(40, 20, 60, 0.6) 100%);
+  --behind-gradient: radial-gradient(farthest-side circle at var(--pointer-x) var(--pointer-y),
+                      hsla(266, 100%, 60%, var(--card-opacity)) 4%,
+                      hsla(266, 50%, 50%, calc(var(--card-opacity)*0.75)) 10%,
+                      hsla(266, 25%, 40%, calc(var(--card-opacity)*0.5)) 50%,
+                      hsla(266, 0%, 30%, 0) 100%),
+                    radial-gradient(35% 52% at 55% 20%, rgba(0, 100, 150, 0.3) 0%, rgba(0, 50, 100, 0.1) 100%),
+                    radial-gradient(100% 100% at 50% 50%, rgba(0, 100, 200, 0.2) 1%, rgba(0, 50, 150, 0.1) 76%),
+                    conic-gradient(from 124deg at 50% 50%, rgba(150, 50, 200, 0.4) 0%, rgba(0, 100, 200, 0.3) 40%, rgba(0, 100, 200, 0.3) 60%, rgba(150, 50, 200, 0.4) 100%);
+}
+
+/* Card element with 3D tilt and background gradients */
+.profile-card {
+  position: relative;
+  width: 450px;
+  height: 580px;
+  border-radius: 16px;
+  background-image: var(--behind-gradient);
+  transform: translate3d(0, 0, 0.1px) rotateX(var(--rotateX)) rotateY(var(--rotateY));
+  transition: transform 0.6s ease;  /* smooth return on hover leave */
+  overflow: hidden;
+}
+
+/* Main avatar image (fills from top to bottom of card) */
+.profile-card-avatar {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  z-index: 1;
+  /* Optionally, apply a filter to blend the image with the design */
+  /* filter: grayscale(60%) brightness(110%); */
+}
+
+/* Name positioned above the avatar head */
+.profile-card-name {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  font-size: 2.5rem;
+  color: #ffffff;
+  text-align: center;
+  z-index: 2;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+  font-weight: 700;
+  white-space: nowrap;
+}
+.profile-card-title {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  font-size: 1.4rem;
+  color: #ffffff;
+  text-align: center;
+  z-index: 2;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  font-weight: 600;
+}
+
+/* Bottom info bar (handle, status, contact button) */
+.profile-card-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  background: var(--inner-gradient);
+  backdrop-filter: blur(4px);  /* adds a subtle glass blur effect */
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  z-index: 3;
+}
+
+/* Small avatar in bottom info */
+.profile-card-avatar-mini {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ffffff88;
+}
+
+/* Handle and status text */
+.profile-card-handle {
+  font-weight: 600;
+  color: #ffffff;
+}
+.profile-card-status {
+  font-size: 0.85rem;
+  color: #98eabf;  /* light green for "Online" status */
+}
+
+/* Contact button styling */
+.profile-card-contact-btn {
+  background: transparent;
+  border: 1px solid #ffffffaa;
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.profile-card-contact-btn:hover {
+  background: #ffffff33;
+}

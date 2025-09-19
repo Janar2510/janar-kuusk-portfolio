@@ -1,0 +1,447 @@
+/* WorkflowNode.css */
+
+/* CSS Custom Properties for gradient animation */
+@property --gradient-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+/* Agent Workflow Container */
+.agent-workflow {
+  width: 100%;
+  height: 100vh;
+  background: #0f0f1c;
+  background-image: 
+    radial-gradient(circle at 25% 25%, #1a1a2e 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, #16213e 0%, transparent 50%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Workflow Canvas */
+.workflow-canvas {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding: 50px;
+}
+
+/* Base Workflow Node Styling */
+.workflow-node {
+  position: relative;
+  width: 160px;
+  min-height: 80px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 10;
+}
+
+.workflow-node:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+/* Gradient Border Animation Overlay */
+.gradient-border-overlay {
+  position: absolute;
+  inset: -3px;
+  border-radius: 12px;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    #40ffaa,
+    #4079ff, 
+    #40ffaa,
+    #4079ff,
+    #40ffaa
+  );
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gradient-border-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  background: #2a2a3e;
+  border-radius: 9px;
+  z-index: 1;
+}
+
+/* Node Content */
+.node-content {
+  position: relative;
+  background: #2a2a3e;
+  border: 1px solid #374151;
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 80px;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.node-icon {
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgba(64, 255, 170, 0.1);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.node-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.node-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.node-subtitle {
+  font-size: 11px;
+  color: #9ca3af;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.node-connector {
+  position: relative;
+}
+
+.connector-dot {
+  width: 8px;
+  height: 8px;
+  background: #6b7280;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+/* Status Indicator */
+.status-indicator {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #1f2937;
+  border: 2px solid #374151;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  transition: all 0.3s ease;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #6b7280;
+  transition: all 0.3s ease;
+}
+
+/* Connection Lines */
+.connection-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ANIMATION STATES */
+
+/* Idle State */
+.workflow-node.idle .gradient-border-overlay {
+  opacity: 0;
+}
+
+.workflow-node.idle .connector-dot {
+  background: #6b7280;
+}
+
+.workflow-node.idle .status-dot {
+  background: #6b7280;
+}
+
+/* Active State */
+.workflow-node.active .gradient-border-overlay {
+  opacity: 0.6;
+  animation: rotate-gradient 4s linear infinite;
+}
+
+.workflow-node.active .node-content {
+  border-color: #40ffaa;
+  box-shadow: 0 0 20px rgba(64, 255, 170, 0.3);
+}
+
+.workflow-node.active .node-icon {
+  background: rgba(64, 255, 170, 0.2);
+  color: #40ffaa;
+}
+
+.workflow-node.active .connector-dot {
+  background: #40ffaa;
+  box-shadow: 0 0 10px rgba(64, 255, 170, 0.5);
+}
+
+.workflow-node.active .status-indicator {
+  border-color: #40ffaa;
+  background: #1f2937;
+}
+
+.workflow-node.active .status-dot {
+  background: #40ffaa;
+  animation: pulse-green 2s infinite;
+}
+
+/* Executing State */
+.workflow-node.executing .gradient-border-overlay {
+  opacity: 1;
+  animation: rotate-gradient 2s linear infinite;
+}
+
+.workflow-node.executing .node-content {
+  border-color: #4079ff;
+  box-shadow: 0 0 30px rgba(64, 121, 255, 0.4);
+  transform: scale(1.02);
+}
+
+.workflow-node.executing .node-icon {
+  background: rgba(64, 121, 255, 0.2);
+  color: #4079ff;
+  animation: pulse-scale 1.5s infinite;
+}
+
+.workflow-node.executing .connector-dot {
+  background: #4079ff;
+  box-shadow: 0 0 15px rgba(64, 121, 255, 0.6);
+  animation: pulse-blue 1s infinite;
+}
+
+.workflow-node.executing .status-indicator {
+  border-color: #4079ff;
+  background: #1e3a8a;
+}
+
+.workflow-node.executing .status-dot {
+  background: #4079ff;
+  animation: spin 1s linear infinite;
+}
+
+/* Data Flow State */
+.workflow-node.data-flow .gradient-border-overlay {
+  opacity: 0.8;
+  animation: rotate-gradient 1.5s linear infinite;
+}
+
+.workflow-node.data-flow .node-content {
+  border-color: #a855f7;
+  box-shadow: 0 0 25px rgba(168, 85, 247, 0.4);
+}
+
+.workflow-node.data-flow .node-icon {
+  background: rgba(168, 85, 247, 0.2);
+  color: #a855f7;
+}
+
+.workflow-node.data-flow .connector-dot {
+  background: #a855f7;
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.5);
+  animation: pulse-purple 0.8s infinite;
+}
+
+.workflow-node.data-flow .status-indicator {
+  border-color: #a855f7;
+  background: #581c87;
+}
+
+.workflow-node.data-flow .status-dot {
+  background: #a855f7;
+  animation: data-flow-pulse 1s infinite;
+}
+
+/* KEYFRAME ANIMATIONS */
+
+/* Gradient Border Rotation */
+@keyframes rotate-gradient {
+  to {
+    --gradient-angle: 360deg;
+  }
+}
+
+/* Status Dot Animations */
+@keyframes pulse-green {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes pulse-blue {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.3);
+  }
+}
+
+@keyframes pulse-purple {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes pulse-scale {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes data-flow-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 5px rgba(168, 85, 247, 0.5);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.4);
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.8);
+  }
+}
+
+/* Control Panel */
+.control-panel {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(42, 42, 62, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid #374151;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  z-index: 20;
+}
+
+.execute-btn {
+  background: linear-gradient(135deg, #40ffaa, #4079ff);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 140px;
+}
+
+.execute-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(64, 255, 170, 0.3);
+}
+
+.execute-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  animation: pulse-button 2s infinite;
+}
+
+@keyframes pulse-button {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(64, 121, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(64, 121, 255, 0);
+  }
+}
+
+.status-info {
+  font-size: 12px;
+  text-align: center;
+}
+
+.execution-status {
+  color: #4079ff;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.dataflow-status {
+  color: #a855f7;
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .workflow-node {
+    width: 140px;
+    min-height: 70px;
+  }
+  
+  .node-content {
+    padding: 10px 12px;
+    gap: 8px;
+  }
+  
+  .node-icon {
+    font-size: 20px;
+    width: 28px;
+    height: 28px;
+  }
+  
+  .node-title {
+    font-size: 12px;
+  }
+  
+  .node-subtitle {
+    font-size: 10px;
+  }
+}

@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Janar Kuusk - AI-Powered Solutions Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="WorkflowNode.css">
+    <link rel="stylesheet" href="components.css">
+    <link rel="stylesheet" href="ProfileCard.css">
+    <link rel="stylesheet" href="SpotlightCard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Fixed Header -->
+    <div class="portfolio-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-text">Janar Kuusk</span>
+                    <span class="logo-subtitle">AI Solutions Architect</span>
+                </div>
+                <nav class="main-nav">
+                    <a href="#hero" class="nav-link">Home</a>
+                    <a href="#summary" class="nav-link">Summary</a>
+                    <a href="#experience" class="nav-link">Experience</a>
+                    <a href="#career" class="nav-link">Career</a>
+                    <a href="#education" class="nav-link">Education</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#workflow" class="nav-link">Workflow</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#vision" class="nav-link">Vision</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </nav>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-background">
+            <div class="hero-particles" id="heroParticles"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="gradient-text">AI-Powered</span>
+                        <span class="gradient-text">Solutions</span>
+                        <span class="gradient-text">Architect</span>
+                    </h1>
+                    <p class="hero-description">
+                        Transforming businesses through intelligent automation, 
+                        machine learning, and cutting-edge AI technologies.
+                    </p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary" id="exploreBtn">
+                            Explore My Work
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12h14m-7-7l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button class="btn btn-secondary" id="contactBtn">
+                            Get In Touch
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <!-- Profile card will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Summary Section -->
+    <section id="summary" class="summary">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Professional Summary</h2>
+                <p class="section-subtitle">Results-driven sales leader expanding into digital transformation</p>
+            </div>
+            <div class="summary-content">
+                <div class="summary-text summary-spotlight-card" data-aos="fade-right">
+                    <p class="summary-description">
+                        I am a results-driven sales leader with more than eight years of experience building lasting partnerships, leading teams, and driving consistent growth across competitive markets. Over the course of my career, I've guided organizations in renewable energy and technology through key stages of expansion, combining strategic planning with a hands-on, people-first approach.
+                        <br><br>
+                        In January 2024, I founded Color Disain Studio, a venture focused on digital transformation and the integration of AI into everyday business processes. My work today bridges two worlds I care deeply about: the human side of sales—trust, communication, and relationships—and the future of technology, where automation, design, and intelligence shape how companies operate.
+                    </p>
+                    <div class="summary-highlights">
+                        <div class="highlight-item">
+                            <div class="highlight-icon">🎯</div>
+                            <div class="highlight-text">
+                                <h4>Sales Excellence</h4>
+                                <p>Proven track record in sales territory growth and high-value deal closure</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">🚀</div>
+                            <div class="highlight-text">
+                                <h4>Digital Transformation</h4>
+                                <p>Leading AI implementation, UX/UI design, and web & mobile development</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">⚡</div>
+                            <div class="highlight-text">
+                                <h4>Process Optimization</h4>
+                                <p>Expert in process engineering, risk evaluation, and n8n automations</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="summary-stats summary-spotlight-card" data-aos="fade-left">
+                    <div class="stat-item">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Years in Sales Leadership</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Companies Led</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">2</div>
+                        <div class="stat-label">Languages</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Digital Focus</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Professional Experience</h2>
+                <p class="section-subtitle">Building the future with AI and automation</p>
+            </div>
+            <div class="experience-grid">
+                <div class="experience-spotlight-card" data-aos="fade-up">
+                    <div class="experience-header">
+                        <h3>Company Owner & Founder</h3>
+                        <span class="experience-period">Jan 2024 - Present</span>
+                    </div>
+                    <p class="experience-company">Color Disain Studio</p>
+                    <p class="experience-description">
+                        Leading digital transformation initiatives, AI implementation, 
+                        UX/UI design, and web & mobile development. Responsible for 
+                        delivery excellence and business growth strategy.
+                    </p>
+                    <div class="experience-skills">
+                        <span class="skill-tag">Digital Transformation</span>
+                        <span class="skill-tag">AI Implementation</span>
+                        <span class="skill-tag">UX/UI Design</span>
+                        <span class="skill-tag">Web & Mobile</span>
+                    </div>
+                </div>
+                <div class="experience-spotlight-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="experience-header">
+                        <h3>Head of Sales</h3>
+                        <span class="experience-period">Jan 2023 - Dec 2023</span>
+                    </div>
+                    <p class="experience-company">Mirmar Solar OÜ</p>
+                    <p class="experience-description">
+                        Drove market share growth through strategic planning and 
+                        key client relationship management in the renewable energy sector.
+                    </p>
+                    <div class="experience-skills">
+                        <span class="skill-tag">Sales Leadership</span>
+                        <span class="skill-tag">Strategic Planning</span>
+                        <span class="skill-tag">Client Relations</span>
+                        <span class="skill-tag">Market Growth</span>
+                    </div>
+                </div>
+                <div class="experience-spotlight-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="experience-header">
+                        <h3>Sales Manager</h3>
+                        <span class="experience-period">Mar 2019 - Jan 2023</span>
+                    </div>
+                    <p class="experience-company">Solarstone OÜ</p>
+                    <p class="experience-description">
+                        Conducted presentations and demos, expanded customer base, 
+                        closed high-value deals, and established foundational sales processes.
+                    </p>
+                    <div class="experience-skills">
+                        <span class="skill-tag">Sales Management</span>
+                        <span class="skill-tag">Presentations</span>
+                        <span class="skill-tag">Process Optimization</span>
+                        <span class="skill-tag">High-Value Sales</span>
+                    </div>
+                </div>
+                <div class="experience-spotlight-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="experience-header">
+                        <h3>Regional Business Development</h3>
+                        <span class="experience-period">2024 - Present</span>
+                    </div>
+                    <p class="experience-company">ML System</p>
+                    <p class="experience-description">
+                        Leading regional BIPV (Building Integrated Photovoltaics) 
+                        strategy and partnerships across Baltics and Nordics.
+                    </p>
+                    <div class="experience-skills">
+                        <span class="skill-tag">Business Development</span>
+                        <span class="skill-tag">Partnerships</span>
+                        <span class="skill-tag">BIPV Technology</span>
+                        <span class="skill-tag">Regional Strategy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Section -->
+    <section id="career" class="career">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Career Journey</h2>
+                <p class="section-subtitle">From concept to implementation</p>
+            </div>
+            <div class="career-grid">
+                <div class="career-card" data-aos="fade-up">
+                    <div class="card-icon">🚀</div>
+                    <h3>Innovation</h3>
+                    <p>Pioneering new approaches to AI implementation and automation</p>
+                </div>
+                <div class="career-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-icon">⚡</div>
+                    <h3>Performance</h3>
+                    <p>Optimizing systems for maximum efficiency and scalability</p>
+                </div>
+                <div class="career-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon">🎯</div>
+                    <h3>Precision</h3>
+                    <p>Delivering accurate and reliable AI solutions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Education & Certifications</h2>
+                <p class="section-subtitle">Continuous learning in AI and technology</p>
+            </div>
+            <div class="education-grid">
+                <div class="education-card" data-aos="fade-up">
+                    <div class="education-header">
+                        <h3>Master of Science in AI</h3>
+                        <span class="education-year">2021</span>
+                    </div>
+                    <p class="education-institution">Stanford University</p>
+                    <p class="education-description">
+                        Specialized in machine learning, deep learning, 
+                        and artificial intelligence applications.
+                    </p>
+                </div>
+                <div class="education-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="education-header">
+                        <h3>AWS Certified Solutions Architect</h3>
+                        <span class="education-year">2022</span>
+                    </div>
+                    <p class="education-institution">Amazon Web Services</p>
+                    <p class="education-description">
+                        Professional certification in cloud architecture 
+                        and AI/ML services on AWS.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Innovative solutions that make a difference</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card" data-aos="fade-up">
+                    <div class="project-image">
+                        <div class="project-placeholder">🤖</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Saletoru CRM</h3>
+                        <p>AI-powered customer relationship management system with intelligent automation and predictive analytics.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Machine Learning</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="btn btn-outline">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-image">
+                        <div class="project-placeholder">📊</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Predictive Analytics Platform</h3>
+                        <p>Real-time data analysis and forecasting system for business intelligence and decision making.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="btn btn-outline">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-image">
+                        <div class="project-placeholder">🔮</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>AI Workflow Automation</h3>
+                        <p>Intelligent workflow management system that automates complex business processes using AI agents.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">OpenAI API</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="btn btn-outline">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflow Section -->
+    <section id="workflow" class="workflow">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">AI Agent Workflow</h2>
+                <p class="section-subtitle">How intelligent systems work together</p>
+            </div>
+            <div class="workflow-container">
+                <div class="workflow-nodes" id="workflowNodes">
+                    <!-- Workflow nodes will be dynamically generated -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Core Skills & Expertise</h2>
+                <p class="section-subtitle">Technical and business capabilities driving digital transformation</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category" data-aos="fade-up">
+                    <div class="skill-category-header">
+                        <div class="skill-icon">💼</div>
+                        <h3>Business & Sales</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Sales Territory Growth</span>
+                        <span class="skill-tag">Process Optimization</span>
+                        <span class="skill-tag">Risk Evaluation</span>
+                        <span class="skill-tag">Team Leadership</span>
+                        <span class="skill-tag">Strategic Planning</span>
+                        <span class="skill-tag">Partnership Development</span>
+                    </div>
+                </div>
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
+                    <div class="skill-category-header">
+                        <div class="skill-icon">🚀</div>
+                        <h3>Digital Transformation</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AI Implementation</span>
+                        <span class="skill-tag">Digital Strategy</span>
+                        <span class="skill-tag">Process Engineering</span>
+                        <span class="skill-tag">Change Management</span>
+                        <span class="skill-tag">Technology Integration</span>
+                        <span class="skill-tag">Innovation Leadership</span>
+                    </div>
+                </div>
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+                    <div class="skill-category-header">
+                        <div class="skill-icon">🎨</div>
+                        <h3>Design & Development</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">UX/UI Design</span>
+                        <span class="skill-tag">Web Development</span>
+                        <span class="skill-tag">Mobile Development</span>
+                        <span class="skill-tag">User Experience</span>
+                        <span class="skill-tag">Interface Design</span>
+                        <span class="skill-tag">Responsive Design</span>
+                    </div>
+                </div>
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
+                    <div class="skill-category-header">
+                        <div class="skill-icon">⚡</div>
+                        <h3>Automation & Technology</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">n8n Automations</span>
+                        <span class="skill-tag">Workflow Design</span>
+                        <span class="skill-tag">System Integration</span>
+                        <span class="skill-tag">API Development</span>
+                        <span class="skill-tag">Data Processing</span>
+                        <span class="skill-tag">Cloud Solutions</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section id="vision" class="vision">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Vision for the Future</h2>
+                <p class="section-subtitle">Where AI meets human potential</p>
+            </div>
+            <div class="vision-content">
+                <div class="vision-text" data-aos="fade-right">
+                    <h3>Empowering Human-AI Collaboration</h3>
+                    <p>
+                        I believe in creating AI systems that augment human capabilities 
+                        rather than replace them. The future lies in seamless collaboration 
+                        between intelligent machines and human creativity.
+                    </p>
+                    <div class="vision-points">
+                        <div class="vision-point">
+                            <div class="point-icon">🎯</div>
+                            <div class="point-content">
+                                <h4>Ethical AI</h4>
+                                <p>Developing responsible and transparent AI systems</p>
+                            </div>
+                        </div>
+                        <div class="vision-point">
+                            <div class="point-icon">🌍</div>
+                            <div class="point-content">
+                                <h4>Global Impact</h4>
+                                <p>Creating solutions that benefit society as a whole</p>
+                            </div>
+                        </div>
+                        <div class="vision-point">
+                            <div class="point-icon">🚀</div>
+                            <div class="point-content">
+                                <h4>Innovation</h4>
+                                <p>Pushing the boundaries of what's possible with AI</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vision-visual" data-aos="fade-left">
+                    <div class="vision-card">
+                        <div class="vision-animation" id="visionAnimation">
+                            <div class="ai-brain">🧠</div>
+                            <div class="connection-lines"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Let's Build Something Amazing</h2>
+                <p class="section-subtitle">Ready to transform your business with AI?</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info" data-aos="fade-right">
+                    <h3>Get In Touch</h3>
+                    <p>I'm always excited to discuss new projects and opportunities in AI and automation.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <p>janar@colordisainstudio.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📱</div>
+                            <div class="contact-text">
+                                <h4>Phone</h4>
+                                <p>+372 56103001</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div class="contact-text">
+                                <h4>Location</h4>
+                                <p>Päikese VKT 6, Päidre, Viljandimaa, Estonia</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">🌍</div>
+                            <div class="contact-text">
+                                <h4>Languages</h4>
+                                <p>Estonian, English</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form" data-aos="fade-left">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            Send Message
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+                                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2024 Janar Kuusk. All rights reserved.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#hero">Home</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="fluid-simulation.js"></script>
+    <script src="profile-card.js"></script>
+    <script src="spotlight-card.js"></script>
+    <script src="components.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
