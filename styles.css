@@ -169,9 +169,9 @@ p {
 }
 
 .logo-image {
-    height: 80px;
+    height: 120px;
     width: auto;
-    max-width: 280px;
+    max-width: 400px;
     object-fit: contain;
     transition: transform 0.3s ease;
 }
@@ -181,7 +181,9 @@ p {
 }
 
 .logo-text-container {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .logo-text {
@@ -632,8 +634,12 @@ textarea.error {
 
     /* Logo mobile styles */
     .logo-image {
-        height: 60px;
-        max-width: 200px;
+        height: 80px;
+        max-width: 250px;
+    }
+    
+    .logo-text {
+        font-size: 1.25rem;
     }
 
     /* Overlay backdrop */
