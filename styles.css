@@ -159,7 +159,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: var(--space-lg) 0;
+    padding: var(--space-md) 0;
 }
 
 .logo {
@@ -169,8 +169,9 @@ p {
 }
 
 .logo-image {
-    height: 50px;
+    height: 60px;
     width: auto;
+    max-width: 200px;
     object-fit: contain;
     transition: transform 0.3s ease;
 }
@@ -180,8 +181,7 @@ p {
 }
 
 .logo-text-container {
-    display: flex;
-    flex-direction: column;
+    display: none;
 }
 
 .logo-text {
@@ -632,15 +632,8 @@ textarea.error {
 
     /* Logo mobile styles */
     .logo-image {
-        height: 40px;
-    }
-
-    .logo-text {
-        font-size: 1.25rem;
-    }
-
-    .logo-subtitle {
-        font-size: 0.75rem;
+        height: 50px;
+        max-width: 150px;
     }
 
     /* Overlay backdrop */
