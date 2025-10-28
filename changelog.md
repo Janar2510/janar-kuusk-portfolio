@@ -37,6 +37,15 @@
   - Created CONTACT_FORM_SETUP.md with detailed setup instructions
   - Configured Formspree endpoint (https://formspree.io/f/xdkpeyln) for direct email sending to info@janarkuuskpro.com
 
+- **Updated Header Design**:
+  - Added JanarKuusk logo.png to header
+  - Made header 100% transparent (no background or blur)
+  - Logo displays next to name and subtitle
+  - Added text shadows for better readability on transparent background
+  - Logo hover effect with scale animation
+  - Responsive logo sizing for mobile devices
+  - Navigation links have text shadows for visibility
+
 ## 2025-10-17
 - **Added GitHub Link to Saletoru CRM Project**: Updated the "View Project" button in the Featured Projects section to link to the actual GitHub repository (https://github.com/Janar2510/AI-Powered-Saleguru-CRM) with proper target="_blank" and security attributes.
 - **Created Public Images Directory Structure**: 
