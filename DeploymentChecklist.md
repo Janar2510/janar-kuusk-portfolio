@@ -1,3 +1,24 @@
+## Content Verification - 2025-10-28
+- **Education Section**: Verify education shows real credentials (Tallinn Technical University, Olustvere Technical School, Karksi-Nuia Gymnasium) - NO fake degrees displayed
+- **Contact Information**: Confirm email is info@janarkuuskpro.com, phone +372 56103001
+- **Employment Dates**: Verify ML System shows "2024 - 2025" (not "Present")
+- **Statistics Accuracy**: Confirm stats show "8+ Years in Sales Leadership" and "4 Companies Led"
+- **Translations**: Verify both English and Estonian versions reflect accurate information
+- **Work Experience**: Confirm all job titles, dates, and descriptions match actual CV
+- **Language Toggle**: Verify EN/ET toggle button is visible in bottom-right corner and functional
+- **Project Links**: Confirm all three featured projects have working GitHub links (Saletoru CRM, FusionAI, AgentFlow)
+- **Project Images**: Verify all project images (PNG files) are loading correctly
+- **Project Translations**: Test language toggle updates project names, descriptions, and tech tags correctly
+
+## UI Checks - 2025-10-17
+- **Project Images**: Verify all project cards display images from `/public/images/projects/` directory with proper fallback to emoji placeholders if images fail to load.
+- **GitHub Integration**: Confirm Saletoru CRM "View Project" button links to https://github.com/Janar2510/AI-Powered-Saleguru-CRM and opens in new tab.
+- **Image Directory Structure**: Verify `/public/images/` folder exists with proper subdirectories (projects/, logos/, avatars/) and README.md documentation.
+- **Image Styling**: Confirm project images have proper hover effects, object-fit scaling, and responsive behavior.
+
+## UI Checks - 2025-10-15
+- Verify `Core Skills & Expertise` section shows cards in a single horizontal row with smooth horizontal scroll on overflow.
+- Confirm `skill-category` cards use `var(--radius-xl)` for rounded corners and maintain gradient border standards.
 # Deployment Checklist
 
 ## Pre-Deployment Setup

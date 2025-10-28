@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Janar Kuusk - AI-Powered Solutions Portfolio</title>
+    <link rel="stylesheet" href="saletoru-brand.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="WorkflowNode.css">
     <link rel="stylesheet" href="components.css">
     <link rel="stylesheet" href="ProfileCard.css">
     <link rel="stylesheet" href="SpotlightCard.css">
+    <link rel="stylesheet" href="language-toggle.css">
+    <link rel="stylesheet" href="scroll-animation.css">
+    <link rel="stylesheet" href="orbiting-skills.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -23,16 +27,16 @@
                     <span class="logo-subtitle">AI Solutions Architect</span>
                 </div>
                 <nav class="main-nav">
-                    <a href="#hero" class="nav-link">Home</a>
-                    <a href="#summary" class="nav-link">Summary</a>
-                    <a href="#experience" class="nav-link">Experience</a>
-                    <a href="#career" class="nav-link">Career</a>
-                    <a href="#education" class="nav-link">Education</a>
-                    <a href="#projects" class="nav-link">Projects</a>
-                    <a href="#workflow" class="nav-link">Workflow</a>
-                    <a href="#skills" class="nav-link">Skills</a>
-                    <a href="#vision" class="nav-link">Vision</a>
-                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="#hero" class="nav-link" data-i18n="nav.home">Home</a>
+                    <a href="#summary" class="nav-link" data-i18n="nav.summary">Summary</a>
+                    <a href="#experience" class="nav-link" data-i18n="nav.experience">Experience</a>
+                    <a href="#career" class="nav-link" data-i18n="nav.career">Career</a>
+                    <a href="#education" class="nav-link" data-i18n="nav.education">Education</a>
+                    <a href="#projects" class="nav-link" data-i18n="nav.projects">Projects</a>
+                    <a href="#workflow" class="nav-link" data-i18n="nav.workflow">Workflow</a>
+                    <a href="#skills" class="nav-link" data-i18n="nav.skills">Skills</a>
+                    <a href="#vision" class="nav-link" data-i18n="nav.vision">Vision</a>
+                    <a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a>
                 </nav>
                 <button class="mobile-menu-toggle" id="mobileMenuToggle">
                     <span></span>
@@ -42,6 +46,9 @@
             </div>
         </div>
     </div>
+
+    <!-- Navigation overlay for mobile -->
+    <div class="nav-overlay" id="navOverlay"></div>
 
     <!-- Hero Section -->
     <section id="hero" class="hero">
@@ -56,18 +63,18 @@
                         <span class="gradient-text">Solutions</span>
                         <span class="gradient-text">Architect</span>
                     </h1>
-                    <p class="hero-description">
-                        Transforming businesses through intelligent automation, 
+                    <p class="hero-description" data-i18n="hero.description">
+                        Transforming businesses through intelligent automation,
                         machine learning, and cutting-edge AI technologies.
                     </p>
                     <div class="hero-actions">
-                        <button class="btn btn-primary" id="exploreBtn">
+                        <button class="btn btn-primary" id="exploreBtn" data-i18n="hero.exploreBtn">
                             Explore My Work
                             <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
                                 <path d="M5 12h14m-7-7l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </button>
-                        <button class="btn btn-secondary" id="contactBtn">
+                        <button class="btn btn-secondary" id="contactBtn" data-i18n="hero.contactBtn">
                             Get In Touch
                         </button>
                     </div>
@@ -80,15 +87,19 @@
     </section>
 
     <!-- Professional Summary Section -->
-    <section id="summary" class="summary">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Professional Summary</h2>
-                <p class="section-subtitle">Results-driven sales leader expanding into digital transformation</p>
+    <section id="summary" class="summary scroll-animation-container">
+        <div class="scroll-content-wrapper">
+            <div class="scroll-title">
+                <h2 class="section-title" data-i18n="summary.title">Professional Summary</h2>
+                <p class="section-subtitle" data-i18n="summary.subtitle">Results-driven sales leader expanding into digital transformation</p>
             </div>
-            <div class="summary-content">
-                <div class="summary-text summary-spotlight-card" data-aos="fade-right">
-                    <p class="summary-description">
+
+            <div class="scroll-card-container">
+                <div class="scroll-card">
+                    <div class="scroll-card-inner">
+                        <div class="summary-content">
+                <div class="summary-text summary-spotlight-card brand-card" data-aos="fade-right">
+                    <p class="summary-description" data-i18n="summary.description">
                         I am a results-driven sales leader with more than eight years of experience building lasting partnerships, leading teams, and driving consistent growth across competitive markets. Over the course of my career, I've guided organizations in renewable energy and technology through key stages of expansion, combining strategic planning with a hands-on, people-first approach.
                         <br><br>
                         In January 2024, I founded Color Disain Studio, a venture focused on digital transformation and the integration of AI into everyday business processes. My work today bridges two worlds I care deeply about: the human side of sales—trust, communication, and relationships—and the future of technology, where automation, design, and intelligence shape how companies operate.
@@ -117,13 +128,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="summary-stats summary-spotlight-card" data-aos="fade-left">
+                <div class="summary-stats summary-spotlight-card brand-card" data-aos="fade-left">
                     <div class="stat-item">
-                        <div class="stat-number">5+</div>
+                        <div class="stat-number">8+</div>
                         <div class="stat-label">Years in Sales Leadership</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">3</div>
+                        <div class="stat-number">4</div>
                         <div class="stat-label">Companies Led</div>
                     </div>
                     <div class="stat-item">
@@ -134,6 +145,8 @@
                         <div class="stat-number">100%</div>
                         <div class="stat-label">Digital Focus</div>
                     </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -143,11 +156,11 @@
     <section id="experience" class="experience">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Professional Experience</h2>
-                <p class="section-subtitle">Building the future with AI and automation</p>
+                <h2 class="section-title" data-i18n="experience.title">Professional Experience</h2>
+                <p class="section-subtitle" data-i18n="experience.subtitle">Building the future with AI and automation</p>
             </div>
             <div class="experience-grid">
-                <div class="experience-spotlight-card" data-aos="fade-up">
+                <div class="experience-spotlight-card brand-card tilt-container" data-aos="fade-up">
                     <div class="experience-header">
                         <h3>Company Owner & Founder</h3>
                         <span class="experience-period">Jan 2024 - Present</span>
@@ -201,19 +214,20 @@
                 </div>
                 <div class="experience-spotlight-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="experience-header">
-                        <h3>Regional Business Development</h3>
-                        <span class="experience-period">2024 - Present</span>
+                        <h3>Regional Manager - BIPV Solutions</h3>
+                        <span class="experience-period">2024 - 2025</span>
                     </div>
                     <p class="experience-company">ML System</p>
                     <p class="experience-description">
                         Leading regional BIPV (Building Integrated Photovoltaics) 
-                        strategy and partnerships across Baltics and Nordics.
+                        strategy and partnerships across Baltics and Nordics. Managing strategic 
+                        partnerships and delivering innovative energy solutions.
                     </p>
                     <div class="experience-skills">
                         <span class="skill-tag">Business Development</span>
-                        <span class="skill-tag">Partnerships</span>
+                        <span class="skill-tag">Strategic Partnerships</span>
                         <span class="skill-tag">BIPV Technology</span>
-                        <span class="skill-tag">Regional Strategy</span>
+                        <span class="skill-tag">Cost Estimation</span>
                     </div>
                 </div>
             </div>
@@ -224,8 +238,8 @@
     <section id="career" class="career">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Career Journey</h2>
-                <p class="section-subtitle">From concept to implementation</p>
+                <h2 class="section-title" data-i18n="career.title">Career Journey</h2>
+                <p class="section-subtitle" data-i18n="career.subtitle">From concept to implementation</p>
             </div>
             <div class="career-grid">
                 <div class="career-card" data-aos="fade-up">
@@ -251,30 +265,40 @@
     <section id="education" class="education">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Education & Certifications</h2>
-                <p class="section-subtitle">Continuous learning in AI and technology</p>
+                <h2 class="section-title" data-i18n="education.title">Education & Certifications</h2>
+                <p class="section-subtitle" data-i18n="education.subtitle">Building technical and business expertise</p>
             </div>
             <div class="education-grid">
                 <div class="education-card" data-aos="fade-up">
                     <div class="education-header">
-                        <h3>Master of Science in AI</h3>
-                        <span class="education-year">2021</span>
+                        <h3 data-i18n="education.degree1">Bachelor's Degree in Construction Project Management</h3>
+                        <span class="education-year">2006</span>
                     </div>
-                    <p class="education-institution">Stanford University</p>
-                    <p class="education-description">
-                        Specialized in machine learning, deep learning, 
-                        and artificial intelligence applications.
+                    <p class="education-institution" data-i18n="education.institution1">Tallinn Technical University</p>
+                    <p class="education-description" data-i18n="education.description1">
+                        Specialized in construction project management and technical leadership, 
+                        providing a strong foundation in complex project coordination.
                     </p>
                 </div>
                 <div class="education-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="education-header">
-                        <h3>AWS Certified Solutions Architect</h3>
-                        <span class="education-year">2022</span>
+                        <h3 data-i18n="education.degree2">Vocational Certificate in Construction Technology</h3>
+                        <span class="education-year">2003</span>
                     </div>
-                    <p class="education-institution">Amazon Web Services</p>
-                    <p class="education-description">
-                        Professional certification in cloud architecture 
-                        and AI/ML services on AWS.
+                    <p class="education-institution" data-i18n="education.institution2">Olustvere Technical and Agricultural School</p>
+                    <p class="education-description" data-i18n="education.description2">
+                        Technical education focused on construction technology 
+                        and practical engineering skills.
+                    </p>
+                </div>
+                <div class="education-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="education-header">
+                        <h3 data-i18n="education.degree3">High School Diploma</h3>
+                        <span class="education-year">1997</span>
+                    </div>
+                    <p class="education-institution" data-i18n="education.institution3">Karksi-Nuia Gymnasium</p>
+                    <p class="education-description" data-i18n="education.description3">
+                        Comprehensive secondary education with focus on science and mathematics.
                     </p>
                 </div>
             </div>
@@ -285,13 +309,14 @@
     <section id="projects" class="projects">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Featured Projects</h2>
-                <p class="section-subtitle">Innovative solutions that make a difference</p>
+                <h2 class="section-title" data-i18n="projects.title">Featured Projects</h2>
+                <p class="section-subtitle" data-i18n="projects.subtitle">Innovative solutions that make a difference</p>
             </div>
             <div class="projects-grid">
                 <div class="project-card" data-aos="fade-up">
                     <div class="project-image">
-                        <div class="project-placeholder">🤖</div>
+                        <img src="public/images/projects/Saletoru Powered with ai.png" alt="Saletoru CRM Dashboard" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="project-placeholder" style="display: none;">🤖</div>
                     </div>
                     <div class="project-content">
                         <h3>Saletoru CRM</h3>
@@ -302,41 +327,44 @@
                             <span class="tech-tag">Machine Learning</span>
                         </div>
                         <div class="project-actions">
-                            <a href="#" class="btn btn-outline">View Project</a>
+                            <a href="https://github.com/Janar2510/AI-Powered-Saleguru-CRM" target="_blank" rel="noopener noreferrer" class="btn btn-outline">View Project</a>
                         </div>
                     </div>
                 </div>
                 <div class="project-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="project-image">
-                        <div class="project-placeholder">📊</div>
+                        <img src="public/images/FUSIONAI (3).png" alt="FusionAI Enterprise Suite" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="project-placeholder" style="display: none;">🚀</div>
                     </div>
                     <div class="project-content">
-                        <h3>Predictive Analytics Platform</h3>
-                        <p>Real-time data analysis and forecasting system for business intelligence and decision making.</p>
+                        <h3>FusionAI Enterprise Suite</h3>
+                        <p>AI-enhanced modular ERP platform with 23 core modules, multi-agent coordination, and modern glassmorphism UI. Features autonomous workflow capabilities and real-time collaboration.</p>
                         <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">LangChain</span>
+                            <span class="tech-tag">PostgreSQL</span>
                         </div>
                         <div class="project-actions">
-                            <a href="#" class="btn btn-outline">View Project</a>
+                            <a href="https://github.com/Janar2510/FUSION-AI-Enterprise-Suite-AI-Driven-modular-ERP-Platform" target="_blank" rel="noopener noreferrer" class="btn btn-outline">View Project</a>
                         </div>
                     </div>
                 </div>
                 <div class="project-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="project-image">
-                        <div class="project-placeholder">🔮</div>
+                        <img src="public/images/AGENT FLOW.png" alt="AI Workflow Automation" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="project-placeholder" style="display: none;">🔮</div>
                     </div>
                     <div class="project-content">
-                        <h3>AI Workflow Automation</h3>
-                        <p>Intelligent workflow management system that automates complex business processes using AI agents.</p>
+                        <h3>AgentFlow</h3>
+                        <p>Visual Multi-Agent Workflow Designer - drag-and-drop interface for designing, deploying, and monitoring multi-agent systems with enterprise-grade reliability.</p>
                         <div class="project-tech">
-                            <span class="tech-tag">Vue.js</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">OpenAI API</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">LangChain</span>
                         </div>
                         <div class="project-actions">
-                            <a href="#" class="btn btn-outline">View Project</a>
+                            <a href="https://github.com/Janar2510/AgentFlow" target="_blank" rel="noopener noreferrer" class="btn btn-outline">View Project</a>
                         </div>
                     </div>
                 </div>
@@ -348,8 +376,8 @@
     <section id="workflow" class="workflow">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">AI Agent Workflow</h2>
-                <p class="section-subtitle">How intelligent systems work together</p>
+                <h2 class="section-title" data-i18n="workflow.title">AI Agent Workflow</h2>
+                <p class="section-subtitle" data-i18n="workflow.subtitle">How intelligent systems work together</p>
             </div>
             <div class="workflow-container">
                 <div class="workflow-nodes" id="workflowNodes">
@@ -363,8 +391,8 @@
     <section id="skills" class="skills">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Core Skills & Expertise</h2>
-                <p class="section-subtitle">Technical and business capabilities driving digital transformation</p>
+                <h2 class="section-title" data-i18n="skills.title">Core Skills & Expertise</h2>
+                <p class="section-subtitle" data-i18n="skills.subtitle">Technical and business capabilities driving digital transformation</p>
             </div>
             <div class="skills-grid">
                 <div class="skill-category" data-aos="fade-up">
@@ -431,15 +459,15 @@
     <section id="vision" class="vision">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Vision for the Future</h2>
-                <p class="section-subtitle">Where AI meets human potential</p>
+                <h2 class="section-title" data-i18n="vision.title">Vision for the Future</h2>
+                <p class="section-subtitle" data-i18n="vision.subtitle">Where AI meets human potential</p>
             </div>
             <div class="vision-content">
                 <div class="vision-text" data-aos="fade-right">
-                    <h3>Empowering Human-AI Collaboration</h3>
-                    <p>
-                        I believe in creating AI systems that augment human capabilities 
-                        rather than replace them. The future lies in seamless collaboration 
+                    <h3 data-i18n="vision.mainTitle">Empowering Human-AI Collaboration</h3>
+                    <p data-i18n="vision.mainText">
+                        I believe in creating AI systems that augment human capabilities
+                        rather than replace them. The future lies in seamless collaboration
                         between intelligent machines and human creativity.
                     </p>
                     <div class="vision-points">
@@ -467,12 +495,35 @@
                     </div>
                 </div>
                 <div class="vision-visual" data-aos="fade-left">
-                    <div class="vision-card">
-                        <div class="vision-animation" id="visionAnimation">
-                            <div class="ai-brain">🧠</div>
-                            <div class="connection-lines"></div>
-                        </div>
-                    </div>
+                    <!--
+                    ═══════════════════════════════════════════════════
+                      ORBITING SKILLS - LOGO UPLOAD INSTRUCTIONS
+                    ═══════════════════════════════════════════════════
+
+                    To add your custom logos:
+
+                    1. Prepare your logo images:
+                       - Format: PNG with transparent background
+                       - Size: 256x256px (square)
+                       - File size: Under 100KB
+
+                    2. Upload to: /assets/logos/ folder
+                       (Create this folder if it doesn't exist)
+
+                    3. Open: orbiting-skills.js
+                       Find: CUSTOM_LOGO_PATHS (lines 21-32)
+
+                    4. Update the paths:
+                       html: '/assets/logos/html-custom.png',
+                       css: '/assets/logos/css-custom.png',
+                       // etc...
+
+                    5. Refresh the page to see your custom logos
+
+                    Supported formats: PNG, JPG, SVG, WebP
+                    ═══════════════════════════════════════════════════
+                    -->
+                    <div id="orbitingSkillsContainer"></div>
                 </div>
             </div>
         </div>
@@ -482,40 +533,40 @@
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Let's Build Something Amazing</h2>
-                <p class="section-subtitle">Ready to transform your business with AI?</p>
+                <h2 class="section-title" data-i18n="contact.title">Let's Build Something Amazing</h2>
+                <p class="section-subtitle" data-i18n="contact.subtitle">Ready to transform your business with AI?</p>
             </div>
             <div class="contact-content">
                 <div class="contact-info" data-aos="fade-right">
-                    <h3>Get In Touch</h3>
-                    <p>I'm always excited to discuss new projects and opportunities in AI and automation.</p>
+                    <h3 data-i18n="contact.getInTouch">Get In Touch</h3>
+                    <p data-i18n="contact.description">I'm always excited to discuss new projects and opportunities in AI and automation.</p>
                     <div class="contact-details">
                         <div class="contact-item">
                             <div class="contact-icon">📧</div>
                             <div class="contact-text">
-                                <h4>Email</h4>
-                                <p>janar@colordisainstudio.com</p>
+                                <h4 data-i18n="contact.email">Email</h4>
+                                <p>info@janarkuuskpro.com</p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">📱</div>
                             <div class="contact-text">
-                                <h4>Phone</h4>
+                                <h4 data-i18n="contact.phone">Phone</h4>
                                 <p>+372 56103001</p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">📍</div>
                             <div class="contact-text">
-                                <h4>Location</h4>
+                                <h4 data-i18n="contact.location">Location</h4>
                                 <p>Päikese VKT 6, Päidre, Viljandimaa, Estonia</p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">🌍</div>
                             <div class="contact-text">
-                                <h4>Languages</h4>
-                                <p>Estonian, English</p>
+                                <h4 data-i18n="contact.languages">Languages</h4>
+                                <p data-i18n="contact.languagesValue">Estonian, English</p>
                             </div>
                         </div>
                     </div>
@@ -523,18 +574,18 @@
                 <div class="contact-form" data-aos="fade-left">
                     <form id="contactForm">
                         <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                            <input type="text" id="name" name="name" placeholder="Your Name" data-i18n-placeholder="contact.form.namePlaceholder" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                            <input type="email" id="email" name="email" placeholder="Your Email" data-i18n-placeholder="contact.form.emailPlaceholder" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                            <input type="text" id="subject" name="subject" placeholder="Subject" data-i18n-placeholder="contact.form.subjectPlaceholder" required>
                         </div>
                         <div class="form-group">
-                            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                            <textarea id="message" name="message" placeholder="Your Message" data-i18n-placeholder="contact.form.messagePlaceholder" rows="5" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-full">
+                        <button type="submit" class="btn btn-primary btn-full" data-i18n="contact.form.sendBtn">
                             Send Message
                             <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
                                 <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -564,10 +615,17 @@
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="saletoru-effects.js"></script>
     <script src="fluid-simulation.js"></script>
     <script src="profile-card.js"></script>
     <script src="spotlight-card.js"></script>
     <script src="components.js"></script>
     <script src="script.js"></script>
+    <script src="translations.js"></script>
+    <script src="language-switcher.js"></script>
+    <script src="scroll-animation.js"></script>
+    <script src="orbiting-skills.js"></script>
+    <script type="module" src="workflow-dotted-surface.js"></script>
+    <script type="module" src="workflow-animator.js"></script>
 </body>
 </html>

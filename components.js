@@ -107,19 +107,67 @@ class ComponentManager {
 
         // Mobile menu toggle
         const mobileToggle = document.getElementById('mobileMenuToggle');
+        const navOverlay = document.getElementById('navOverlay');
+        const navLinks = document.querySelectorAll('.nav-link');
+
         if (mobileToggle) {
             mobileToggle.addEventListener('click', () => {
                 this.toggleMobileMenu();
             });
         }
+
+        // Close menu on overlay click
+        if (navOverlay) {
+            navOverlay.addEventListener('click', () => {
+                this.closeMobileMenu();
+            });
+        }
+
+        // Close menu on nav link click
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (document.querySelector('.main-nav').classList.contains('active')) {
+                    this.closeMobileMenu();
+                }
+            });
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && document.querySelector('.main-nav').classList.contains('active')) {
+                this.closeMobileMenu();
+            }
+        });
     }
 
     toggleMobileMenu() {
         const nav = document.querySelector('.main-nav');
         const toggle = document.getElementById('mobileMenuToggle');
-        
+        const overlay = document.getElementById('navOverlay');
+
         nav.classList.toggle('active');
         toggle.classList.toggle('active');
+        if (overlay) {
+            overlay.classList.toggle('active');
+        }
+
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+    }
+
+    closeMobileMenu() {
+        const nav = document.querySelector('.main-nav');
+        const toggle = document.getElementById('mobileMenuToggle');
+        const overlay = document.getElementById('navOverlay');
+
+        nav.classList.remove('active');
+        toggle.classList.remove('active');
+        if (overlay) {
+            overlay.classList.remove('active');
+        }
+
+        // Restore body scroll
+        document.body.style.overflow = '';
     }
 }
 

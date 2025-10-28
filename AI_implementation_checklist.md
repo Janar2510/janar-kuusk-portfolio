@@ -1,3 +1,22 @@
+### 2025-10-28 Content Accuracy Update
+- **CV Alignment**: Updated all portfolio content to match actual CV credentials
+- **Education Fixed**: Replaced placeholder degrees with real credentials from Tallinn Technical University, Olustvere Technical School, and Karksi-Nuia Gymnasium
+- **Contact Updated**: Email corrected to info@janarkuuskpro.com
+- **Statistics Corrected**: Updated to 8+ years in sales leadership, 4 companies led
+- **Employment Dates**: ML System period corrected to 2024-2025
+- **Translations**: Both English and Estonian versions updated with accurate information
+- **Project Updates**: 
+  - Replaced "Predictive Analytics Platform" with "FusionAI Enterprise Suite"
+  - Updated "AI Workflow Automation" to "AgentFlow" with accurate description
+  - Added GitHub links to all three featured projects
+  - Added PNG images for all projects (Saletoru, FusionAI, AgentFlow)
+- **Language Toggle Enhancement**:
+  - Enhanced language switcher to update technology tags dynamically
+  - Verified all translations work correctly for project cards
+  - Language toggle button functional in bottom-right corner (EN/ET)
+
+### 2025-10-15 UI Consistency
+- Core Skills & Expertise: set `.skills-grid` to flex row, no wrap; horizontal scroll enabled; cards rounded via `var(--radius-xl)`.
 # AI Implementation Checklist
 
 ## Portfolio Website AI Features

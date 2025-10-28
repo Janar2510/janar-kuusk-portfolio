@@ -129,6 +129,7 @@ p {
 }
 
 /* Buttons */
+/* SaleToru Brand Buttons */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -136,39 +137,52 @@ p {
     padding: var(--space-md) var(--space-xl);
     border: none;
     border-radius: var(--radius-lg);
-    font-weight: 500;
+    font-weight: 600;
     font-size: 1rem;
     text-decoration: none;
     cursor: pointer;
     transition: all var(--transition-normal);
     position: relative;
     overflow: hidden;
+    /* SaleToru brand styling */
+    background-color: #1f2937; /* neutral-800 */
+    color: white;
 }
 
 .btn::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-    transition: left var(--transition-slow);
+    inset: 0;
+    border-radius: var(--radius-lg);
+    padding: 2px;
+    background: linear-gradient(90deg, var(--color-primary, #8e2de2), var(--color-secondary, #4a00e0), var(--color-primary, #8e2de2));
+    background-size: 200% 200%;
+    animation: borderFlow 6s linear infinite;
+    filter: blur(8px);
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+    z-index: -1;
 }
 
 .btn:hover::before {
-    left: 100%;
+    opacity: 1;
+    animation: glowPulse 2s ease-in-out infinite;
+}
+
+.btn:hover {
+    background-color: #374151; /* neutral-700 */
+    transform: translateY(-2px);
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, var(--color-primary, #8e2de2), var(--color-secondary, #4a00e0));
     color: white;
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 0 20px rgba(142, 45, 226, 0.3);
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-xl);
+    box-shadow: 0 0 30px rgba(142, 45, 226, 0.5);
 }
 
 .btn-secondary {
@@ -178,19 +192,21 @@ p {
 }
 
 .btn-secondary:hover {
-    border-color: var(--primary-color);
-    color: var(--primary-color);
+    border-color: var(--color-primary, #8e2de2);
+    color: var(--color-primary, #8e2de2);
+    background-color: rgba(142, 45, 226, 0.1);
 }
 
 .btn-outline {
     background: transparent;
-    color: var(--primary-color);
-    border: 2px solid var(--primary-color);
+    color: var(--color-primary, #8e2de2);
+    border: 2px solid var(--color-primary, #8e2de2);
 }
 
 .btn-outline:hover {
-    background: var(--primary-color);
+    background: var(--color-primary, #8e2de2);
     color: white;
+    box-shadow: 0 0 20px rgba(142, 45, 226, 0.4);
 }
 
 .btn-full {
@@ -204,12 +220,28 @@ p {
 }
 
 /* Cards */
+/* SaleToru Brand Cards */
 .card {
-    background: var(--bg-card);
+    background: var(--color-surface, var(--bg-card));
     border-radius: var(--radius-xl);
     padding: var(--space-xl);
     border: 1px solid var(--gray-800);
     transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+    /* SaleToru brand styling */
+    background: linear-gradient(90deg, var(--color-primary, #8e2de2), var(--color-secondary, #4a00e0), var(--color-primary, #8e2de2));
+    background-size: 200% 200%;
+    animation: borderFlow 6s linear infinite;
+    padding: 2px; /* border thickness */
+}
+
+.card > .card-inner {
+    background: var(--color-surface, var(--bg-card));
+    border-radius: calc(var(--radius-xl) - 2px);
+    padding: var(--space-xl);
+    width: 100%;
+    height: 100%;
     position: relative;
     overflow: hidden;
 }
@@ -217,23 +249,27 @@ p {
 .card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+    background: #ffffff;
     opacity: 0;
-    transition: opacity var(--transition-normal);
+    filter: blur(5rem);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    left: var(--spotlight-x, 50%);
+    top: var(--spotlight-y, 50%);
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.card:hover::before {
+    opacity: 0.15;
 }
 
 .card:hover {
     transform: translateY(-4px);
-    box-shadow: var(--shadow-xl);
-    border-color: var(--gray-700);
-}
-
-.card:hover::before {
-    opacity: 1;
+    box-shadow: 0 0 30px rgba(142, 45, 226, 0.3);
 }
 
 /* Animated Cards */
@@ -369,25 +405,110 @@ p {
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 }
 
-/* Career Cards */
+/* Career Cards - Enhanced to match experience cards */
 .career-card {
     text-align: center;
     padding: var(--space-2xl);
-    background: var(--bg-card);
-    border-radius: var(--radius-xl);
-    border: 1px solid var(--gray-800);
-    transition: all var(--transition-normal);
+    position: relative;
+    border-radius: 1.5rem;
+    border: 1px solid #222;
+    background-color: #111;
+    overflow: hidden;
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+    transform-style: preserve-3d;
+    transition: transform 0.2s ease-out, box-shadow 0.3s ease, border-color 0.3s ease;
+    will-change: transform;
+}
+
+.career-card > * {
+    position: relative;
+    z-index: 2;
 }
 
 .career-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-xl);
+    transform: translateY(-8px);
+    border-color: rgba(0, 229, 255, 0.5);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 60px rgba(0, 229, 255, 0.3),
+        inset 0 0 40px rgba(0, 229, 255, 0.1);
+}
+
+/* Spotlight effect for career cards */
+.career-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        600px circle at var(--mouse-x) var(--mouse-y),
+        rgba(0, 229, 255, 0.4),
+        rgba(0, 229, 255, 0.2) 30%,
+        transparent 50%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.career-card:hover::before {
+    opacity: 1;
+}
+
+/* Animated gradient border for career cards */
+.career-card::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 1.5rem;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 229, 255, 0) 0%,
+        rgba(0, 229, 255, 0.6) 25%,
+        rgba(142, 45, 226, 0.6) 50%,
+        rgba(0, 229, 255, 0.6) 75%,
+        rgba(0, 229, 255, 0) 100%
+    );
+    background-size: 200% 200%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+                  linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    padding: 2px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.career-card:hover::after {
+    opacity: 1;
+    animation: borderShine 4s ease-in-out infinite;
+}
+
+/* Ensure borderShine animation exists */
+@keyframes borderShine {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
 }
 
 .card-icon {
     font-size: 3rem;
     margin-bottom: var(--space-lg);
-    display: block;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.career-card:hover .card-icon {
+    animation: iconBounce 0.6s ease-in-out;
 }
 
 /* Education Cards */
@@ -449,6 +570,26 @@ p {
     overflow: hidden;
 }
 
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease;
+}
+
+.project-image:hover img {
+    transform: scale(1.05);
+}
+
+/* Saletoru CRM specific styling - reduce image size */
+.project-card:first-child .project-image img {
+    object-fit: contain;
+    object-position: center;
+    width: 70%;
+    height: 70%;
+}
+
 .project-placeholder {
     font-size: 4rem;
     opacity: 0.5;
@@ -492,6 +633,12 @@ p {
 .point-icon {
     font-size: 2rem;
     flex-shrink: 0;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.vision-point:hover .point-icon {
+    animation: iconSpinSlow 2s linear infinite;
 }
 
 .point-content h4 {
@@ -508,38 +655,7 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.vision-card {
-    width: 300px;
-    height: 300px;
-    background: var(--bg-card);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid var(--gray-800);
-    position: relative;
-    overflow: hidden;
-}
-
-.vision-animation {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.ai-brain {
-    font-size: 4rem;
-    animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+    min-height: 500px;
 }
 
 /* Contact Section */
@@ -571,6 +687,13 @@ p {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover .contact-icon {
+    animation: iconScalePulse 0.6s ease-in-out;
+    background: rgba(0, 229, 255, 0.1);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
 }
 
 .contact-text h4 {

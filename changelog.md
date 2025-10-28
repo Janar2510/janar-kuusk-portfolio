@@ -1,3 +1,43 @@
+## 2025-10-28
+- **Updated Portfolio Content to Match CV**:
+  - Fixed education section with real credentials (Tallinn Technical University, Olustvere Technical School, Karksi-Nuia Gymnasium)
+  - Removed placeholder education entries (Stanford University, AWS certifications)
+  - Updated ML System employment period from "2024 - Present" to "2024 - 2025"
+  - Corrected contact email to info@janarkuuskpro.com
+  - Updated statistics: 8+ years in sales leadership, 4 companies led
+  - Updated translations for both English and Estonian versions
+  - Ensured all work experience dates and descriptions match CV accurately
+
+- **Updated Featured Projects**:
+  - Replaced "Predictive Analytics Platform" with "FusionAI Enterprise Suite"
+  - Added description of AI-enhanced modular ERP platform with 23 core modules
+  - Updated tech stack: React, FastAPI, LangChain, PostgreSQL
+  - Updated both English and Estonian translations for the new project
+  - Added GitHub link to FusionAI project (https://github.com/Janar2510/FUSION-AI-Enterprise-Suite-AI-Driven-modular-ERP-Platform)
+  - Replaced all project images with actual PNG files from user
+  - Adjusted Saletoru CRM image size to 70% for better card fit
+  - Updated third project to "AgentFlow" with updated description and tech stack
+  - Added GitHub link to AgentFlow project (https://github.com/Janar2510/AgentFlow)
+  - Updated both English and Estonian translations for AgentFlow project
+  - Enhanced language switcher to update technology tags when switching languages
+  - Verified all project translations are working correctly for both EN/ET languages
+  - Fixed education section translations structure to use items array format
+  - Added console logging and error handling to language switcher for debugging
+  - Fixed language toggle initialization checks
+
+## 2025-10-17
+- **Added GitHub Link to Saletoru CRM Project**: Updated the "View Project" button in the Featured Projects section to link to the actual GitHub repository (https://github.com/Janar2510/AI-Powered-Saleguru-CRM) with proper target="_blank" and security attributes.
+- **Created Public Images Directory Structure**: 
+  - Added `/public/images/` folder with organized subdirectories for projects, logos, and avatars
+  - Created comprehensive README.md with image guidelines and upload instructions
+  - Updated project cards to use actual image elements instead of emoji placeholders
+  - Added fallback support with graceful degradation to emoji placeholders if images fail to load
+  - Created SVG placeholder images for all three featured projects with brand-consistent gradients
+  - Added CSS styling for project images with hover effects and proper object-fit scaling
+
+## 2025-10-15
+- Update Core Skills & Expertise layout to single-row horizontal scroll by switching `.skills-grid` to a non-wrapping flex container with `overflow-x: auto` using spacing variables.
+- Round skill cards by changing `.skill-category` `border-radius` to `var(--radius-xl)` and setting fixed flex-basis for consistent card width.
 # Changelog
 
 ## [1.0.0] - 2024-12-19
