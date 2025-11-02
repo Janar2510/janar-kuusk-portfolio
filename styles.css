@@ -1116,97 +1116,64 @@ textarea.error {
     line-height: 1.6;
 }
 
-/* Workflow Video Section - 80vw x 80vh Centered */
+/* Workflow Video Section - Card Style */
 .workflow-video-section {
     background: var(--bg-primary);
     padding: var(--space-4xl) 0;
     overflow: hidden;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-.workflow-video-wrapper {
-    position: relative;
-    width: 80vw;
-    height: 80vh;
-    max-width: 80vw;
+.workflow-video-card {
+    /* Inherits all styling from .summary-spotlight-card in SpotlightCard.css */
+    /* This gives it the exact same look as experience cards */
+    width: 80%;
+    max-width: 1200px;
     margin: 0 auto;
-    border-radius: 1.5rem;
+    padding: 0;
     overflow: hidden;
-    box-shadow: 
-        0 20px 60px rgba(0, 0, 0, 0.4),
-        0 0 80px rgba(0, 229, 255, 0.2),
-        inset 0 0 100px rgba(0, 229, 255, 0.1);
-    border: 2px solid rgba(0, 229, 255, 0.3);
-    background: #000;
 }
 
 .workflow-video {
     width: 100%;
-    height: 100%;
+    height: auto;
+    min-height: 500px;
     display: block;
     object-fit: cover;
     object-position: center;
-}
-
-/* Add subtle glow animation */
-@keyframes videoGlow {
-    0%, 100% {
-        box-shadow: 
-            0 20px 60px rgba(0, 0, 0, 0.4),
-            0 0 80px rgba(0, 229, 255, 0.2),
-            inset 0 0 100px rgba(0, 229, 255, 0.1);
-    }
-    50% {
-        box-shadow: 
-            0 20px 60px rgba(0, 0, 0, 0.4),
-            0 0 120px rgba(0, 229, 255, 0.4),
-            inset 0 0 120px rgba(0, 229, 255, 0.15);
-    }
-}
-
-.workflow-video-wrapper {
-    animation: videoGlow 4s ease-in-out infinite;
+    border-radius: 1.5rem;
+    position: relative;
+    z-index: 2;
 }
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
-    .workflow-video-section {
-        min-height: 90vh;
-        padding: var(--space-3xl) 0;
+    .workflow-video-card {
+        width: 85%;
     }
 
-    .workflow-video-wrapper {
-        width: 85vw;
-        height: 70vh;
+    .workflow-video {
+        min-height: 450px;
     }
 }
 
 @media (max-width: 768px) {
-    .workflow-video-section {
-        min-height: 80vh;
-        padding: var(--space-2xl) 0;
+    .workflow-video-card {
+        width: 90%;
     }
 
-    .workflow-video-wrapper {
-        width: 90vw;
-        height: 60vh;
-        border-width: 1px;
+    .workflow-video {
+        min-height: 400px;
         border-radius: 1rem;
     }
 }
 
 @media (max-width: 480px) {
-    .workflow-video-section {
-        min-height: 70vh;
-        padding: var(--space-xl) 0;
+    .workflow-video-card {
+        width: 95%;
     }
 
-    .workflow-video-wrapper {
-        width: 95vw;
-        height: 50vh;
+    .workflow-video {
+        min-height: 300px;
     }
 }
 
