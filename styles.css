@@ -1051,225 +1051,133 @@ textarea.error {
     margin-bottom: var(--space-3xl);
 }
 
-.summary-content {
+/* Bento Grid Layout for Summary Section */
+.summary-bento-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-3xl);
-    align-items: stretch;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto;
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
-/* Apply brand card styling to summary sections - matches experience cards */
-.summary-text.summary-spotlight-card,
-.summary-stats.summary-spotlight-card {
-    position: relative;
-    border-radius: var(--radius-lg);
-    background: var(--gradient-border);
-    background-size: 200% 200%;
-    animation: borderFlow 6s linear infinite;
-    padding: 2px; /* border thickness for gradient */
-    overflow: visible;
-    transition: transform 0.3s ease;
+/* Bento Grid Item Sizes */
+.bento-large {
+    grid-column: span 2;
+    grid-row: span 2;
 }
 
-/* Inner wrapper styling */
-.summary-text.summary-spotlight-card {
-    display: flex;
-    flex-direction: column;
+.bento-stats {
+    grid-column: span 2;
+    grid-row: span 1;
 }
 
-.summary-stats.summary-spotlight-card {
-    display: grid;
+.bento-highlight {
+    grid-column: span 1;
+    grid-row: span 1;
 }
 
-/* Add dark background behind content */
-.summary-text.summary-spotlight-card::after,
-.summary-stats.summary-spotlight-card::after {
-    content: '';
-    position: absolute;
-    inset: 2px;
-    border-radius: calc(var(--radius-lg) - 2px);
-    background-color: var(--color-surface);
-    z-index: 0;
-}
+/* Summary cards use exact same styling as experience cards */
+/* All styling is inherited from .summary-spotlight-card in SpotlightCard.css */
 
-/* Spotlight effect on hover */
-.summary-text.summary-spotlight-card::before,
-.summary-stats.summary-spotlight-card::before {
-    content: "";
-    position: absolute;
-    width: 20rem;
-    height: 20rem;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(142, 45, 226, 0.3) 0%, transparent 70%);
-    opacity: 0;
-    filter: blur(3rem);
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-}
-
-.summary-text.summary-spotlight-card:hover::before,
-.summary-stats.summary-spotlight-card:hover::before {
-    opacity: 1;
-}
-
-.summary-text.summary-spotlight-card:hover,
-.summary-stats.summary-spotlight-card:hover {
-    transform: translateY(-4px);
-}
-
-.summary-description {
-    font-size: 1.5rem;
+/* Specific adjustments for bento layout items */
+.bento-large .summary-description {
+    font-size: 1.25rem;
     line-height: 1.7;
     color: #d0d0d0;
-    margin-bottom: var(--space-4xl);
-    position: relative;
-    z-index: 2;
+    margin: 0;
+}
+
+.bento-highlight {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     padding: 2rem;
 }
 
-.summary-highlights {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xl);
-    position: relative;
-    z-index: 2;
-    padding: 0 2rem 2rem 2rem;
+.bento-highlight .highlight-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
 }
 
-.highlight-item {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-lg);
-}
-
-.highlight-icon {
-    font-size: 2rem;
-    flex-shrink: 0;
-    margin-top: 0.25rem;
-}
-
-.highlight-text h4 {
-    font-size: 1.5rem;
+.bento-highlight .highlight-text h4 {
+    font-size: 1.25rem;
     font-weight: 600;
     color: #ffffff;
-    margin: 0 0 var(--space-sm) 0;
+    margin: 0 0 0.75rem 0;
 }
 
-.highlight-text p {
-    font-size: 1.2rem;
+.bento-highlight .highlight-text p {
+    font-size: 1rem;
     color: #d0d0d0;
     margin: 0;
     line-height: 1.6;
 }
 
-.summary-stats {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-xl);
-    position: relative;
-    z-index: 2;
-    padding: 2rem;
-}
-
-.stat-item {
-    text-align: center;
-    padding: var(--space-xl);
-    background: rgba(0, 229, 255, 0.05);
-    border-radius: var(--border-radius-lg);
-    border: 1px solid rgba(0, 229, 255, 0.2);
-    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
-}
-
-.stat-item:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-    background: rgba(0, 229, 255, 0.1);
-    border-color: rgba(0, 229, 255, 0.4);
-}
-
-.stat-number {
-    font-size: 3rem;
-    font-weight: 800;
-    background: linear-gradient(135deg, #00e5ff 0%, #0080ff 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: var(--space-sm);
-}
-
-.stat-label {
-    font-size: 1.1rem;
-    color: #d0d0d0;
-    font-weight: 500;
-}
-
-/* Responsive Design for Summary */
-@media (max-width: 1024px) {
-    .summary-content {
-        grid-template-columns: 1fr;
-        gap: var(--space-2xl);
+/* Responsive Design for Summary Bento Grid */
+@media (max-width: 1200px) {
+    .summary-bento-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 
-    .summary-stats {
-        grid-template-columns: repeat(4, 1fr);
+    .bento-large {
+        grid-column: span 3;
+        grid-row: span 1;
+    }
+
+    .bento-stats {
+        grid-column: span 3;
+    }
+
+    .bento-highlight {
+        grid-column: span 1;
     }
 }
 
 @media (max-width: 991px) {
-    .summary-description,
-    .summary-highlights,
-    .summary-stats {
-        padding: 1.5rem;
+    .summary-bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
     }
 
-    .summary-description {
-        font-size: 1.2rem;
+    .bento-large {
+        grid-column: span 2;
+    }
+
+    .bento-stats {
+        grid-column: span 2;
+    }
+
+    .bento-highlight {
+        grid-column: span 1;
     }
 }
 
 @media (max-width: 768px) {
-    .summary-description {
+    .summary-bento-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .bento-large,
+    .bento-stats,
+    .bento-highlight {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .bento-large .summary-description {
         font-size: 1.1rem;
     }
 
-    .summary-stats {
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--space-md);
+    .bento-highlight {
+        padding: 1.5rem;
     }
 
-    .stat-number {
-        font-size: 2rem;
-    }
-
-    .stat-label {
-        font-size: 0.95rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .summary-stats {
-        grid-template-columns: 1fr;
-    }
-
-    .summary-description {
-        font-size: 1rem;
-    }
-
-    .highlight-item {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .highlight-text h4 {
-        font-size: 1.25rem;
-    }
-
-    .highlight-text p {
-        font-size: 1rem;
+    .bento-highlight .highlight-icon {
+        font-size: 2.5rem;
     }
 }
 
