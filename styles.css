@@ -1164,6 +1164,18 @@ textarea.error {
 /* Summary cards use exact same styling as experience cards */
 /* All styling is inherited from .summary-spotlight-card in SpotlightCard.css */
 
+/* Tilt effect for summary cards */
+.summary-spotlight-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.summary-spotlight-card:hover {
+    transform: perspective(1000px) rotateX(2deg) rotateY(2deg) scale(1.02);
+    box-shadow: 0 20px 60px rgba(0, 229, 255, 0.3);
+}
+
 /* Specific adjustments for bento layout items */
 .bento-large {
     display: flex;
