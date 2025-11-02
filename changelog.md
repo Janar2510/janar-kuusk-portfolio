@@ -1,13 +1,15 @@
 ## 2025-11-02
-- **Added Workflow Landing Video (80vh Landing Page Style)**:
-  - Inserted dramatic 80% viewport height video section between Core Skills & Expertise and AI Agent Workflow
+- **Added Workflow Landing Video (80vw × 80vh Centered)**:
+  - Inserted dramatic centered video section between Core Skills & Expertise and AI Agent Workflow
+  - Video dimensions: 80% viewport width × 80% viewport height
   - Video file: Workflow landing.mov from public/images folder
-  - Full-width cinematic presentation with no padding or border-radius
-  - Autoplay, loop, muted for seamless background playback
-  - Video covers entire section height with object-fit: cover
-  - Styled with cyan glow borders (top/bottom) and inset glow for depth
-  - Pulsing glow animation for visual interest
-  - Responsive scaling: 80vh (desktop) → 70vh (tablet) → 60vh (mobile) → 50vh (small)
+  - Perfectly centered in full viewport height section (100vh)
+  - Autoplay, loop, muted for continuous seamless playback
+  - Video covers wrapper with object-fit: cover for perfect framing
+  - Rounded corners (1.5rem) with cyan glow border all around
+  - Styled with cyan glow and inset glow for depth
+  - Pulsing glow animation for visual impact
+  - Responsive scaling: 80vw×80vh (desktop) → 85vw×70vh (tablet) → 90vw×60vh (mobile) → 95vw×50vh (small)
   - Fallback support for mp4 format
 
 - **Transformed Professional Summary to Bento Grid Layout**:

@@ -1,9 +1,11 @@
 ## UI/UX Changes - 2025-11-02
-- **Workflow Video (80vh)**: Verify Workflow landing.mov plays automatically in loop at 80% viewport height
-- **Video Landing Page**: Confirm video displays as full-width cinematic section between Skills and AI Agent Workflow
-- **Video Styling**: Confirm video has cyan glow borders (top/bottom) with pulsing animation and inset glow
-- **Video Responsiveness**: Test video scales properly: 80vh (desktop) → 70vh (tablet) → 60vh (mobile) → 50vh (small mobile)
-- **Video Coverage**: Verify video covers entire section with object-fit: cover and proper centering
+- **Workflow Video (80vw × 80vh)**: Verify Workflow landing.mov plays automatically in continuous loop
+- **Video Centering**: Confirm video is perfectly centered both horizontally and vertically in full viewport section
+- **Video Dimensions**: Verify video displays at 80% viewport width AND 80% viewport height on desktop
+- **Video Styling**: Confirm video has rounded corners (1.5rem) with cyan glow border all around and pulsing animation
+- **Video Responsiveness**: Test video scales properly: 80vw×80vh (desktop) → 85vw×70vh (tablet) → 90vw×60vh (mobile) → 95vw×50vh (small)
+- **Video Coverage**: Verify video covers wrapper with object-fit: cover and proper centering
+- **Continuous Loop**: Confirm video loops seamlessly without interruption
 - **Bento Grid Layout**: Verify Professional Summary displays as modern bento grid (4 columns on desktop)
 - **Card Styling Match**: Confirm ALL summary cards have EXACT same styling as Head of Sales card (cyan/blue theme)
 - **Animated Borders**: Verify gradient borders animate and shine on hover (cyan to purple gradient)
