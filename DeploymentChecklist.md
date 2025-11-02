@@ -1,11 +1,11 @@
 ## UI/UX Changes - 2025-11-02
-- **Workflow Video (80vw × 80vh)**: Verify Workflow landing.mov plays automatically in continuous loop
-- **Video Centering**: Confirm video is perfectly centered both horizontally and vertically in full viewport section
-- **Video Dimensions**: Verify video displays at 80% viewport width AND 80% viewport height on desktop
-- **Video Styling**: Confirm video has rounded corners (1.5rem) with cyan glow border all around and pulsing animation
-- **Video Responsiveness**: Test video scales properly: 80vw×80vh (desktop) → 85vw×70vh (tablet) → 90vw×60vh (mobile) → 95vw×50vh (small)
-- **Video Coverage**: Verify video covers wrapper with object-fit: cover and proper centering
-- **Continuous Loop**: Confirm video loops seamlessly without interruption
+- **Workflow Video Card**: Verify Workflow landing.mov plays automatically in continuous loop inside spotlight card
+- **Card Styling Match**: Confirm video card has EXACT same styling as experience cards (cyan borders, spotlight glow)
+- **Video Centering**: Confirm card is centered on page at 80% width (max 1200px)
+- **Card Hover Effects**: Test card lifts 8px on hover with cyan glow shadow and animated border shine
+- **Video Responsiveness**: Test card width scales: 80% (desktop) → 85% (tablet) → 90% (mobile) → 95% (small)
+- **Video Display**: Verify video maintains aspect ratio with proper min-height on all screen sizes
+- **Continuous Loop**: Confirm video loops seamlessly without interruption inside the card
 - **Bento Grid Layout**: Verify Professional Summary displays as modern bento grid (4 columns on desktop)
 - **Card Styling Match**: Confirm ALL summary cards have EXACT same styling as Head of Sales card (cyan/blue theme)
 - **Animated Borders**: Verify gradient borders animate and shine on hover (cyan to purple gradient)
