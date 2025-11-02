@@ -1116,12 +1116,12 @@ textarea.error {
     line-height: 1.6;
 }
 
-/* Workflow Video Section - 80vh Landing Page Style */
+/* Workflow Video Section - 80vw x 80vh Centered */
 .workflow-video-section {
     background: var(--bg-primary);
-    padding: 0;
+    padding: var(--space-4xl) 0;
     overflow: hidden;
-    min-height: 80vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1129,18 +1129,17 @@ textarea.error {
 
 .workflow-video-wrapper {
     position: relative;
-    width: 100%;
+    width: 80vw;
     height: 80vh;
-    max-width: 100%;
-    margin: 0;
-    border-radius: 0;
+    max-width: 80vw;
+    margin: 0 auto;
+    border-radius: 1.5rem;
     overflow: hidden;
     box-shadow: 
         0 20px 60px rgba(0, 0, 0, 0.4),
         0 0 80px rgba(0, 229, 255, 0.2),
         inset 0 0 100px rgba(0, 229, 255, 0.1);
-    border-top: 2px solid rgba(0, 229, 255, 0.3);
-    border-bottom: 2px solid rgba(0, 229, 255, 0.3);
+    border: 2px solid rgba(0, 229, 255, 0.3);
     background: #000;
 }
 
@@ -1175,31 +1174,38 @@ textarea.error {
 /* Responsive adjustments */
 @media (max-width: 1024px) {
     .workflow-video-section {
-        min-height: 70vh;
+        min-height: 90vh;
+        padding: var(--space-3xl) 0;
     }
 
     .workflow-video-wrapper {
+        width: 85vw;
         height: 70vh;
     }
 }
 
 @media (max-width: 768px) {
     .workflow-video-section {
-        min-height: 60vh;
+        min-height: 80vh;
+        padding: var(--space-2xl) 0;
     }
 
     .workflow-video-wrapper {
+        width: 90vw;
         height: 60vh;
         border-width: 1px;
+        border-radius: 1rem;
     }
 }
 
 @media (max-width: 480px) {
     .workflow-video-section {
-        min-height: 50vh;
+        min-height: 70vh;
+        padding: var(--space-xl) 0;
     }
 
     .workflow-video-wrapper {
+        width: 95vw;
         height: 50vh;
     }
 }
