@@ -1,5 +1,8 @@
 ## UI/UX Changes - 2025-11-02
-- **Workflow Video Section**: Verify Workflow landing.mov plays automatically in continuous loop
+- **Skills Bento Grid**: Verify Core Skills & Expertise displays as bento grid with 2-column spans per card
+- **Skills Grid Responsiveness**: Test grid adapts: 4 cols (desktop) → 3 cols (1200px) → 2 cols (991px) → 1 col (mobile)
+- **Skills Card Sizing**: Confirm all cards have minimum 250px height and balanced proportions
+- **Workflow Video Section**: Verify 1102.mp4 plays automatically in continuous loop
 - **Video Spacing**: Confirm 30px spacing from all viewport edges (top, right, bottom, left)
 - **Video Container**: Verify dark container (#0a0a0a) with subtle cyan border and rounded corners
 - **Video Display**: Confirm video fills container width and maintains aspect ratio (object-fit: contain)

@@ -1,4 +1,12 @@
 ## 2025-11-02
+- **Transformed Core Skills & Expertise to Bento Grid**:
+  - Changed from uniform 4-column grid to bento grid layout
+  - Each skill card spans 2 columns for balanced visual presentation
+  - Added minimum height constraint (250px) for consistent card sizing
+  - Maintains all cyan hover effects, spotlight glow, and animated borders
+  - Responsive bento grid: 4 cols (desktop) → 3 cols (1200px) → 2 cols (991px) → 1 col (mobile)
+  - Cards adapt gracefully with proper span adjustments at each breakpoint
+
 - **Added Workflow Landing Video - Clean Full-Width Design**:
   - Inserted clean video section between Core Skills & Expertise and AI Agent Workflow
   - Video file: Workflow landing.mov from public/images folder
