@@ -1116,6 +1116,64 @@ textarea.error {
     line-height: 1.6;
 }
 
+/* Workflow Video Section */
+.workflow-video-section {
+    background: var(--bg-primary);
+    padding: var(--space-4xl) 0;
+    overflow: hidden;
+}
+
+.workflow-video-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.4),
+        0 0 80px rgba(0, 229, 255, 0.2);
+    border: 2px solid rgba(0, 229, 255, 0.3);
+    background: #000;
+}
+
+.workflow-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Add subtle glow animation */
+@keyframes videoGlow {
+    0%, 100% {
+        box-shadow: 
+            0 20px 60px rgba(0, 0, 0, 0.4),
+            0 0 80px rgba(0, 229, 255, 0.2);
+    }
+    50% {
+        box-shadow: 
+            0 20px 60px rgba(0, 0, 0, 0.4),
+            0 0 100px rgba(0, 229, 255, 0.4);
+    }
+}
+
+.workflow-video-wrapper {
+    animation: videoGlow 4s ease-in-out infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .workflow-video-section {
+        padding: var(--space-3xl) 0;
+    }
+
+    .workflow-video-wrapper {
+        border-radius: 1rem;
+        border-width: 1px;
+    }
+}
+
 /* Responsive Design for Summary Bento Grid */
 @media (max-width: 1200px) {
     .summary-bento-grid {
