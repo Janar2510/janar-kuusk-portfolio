@@ -1,15 +1,14 @@
 ## 2025-11-02
-- **Added Workflow Landing Video in Spotlight Card**:
-  - Inserted video in spotlight card between Core Skills & Expertise and AI Agent Workflow
+- **Added Workflow Landing Video - Clean Full-Width Design**:
+  - Inserted clean video section between Core Skills & Expertise and AI Agent Workflow
   - Video file: Workflow landing.mov from public/images folder
-  - Video plays in continuous loop inside experience-style card
-  - Card inherits all .summary-spotlight-card styling (same as Head of Sales card)
-  - Cyan glow border with animated gradient shine on hover
-  - Spotlight hover effect with radial cyan glow
-  - Card width: 80% of container (max 1200px), centered on page
-  - Autoplay, loop, muted for continuous seamless playback
-  - Video maintains aspect ratio with min-height constraints
-  - Responsive card width: 80% (desktop) → 85% (tablet) → 90% (mobile) → 95% (small)
+  - Full-width container with 30px spacing from viewport edges (all sides)
+  - Simple dark container (#0a0a0a) with subtle cyan border
+  - Video plays in continuous loop (autoplay, loop, muted)
+  - Video fills container width, maintains aspect ratio (object-fit: contain)
+  - No spotlight effects or hover animations - clean, professional presentation
+  - Rounded corners for modern aesthetic
+  - Responsive padding: 30px (desktop) → 20px (tablet) → 15px (mobile)
   - Fallback support for mp4 format
 
 - **Transformed Professional Summary to Bento Grid Layout**:
