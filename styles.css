@@ -817,7 +817,12 @@ textarea.error {
 }
 
 .skill-category:nth-child(4) {
-    grid-column: span 2;
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+.skill-category:nth-child(5) {
+    grid-column: span 1;
     grid-row: span 1;
 }
 
@@ -1053,8 +1058,12 @@ textarea.error {
         grid-column: span 3;
     }
 
-    .skill-category:nth-child(3),
-    .skill-category:nth-child(4) {
+    .skill-category:nth-child(3) {
+        grid-column: span 3;
+    }
+
+    .skill-category:nth-child(4),
+    .skill-category:nth-child(5) {
         grid-column: span 3;
     }
 }
@@ -1068,7 +1077,8 @@ textarea.error {
     .skill-category:nth-child(1),
     .skill-category:nth-child(2),
     .skill-category:nth-child(3),
-    .skill-category:nth-child(4) {
+    .skill-category:nth-child(4),
+    .skill-category:nth-child(5) {
         grid-column: span 1;
     }
 }

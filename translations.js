@@ -203,6 +203,20 @@ const translations = {
                         "Data Processing",
                         "Cloud Solutions"
                     ]
+                },
+                {
+                    icon: "💻",
+                    title: "Development & Tools",
+                    skills: [
+                        "HTML/CSS/JavaScript",
+                        "React & Next.js",
+                        "Python & FastAPI",
+                        "VS Code & Cursor",
+                        "Git & GitHub",
+                        "E-commerce Platforms",
+                        "Website Development",
+                        "Web Store Solutions"
+                    ]
                 }
             ]
         },
@@ -453,6 +467,20 @@ const translations = {
                         "API Arendus",
                         "Andmetöötlus",
                         "Pilvlahendused"
+                    ]
+                },
+                {
+                    icon: "💻",
+                    title: "Arendus ja Tööriistad",
+                    skills: [
+                        "HTML/CSS/JavaScript",
+                        "React & Next.js",
+                        "Python & FastAPI",
+                        "VS Code & Cursor",
+                        "Git & GitHub",
+                        "E-kaubanduse Platvormid",
+                        "Veebilehtede Arendus",
+                        "Veebipoode Lahendused"
                     ]
                 }
             ]
