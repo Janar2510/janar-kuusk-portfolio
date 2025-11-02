@@ -1,3 +1,9 @@
+## UI/UX Changes - 2025-11-02
+- **Professional Summary Section**: Verify section displays without scrolling/3D transformation effects
+- **Static Presentation**: Confirm Professional Summary section has proper padding and appears immediately visible
+- **Spotlight Cards**: Verify summary cards maintain hover effects and gradient borders
+- **Responsive Behavior**: Test that summary section is responsive on all screen sizes without animation issues
+
 ## Content Verification - 2025-10-28
 - **Education Section**: Verify education shows real credentials (Tallinn Technical University, Olustvere Technical School, Karksi-Nuia Gymnasium) - NO fake degrees displayed
 - **Contact Information**: Confirm email is info@janarkuuskpro.com, phone +372 56103001

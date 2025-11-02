@@ -1,3 +1,12 @@
+## 2025-11-02
+- **Removed Scrolling Effect from Professional Summary Section**:
+  - Removed scroll-animation.js and scroll-animation.css files
+  - Simplified HTML structure by removing scroll wrapper elements
+  - Updated CSS to provide static section styling with proper padding
+  - Section now displays without animated 3D transformations
+  - Maintained all content, responsive behavior, and spotlight card effects
+  - Improved user experience with cleaner, more straightforward presentation
+
 ## 2025-10-28
 - **Updated Portfolio Content to Match CV**:
   - Fixed education section with real credentials (Tallinn Technical University, Olustvere Technical School, Karksi-Nuia Gymnasium)
