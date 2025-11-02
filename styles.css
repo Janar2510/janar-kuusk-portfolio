@@ -1116,32 +1116,40 @@ textarea.error {
     line-height: 1.6;
 }
 
-/* Workflow Video Section */
+/* Workflow Video Section - 80vh Landing Page Style */
 .workflow-video-section {
     background: var(--bg-primary);
-    padding: var(--space-4xl) 0;
+    padding: 0;
     overflow: hidden;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .workflow-video-wrapper {
     position: relative;
     width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-    border-radius: 1.5rem;
+    height: 80vh;
+    max-width: 100%;
+    margin: 0;
+    border-radius: 0;
     overflow: hidden;
     box-shadow: 
         0 20px 60px rgba(0, 0, 0, 0.4),
-        0 0 80px rgba(0, 229, 255, 0.2);
-    border: 2px solid rgba(0, 229, 255, 0.3);
+        0 0 80px rgba(0, 229, 255, 0.2),
+        inset 0 0 100px rgba(0, 229, 255, 0.1);
+    border-top: 2px solid rgba(0, 229, 255, 0.3);
+    border-bottom: 2px solid rgba(0, 229, 255, 0.3);
     background: #000;
 }
 
 .workflow-video {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
     object-fit: cover;
+    object-position: center;
 }
 
 /* Add subtle glow animation */
@@ -1149,12 +1157,14 @@ textarea.error {
     0%, 100% {
         box-shadow: 
             0 20px 60px rgba(0, 0, 0, 0.4),
-            0 0 80px rgba(0, 229, 255, 0.2);
+            0 0 80px rgba(0, 229, 255, 0.2),
+            inset 0 0 100px rgba(0, 229, 255, 0.1);
     }
     50% {
         box-shadow: 
             0 20px 60px rgba(0, 0, 0, 0.4),
-            0 0 100px rgba(0, 229, 255, 0.4);
+            0 0 120px rgba(0, 229, 255, 0.4),
+            inset 0 0 120px rgba(0, 229, 255, 0.15);
     }
 }
 
@@ -1163,14 +1173,34 @@ textarea.error {
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .workflow-video-section {
-        padding: var(--space-3xl) 0;
+        min-height: 70vh;
     }
 
     .workflow-video-wrapper {
-        border-radius: 1rem;
+        height: 70vh;
+    }
+}
+
+@media (max-width: 768px) {
+    .workflow-video-section {
+        min-height: 60vh;
+    }
+
+    .workflow-video-wrapper {
+        height: 60vh;
         border-width: 1px;
+    }
+}
+
+@media (max-width: 480px) {
+    .workflow-video-section {
+        min-height: 50vh;
+    }
+
+    .workflow-video-wrapper {
+        height: 50vh;
     }
 }
 
