@@ -37,6 +37,10 @@ const translations = {
                     text: "Expert in process engineering, risk evaluation, and n8n automations"
                 }
             },
+            tools: {
+                title: "Development & Tools",
+                description: "I build modern, responsive websites and web stores using HTML, CSS, JavaScript, React, and Python — combining clean design with strong functionality.\n\nMy workflow includes powerful tools like VS Code, Cursor, Git, GitHub, Node.js, Tailwind CSS, Next.js, Vite, Supabase, and Firebase.\n\nI also work efficiently with API integrations, automation platforms (n8n, Zapier), and use Figma for interface design and prototyping."
+            },
             stats: {
                 years: "8+",
                 yearsLabel: "Years in Sales Leadership",
@@ -301,6 +305,10 @@ const translations = {
                     title: "Protsesside Optimeerimine",
                     text: "Ekspert protsesside disainis, riskihindamises ja n8n automaatikates"
                 }
+            },
+            tools: {
+                title: "Arendus ja Tööriistad",
+                description: "Loon kaasaegseid, reageerivaid veebilehti ja veebipoode kasutades HTML, CSS, JavaScript, React ja Python — ühendades puhta disaini tugeva funktsionaalsusega.\n\nMinu töövoog hõlmab võimsaid tööriistu nagu VS Code, Cursor, Git, GitHub, Node.js, Tailwind CSS, Next.js, Vite, Supabase ja Firebase.\n\nTöötan ka tõhusalt API integratsioonide, automaatikaplatvormidega (n8n, Zapier) ning kasutan Figmat liidese disainiks ja prototüüpimiseks."
             },
             stats: {
                 years: "8+",

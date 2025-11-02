@@ -1129,7 +1129,36 @@ textarea.error {
 
 .bento-tools {
     grid-column: span 2;
-    grid-row: span 1;
+    grid-row: span 2;
+}
+
+/* Tools card specific styling */
+.bento-tools .tools-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.bento-tools .highlight-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.bento-tools h4 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 1.5rem 0;
+}
+
+.bento-tools p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #d0d0d0;
+    margin: 0;
 }
 
 /* Summary cards use exact same styling as experience cards */
