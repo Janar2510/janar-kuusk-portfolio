@@ -1042,9 +1042,13 @@ textarea.error {
 
 /* Professional Summary Section */
 .summary {
-    /* Padding removed - handled by scroll-animation-container */
     background: var(--bg-primary);
-    padding: 0;
+    padding: var(--space-4xl) 0;
+}
+
+.summary .section-header {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
 }
 
 .summary-content {

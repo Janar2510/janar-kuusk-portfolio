@@ -64,3 +64,4 @@ public/images/
 - Compress images before uploading (use tools like TinyPNG)
 - Keep file sizes under 500KB for faster loading
 - Use descriptive alt text for accessibility
+
