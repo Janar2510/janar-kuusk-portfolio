@@ -1,4 +1,12 @@
 ## 2025-11-02
+- **Applied Brand Card Styling to Professional Summary Cards**:
+  - Added animated gradient border effect (matches Head of Sales card style)
+  - Implemented borderFlow animation for flowing purple-to-blue gradient
+  - Added spotlight hover effect with purple glow on mouse hover
+  - Updated card structure with proper z-index layering for content visibility
+  - Cards now match the modern, animated style of experience section cards
+  - Maintained all content, responsive behavior, and hover interactions
+
 - **Removed Scrolling Effect from Professional Summary Section**:
   - Removed scroll-animation.js and scroll-animation.css files
   - Simplified HTML structure by removing scroll wrapper elements

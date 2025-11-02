@@ -1,8 +1,10 @@
 ## UI/UX Changes - 2025-11-02
-- **Professional Summary Section**: Verify section displays without scrolling/3D transformation effects
+- **Professional Summary Cards**: Verify animated gradient borders are flowing smoothly (purple to blue)
+- **Brand Card Styling**: Confirm summary cards match the style of Head of Sales/experience cards
+- **Hover Effects**: Test spotlight glow effect appears on hover with purple radial gradient
 - **Static Presentation**: Confirm Professional Summary section has proper padding and appears immediately visible
-- **Spotlight Cards**: Verify summary cards maintain hover effects and gradient borders
-- **Responsive Behavior**: Test that summary section is responsive on all screen sizes without animation issues
+- **Card Animations**: Verify cards have subtle lift effect (translateY) on hover
+- **Responsive Behavior**: Test that summary section is responsive on all screen sizes with proper padding adjustments
 
 ## Content Verification - 2025-10-28
 - **Education Section**: Verify education shows real credentials (Tallinn Technical University, Olustvere Technical School, Karksi-Nuia Gymnasium) - NO fake degrees displayed
