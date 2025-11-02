@@ -1,0 +1,3 @@
+# Large video files
+public/images/*.mp4
+public/images/*.mov
