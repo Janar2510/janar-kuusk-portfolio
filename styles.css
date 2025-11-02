@@ -1058,46 +1058,67 @@ textarea.error {
     align-items: stretch;
 }
 
-/* Apply spotlight card styling to summary sections */
+/* Apply brand card styling to summary sections - matches experience cards */
 .summary-text.summary-spotlight-card,
 .summary-stats.summary-spotlight-card {
     position: relative;
-    border-radius: 1.5rem;
-    border: 1px solid #222;
-    background-color: #111;
-    padding: 2.5rem;
-    overflow: hidden;
-    --mouse-x: 50%;
-    --mouse-y: 50%;
-    --spotlight-color: rgba(0, 229, 255, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: var(--radius-lg);
+    background: var(--gradient-border);
+    background-size: 200% 200%;
+    animation: borderFlow 6s linear infinite;
+    padding: 2px; /* border thickness for gradient */
+    overflow: visible;
+    transition: transform 0.3s ease;
+}
+
+/* Inner wrapper styling */
+.summary-text.summary-spotlight-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.summary-stats.summary-spotlight-card {
+    display: grid;
+}
+
+/* Add dark background behind content */
+.summary-text.summary-spotlight-card::after,
+.summary-stats.summary-spotlight-card::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    border-radius: calc(var(--radius-lg) - 2px);
+    background-color: var(--color-surface);
+    z-index: 0;
+}
+
+/* Spotlight effect on hover */
+.summary-text.summary-spotlight-card::before,
+.summary-stats.summary-spotlight-card::before {
+    content: "";
+    position: absolute;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(142, 45, 226, 0.3) 0%, transparent 70%);
+    opacity: 0;
+    filter: blur(3rem);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.summary-text.summary-spotlight-card:hover::before,
+.summary-stats.summary-spotlight-card:hover::before {
+    opacity: 1;
 }
 
 .summary-text.summary-spotlight-card:hover,
 .summary-stats.summary-spotlight-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
-
-.summary-text.summary-spotlight-card::before,
-.summary-stats.summary-spotlight-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), var(--spotlight-color), transparent 80%);
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    pointer-events: none;
-}
-
-.summary-text.summary-spotlight-card:hover::before,
-.summary-text.summary-spotlight-card:focus-within::before,
-.summary-stats.summary-spotlight-card:hover::before,
-.summary-stats.summary-spotlight-card:focus-within::before {
-    opacity: 0.6;
+    transform: translateY(-4px);
 }
 
 .summary-description {
@@ -1107,6 +1128,7 @@ textarea.error {
     margin-bottom: var(--space-4xl);
     position: relative;
     z-index: 2;
+    padding: 2rem;
 }
 
 .summary-highlights {
@@ -1115,6 +1137,7 @@ textarea.error {
     gap: var(--space-xl);
     position: relative;
     z-index: 2;
+    padding: 0 2rem 2rem 2rem;
 }
 
 .highlight-item {
@@ -1144,11 +1167,11 @@ textarea.error {
 }
 
 .summary-stats {
-    display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-xl);
     position: relative;
     z-index: 2;
+    padding: 2rem;
 }
 
 .stat-item {
@@ -1196,9 +1219,10 @@ textarea.error {
 }
 
 @media (max-width: 991px) {
-    .summary-text.summary-spotlight-card,
-    .summary-stats.summary-spotlight-card {
-        padding: 2rem;
+    .summary-description,
+    .summary-highlights,
+    .summary-stats {
+        padding: 1.5rem;
     }
 
     .summary-description {
