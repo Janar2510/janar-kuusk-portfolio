@@ -790,12 +790,35 @@ textarea.error {
     background: var(--bg-secondary);
 }
 
+/* Skills Bento Grid Layout */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-lg);
+    grid-auto-rows: minmax(250px, auto);
+    gap: 20px;
     max-width: 1400px;
     margin: 0 auto;
+}
+
+/* Bento Grid Sizes for Skills */
+.skill-category:nth-child(1) {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+.skill-category:nth-child(2) {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+.skill-category:nth-child(3) {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+.skill-category:nth-child(4) {
+    grid-column: span 2;
+    grid-row: span 1;
 }
 
 .skill-category {
@@ -1019,9 +1042,34 @@ textarea.error {
 }
 
 /* Responsive Design for Skills */
-@media (max-width: 1199px) {
+/* Responsive Bento Grid for Skills */
+@media (max-width: 1200px) {
+    .skills-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .skill-category:nth-child(1),
+    .skill-category:nth-child(2) {
+        grid-column: span 3;
+    }
+
+    .skill-category:nth-child(3),
+    .skill-category:nth-child(4) {
+        grid-column: span 3;
+    }
+}
+
+@media (max-width: 991px) {
     .skills-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .skill-category:nth-child(1),
+    .skill-category:nth-child(2),
+    .skill-category:nth-child(3),
+    .skill-category:nth-child(4) {
+        grid-column: span 1;
     }
 }
 
@@ -1033,6 +1081,8 @@ textarea.error {
 
     .skill-category {
         padding: var(--space-xl);
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
     }
 
     .skill-category-header {
