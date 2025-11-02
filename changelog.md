@@ -1,4 +1,13 @@
 ## 2025-11-02
+- **Added Workflow Landing Video**:
+  - Inserted looping video section between Core Skills & Expertise and AI Agent Workflow
+  - Video file: Workflow landing.mov from public/images folder
+  - Autoplay, loop, muted for seamless background playback
+  - Styled with cyan glow border (matches portfolio theme)
+  - Pulsing glow animation for visual interest
+  - Fully responsive with rounded corners
+  - Fallback support for mp4 format
+
 - **Transformed Professional Summary to Bento Grid Layout**:
   - Restructured section to modern bento grid (4-column responsive layout)
   - Large story card (2x2 grid span), stats card (2x1), three highlight cards (1x1 each)
