@@ -565,13 +565,62 @@
             </div>
         </div>
         <div class="website-design-container">
-            <div class="website-slides">
-                <!-- Slide 1 -->
-                <div class="website-slide" style="--delay:0s; background-image: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.65) 100%), url('public/images/Saletoru crm.png');" aria-label="Website design slide 1"></div>
-                <!-- Slide 2 -->
-                <div class="website-slide" style="--delay:6s; background-image: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.65) 100%), url('public/images/Solarair Dynamics.png');" aria-label="Website design slide 2"></div>
-                <!-- Slide 3 -->
-                <div class="website-slide" style="--delay:12s; background-image: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.65) 100%), url('public/images/ColordesignStudio.png');" aria-label="Website design slide 3"></div>
+            <div class="website-scroll-animation" id="websiteScrollAnimation">
+                <!-- Thumbnail navigation -->
+                <div class="website-thumbnails">
+                    <div class="website-thumb" data-index="0">
+                        <img src="public/images/Saletoru crm.png" alt="Saletoru CRM">
+                        <div class="thumb-overlay"></div>
+                    </div>
+                    <div class="website-thumb" data-index="1">
+                        <img src="public/images/Solarair Dynamics.png" alt="Solarair Dynamics">
+                        <div class="thumb-overlay"></div>
+                    </div>
+                    <div class="website-thumb" data-index="2">
+                        <img src="public/images/ColordesignStudio.png" alt="ColorDesign Studio">
+                        <div class="thumb-overlay"></div>
+                    </div>
+                </div>
+                
+                <!-- Counter -->
+                <div class="website-counter">
+                    <div class="counter-wrapper">
+                        <div class="counter-current">1</div>
+                        <div class="counter-next"></div>
+                    </div>
+                    <span class="counter-total">/ 3</span>
+                </div>
+
+                <!-- Scroll sections -->
+                <div class="website-scroll-section" data-index="0">
+                    <div class="website-outer">
+                        <div class="website-inner">
+                            <div class="website-bg" style="background-image: url('public/images/Saletoru crm.png');">
+                                <h2 class="website-heading">Saletoru CRM</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="website-scroll-section" data-index="1">
+                    <div class="website-outer">
+                        <div class="website-inner">
+                            <div class="website-bg" style="background-image: url('public/images/Solarair Dynamics.png');">
+                                <h2 class="website-heading">Solarair Dynamics</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="website-scroll-section" data-index="2">
+                    <div class="website-outer">
+                        <div class="website-inner">
+                            <div class="website-bg" style="background-image: url('public/images/ColordesignStudio.png');">
+                                <h2 class="website-heading">ColorDesign Studio</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -735,6 +784,9 @@
     </footer>
 
     <!-- Scripts -->
+    <!-- GSAP and plugins for scroll animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://assets.codepen.io/16327/Observer.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="saletoru-effects.js"></script>
     <script src="fluid-simulation.js"></script>
@@ -746,6 +798,7 @@
     <script src="language-switcher.js"></script>
     <script src="contact-form.js"></script>
     <script src="orbiting-skills.js"></script>
+    <script src="website-scroll-animation.js"></script>
     <!-- Three.js library for animated dotted surface -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="workflow-dotted-surface.js"></script>
