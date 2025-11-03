@@ -1287,13 +1287,7 @@ textarea.error {
 .workflow-display-container {
     width: 100%;
     aspect-ratio: 16 / 9;
-    background: 
-        /* Dotted background INSIDE the card */
-        radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px),
-        /* Base dark background */
-        #0a0a0a;
-    background-size: 20px 20px, 100% 100%;
-    background-position: 0 0, 0 0;
+    background: #0a0a0a;
     border-radius: 1rem;
     overflow: hidden;
     border: 1px solid rgba(0, 229, 255, 0.2);

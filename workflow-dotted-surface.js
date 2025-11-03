@@ -1,204 +1,204 @@
-// Workflow Dotted Surface - 3D animated background with Three.js
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.module.js';
+// Workflow Dotted Surface Animation - Vanilla JavaScript/Three.js
+// Converted from React component for HTML/CSS/JS portfolio
 
-class WorkflowDottedSurface {
-    constructor(container) {
-        this.container = container;
-        this.scene = null;
-        this.camera = null;
-        this.renderer = null;
-        this.particles = null;
-        this.animationId = null;
-        this.count = 0;
-        
-        // Configuration
-        this.SEPARATION = 150;
-        this.AMOUNTX = 40;
-        this.AMOUNTY = 60;
-        
-        this.init();
-    }
-    
-    init() {
-        if (!this.container) return;
-        
-        // Get container dimensions
-        const rect = this.container.getBoundingClientRect();
-        const width = rect.width;
-        const height = rect.height;
-        
+(function() {
+    'use strict';
+
+    function initDottedSurface(containerElement) {
+        if (!containerElement || typeof THREE === 'undefined') {
+            console.warn('Three.js not loaded or container not found');
+            return null;
+        }
+
+        const SEPARATION = 150;
+        const AMOUNTX = 40;
+        const AMOUNTY = 60;
+
         // Scene setup
-        this.scene = new THREE.Scene();
-        this.scene.fog = new THREE.Fog(0x0B0B0F, 2000, 10000);
-        
-        // Camera setup
-        this.camera = new THREE.PerspectiveCamera(
+        const scene = new THREE.Scene();
+        scene.fog = new THREE.Fog(0xffffff, 2000, 10000);
+
+        // Get container dimensions
+        const containerRect = containerElement.getBoundingClientRect();
+        const width = containerRect.width;
+        const height = containerRect.height;
+
+        const camera = new THREE.PerspectiveCamera(
             60,
             width / height,
             1,
             10000
         );
-        this.camera.position.set(0, 355, 1220);
-        
-        // Renderer setup
-        this.renderer = new THREE.WebGLRenderer({
+        camera.position.set(0, 355, 1220);
+
+        const renderer = new THREE.WebGLRenderer({
             alpha: true,
-            antialias: true,
+            antialias: true
         });
-        this.renderer.setPixelRatio(window.devicePixelRatio);
-        this.renderer.setSize(width, height);
-        this.renderer.setClearColor(this.scene.fog.color, 0);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(width, height);
+        renderer.setClearColor(scene.fog.color, 0);
+
+        // Create wrapper for canvas
+        const canvasWrapper = document.createElement('div');
+        canvasWrapper.style.position = 'absolute';
+        canvasWrapper.style.inset = '0';
+        canvasWrapper.style.pointerEvents = 'none';
+        canvasWrapper.style.zIndex = '1';
+        canvasWrapper.style.overflow = 'hidden';
+        canvasWrapper.style.borderRadius = 'inherit';
         
-        this.container.appendChild(this.renderer.domElement);
-        
+        canvasWrapper.appendChild(renderer.domElement);
+        containerElement.appendChild(canvasWrapper);
+
         // Create particles
-        this.createParticles();
-        
-        // Handle resize
-        this.handleResize = this.handleResize.bind(this);
-        window.addEventListener('resize', this.handleResize);
-        
-        // Start animation
-        this.animate();
-    }
-    
-    createParticles() {
         const positions = [];
         const colors = [];
-        
+
         // Create geometry for all particles
         const geometry = new THREE.BufferGeometry();
-        
-        for (let ix = 0; ix < this.AMOUNTX; ix++) {
-            for (let iy = 0; iy < this.AMOUNTY; iy++) {
-                const x = ix * this.SEPARATION - (this.AMOUNTX * this.SEPARATION) / 2;
+
+        for (let ix = 0; ix < AMOUNTX; ix++) {
+            for (let iy = 0; iy < AMOUNTY; iy++) {
+                const x = ix * SEPARATION - (AMOUNTX * SEPARATION) / 2;
                 const y = 0; // Will be animated
-                const z = iy * this.SEPARATION - (this.AMOUNTY * this.SEPARATION) / 2;
-                
+                const z = iy * SEPARATION - (AMOUNTY * SEPARATION) / 2;
+
                 positions.push(x, y, z);
-                
-                // Purple-ish color for brand consistency
-                colors.push(142, 45, 226); // RGB values
+                // Light gray/white for dark theme
+                colors.push(200, 200, 200);
             }
         }
-        
+
         geometry.setAttribute(
             'position',
             new THREE.Float32BufferAttribute(positions, 3)
         );
-        geometry.setAttribute(
-            'color',
-            new THREE.Float32BufferAttribute(colors, 3)
-        );
-        
+        geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+
         // Create material
         const material = new THREE.PointsMaterial({
-            size: 6,
+            size: 8,
             vertexColors: true,
             transparent: true,
-            opacity: 0.3,
-            sizeAttenuation: true,
+            opacity: 0.6,
+            sizeAttenuation: true
         });
-        
+
         // Create points object
-        this.particles = new THREE.Points(geometry, material);
-        this.scene.add(this.particles);
-    }
-    
-    animate() {
-        this.animationId = requestAnimationFrame(() => this.animate());
-        
-        if (!this.particles) return;
-        
-        const geometry = this.particles.geometry;
-        const positionAttribute = geometry.attributes.position;
-        const positions = positionAttribute.array;
-        
-        let i = 0;
-        for (let ix = 0; ix < this.AMOUNTX; ix++) {
-            for (let iy = 0; iy < this.AMOUNTY; iy++) {
-                const index = i * 3;
-                
-                // Animate Y position with sine waves
-                positions[index + 1] =
-                    Math.sin((ix + this.count) * 0.3) * 50 +
-                    Math.sin((iy + this.count) * 0.5) * 50;
-                
-                i++;
-            }
-        }
-        
-        positionAttribute.needsUpdate = true;
-        
-        this.renderer.render(this.scene, this.camera);
-        this.count += 0.05; // Slower wave motion
-    }
-    
-    handleResize() {
-        if (!this.container || !this.camera || !this.renderer) return;
-        
-        const rect = this.container.getBoundingClientRect();
-        const width = rect.width;
-        const height = rect.height;
-        
-        this.camera.aspect = width / height;
-        this.camera.updateProjectionMatrix();
-        this.renderer.setSize(width, height);
-    }
-    
-    destroy() {
-        window.removeEventListener('resize', this.handleResize);
-        
-        if (this.animationId) {
-            cancelAnimationFrame(this.animationId);
-        }
-        
-        if (this.scene) {
-            this.scene.traverse((object) => {
-                if (object instanceof THREE.Points) {
-                    object.geometry.dispose();
-                    if (Array.isArray(object.material)) {
-                        object.material.forEach((material) => material.dispose());
-                    } else {
-                        object.material.dispose();
-                    }
+        const points = new THREE.Points(geometry, material);
+        scene.add(points);
+
+        let count = 0;
+        let animationId;
+
+        // Animation function
+        function animate() {
+            animationId = requestAnimationFrame(animate);
+
+            const positionAttribute = geometry.attributes.position;
+            const positions = positionAttribute.array;
+
+            let i = 0;
+            for (let ix = 0; ix < AMOUNTX; ix++) {
+                for (let iy = 0; iy < AMOUNTY; iy++) {
+                    const index = i * 3;
+
+                    // Animate Y position with sine waves
+                    positions[index + 1] =
+                        Math.sin((ix + count) * 0.3) * 50 +
+                        Math.sin((iy + count) * 0.5) * 50;
+
+                    i++;
                 }
-            });
-        }
-        
-        if (this.renderer) {
-            this.renderer.dispose();
-            if (this.container && this.renderer.domElement) {
-                this.container.removeChild(this.renderer.domElement);
             }
+
+            positionAttribute.needsUpdate = true;
+            renderer.render(scene, camera);
+            count += 0.1;
         }
+
+        // Handle resize
+        function handleResize() {
+            const containerRect = containerElement.getBoundingClientRect();
+            const newWidth = containerRect.width;
+            const newHeight = containerRect.height;
+
+            camera.aspect = newWidth / newHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(newWidth, newHeight);
+        }
+
+        // Use ResizeObserver for better resize handling
+        let resizeObserver;
+        if (window.ResizeObserver) {
+            resizeObserver = new ResizeObserver(handleResize);
+            resizeObserver.observe(containerElement);
+        } else {
+            window.addEventListener('resize', handleResize);
+        }
+
+        // Start animation
+        animate();
+
+        // Return cleanup function
+        return {
+            destroy: function() {
+                if (resizeObserver) {
+                    resizeObserver.disconnect();
+                } else {
+                    window.removeEventListener('resize', handleResize);
+                }
+
+                cancelAnimationFrame(animationId);
+
+                // Clean up Three.js objects
+                scene.traverse((object) => {
+                    if (object instanceof THREE.Points) {
+                        object.geometry.dispose();
+                        if (Array.isArray(object.material)) {
+                            object.material.forEach((material) => material.dispose());
+                        } else {
+                            object.material.dispose();
+                        }
+                    }
+                });
+
+                renderer.dispose();
+
+                if (canvasWrapper && canvasWrapper.parentNode) {
+                    canvasWrapper.parentNode.removeChild(canvasWrapper);
+                }
+            }
+        };
     }
-}
 
-// Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-    const workflowSection = document.querySelector('.workflow');
-    
-    if (workflowSection) {
-        // Create container for dotted surface
-        const surfaceContainer = document.createElement('div');
-        surfaceContainer.className = 'workflow-dotted-surface';
-        surfaceContainer.style.position = 'absolute';
-        surfaceContainer.style.top = '0';
-        surfaceContainer.style.left = '0';
-        surfaceContainer.style.width = '100%';
-        surfaceContainer.style.height = '100%';
-        surfaceContainer.style.zIndex = '0';
-        surfaceContainer.style.pointerEvents = 'none';
-        
-        // Make workflow section relative positioned
-        workflowSection.style.position = 'relative';
-        workflowSection.insertBefore(surfaceContainer, workflowSection.firstChild);
-        
-        // Initialize dotted surface
-        window.workflowDottedSurface = new WorkflowDottedSurface(surfaceContainer);
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait for Three.js to load
+            if (typeof THREE !== 'undefined') {
+                const container = document.querySelector('.workflow-display-container');
+                if (container) {
+                    initDottedSurface(container);
+                }
+            } else {
+                // Try again after a delay
+                setTimeout(function() {
+                    const container = document.querySelector('.workflow-display-container');
+                    if (container && typeof THREE !== 'undefined') {
+                        initDottedSurface(container);
+                    }
+                }, 1000);
+            }
+        });
+    } else {
+        // DOM already loaded
+        setTimeout(function() {
+            const container = document.querySelector('.workflow-display-container');
+            if (container && typeof THREE !== 'undefined') {
+                initDottedSurface(container);
+            }
+        }, 500);
     }
-});
-
-export { WorkflowDottedSurface };
-
+})();
