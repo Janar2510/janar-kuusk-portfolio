@@ -108,29 +108,33 @@ function setupGlobalEventListeners() {
         });
     });
 
-    // Header scroll effect
-    let lastScrollY = window.scrollY;
+    // Header scroll effect - visible only at top of page
     const header = document.querySelector('.portfolio-header');
+    const topThreshold = 100; // Show header when within 100px of top
     
     if (header) {
-        window.addEventListener('scroll', () => {
+        // Set initial state
+        const checkScrollPosition = () => {
             const currentScrollY = window.scrollY;
             
-            if (currentScrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-            
-            // Hide/show header on scroll
-            if (currentScrollY > lastScrollY && currentScrollY > 200) {
-                header.style.transform = 'translateY(-100%)';
-            } else {
+            if (currentScrollY <= topThreshold) {
+                // At top - show header
                 header.style.transform = 'translateY(0)';
+                header.style.opacity = '1';
+                header.style.visibility = 'visible';
+            } else {
+                // Scrolled down - hide header
+                header.style.transform = 'translateY(-100%)';
+                header.style.opacity = '0';
+                header.style.visibility = 'hidden';
             }
-            
-            lastScrollY = currentScrollY;
-        });
+        };
+        
+        // Check on scroll
+        window.addEventListener('scroll', checkScrollPosition, { passive: true });
+        
+        // Check on page load
+        checkScrollPosition();
     }
 
     // Active navigation link highlighting

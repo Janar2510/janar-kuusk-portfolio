@@ -147,12 +147,10 @@ p {
     backdrop-filter: none;
     border-bottom: none;
     z-index: var(--z-fixed);
-    transition: all var(--transition-normal);
-}
-
-.portfolio-header.scrolled {
-    background: transparent;
-    box-shadow: none;
+    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
 }
 
 .header-content {
