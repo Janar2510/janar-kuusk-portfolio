@@ -1253,12 +1253,11 @@ textarea.error {
 .website-slide {
     position: absolute;
     inset: 0;
-    background-size: cover;
+    background-size: contain; /* prevent cropping */
     background-position: center;
     opacity: 0;
-    animation:
-        website-fade 18s linear infinite var(--delay, 0s),
-        kenburns 18s ease-in-out infinite var(--delay, 0s);
+    background-repeat: no-repeat;
+    animation: website-fade 18s linear infinite var(--delay, 0s);
 }
 
 @keyframes kenburns {
