@@ -52,6 +52,9 @@ const translations = {
                 digitalLabel: "Digital Focus"
             }
         },
+        video: {
+            title: "Web application architecture and design"
+        },
         experience: {
             title: "Professional Experience",
             subtitle: "Building the future with AI and automation",
@@ -223,6 +226,9 @@ const translations = {
                     ]
                 }
             ]
+        },
+        video: {
+            title: "Veebirakenduste arhitektuur ja disain"
         },
         vision: {
             title: "Vision for the Future",
