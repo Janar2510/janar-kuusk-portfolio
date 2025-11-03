@@ -1334,83 +1334,83 @@ textarea.error {
     text-align: center;
     position: relative;
     min-width: 200px;
-    transition: transform 0.3s ease, filter 0.3s ease;
+    transition: transform 0.3s ease;
     border: none;
 }
 
 .workflow-block::before {
     content: '';
     position: absolute;
-    inset: -20px;
+    inset: -30px;
     border-radius: 1.75rem;
-    filter: blur(20px);
-    opacity: 0.8;
+    filter: blur(30px);
+    opacity: 1;
     z-index: -1;
-    transition: opacity 0.3s ease;
 }
 
 .workflow-block:hover {
-    transform: translateY(-8px) scale(1.03);
-}
-
-.workflow-block:hover::before {
-    opacity: 1;
+    transform: translateY(-5px);
 }
 
 .block-icon {
-    font-size: 4rem;
+    font-size: 4.5rem;
     margin-bottom: 1.5rem;
     display: block;
-    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.9));
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 1));
     line-height: 1;
+    color: #ffffff;
 }
 
 .block-text {
-    font-size: 1.4rem;
-    font-weight: 800;
-    letter-spacing: 0.15em;
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: 0.2em;
     color: #ffffff;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.8);
     margin: 0;
+    font-family: 'Arial', sans-serif;
 }
 
-/* TRIGGER Block - Pink/Magenta */
+/* TRIGGER Block - Pink/Magenta - Exact match to image */
 .trigger-block {
     background: linear-gradient(135deg, #ff00ff 0%, #ff1493 100%);
     box-shadow: 
-        0 0 60px rgba(255, 0, 255, 0.8),
-        0 0 120px rgba(255, 20, 147, 0.6),
-        inset 0 0 30px rgba(255, 255, 255, 0.2),
-        0 10px 40px rgba(0, 0, 0, 0.3);
+        0 0 80px rgba(255, 0, 255, 1),
+        0 0 160px rgba(255, 20, 147, 0.9),
+        0 0 240px rgba(255, 0, 255, 0.6),
+        inset 0 0 40px rgba(255, 255, 255, 0.3),
+        0 15px 50px rgba(0, 0, 0, 0.5);
 }
 .trigger-block::before { 
-    background: radial-gradient(ellipse at center, rgba(255,0,255,0.7) 0%, transparent 70%);
+    background: radial-gradient(ellipse 200% 200% at center, rgba(255,0,255,1) 0%, rgba(255,20,147,0.8) 30%, transparent 70%);
 }
 
-/* AI AGENT Block - Light Blue/Cyan */
+/* AI AGENT Block - Light Blue/Cyan - Exact match to image */
 .agent-block {
     background: linear-gradient(135deg, #00e5ff 0%, #0099ff 100%);
     box-shadow: 
-        0 0 60px rgba(0, 229, 255, 0.8),
-        0 0 120px rgba(0, 153, 255, 0.6),
-        inset 0 0 30px rgba(255, 255, 255, 0.2),
-        0 10px 40px rgba(0, 0, 0, 0.3);
+        0 0 80px rgba(0, 229, 255, 1),
+        0 0 160px rgba(0, 153, 255, 0.9),
+        0 0 240px rgba(0, 229, 255, 0.6),
+        inset 0 0 40px rgba(255, 255, 255, 0.3),
+        0 15px 50px rgba(0, 0, 0, 0.5);
 }
 .agent-block::before { 
-    background: radial-gradient(ellipse at center, rgba(0,229,255,0.7) 0%, transparent 70%);
+    background: radial-gradient(ellipse 200% 200% at center, rgba(0,229,255,1) 0%, rgba(0,153,255,0.8) 30%, transparent 70%);
 }
 
-/* ACTION Block - Green */
+/* ACTION Block - Green - Exact match to image */
 .action-block {
     background: linear-gradient(135deg, #00ff88 0%, #00cc66 100%);
     box-shadow: 
-        0 0 60px rgba(0, 255, 136, 0.8),
-        0 0 120px rgba(0, 204, 102, 0.6),
-        inset 0 0 30px rgba(255, 255, 255, 0.2),
-        0 10px 40px rgba(0, 0, 0, 0.3);
+        0 0 80px rgba(0, 255, 136, 1),
+        0 0 160px rgba(0, 204, 102, 0.9),
+        0 0 240px rgba(0, 255, 136, 0.6),
+        inset 0 0 40px rgba(255, 255, 255, 0.3),
+        0 15px 50px rgba(0, 0, 0, 0.5);
 }
 .action-block::before { 
-    background: radial-gradient(ellipse at center, rgba(0,255,136,0.7) 0%, transparent 70%);
+    background: radial-gradient(ellipse 200% 200% at center, rgba(0,255,136,1) 0%, rgba(0,204,102,0.8) 30%, transparent 70%);
 }
 
 /* Connection Lines */
