@@ -29,11 +29,22 @@ class LanguageSwitcher {
         // Create and inject toggle button
         this.createToggleButton();
 
+        // Ensure we respect localStorage preference
+        const savedLang = localStorage.getItem('preferredLanguage');
+        if (savedLang && (savedLang === 'en' || savedLang === 'et')) {
+            this.currentLanguage = savedLang;
+        }
+
         // Set initial language
         this.setLanguage(this.currentLanguage, false);
 
         // Add event listeners
         this.attachEventListeners();
+
+        // Force update after a brief delay to ensure DOM is ready
+        setTimeout(() => {
+            this.updateContent(this.currentLanguage);
+        }, 100);
     }
 
     createToggleButton() {
@@ -137,7 +148,8 @@ class LanguageSwitcher {
         }
         
         const t = translations[lang];
-        console.log('Switching to language:', lang);
+        console.log('Switching to language:', lang, 'Available translations:', Object.keys(translations));
+        console.log('websiteDesign translations:', t.websiteDesign);
 
         // Update all elements with data-i18n attribute
         document.querySelectorAll('[data-i18n]').forEach(element => {
@@ -186,25 +198,26 @@ class LanguageSwitcher {
         // Update summary stats
         this.updateSummaryStats(t.summary.stats);
 
-        // Update website design section
-        if (t.websiteDesign) {
+        // Force update website design section with retry
+        setTimeout(() => {
             const websiteTitle = document.querySelector('[data-i18n="websiteDesign.title"]');
-            if (websiteTitle && t.websiteDesign.title) {
-                websiteTitle.textContent = t.websiteDesign.title;
-            }
             const websiteSubtitle = document.querySelector('[data-i18n="websiteDesign.subtitle"]');
-            if (websiteSubtitle && t.websiteDesign.subtitle) {
+            if (websiteTitle && t.websiteDesign && t.websiteDesign.title) {
+                websiteTitle.textContent = t.websiteDesign.title;
+                console.log('Updated websiteDesign.title to:', t.websiteDesign.title);
+            }
+            if (websiteSubtitle && t.websiteDesign && t.websiteDesign.subtitle) {
                 websiteSubtitle.textContent = t.websiteDesign.subtitle;
+                console.log('Updated websiteDesign.subtitle to:', t.websiteDesign.subtitle);
             }
-        }
 
-        // Update video section
-        if (t.video) {
+            // Update video section
             const videoTitle = document.querySelector('[data-i18n="video.title"]');
-            if (videoTitle && t.video.title) {
+            if (videoTitle && t.video && t.video.title) {
                 videoTitle.textContent = t.video.title;
+                console.log('Updated video.title to:', t.video.title);
             }
-        }
+        }, 50);
     }
 
     getNestedValue(obj, path) {
