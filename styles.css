@@ -1288,20 +1288,8 @@ textarea.error {
 }
 
 .website-heading {
-    color: #ffffff;
-    text-align: center;
-    font-weight: 600;
-    width: 90%;
-    max-width: 1200px;
-    font-size: clamp(2rem, 6vw, 8rem);
-    line-height: 1;
-    text-transform: none;
-    z-index: 10;
-    margin: 0;
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-    animation: none !important;
+    display: none !important;
+    visibility: hidden !important;
 }
 
 /* Thumbnail Navigation */
@@ -1403,10 +1391,6 @@ textarea.error {
         bottom: 0.5rem;
         right: 8rem;
         font-size: 0.75rem;
-    }
-
-    .website-heading {
-        font-size: clamp(1.5rem, 8vw, 4rem);
     }
 }
 
