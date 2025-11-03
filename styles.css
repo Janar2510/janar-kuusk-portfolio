@@ -1327,90 +1327,141 @@ textarea.error {
     z-index: 2;
 }
 
-/* Individual Workflow Block */
+/* Individual Workflow Block - Matching Head of Sales Card Style */
 .workflow-block {
-    padding: 2.5rem 3.5rem;
+    padding: 2.5rem 3rem;
     border-radius: 1.5rem;
     text-align: center;
     position: relative;
     min-width: 200px;
-    transition: transform 0.3s ease;
-    border: none;
+    border: 1px solid #222;
+    background-color: #111;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: transform 0.2s ease-out, box-shadow 0.3s ease, border-color 0.3s ease;
+    will-change: transform;
 }
 
-.workflow-block::before {
-    content: '';
-    position: absolute;
-    inset: -30px;
-    border-radius: 1.75rem;
-    filter: blur(30px);
-    opacity: 1;
-    z-index: -1;
+.workflow-block > * {
+    position: relative;
+    z-index: 2;
 }
 
 .workflow-block:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 60px rgba(0, 229, 255, 0.3),
+        inset 0 0 40px rgba(0, 229, 255, 0.1);
+}
+
+/* Animated gradient border on hover */
+.workflow-block::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 1.5rem;
+    background-size: 200% 200%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+                  linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    padding: 2px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.workflow-block:hover::after {
+    opacity: 1;
+    animation: borderShine 4s ease-in-out infinite;
+}
+
+@keyframes borderShine {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
 }
 
 .block-icon {
-    font-size: 4.5rem;
+    font-size: 4rem;
     margin-bottom: 1.5rem;
     display: block;
-    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 1));
     line-height: 1;
     color: #ffffff;
 }
 
 .block-text {
-    font-size: 1.5rem;
-    font-weight: 900;
-    letter-spacing: 0.2em;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
     color: #ffffff;
-    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.8);
     margin: 0;
-    font-family: 'Arial', sans-serif;
+    text-transform: uppercase;
 }
 
-/* TRIGGER Block - Pink/Magenta - Exact match to image */
-.trigger-block {
-    background: linear-gradient(135deg, #ff00ff 0%, #ff1493 100%);
-    box-shadow: 
-        0 0 80px rgba(255, 0, 255, 1),
-        0 0 160px rgba(255, 20, 147, 0.9),
-        0 0 240px rgba(255, 0, 255, 0.6),
-        inset 0 0 40px rgba(255, 255, 255, 0.3),
-        0 15px 50px rgba(0, 0, 0, 0.5);
-}
-.trigger-block::before { 
-    background: radial-gradient(ellipse 200% 200% at center, rgba(255,0,255,1) 0%, rgba(255,20,147,0.8) 30%, transparent 70%);
+/* TRIGGER Block - Pink/Magenta border and glow */
+.trigger-block:hover {
+    border-color: rgba(255, 0, 255, 0.5);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 60px rgba(255, 0, 255, 0.3),
+        inset 0 0 40px rgba(255, 0, 255, 0.1);
 }
 
-/* AI AGENT Block - Light Blue/Cyan - Exact match to image */
-.agent-block {
-    background: linear-gradient(135deg, #00e5ff 0%, #0099ff 100%);
-    box-shadow: 
-        0 0 80px rgba(0, 229, 255, 1),
-        0 0 160px rgba(0, 153, 255, 0.9),
-        0 0 240px rgba(0, 229, 255, 0.6),
-        inset 0 0 40px rgba(255, 255, 255, 0.3),
-        0 15px 50px rgba(0, 0, 0, 0.5);
-}
-.agent-block::before { 
-    background: radial-gradient(ellipse 200% 200% at center, rgba(0,229,255,1) 0%, rgba(0,153,255,0.8) 30%, transparent 70%);
+.trigger-block::after {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 0, 255, 0) 0%,
+        rgba(255, 0, 255, 0.6) 25%,
+        rgba(255, 20, 147, 0.6) 50%,
+        rgba(255, 0, 255, 0.6) 75%,
+        rgba(255, 0, 255, 0) 100%
+    );
 }
 
-/* ACTION Block - Green - Exact match to image */
-.action-block {
-    background: linear-gradient(135deg, #00ff88 0%, #00cc66 100%);
-    box-shadow: 
-        0 0 80px rgba(0, 255, 136, 1),
-        0 0 160px rgba(0, 204, 102, 0.9),
-        0 0 240px rgba(0, 255, 136, 0.6),
-        inset 0 0 40px rgba(255, 255, 255, 0.3),
-        0 15px 50px rgba(0, 0, 0, 0.5);
+/* AI AGENT Block - Light Blue/Cyan border and glow */
+.agent-block:hover {
+    border-color: rgba(0, 229, 255, 0.5);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 60px rgba(0, 229, 255, 0.3),
+        inset 0 0 40px rgba(0, 229, 255, 0.1);
 }
-.action-block::before { 
-    background: radial-gradient(ellipse 200% 200% at center, rgba(0,255,136,1) 0%, rgba(0,204,102,0.8) 30%, transparent 70%);
+
+.agent-block::after {
+    background: linear-gradient(
+        135deg,
+        rgba(0, 229, 255, 0) 0%,
+        rgba(0, 229, 255, 0.6) 25%,
+        rgba(0, 153, 255, 0.6) 50%,
+        rgba(0, 229, 255, 0.6) 75%,
+        rgba(0, 229, 255, 0) 100%
+    );
+}
+
+/* ACTION Block - Green border and glow */
+.action-block:hover {
+    border-color: rgba(0, 255, 136, 0.5);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 60px rgba(0, 255, 136, 0.3),
+        inset 0 0 40px rgba(0, 255, 136, 0.1);
+}
+
+.action-block::after {
+    background: linear-gradient(
+        135deg,
+        rgba(0, 255, 136, 0) 0%,
+        rgba(0, 255, 136, 0.6) 25%,
+        rgba(0, 204, 102, 0.6) 50%,
+        rgba(0, 255, 136, 0.6) 75%,
+        rgba(0, 255, 136, 0) 100%
+    );
 }
 
 /* Connection Lines */
