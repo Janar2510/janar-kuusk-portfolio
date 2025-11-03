@@ -232,7 +232,7 @@ const translations = {
             ]
         },
         video: {
-            title: "Veebirakenduste arhitektuur ja disain"
+            title: "Veebi Aplikatsioonide Arhidektuur ja Disain"
         },
         websiteDesign: {
             title: "Veebidisain",
