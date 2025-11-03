@@ -87,8 +87,9 @@ class LanguageSwitcher {
 
         this.currentLanguage = lang;
 
-        // Save to localStorage
+        // Save to localStorage FIRST before any updates
         localStorage.setItem('preferredLanguage', lang);
+        console.log('Language set to:', lang, 'Saved to localStorage');
 
         // Update toggle UI
         this.updateToggleUI(lang, animate);
@@ -102,6 +103,13 @@ class LanguageSwitcher {
 
         // Update document language attribute
         document.documentElement.lang = lang;
+
+        // Force a final update after a short delay to ensure everything is applied
+        setTimeout(() => {
+            if (this.currentLanguage === lang) {
+                this.updateContent(lang);
+            }
+        }, 150);
     }
 
     updateToggleUI(lang, animate) {
