@@ -1181,6 +1181,7 @@ textarea.error {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-top: 30px;
 }
 
 .bento-large .summary-description {
