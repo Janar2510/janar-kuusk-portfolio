@@ -55,6 +55,10 @@ const translations = {
         video: {
             title: "Web application architecture and design"
         },
+        websiteDesign: {
+            title: "Website design",
+            subtitle: "Elegant, responsive interfaces with motion and clarity"
+        },
         experience: {
             title: "Professional Experience",
             subtitle: "Building the future with AI and automation",
@@ -229,6 +233,10 @@ const translations = {
         },
         video: {
             title: "Veebirakenduste arhitektuur ja disain"
+        },
+        websiteDesign: {
+            title: "Veebidisain",
+            subtitle: "Elegantne ja reageeriv liides koos liikumise ja selgusega"
         },
         vision: {
             title: "Vision for the Future",
