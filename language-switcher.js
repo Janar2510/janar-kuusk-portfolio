@@ -7,13 +7,13 @@ class LanguageSwitcher {
 
     // Auto-detect browser language
     detectLanguage() {
-        // Check localStorage first
+        // Check localStorage first - always prioritize user's manual selection
         const savedLang = localStorage.getItem('preferredLanguage');
         if (savedLang && (savedLang === 'en' || savedLang === 'et')) {
             return savedLang;
         }
 
-        // Check browser language
+        // Check browser language only if no saved preference
         const browserLang = navigator.language || navigator.userLanguage;
 
         // If Estonian browser, set to Estonian
@@ -185,6 +185,26 @@ class LanguageSwitcher {
 
         // Update summary stats
         this.updateSummaryStats(t.summary.stats);
+
+        // Update website design section
+        if (t.websiteDesign) {
+            const websiteTitle = document.querySelector('[data-i18n="websiteDesign.title"]');
+            if (websiteTitle && t.websiteDesign.title) {
+                websiteTitle.textContent = t.websiteDesign.title;
+            }
+            const websiteSubtitle = document.querySelector('[data-i18n="websiteDesign.subtitle"]');
+            if (websiteSubtitle && t.websiteDesign.subtitle) {
+                websiteSubtitle.textContent = t.websiteDesign.subtitle;
+            }
+        }
+
+        // Update video section
+        if (t.video) {
+            const videoTitle = document.querySelector('[data-i18n="video.title"]');
+            if (videoTitle && t.video.title) {
+                videoTitle.textContent = t.video.title;
+            }
+        }
     }
 
     getNestedValue(obj, path) {
@@ -391,13 +411,23 @@ class LanguageSwitcher {
     }
 }
 
-// Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('Initializing Language Switcher...');
-    if (typeof translations === 'undefined') {
-        console.error('Translations object not found! Make sure translations.js is loaded before language-switcher.js');
-        return;
-    }
-    window.languageSwitcher = new LanguageSwitcher();
-    console.log('Language Switcher initialized successfully');
-});
+// Initialize when DOM is ready (only once)
+if (!window.languageSwitcherInitialized) {
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log('Initializing Language Switcher...');
+        if (typeof translations === 'undefined') {
+            console.error('Translations object not found! Make sure translations.js is loaded before language-switcher.js');
+            return;
+        }
+        
+        // Prevent multiple initializations
+        if (window.languageSwitcher) {
+            console.warn('Language Switcher already initialized');
+            return;
+        }
+        
+        window.languageSwitcher = new LanguageSwitcher();
+        window.languageSwitcherInitialized = true;
+        console.log('Language Switcher initialized successfully');
+    });
+}
