@@ -1246,9 +1246,7 @@ textarea.error {
 .website-slides {
     position: relative;
     width: 100%;
-    height: 60vh;
-    min-height: 360px;
-    max-height: 720px;
+    aspect-ratio: 16 / 9; /* match typical video ratio for consistent height */
 }
 
 /* Individual slide */
@@ -1297,7 +1295,7 @@ textarea.error {
     }
     .website-design-section { padding: 20px; }
     .website-design-container { border-radius: 0.75rem; }
-    .website-slides { height: 40vh; min-height: 260px; }
+    .website-slides { aspect-ratio: 16 / 9; }
 }
 
 @media (max-width: 480px) {
@@ -1311,7 +1309,7 @@ textarea.error {
     }
     .website-design-section { padding: 15px; }
     .website-design-container { border-radius: 0.5rem; border-width: 1px; }
-    .website-slides { height: 36vh; min-height: 220px; }
+    .website-slides { aspect-ratio: 16 / 9; }
 }
 
 /* Responsive Design for Summary Bento Grid */
