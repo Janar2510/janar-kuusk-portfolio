@@ -106,6 +106,11 @@
                 }
             });
 
+            // Ensure headings are always fully visible with no animations
+            this.headings.forEach((heading) => {
+                gsap.set(heading, { opacity: 1, yPercent: 0, clearProps: 'all' });
+            });
+
             // Update thumbnails
             this.updateThumbnails(0);
 
@@ -182,6 +187,16 @@
 
             // Show new section
             gsap.set(this.sections[index], { autoAlpha: 1, zIndex: 1 });
+            
+            // Ensure heading is immediately visible with no animation
+            if (this.headings[index]) {
+                this.timeline.set(this.headings[index], { 
+                    opacity: 1, 
+                    yPercent: 0, 
+                    clearProps: 'all',
+                    immediateRender: true
+                }, 0);
+            }
 
             this.timeline
                 .fromTo(
