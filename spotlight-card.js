@@ -121,11 +121,44 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Initialize summary spotlight cards
-  const summaryCards = document.querySelectorAll('.summary-text.summary-spotlight-card, .summary-stats.summary-spotlight-card');
+  // Initialize summary spotlight cards with tilt effect
+  const summaryCards = document.querySelectorAll('.summary-spotlight-card');
   summaryCards.forEach(card => {
+    // Initialize spotlight
     new SpotlightCard(card, {
       spotlightColor: 'rgba(0, 229, 255, 0.2)'
+    });
+
+    // Add 3D tilt effect
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      // Calculate rotation (max ±5 degrees)
+      const rotateX = ((y - centerY) / centerY) * 5;
+      const rotateY = ((centerX - x) / centerX) * 5;
+
+      card.style.transform = `
+        perspective(1000px)
+        rotateX(${rotateX}deg)
+        rotateY(${rotateY}deg)
+        translateY(-8px)
+        scale(1.02)
+      `;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = `
+        perspective(1000px)
+        rotateX(0)
+        rotateY(0)
+        translateY(0)
+        scale(1)
+      `;
     });
   });
 
