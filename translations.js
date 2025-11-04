@@ -280,7 +280,62 @@ const translations = {
             rights: "© 2024 Janar Kuusk. All rights reserved.",
             home: "Home",
             projects: "Projects",
-            contact: "Contact"
+            contact: "Contact",
+            privacy: "Privacy Policy"
+        },
+        privacy: {
+            title: "Privacy Policy",
+            lastUpdated: "Last updated: January 2025",
+            back: "← Back to Home",
+            introduction: {
+                title: "Introduction",
+                text: "This Privacy Policy describes how Janar Kuusk (\"we\", \"our\", or \"us\") collects, uses, and protects your personal information when you visit our portfolio website. We are committed to protecting your privacy and ensuring the security of your personal data."
+            },
+            dataCollection: {
+                title: "Information We Collect",
+                text: "When you visit our website, we may collect the following types of information:",
+                item1: "Contact information (name, email address) when you submit the contact form",
+                item2: "Automatically collected information such as IP address, browser type, and device information",
+                item3: "Usage data including pages visited, time spent on pages, and navigation patterns"
+            },
+            dataUse: {
+                title: "How We Use Your Information",
+                text: "We use the collected information for the following purposes:",
+                item1: "To respond to your inquiries and provide customer support",
+                item2: "To improve our website and user experience",
+                item3: "To analyze website traffic and usage patterns",
+                item4: "To comply with legal obligations"
+            },
+            dataStorage: {
+                title: "Data Storage and Security",
+                text: "We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. Your data is stored securely and retained only for as long as necessary to fulfill the purposes outlined in this policy."
+            },
+            cookies: {
+                title: "Cookies and Tracking",
+                text: "Our website may use cookies and similar tracking technologies to enhance your browsing experience. You can control cookie preferences through your browser settings."
+            },
+            thirdParty: {
+                title: "Third-Party Services",
+                text: "We may use third-party services such as Formspree for form submissions. These services have their own privacy policies governing the handling of your data."
+            },
+            yourRights: {
+                title: "Your Rights",
+                text: "You have the right to:",
+                item1: "Access your personal information",
+                item2: "Request correction of inaccurate data",
+                item3: "Request deletion of your personal information",
+                item4: "Object to processing of your personal information"
+            },
+            contact: {
+                title: "Contact Us",
+                text: "If you have any questions about this Privacy Policy or wish to exercise your rights, please contact us at:",
+                email: "Email",
+                phone: "Phone"
+            },
+            changes: {
+                title: "Changes to This Policy",
+                text: "We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the \"Last updated\" date."
+            }
         }
     },
     et: {
@@ -549,7 +604,62 @@ const translations = {
             rights: "© 2024 Janar Kuusk. Kõik õigused kaitstud.",
             home: "Avaleht",
             projects: "Projektid",
-            contact: "Kontakt"
+            contact: "Kontakt",
+            privacy: "Privaatsuspoliitika"
+        },
+        privacy: {
+            title: "Privaatsuspoliitika",
+            lastUpdated: "Viimati uuendatud: Jaanuar 2025",
+            back: "← Tagasi avalehele",
+            introduction: {
+                title: "Sissejuhatus",
+                text: "See Privaatsuspoliitika kirjeldab, kuidas Janar Kuusk (\"meie\", \"me\", või \"meil\") kogub, kasutab ja kaitseb teie isikuandmeid, kui külastate meie portfoolio veebisaiti. Oleme pühendunud teie privaatsuse kaitsmisele ja teie isikuandmete turvalisuse tagamisele."
+            },
+            dataCollection: {
+                title: "Informatsioon, mida me kogume",
+                text: "Kui külastate meie veebisaiti, võime koguda järgmist tüüpi informatsiooni:",
+                item1: "Kontaktandmed (nimi, e-posti aadress), kui esitate kontaktvormi",
+                item2: "Automaatselt kogutud informatsioon, nagu IP-aadress, brauseri tüüp ja seadme informatsioon",
+                item3: "Kasutamise andmed, sealhulgas külastatud lehed, lehtedel veedetud aeg ja navigeerimismustrid"
+            },
+            dataUse: {
+                title: "Kuidas me teie informatsiooni kasutame",
+                text: "Me kasutame kogutud informatsiooni järgmistel eesmärkidel:",
+                item1: "Teie päringutele vastamiseks ja klienditoe pakkumiseks",
+                item2: "Meie veebisaidi ja kasutajakogemuse parandamiseks",
+                item3: "Veebisaidi liikluse ja kasutamismustrite analüüsimiseks",
+                item4: "Juriidiliste kohustuste täitmiseks"
+            },
+            dataStorage: {
+                title: "Andmete salvestamine ja turvalisus",
+                text: "Me rakendame sobivaid tehnilisi ja organisatsioonilisi meetmeid, et kaitsta teie isikuandmeid ebaõiglaste juurdepääsude, muudatuste, avalikustamise või hävitamise eest. Teie andmed salvestatakse turvaliselt ja säilitatakse ainult nii kaua, kui on vaja selle poliitika kirjeldatud eesmärkide täitmiseks."
+            },
+            cookies: {
+                title: "Küpsised ja jälgimine",
+                text: "Meie veebisait võib kasutada küpsiseid ja sarnaseid jälgimistehnoloogiaid, et parandada teie sirvimiskogemust. Saate kontrollida küpsiste eelistusi oma brauseri seadete kaudu."
+            },
+            thirdParty: {
+                title: "Kolmandate osapoolte teenused",
+                text: "Me võime kasutada kolmandate osapoolte teenuseid, nagu Formspree vormide esitamiseks. Neil teenustel on oma privaatsuspoliitikad, mis reguleerivad teie andmete käsitlemist."
+            },
+            yourRights: {
+                title: "Teie õigused",
+                text: "Teil on õigus:",
+                item1: "Juurdepääs oma isikuandmetele",
+                item2: "Taotleda ebatäpsete andmete parandamist",
+                item3: "Taotleda oma isikuandmete kustutamist",
+                item4: "Vastuollu minna oma isikuandmete töötlemisega"
+            },
+            contact: {
+                title: "Võtke meiega ühendust",
+                text: "Kui teil on küsimusi selle Privaatsuspoliitika kohta või soovite oma õigusi kasutada, võtke meiega ühendust:",
+                email: "E-post",
+                phone: "Telefon"
+            },
+            changes: {
+                title: "Muudatused selles poliitikas",
+                text: "Me võime seda Privaatsuspoliitikat aeg-ajalt uuendada. Teavitame teid kõigist muudatustest, postitades uue Privaatsuspoliitika sellele lehele ja uuendades \"Viimati uuendatud\" kuupäeva."
+            }
         }
     }
 };

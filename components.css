@@ -766,6 +766,39 @@ p {
     color: var(--primary-color);
 }
 
+.footer-social {
+    display: flex;
+    gap: var(--space-md);
+    align-items: center;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: 50%;
+    transition: all var(--transition-normal);
+    background: var(--bg-card);
+    border: 1px solid var(--gray-800);
+}
+
+.social-icon:hover {
+    color: var(--primary-color);
+    background: rgba(99, 102, 241, 0.1);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+}
+
+.social-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .container {
@@ -795,6 +828,11 @@ p {
     .footer-content {
         flex-direction: column;
         text-align: center;
+        gap: var(--space-xl);
+    }
+    
+    .footer-social {
+        justify-content: center;
     }
     
     .career-grid,
