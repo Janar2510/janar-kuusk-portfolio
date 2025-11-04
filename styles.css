@@ -1277,24 +1277,22 @@ textarea.error {
     overflow: hidden;
 }
 
-.website-bg {
+.website-video {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    object-fit: cover;
+    object-position: center center;
     background-color: var(--bg-primary, #0a0a0a);
 }
 
 .website-heading {
     display: none !important;
     visibility: hidden !important;
+    position: relative;
+    z-index: 10;
 }
 
 /* Thumbnail Navigation */

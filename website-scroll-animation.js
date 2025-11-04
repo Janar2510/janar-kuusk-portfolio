@@ -13,7 +13,7 @@
             if (!container) return;
 
             this.sections = Array.from(container.querySelectorAll('.website-scroll-section'));
-            this.images = Array.from(container.querySelectorAll('.website-bg'));
+            this.videos = Array.from(container.querySelectorAll('.website-video'));
             this.outerWrappers = Array.from(container.querySelectorAll('.website-outer'));
             this.innerWrappers = Array.from(container.querySelectorAll('.website-inner'));
             this.headings = Array.from(container.querySelectorAll('.website-heading'));
@@ -26,56 +26,67 @@
             this.animating = false;
             this.observer = null;
             this.timeline = null;
-            this.imagesLoaded = false;
-            this.imageAspectRatios = [];
+            this.videosLoaded = false;
+            this.videoAspectRatios = [];
 
             this.init();
         }
 
         init() {
-            // Preload images
-            this.preloadImages().then(() => {
-                this.imagesLoaded = true;
+            // Preload videos
+            this.preloadVideos().then(() => {
+                this.videosLoaded = true;
                 this.setupAnimation();
             });
         }
 
-        preloadImages() {
+        preloadVideos() {
             return new Promise((resolve) => {
-                const imageUrls = this.images.map(img => {
-                    const bgImage = img.style.backgroundImage;
-                    const match = bgImage.match(/url\(['"]?([^'"]+)['"]?\)/);
-                    return match ? match[1] : null;
-                }).filter(url => url);
-
-                let loaded = 0;
-                const total = imageUrls.length;
-                let firstImageAspectRatio = null;
-
-                if (total === 0) {
+                if (!this.videos || this.videos.length === 0) {
                     resolve();
                     return;
                 }
 
-                imageUrls.forEach((url, index) => {
-                    const img = new Image();
-                    img.onload = () => {
+                let loaded = 0;
+                const total = this.videos.length;
+
+                this.videos.forEach((video, index) => {
+                    // Get video source URL
+                    const source = video.querySelector('source');
+                    const videoUrl = source ? source.getAttribute('src') : video.src;
+
+                    if (!videoUrl) {
                         loaded++;
-                        // Store aspect ratio for each image
-                        if (img.width > 0 && img.height > 0) {
-                            this.imageAspectRatios[index] = img.width / img.height;
-                            // If this is the first image, set initial height
+                        if (loaded === total) resolve();
+                        return;
+                    }
+
+                    // Handle video loadedmetadata event
+                    const handleLoadedMetadata = () => {
+                        loaded++;
+                        // Store aspect ratio for each video
+                        if (video.videoWidth > 0 && video.videoHeight > 0) {
+                            this.videoAspectRatios[index] = video.videoWidth / video.videoHeight;
+                            // If this is the first video, set initial height
                             if (index === 0) {
                                 this.updateContainerHeight(0);
                             }
                         }
                         if (loaded === total) resolve();
+                        video.removeEventListener('loadedmetadata', handleLoadedMetadata);
                     };
-                    img.onerror = () => {
+
+                    video.addEventListener('loadedmetadata', handleLoadedMetadata);
+                    
+                    // Handle errors
+                    video.addEventListener('error', () => {
                         loaded++;
                         if (loaded === total) resolve();
-                    };
-                    img.src = url;
+                        video.removeEventListener('loadedmetadata', handleLoadedMetadata);
+                    });
+
+                    // Load video
+                    video.load();
                 });
             });
         }
@@ -107,12 +118,16 @@
                 }
             });
 
-            // Set initial images position
-            this.images.forEach((img, i) => {
+            // Set initial videos position
+            this.videos.forEach((video, i) => {
                 if (i === 0) {
-                    gsap.set(img, { xPercent: 0 });
+                    gsap.set(video, { xPercent: 0 });
+                    // Play first video
+                    video.play().catch(() => {});
                 } else {
-                    gsap.set(img, { xPercent: 15 });
+                    gsap.set(video, { xPercent: 15 });
+                    // Pause other videos
+                    video.pause();
                 }
             });
 
@@ -135,15 +150,15 @@
             
             // Add resize handler to recalculate height on window resize
             this.resizeHandler = () => {
-                if (this.imageAspectRatios[this.currentIndex]) {
+                if (this.videoAspectRatios[this.currentIndex]) {
                     this.updateContainerHeight(this.currentIndex);
                 }
             };
             window.addEventListener('resize', this.resizeHandler);
         }
 
-        updateContainerHeight(imageIndex) {
-            if (!this.container || !this.imageAspectRatios[imageIndex]) return;
+        updateContainerHeight(videoIndex) {
+            if (!this.container || !this.videoAspectRatios[videoIndex]) return;
             
             // Get the design container (parent of scroll-animation)
             const designContainer = this.container.closest('.website-design-container');
@@ -152,10 +167,10 @@
             // Get available width (100% of parent, which accounts for 50px padding)
             const containerWidth = designContainer.offsetWidth || designContainer.clientWidth;
             
-            // Get aspect ratio for this specific image
-            const aspectRatio = this.imageAspectRatios[imageIndex];
+            // Get aspect ratio for this specific video
+            const aspectRatio = this.videoAspectRatios[videoIndex];
             
-            // Calculate height based on image aspect ratio
+            // Calculate height based on video aspect ratio
             const calculatedHeight = containerWidth / aspectRatio;
             
             // Get max available height (viewport minus 100px for padding)
@@ -225,15 +240,24 @@
             // Hide current section
             if (this.currentIndex >= 0) {
                 gsap.set(this.sections[this.currentIndex], { zIndex: 0 });
+                // Pause current video
+                if (this.videos[this.currentIndex]) {
+                    this.videos[this.currentIndex].pause();
+                }
                 this.timeline
-                    .to(this.images[this.currentIndex], { xPercent: -15 * dFactor })
+                    .to(this.videos[this.currentIndex], { xPercent: -15 * dFactor })
                     .set(this.sections[this.currentIndex], { autoAlpha: 0 }, 0);
             }
 
             // Show new section
             gsap.set(this.sections[index], { autoAlpha: 1, zIndex: 1 });
             
-            // Update container height to match this image's aspect ratio
+            // Play new video
+            if (this.videos[index]) {
+                this.videos[index].play().catch(() => {});
+            }
+            
+            // Update container height to match this video's aspect ratio
             this.updateContainerHeight(index);
             
             // Ensure heading is immediately visible with no animation
@@ -256,7 +280,7 @@
                     0
                 )
                 .fromTo(
-                    this.images[index],
+                    this.videos[index],
                     { xPercent: 15 * dFactor },
                     { xPercent: 0 },
                     0
