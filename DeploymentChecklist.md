@@ -1,3 +1,13 @@
+## Content & Legal - 2025-01-XX
+- **Privacy Policy Page**: Verify privacy-policy.html loads correctly
+- **Privacy Policy Translations**: Test language toggle switches privacy policy content between English and Estonian
+- **Privacy Policy Links**: Confirm footer links to privacy policy page work correctly
+- **Privacy Policy Content**: Review all sections (Introduction, Data Collection, Data Use, Storage, Cookies, Third-Party, Rights, Contact, Changes)
+- **Social Media Icons**: Verify all 4 social icons (LinkedIn, GitHub, Twitter, Instagram) display correctly in footer
+- **Social Icon Hover Effects**: Test hover animations on social icons
+- **Social Icon Links**: Update social icon hrefs from # to actual social media profile URLs when ready
+- **Footer Responsive Design**: Test footer layout on mobile devices (should stack vertically)
+
 ## UI/UX Changes - 2025-01-XX
 - **Contact Card Glow Effects**: Verify contact info and contact form cards have pure black background (#000000)
 - **Contact Card Cyan Glow**: Test multiple layered box-shadows create radiant cyan halo (rgb(0, 229, 255))
