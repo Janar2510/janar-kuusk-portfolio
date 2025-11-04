@@ -119,13 +119,19 @@ function setupGlobalEventListeners() {
             
             // Show header only when at the very top of the page
             if (currentScrollY <= topThreshold) {
-                // Show header
+                // Show header - use both classes and direct styles for reliability
                 header.classList.remove('header-hidden');
                 header.classList.add('header-visible');
+                header.style.transform = 'translateY(0)';
+                header.style.opacity = '1';
+                header.style.visibility = 'visible';
             } else {
-                // Hide header when scrolled down
+                // Hide header when scrolled down - use both classes and direct styles
                 header.classList.remove('header-visible');
                 header.classList.add('header-hidden');
+                header.style.transform = 'translateY(-100%)';
+                header.style.opacity = '0';
+                header.style.visibility = 'hidden';
             }
         };
         
@@ -142,7 +148,6 @@ function setupGlobalEventListeners() {
         // Check after delays to ensure everything is ready
         setTimeout(checkScrollPosition, 50);
         setTimeout(checkScrollPosition, 200);
-        setTimeout(checkScrollPosition, 500);
     }
 
     // Active navigation link highlighting
