@@ -27,7 +27,7 @@
             this.observer = null;
             this.timeline = null;
             this.imagesLoaded = false;
-            this.imageAspectRatio = null;
+            this.imageAspectRatios = [];
 
             this.init();
         }
@@ -61,11 +61,13 @@
                     const img = new Image();
                     img.onload = () => {
                         loaded++;
-                        // Calculate aspect ratio from first image
-                        if (index === 0 && img.width > 0 && img.height > 0) {
-                            this.imageAspectRatio = img.width / img.height;
-                            // Adjust container height to match image aspect ratio
-                            this.updateContainerHeight();
+                        // Store aspect ratio for each image
+                        if (img.width > 0 && img.height > 0) {
+                            this.imageAspectRatios[index] = img.width / img.height;
+                            // If this is the first image, set initial height
+                            if (index === 0) {
+                                this.updateContainerHeight(0);
+                            }
                         }
                         if (loaded === total) resolve();
                     };
@@ -130,12 +132,41 @@
 
             // Initial animation
             this.gotoSection(0, 1);
+            
+            // Add resize handler to recalculate height on window resize
+            this.resizeHandler = () => {
+                if (this.imageAspectRatios[this.currentIndex]) {
+                    this.updateContainerHeight(this.currentIndex);
+                }
+            };
+            window.addEventListener('resize', this.resizeHandler);
         }
 
-        updateContainerHeight() {
-            // Container height is now fixed at 100vh - 100px via CSS
-            // No need to calculate height dynamically
-            // This ensures container is always 100% viewport height with 50px margins
+        updateContainerHeight(imageIndex) {
+            if (!this.container || !this.imageAspectRatios[imageIndex]) return;
+            
+            // Get the design container (parent of scroll-animation)
+            const designContainer = this.container.closest('.website-design-container');
+            if (!designContainer) return;
+            
+            // Get available width (100% of parent, which accounts for 50px padding)
+            const containerWidth = designContainer.offsetWidth || designContainer.clientWidth;
+            
+            // Get aspect ratio for this specific image
+            const aspectRatio = this.imageAspectRatios[imageIndex];
+            
+            // Calculate height based on image aspect ratio
+            const calculatedHeight = containerWidth / aspectRatio;
+            
+            // Get max available height (viewport minus 100px for padding)
+            const maxHeight = window.innerHeight - 100;
+            
+            // Use the smaller of calculated height or max height
+            const finalHeight = Math.min(calculatedHeight, maxHeight);
+            
+            // Set height on both containers
+            designContainer.style.height = `${finalHeight}px`;
+            this.container.style.height = `${finalHeight}px`;
         }
 
         setupObserver() {
@@ -201,6 +232,9 @@
 
             // Show new section
             gsap.set(this.sections[index], { autoAlpha: 1, zIndex: 1 });
+            
+            // Update container height to match this image's aspect ratio
+            this.updateContainerHeight(index);
             
             // Ensure heading is immediately visible with no animation
             if (this.headings[index]) {
@@ -287,6 +321,10 @@
             if (this.timeline) {
                 this.timeline.kill();
                 this.timeline = null;
+            }
+            if (this.resizeHandler) {
+                window.removeEventListener('resize', this.resizeHandler);
+                this.resizeHandler = null;
             }
         }
     }
