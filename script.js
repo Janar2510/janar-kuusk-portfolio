@@ -128,7 +128,7 @@ function setupGlobalEventListeners() {
             }
         };
         
-        // Check initial state immediately
+        // Check initial state immediately (in case page loaded scrolled)
         checkScrollPosition();
         
         // Check on scroll with throttling for better performance
@@ -146,9 +146,14 @@ function setupGlobalEventListeners() {
         // Check on scroll
         window.addEventListener('scroll', handleScroll, { passive: true });
         
-        // Also check on load and after a short delay to ensure DOM is ready
-        window.addEventListener('load', checkScrollPosition);
-        setTimeout(checkScrollPosition, 100);
+        // Also check on load and after delays to ensure DOM is ready
+        window.addEventListener('load', () => {
+            checkScrollPosition();
+        });
+        
+        // Multiple checks to ensure it works
+        setTimeout(checkScrollPosition, 50);
+        setTimeout(checkScrollPosition, 200);
     }
 
     // Active navigation link highlighting
