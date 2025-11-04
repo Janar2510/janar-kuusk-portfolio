@@ -1281,6 +1281,7 @@ textarea.error {
     object-fit: cover;
     object-position: center center;
     background-color: var(--bg-primary, #0a0a0a);
+    z-index: 1;
 }
 
 .website-heading {

@@ -118,12 +118,24 @@
             this.videos.forEach((video, i) => {
                 if (i === 0) {
                     gsap.set(video, { xPercent: 0 });
-                    // Play first video
-                    video.play().catch(() => {});
+                    // Ensure first video loads and plays
+                    video.load();
+                    const playVideo = () => {
+                        video.play().catch(() => {
+                            // Retry if autoplay fails
+                            setTimeout(() => video.play().catch(() => {}), 100);
+                        });
+                    };
+                    if (video.readyState >= 2) {
+                        playVideo();
+                    } else {
+                        video.addEventListener('canplay', playVideo, { once: true });
+                    }
                 } else {
                     gsap.set(video, { xPercent: 15 });
                     // Pause other videos
                     video.pause();
+                    video.load(); // Preload other videos
                 }
             });
 
@@ -215,7 +227,18 @@
             
             // Play new video
             if (this.videos[index]) {
-                this.videos[index].play().catch(() => {});
+                const video = this.videos[index];
+                video.load();
+                const playVideo = () => {
+                    video.play().catch(() => {
+                        setTimeout(() => video.play().catch(() => {}), 100);
+                    });
+                };
+                if (video.readyState >= 2) {
+                    playVideo();
+                } else {
+                    video.addEventListener('canplay', playVideo, { once: true });
+                }
             }
             
             // Ensure heading is immediately visible with no animation
