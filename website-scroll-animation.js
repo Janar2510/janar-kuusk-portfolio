@@ -27,6 +27,7 @@
             this.observer = null;
             this.timeline = null;
             this.imagesLoaded = false;
+            this.imageAspectRatio = null;
 
             this.init();
         }
@@ -49,16 +50,23 @@
 
                 let loaded = 0;
                 const total = imageUrls.length;
+                let firstImageAspectRatio = null;
 
                 if (total === 0) {
                     resolve();
                     return;
                 }
 
-                imageUrls.forEach(url => {
+                imageUrls.forEach((url, index) => {
                     const img = new Image();
                     img.onload = () => {
                         loaded++;
+                        // Calculate aspect ratio from first image
+                        if (index === 0 && img.width > 0 && img.height > 0) {
+                            this.imageAspectRatio = img.width / img.height;
+                            // Adjust container height to match image aspect ratio
+                            this.updateContainerHeight();
+                        }
                         if (loaded === total) resolve();
                     };
                     img.onerror = () => {
@@ -122,6 +130,27 @@
 
             // Initial animation
             this.gotoSection(0, 1);
+            
+            // Add resize handler to recalculate height
+            this.resizeHandler = () => {
+                if (this.imageAspectRatio) {
+                    this.updateContainerHeight();
+                }
+            };
+            window.addEventListener('resize', this.resizeHandler);
+        }
+
+        updateContainerHeight() {
+            if (!this.container || !this.imageAspectRatio) return;
+            
+            // Get container width (already accounts for parent's padding)
+            const containerWidth = this.container.offsetWidth || this.container.clientWidth;
+            
+            // Calculate height based on image aspect ratio
+            const calculatedHeight = containerWidth / this.imageAspectRatio;
+            
+            // Set the height
+            this.container.style.height = `${calculatedHeight}px`;
         }
 
         setupObserver() {
@@ -273,6 +302,10 @@
             if (this.timeline) {
                 this.timeline.kill();
                 this.timeline = null;
+            }
+            if (this.resizeHandler) {
+                window.removeEventListener('resize', this.resizeHandler);
+                this.resizeHandler = null;
             }
         }
     }
