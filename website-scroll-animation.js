@@ -143,14 +143,18 @@
         updateContainerHeight() {
             if (!this.container || !this.imageAspectRatio) return;
             
-            // Get container width (already accounts for parent's padding)
+            // Get container width (100vw - 100px for padding)
             const containerWidth = this.container.offsetWidth || this.container.clientWidth;
             
             // Calculate height based on image aspect ratio
             const calculatedHeight = containerWidth / this.imageAspectRatio;
             
-            // Set the height
+            // Set the height on both scroll-animation container and its parent
             this.container.style.height = `${calculatedHeight}px`;
+            const parentContainer = this.container.parentElement;
+            if (parentContainer && parentContainer.classList.contains('website-design-container')) {
+                parentContainer.style.height = `${calculatedHeight}px`;
+            }
         }
 
         setupObserver() {
