@@ -1,4 +1,11 @@
 ## UI/UX Changes - 2025-01-XX
+- **Contact Card Glow Effects**: Verify contact info and contact form cards have pure black background (#000000)
+- **Contact Card Cyan Glow**: Test multiple layered box-shadows create radiant cyan halo (rgb(0, 229, 255))
+- **Contact Card Border**: Confirm cyan border (rgba(0, 229, 255, 0.3)) is visible
+- **Contact Card Radial Gradient**: Verify radial gradient overlay creates glow from center
+- **Hero Title Gradient**: Test animated gradient text (white to cyan) with drop-shadow glow
+- **Hero Description Glow**: Confirm cyan text-shadow glow effect on description text
+- **Glow Color Consistency**: Verify all glow effects use electric cyan (#00E5FF / rgb(0, 229, 255))
 - **Navbar Visibility**: Verify navbar is visible only when at the very top of the page (within 10px of top)
 - **Navbar Hide on Scroll**: Confirm navbar disappears immediately when scrolling down
 - **Navbar Show on Scroll Up**: Verify navbar reappears smoothly when scrolling back to top

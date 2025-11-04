@@ -1,4 +1,14 @@
 ## 2025-01-XX
+- **Added Cyan Gradient Glow Effects to Contact Cards and Hero Text**:
+  - Contact info card: Pure black background (#000000) with cyan gradient glow
+  - Contact form card: Pure black background with matching cyan glow effect
+  - Multiple layered box-shadows create radiant halo effect using rgb(0, 229, 255)
+  - Radial gradient overlay for enhanced glow emanating from card center
+  - Cyan border (rgba(0, 229, 255, 0.3)) matching the glow theme
+  - Hero title: Animated gradient text effect (white to cyan) with drop-shadow glow
+  - Hero description: Cyan text-shadow glow for consistency
+  - Matches design reference with electric cyan (#00E5FF) glow color throughout
+
 - **Updated Navbar Visibility Behavior**:
   - Changed navbar visibility threshold from 100px to 10px for precise top detection
   - Navbar now visible only when at the very top of the page (within 10px)
