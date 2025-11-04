@@ -143,18 +143,25 @@
         updateContainerHeight() {
             if (!this.container || !this.imageAspectRatio) return;
             
-            // Get container width (100vw - 100px for padding)
-            const containerWidth = this.container.offsetWidth || this.container.clientWidth;
+            // Get the design container (parent of scroll-animation)
+            const designContainer = this.container.closest('.website-design-container');
+            if (!designContainer) return;
+            
+            // Get available width (100% of parent, which accounts for 50px padding)
+            const containerWidth = designContainer.offsetWidth || designContainer.clientWidth;
             
             // Calculate height based on image aspect ratio
             const calculatedHeight = containerWidth / this.imageAspectRatio;
             
-            // Set the height on both scroll-animation container and its parent
-            this.container.style.height = `${calculatedHeight}px`;
-            const parentContainer = this.container.parentElement;
-            if (parentContainer && parentContainer.classList.contains('website-design-container')) {
-                parentContainer.style.height = `${calculatedHeight}px`;
-            }
+            // Get max available height (viewport minus 100px for padding)
+            const maxHeight = window.innerHeight - 100;
+            
+            // Use the smaller of calculated height or max height
+            const finalHeight = Math.min(calculatedHeight, maxHeight);
+            
+            // Set height on both containers
+            designContainer.style.height = `${finalHeight}px`;
+            this.container.style.height = `${finalHeight}px`;
         }
 
         setupObserver() {
