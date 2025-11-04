@@ -64,13 +64,9 @@
                     // Handle video loadedmetadata event
                     const handleLoadedMetadata = () => {
                         loaded++;
-                        // Store aspect ratio for each video
+                        // Store aspect ratio for each video (for reference, but container uses fixed 16:9)
                         if (video.videoWidth > 0 && video.videoHeight > 0) {
                             this.videoAspectRatios[index] = video.videoWidth / video.videoHeight;
-                            // If this is the first video, set initial height
-                            if (index === 0) {
-                                this.updateContainerHeight(0);
-                            }
                         }
                         if (loaded === total) resolve();
                         video.removeEventListener('loadedmetadata', handleLoadedMetadata);
@@ -147,41 +143,6 @@
 
             // Initial animation
             this.gotoSection(0, 1);
-            
-            // Add resize handler to recalculate height on window resize
-            this.resizeHandler = () => {
-                if (this.videoAspectRatios[this.currentIndex]) {
-                    this.updateContainerHeight(this.currentIndex);
-                }
-            };
-            window.addEventListener('resize', this.resizeHandler);
-        }
-
-        updateContainerHeight(videoIndex) {
-            if (!this.container || !this.videoAspectRatios[videoIndex]) return;
-            
-            // Get the design container (parent of scroll-animation)
-            const designContainer = this.container.closest('.website-design-container');
-            if (!designContainer) return;
-            
-            // Get available width (100% of parent, which accounts for 50px padding)
-            const containerWidth = designContainer.offsetWidth || designContainer.clientWidth;
-            
-            // Get aspect ratio for this specific video
-            const aspectRatio = this.videoAspectRatios[videoIndex];
-            
-            // Calculate height based on video aspect ratio
-            const calculatedHeight = containerWidth / aspectRatio;
-            
-            // Get max available height (viewport minus 100px for padding)
-            const maxHeight = window.innerHeight - 100;
-            
-            // Use the smaller of calculated height or max height
-            const finalHeight = Math.min(calculatedHeight, maxHeight);
-            
-            // Set height on both containers
-            designContainer.style.height = `${finalHeight}px`;
-            this.container.style.height = `${finalHeight}px`;
         }
 
         setupObserver() {
@@ -256,9 +217,6 @@
             if (this.videos[index]) {
                 this.videos[index].play().catch(() => {});
             }
-            
-            // Update container height to match this video's aspect ratio
-            this.updateContainerHeight(index);
             
             // Ensure heading is immediately visible with no animation
             if (this.headings[index]) {
@@ -345,10 +303,6 @@
             if (this.timeline) {
                 this.timeline.kill();
                 this.timeline = null;
-            }
-            if (this.resizeHandler) {
-                window.removeEventListener('resize', this.resizeHandler);
-                this.resizeHandler = null;
             }
         }
     }
