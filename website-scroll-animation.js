@@ -33,10 +33,26 @@
         }
 
         init() {
+            // Initialize thumbnail videos
+            this.initThumbnailVideos();
+            
             // Preload videos
             this.preloadVideos().then(() => {
                 this.videosLoaded = true;
                 this.setupAnimation();
+            });
+        }
+
+        initThumbnailVideos() {
+            // Get all thumbnail videos
+            const thumbVideos = document.querySelectorAll('.thumb-video');
+            thumbVideos.forEach((video) => {
+                // Load video metadata to show first frame
+                video.load();
+                // Seek to 0.5 seconds to show an actual frame (not just black)
+                video.addEventListener('loadedmetadata', () => {
+                    video.currentTime = 0.5;
+                }, { once: true });
             });
         }
 
