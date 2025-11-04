@@ -322,26 +322,6 @@ p {
     line-height: 1.1;
     margin-bottom: var(--space-lg);
     position: relative;
-    color: #ffffff;
-    background: linear-gradient(135deg, #ffffff 0%, #00E5FF 50%, #ffffff 100%);
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.6)) 
-            drop-shadow(0 0 20px rgba(0, 229, 255, 0.5)) 
-            drop-shadow(0 0 30px rgba(0, 229, 255, 0.4)) 
-            drop-shadow(0 0 40px rgba(0, 229, 255, 0.3));
-    animation: gradientShift 3s ease infinite;
-}
-
-@keyframes gradientShift {
-    0%, 100% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
 }
 
 /* Vaporize Text Animation Canvas */
@@ -360,10 +340,6 @@ p {
     color: var(--text-secondary);
     margin-bottom: var(--space-xl);
     line-height: 1.6;
-    text-shadow: 
-        0 0 10px rgba(0, 229, 255, 0.4),
-        0 0 20px rgba(0, 229, 255, 0.3),
-        0 0 30px rgba(0, 229, 255, 0.2);
 }
 
 .hero-actions {
