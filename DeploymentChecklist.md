@@ -1,3 +1,20 @@
+## UI/UX Changes - 2025-01-XX
+- **Navbar Visibility**: Verify navbar is visible only when at the very top of the page (within 10px of top)
+- **Navbar Hide on Scroll**: Confirm navbar disappears immediately when scrolling down
+- **Navbar Show on Scroll Up**: Verify navbar reappears smoothly when scrolling back to top
+- **Navbar Transition**: Test smooth 0.3s transition animation for show/hide
+- **Website Design Scroll Animation**: Verify scroll-based section transitions work with mouse wheel, touch, and pointer
+- **GSAP Observer**: Confirm GSAP Observer plugin loads correctly from CDN
+- **Scroll Sections**: Test all three sections (Saletoru CRM, Solarair Dynamics, ColorDesign Studio) transition smoothly
+- **Horizontal Slide Animation**: Verify sections slide horizontally with image parallax effects
+- **Text Animation**: Confirm heading text animates word-by-word on section change
+- **Thumbnail Navigation**: Test thumbnail clicks navigate to correct section
+- **Thumbnail Active State**: Verify active thumbnail overlay fades out correctly
+- **Counter Animation**: Confirm counter (1/3, 2/3, 3/3) animates smoothly on section change
+- **Container Size**: Verify website design section maintains same size as workflow video card
+- **Mobile Responsiveness**: Test thumbnails and counter scale correctly on mobile devices
+- **Scroll Observer**: Confirm scroll detection works within the website design container only
+
 ## UI/UX Changes - 2025-11-02
 - **Skills Bento Grid**: Verify Core Skills & Expertise displays as bento grid with 2-column spans per card
 - **Skills Grid Responsiveness**: Test grid adapts: 4 cols (desktop) → 3 cols (1200px) → 2 cols (991px) → 1 col (mobile)

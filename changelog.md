@@ -1,3 +1,25 @@
+## 2025-01-XX
+- **Updated Navbar Visibility Behavior**:
+  - Changed navbar visibility threshold from 100px to 10px for precise top detection
+  - Navbar now visible only when at the very top of the page (within 10px)
+  - Navbar automatically hides when scrolling down
+  - Navbar reappears smoothly when scrolling back to top
+  - Smooth transition animation via CSS (0.3s ease)
+  - Improved user experience with cleaner viewport when scrolling
+
+- **Added GSAP Scroll Animation to Website Design Section**:
+  - Converted React/GSAP scroll animation component to vanilla JavaScript
+  - Implemented scroll-based section transitions with wheel/touch/pointer controls
+  - Added GSAP Observer plugin for scroll detection
+  - Horizontal slide animations with image parallax effects
+  - Text animation with word-by-word reveal using custom SplitText alternative
+  - Thumbnail navigation with active state indicators
+  - Animated counter (1/3, 2/3, 3/3) with smooth transitions
+  - Three website design sections: Saletoru CRM, Solarair Dynamics, ColorDesign Studio
+  - Smooth 1.25s transitions with power1.inOut easing
+  - Responsive design with mobile-optimized thumbnail sizes and counter positioning
+  - Maintains same card container size as workflow video section
+
 ## 2025-11-02
 - **Transformed Core Skills & Expertise to Bento Grid**:
   - Changed from uniform 4-column grid to bento grid layout
