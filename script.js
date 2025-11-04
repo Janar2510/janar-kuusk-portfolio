@@ -108,26 +108,29 @@ function setupGlobalEventListeners() {
         });
     });
 
-    // Header scroll effect - visible only at top of page
+    // Header scroll effect - visible only at top of page, disappears when scrolling
     const header = document.querySelector('.portfolio-header');
-    const topThreshold = 100; // Show header when within 100px of top
+    let lastScrollY = 0;
+    const topThreshold = 10; // Show header when within 10px of top
     
     if (header) {
         // Set initial state
         const checkScrollPosition = () => {
             const currentScrollY = window.scrollY;
             
+            // Show header only when at the very top of the page
             if (currentScrollY <= topThreshold) {
-                // At top - show header
                 header.style.transform = 'translateY(0)';
                 header.style.opacity = '1';
                 header.style.visibility = 'visible';
             } else {
-                // Scrolled down - hide header
+                // Hide header when scrolled down
                 header.style.transform = 'translateY(-100%)';
                 header.style.opacity = '0';
                 header.style.visibility = 'hidden';
             }
+            
+            lastScrollY = currentScrollY;
         };
         
         // Check on scroll
