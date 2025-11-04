@@ -706,43 +706,6 @@ p {
     margin-bottom: 0;
 }
 
-/* Contact Form Card - Dark background with cyan gradient glow */
-.contact-form {
-    background: #000000;
-    border-radius: var(--radius-xl);
-    padding: var(--space-2xl);
-    border: 1px solid rgba(0, 229, 255, 0.3);
-    box-shadow: 
-        0 0 20px rgba(0, 229, 255, 0.4),
-        0 0 40px rgba(0, 229, 255, 0.3),
-        0 0 60px rgba(0, 229, 255, 0.2),
-        inset 0 0 30px rgba(0, 229, 255, 0.1);
-    position: relative;
-    overflow: hidden;
-}
-
-.contact-form::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(
-        circle,
-        rgba(0, 229, 255, 0.15) 0%,
-        rgba(0, 229, 255, 0.05) 30%,
-        transparent 70%
-    );
-    pointer-events: none;
-    z-index: 0;
-}
-
-.contact-form > * {
-    position: relative;
-    z-index: 1;
-}
-
 /* Form Styles */
 .form-group {
     margin-bottom: var(--space-lg);
