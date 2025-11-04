@@ -119,6 +119,7 @@ function setupGlobalEventListeners() {
             
             // Show header only when at the very top of the page
             if (currentScrollY <= topThreshold) {
+                // Show header
                 header.classList.remove('header-hidden');
                 header.classList.add('header-visible');
             } else {
@@ -128,32 +129,20 @@ function setupGlobalEventListeners() {
             }
         };
         
-        // Check initial state immediately (in case page loaded scrolled)
+        // Check initial state immediately
         checkScrollPosition();
         
-        // Check on scroll with throttling for better performance
-        let ticking = false;
-        const handleScroll = () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    checkScrollPosition();
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        };
+        // Set up scroll event listener with immediate execution
+        window.addEventListener('scroll', checkScrollPosition, { passive: true });
         
-        // Check on scroll
-        window.addEventListener('scroll', handleScroll, { passive: true });
+        // Also check on load and resize
+        window.addEventListener('load', checkScrollPosition);
+        window.addEventListener('resize', checkScrollPosition);
         
-        // Also check on load and after delays to ensure DOM is ready
-        window.addEventListener('load', () => {
-            checkScrollPosition();
-        });
-        
-        // Multiple checks to ensure it works
+        // Check after delays to ensure everything is ready
         setTimeout(checkScrollPosition, 50);
         setTimeout(checkScrollPosition, 200);
+        setTimeout(checkScrollPosition, 500);
     }
 
     // Active navigation link highlighting
