@@ -1227,14 +1227,14 @@ textarea.error {
 .website-design-section {
     background: var(--bg-primary);
     padding: 50px;
-    overflow: hidden;
+    overflow: visible;
     box-sizing: border-box;
+    min-height: calc(100vh - 100px);
 }
 
 .website-design-container {
     width: 100%;
-    height: auto;
-    min-height: 500px;
+    height: calc(100vh - 100px);
     background: #0a0a0a;
     border-radius: 1rem;
     overflow: hidden;
@@ -1282,7 +1282,7 @@ textarea.error {
     left: 0;
     width: 100%;
     height: 100%;
-    background-size: contain;
+    background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
     display: flex;
@@ -1796,10 +1796,12 @@ textarea.error {
     }
     .website-design-section { 
         padding: 50px; 
+        min-height: calc(100vh - 100px);
     }
     .website-design-container { 
         border-radius: 0.75rem; 
         width: 100%;
+        height: calc(100vh - 100px);
     }
     .website-slides { aspect-ratio: 16 / 9; }
 }
@@ -1815,11 +1817,13 @@ textarea.error {
     }
     .website-design-section { 
         padding: 50px; 
+        min-height: calc(100vh - 100px);
     }
     .website-design-container { 
         border-radius: 0.5rem; 
         border-width: 1px;
         width: 100%;
+        height: calc(100vh - 100px);
     }
     .website-slides { aspect-ratio: 16 / 9; }
 }

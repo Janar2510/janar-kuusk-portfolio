@@ -130,38 +130,12 @@
 
             // Initial animation
             this.gotoSection(0, 1);
-            
-            // Add resize handler to recalculate height
-            this.resizeHandler = () => {
-                if (this.imageAspectRatio) {
-                    this.updateContainerHeight();
-                }
-            };
-            window.addEventListener('resize', this.resizeHandler);
         }
 
         updateContainerHeight() {
-            if (!this.container || !this.imageAspectRatio) return;
-            
-            // Get the design container (parent of scroll-animation)
-            const designContainer = this.container.closest('.website-design-container');
-            if (!designContainer) return;
-            
-            // Get available width (100% of parent, which accounts for 50px padding)
-            const containerWidth = designContainer.offsetWidth || designContainer.clientWidth;
-            
-            // Calculate height based on image aspect ratio
-            const calculatedHeight = containerWidth / this.imageAspectRatio;
-            
-            // Get max available height (viewport minus 100px for padding)
-            const maxHeight = window.innerHeight - 100;
-            
-            // Use the smaller of calculated height or max height
-            const finalHeight = Math.min(calculatedHeight, maxHeight);
-            
-            // Set height on both containers
-            designContainer.style.height = `${finalHeight}px`;
-            this.container.style.height = `${finalHeight}px`;
+            // Container height is now fixed at 100vh - 100px via CSS
+            // No need to calculate height dynamically
+            // This ensures container is always 100% viewport height with 50px margins
         }
 
         setupObserver() {
@@ -313,10 +287,6 @@
             if (this.timeline) {
                 this.timeline.kill();
                 this.timeline = null;
-            }
-            if (this.resizeHandler) {
-                window.removeEventListener('resize', this.resizeHandler);
-                this.resizeHandler = null;
             }
         }
     }
