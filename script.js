@@ -113,10 +113,7 @@ function setupGlobalEventListeners() {
     const topThreshold = 10; // Show header when within 10px of top
     
     if (header) {
-        // Set initial state - visible at top
-        header.classList.add('header-visible');
-        
-        // Set initial state
+        // Function to check scroll position and update header visibility
         const checkScrollPosition = () => {
             const currentScrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
             
@@ -130,6 +127,9 @@ function setupGlobalEventListeners() {
                 header.classList.add('header-hidden');
             }
         };
+        
+        // Check initial state immediately
+        checkScrollPosition();
         
         // Check on scroll with throttling for better performance
         let ticking = false;
@@ -146,10 +146,9 @@ function setupGlobalEventListeners() {
         // Check on scroll
         window.addEventListener('scroll', handleScroll, { passive: true });
         
-        // Check on page load and after a short delay to ensure DOM is ready
-        setTimeout(() => {
-            checkScrollPosition();
-        }, 100);
+        // Also check on load and after a short delay to ensure DOM is ready
+        window.addEventListener('load', checkScrollPosition);
+        setTimeout(checkScrollPosition, 100);
     }
 
     // Active navigation link highlighting

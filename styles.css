@@ -148,6 +148,10 @@ p {
     border-bottom: none;
     z-index: var(--z-fixed);
     transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+    /* Default: hidden until JavaScript checks scroll position */
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
 }
 
 .portfolio-header.header-visible {
