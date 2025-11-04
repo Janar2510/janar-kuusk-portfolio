@@ -1233,7 +1233,7 @@ textarea.error {
 .website-design-container {
     width: 100%;
     height: auto;
-    background: #0a0a0a;
+    background: #000000;
     border-radius: 1rem;
     overflow: hidden;
     border: 1px solid rgba(0, 229, 255, 0.2);
@@ -1280,7 +1280,7 @@ textarea.error {
     height: 100%;
     object-fit: contain;
     object-position: center center;
-    background-color: var(--bg-primary, #0a0a0a);
+    background-color: #000000;
     z-index: 1;
 }
 
