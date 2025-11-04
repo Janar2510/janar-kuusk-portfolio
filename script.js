@@ -110,34 +110,46 @@ function setupGlobalEventListeners() {
 
     // Header scroll effect - visible only at top of page, disappears when scrolling
     const header = document.querySelector('.portfolio-header');
-    let lastScrollY = 0;
     const topThreshold = 10; // Show header when within 10px of top
     
     if (header) {
+        // Set initial state - visible at top
+        header.classList.add('header-visible');
+        
         // Set initial state
         const checkScrollPosition = () => {
-            const currentScrollY = window.scrollY;
+            const currentScrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
             
             // Show header only when at the very top of the page
             if (currentScrollY <= topThreshold) {
-                header.style.transform = 'translateY(0)';
-                header.style.opacity = '1';
-                header.style.visibility = 'visible';
+                header.classList.remove('header-hidden');
+                header.classList.add('header-visible');
             } else {
                 // Hide header when scrolled down
-                header.style.transform = 'translateY(-100%)';
-                header.style.opacity = '0';
-                header.style.visibility = 'hidden';
+                header.classList.remove('header-visible');
+                header.classList.add('header-hidden');
             }
-            
-            lastScrollY = currentScrollY;
+        };
+        
+        // Check on scroll with throttling for better performance
+        let ticking = false;
+        const handleScroll = () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    checkScrollPosition();
+                    ticking = false;
+                });
+                ticking = true;
+            }
         };
         
         // Check on scroll
-        window.addEventListener('scroll', checkScrollPosition, { passive: true });
+        window.addEventListener('scroll', handleScroll, { passive: true });
         
-        // Check on page load
-        checkScrollPosition();
+        // Check on page load and after a short delay to ensure DOM is ready
+        setTimeout(() => {
+            checkScrollPosition();
+        }, 100);
     }
 
     // Active navigation link highlighting
