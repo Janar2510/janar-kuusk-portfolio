@@ -1,5 +1,6 @@
 // Contact Form Handler
-class ContactForm {
+if (typeof window.ContactForm === 'undefined') {
+    window.ContactForm = class ContactForm {
     constructor() {
         this.form = document.getElementById('contactForm');
         this.submitButton = this.form?.querySelector('button[type="submit"]');
@@ -176,12 +177,15 @@ class ContactForm {
             setTimeout(() => notification.remove(), 300);
         }, 5000);
     }
-}
+    }; // End of ContactForm class
+} // End of if statement
 
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Initializing Contact Form...');
-    window.contactForm = new ContactForm();
-    console.log('Contact Form initialized');
+    if (window.ContactForm) {
+        window.contactForm = new window.ContactForm();
+        console.log('Contact Form initialized');
+    }
 });
 

@@ -135,20 +135,22 @@ function setupGlobalEventListeners() {
             }
         };
         
-        // Set initial state - hidden
+        // Set initial state - hidden, then check after page settles
         header.style.setProperty('transform', 'translateY(-100%)', 'important');
         header.style.setProperty('opacity', '0', 'important');
         header.style.setProperty('visibility', 'hidden', 'important');
         
-        // Check initial state immediately
-        checkScrollPosition();
+        // Check initial state after a delay to allow page to settle
+        setTimeout(() => {
+            checkScrollPosition();
+        }, 100);
         
         // Set up scroll event listener
-        let lastScrollTop = 0;
+        let lastScrollTop = -1;
         const scrollHandler = () => {
             const currentScrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
-            // Only check if scroll position actually changed
-            if (Math.abs(currentScrollY - lastScrollTop) > 1) {
+            // Check if scroll position actually changed
+            if (Math.abs(currentScrollY - lastScrollTop) >= 1) {
                 checkScrollPosition();
                 lastScrollTop = currentScrollY;
             }
@@ -157,13 +159,10 @@ function setupGlobalEventListeners() {
         window.addEventListener('scroll', scrollHandler, { passive: true });
         
         // Also check on load and resize
-        window.addEventListener('load', checkScrollPosition);
+        window.addEventListener('load', () => {
+            setTimeout(checkScrollPosition, 100);
+        });
         window.addEventListener('resize', checkScrollPosition);
-        
-        // Check after delays to ensure everything is ready
-        setTimeout(checkScrollPosition, 50);
-        setTimeout(checkScrollPosition, 200);
-        setTimeout(checkScrollPosition, 500);
     }
 
     // Active navigation link highlighting
@@ -228,77 +227,79 @@ function setupGlobalEventListeners() {
 }
 
 // Utility functions
-const Utils = {
-    debounce: function(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
+if (typeof window.Utils === 'undefined') {
+    window.Utils = {
+        debounce: function(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
                 clearTimeout(timeout);
-                func(...args);
+                timeout = setTimeout(later, wait);
             };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-        };
-    },
+        },
 
-    throttle: function(func, limit) {
-        let inThrottle;
-        return function() {
-            const args = arguments;
-            const context = this;
-            if (!inThrottle) {
-                func.apply(context, args);
-                inThrottle = true;
-                setTimeout(() => inThrottle = false, limit);
-            }
-        };
-    },
+        throttle: function(func, limit) {
+            let inThrottle;
+            return function() {
+                const args = arguments;
+                const context = this;
+                if (!inThrottle) {
+                    func.apply(context, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
+            };
+        },
 
-    // Smooth scroll to element
-    scrollToElement: function(element, offset = 0) {
-        const elementPosition = element.offsetTop - offset;
-        window.scrollTo({
-            top: elementPosition,
-            behavior: 'smooth'
-        });
-    },
+        // Smooth scroll to element
+        scrollToElement: function(element, offset = 0) {
+            const elementPosition = element.offsetTop - offset;
+            window.scrollTo({
+                top: elementPosition,
+                behavior: 'smooth'
+            });
+        },
 
-    // Check if element is in viewport
-    isInViewport: function(element) {
-        const rect = element.getBoundingClientRect();
-        return (
-            rect.top >= 0 &&
-            rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-        );
-    },
+        // Check if element is in viewport
+        isInViewport: function(element) {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        },
 
-    // Get random color from palette
-    getRandomColor: function() {
-        const colors = ['#6366f1', '#8b5cf6', '#06b6d4', '#10b981', '#f59e0b'];
-        return colors[Math.floor(Math.random() * colors.length)];
-    },
+        // Get random color from palette
+        getRandomColor: function() {
+            const colors = ['#6366f1', '#8b5cf6', '#06b6d4', '#10b981', '#f59e0b'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        },
 
-    // Animate number counting
-    animateNumber: function(element, start, end, duration) {
-        const startTimestamp = performance.now();
-        const step = (timestamp) => {
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            const value = start + (end - start) * this.easeOutCubic(progress);
-            element.textContent = Math.floor(value);
-            if (progress < 1) {
-                requestAnimationFrame(step);
-            }
-        };
-        requestAnimationFrame(step);
-    },
+        // Animate number counting
+        animateNumber: function(element, start, end, duration) {
+            const startTimestamp = performance.now();
+            const step = (timestamp) => {
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = start + (end - start) * this.easeOutCubic(progress);
+                element.textContent = Math.floor(value);
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                }
+            };
+            requestAnimationFrame(step);
+        },
 
-    // Easing function
-    easeOutCubic: function(t) {
-        return 1 - Math.pow(1 - t, 3);
-    }
-};
+        // Easing function
+        easeOutCubic: function(t) {
+            return 1 - Math.pow(1 - t, 3);
+        }
+    };
+}
 
 // Performance monitoring
 if ('performance' in window) {
@@ -321,5 +322,4 @@ window.addEventListener('unhandledrejection', (e) => {
     console.error('Unhandled Promise Rejection:', e.reason);
 });
 
-// Export utilities for use in other scripts
-window.Utils = Utils;
+// Utils already exported to window.Utils above
