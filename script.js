@@ -122,24 +122,39 @@ function setupGlobalEventListeners() {
                 // Show header - use both classes and direct styles for reliability
                 header.classList.remove('header-hidden');
                 header.classList.add('header-visible');
-                header.style.transform = 'translateY(0)';
-                header.style.opacity = '1';
-                header.style.visibility = 'visible';
+                header.style.setProperty('transform', 'translateY(0)', 'important');
+                header.style.setProperty('opacity', '1', 'important');
+                header.style.setProperty('visibility', 'visible', 'important');
             } else {
                 // Hide header when scrolled down - use both classes and direct styles
                 header.classList.remove('header-visible');
                 header.classList.add('header-hidden');
-                header.style.transform = 'translateY(-100%)';
-                header.style.opacity = '0';
-                header.style.visibility = 'hidden';
+                header.style.setProperty('transform', 'translateY(-100%)', 'important');
+                header.style.setProperty('opacity', '0', 'important');
+                header.style.setProperty('visibility', 'hidden', 'important');
             }
         };
+        
+        // Set initial state - hidden
+        header.style.setProperty('transform', 'translateY(-100%)', 'important');
+        header.style.setProperty('opacity', '0', 'important');
+        header.style.setProperty('visibility', 'hidden', 'important');
         
         // Check initial state immediately
         checkScrollPosition();
         
-        // Set up scroll event listener with immediate execution
-        window.addEventListener('scroll', checkScrollPosition, { passive: true });
+        // Set up scroll event listener
+        let lastScrollTop = 0;
+        const scrollHandler = () => {
+            const currentScrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+            // Only check if scroll position actually changed
+            if (Math.abs(currentScrollY - lastScrollTop) > 1) {
+                checkScrollPosition();
+                lastScrollTop = currentScrollY;
+            }
+        };
+        
+        window.addEventListener('scroll', scrollHandler, { passive: true });
         
         // Also check on load and resize
         window.addEventListener('load', checkScrollPosition);
@@ -148,6 +163,7 @@ function setupGlobalEventListeners() {
         // Check after delays to ensure everything is ready
         setTimeout(checkScrollPosition, 50);
         setTimeout(checkScrollPosition, 200);
+        setTimeout(checkScrollPosition, 500);
     }
 
     // Active navigation link highlighting
