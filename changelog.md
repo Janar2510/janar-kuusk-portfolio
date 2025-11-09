@@ -3,6 +3,7 @@
   - Initialized npm project with `package.json` for the static portfolio site
   - Added Vite as the dev/build tool with `dev`, `build`, and `preview` scripts
   - Created `.gitignore` to exclude `node_modules` and Vite build artifacts from version control
+  - Added `vite.config.js` to properly configure public directory and build settings
 
 - **Restored AI Agent Workflow Dotted Wave Animation**:
   - Fixed `workflow-dotted-surface.js` to target `.workflow-display-container` instead of `.workflow` section
