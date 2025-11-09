@@ -134,19 +134,9 @@
             this.videos.forEach((video, i) => {
                 if (i === 0) {
                     gsap.set(video, { xPercent: 0 });
-                    // Ensure first video loads and plays
+                    // Ensure first video loads - autoplay will be handled by setupScrollAutoplay
                     video.load();
-                    const playVideo = () => {
-                        video.play().catch(() => {
-                            // Retry if autoplay fails
-                            setTimeout(() => video.play().catch(() => {}), 100);
-                        });
-                    };
-                    if (video.readyState >= 2) {
-                        playVideo();
-                    } else {
-                        video.addEventListener('canplay', playVideo, { once: true });
-                    }
+                    // Don't try to play here - let setupScrollAutoplay handle it when section is visible
                 } else {
                     gsap.set(video, { xPercent: 15 });
                     // Pause other videos
@@ -169,8 +159,135 @@
             // Setup thumbnail clicks
             this.setupThumbnailClicks();
 
+            // Setup scroll-triggered autoplay
+            this.setupScrollAutoplay();
+
             // Initial animation
             this.gotoSection(0, 1);
+        }
+
+        setupScrollAutoplay() {
+            // Find the website design section container
+            const section = this.container.closest('.website-design-section');
+            if (!section) return;
+
+            // Find the first video
+            const firstVideo = this.videos[0];
+            if (!firstVideo) {
+                console.warn('First video not found for autoplay');
+                return;
+            }
+
+            let hasPlayed = false;
+            let isPlaying = false;
+
+            // Function to ensure video is ready and play it
+            const ensureVideoPlays = () => {
+                if (hasPlayed || isPlaying) return;
+                
+                // Force video to load if not already loaded
+                if (firstVideo.readyState < 2) {
+                    firstVideo.load();
+                }
+
+                // Try to play immediately if ready
+                const attemptPlay = () => {
+                    if (isPlaying || !firstVideo.paused) return;
+                    
+                    isPlaying = true;
+                    firstVideo.play()
+                        .then(() => {
+                            hasPlayed = true;
+                            console.log('First video started playing');
+                        })
+                        .catch((error) => {
+                            isPlaying = false;
+                            console.log('Autoplay prevented, will retry:', error);
+                            // Retry after a short delay
+                            setTimeout(() => {
+                                if (!hasPlayed) {
+                                    firstVideo.play()
+                                        .then(() => {
+                                            hasPlayed = true;
+                                            console.log('First video started playing on retry');
+                                        })
+                                        .catch(() => {
+                                            // If still fails, wait for user interaction
+                                            const handleInteraction = () => {
+                                                firstVideo.play().catch(() => {});
+                                                document.removeEventListener('click', handleInteraction);
+                                                document.removeEventListener('touchstart', handleInteraction);
+                                                document.removeEventListener('scroll', handleInteraction);
+                                            };
+                                            document.addEventListener('click', handleInteraction, { once: true });
+                                            document.addEventListener('touchstart', handleInteraction, { once: true });
+                                            document.addEventListener('scroll', handleInteraction, { once: true });
+                                        });
+                                }
+                            }, 200);
+                        });
+                };
+
+                // Check if video is ready
+                if (firstVideo.readyState >= 2) {
+                    attemptPlay();
+                } else {
+                    // Wait for video to be ready
+                    const onCanPlay = () => {
+                        attemptPlay();
+                        firstVideo.removeEventListener('canplay', onCanPlay);
+                    };
+                    firstVideo.addEventListener('canplay', onCanPlay, { once: true });
+                    firstVideo.load();
+                }
+            };
+
+            // Check if section is already visible on page load
+            const checkInitialVisibility = () => {
+                const rect = section.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight * 0.8 && rect.bottom > window.innerHeight * 0.2;
+                if (isVisible) {
+                    // Start playing when section is visible
+                    ensureVideoPlays();
+                }
+            };
+
+            // Check after initialization
+            setTimeout(checkInitialVisibility, 800);
+
+            // Create Intersection Observer with lower threshold to trigger earlier
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting && !hasPlayed) {
+                            // Section is entering viewport, start playing video
+                            ensureVideoPlays();
+                        }
+                    });
+                },
+                {
+                    threshold: 0.1, // Trigger when just 10% of section is visible (much earlier)
+                    rootMargin: '100px 0px' // Start checking 100px before section enters viewport
+                }
+            );
+
+            observer.observe(section);
+
+            // Also add scroll listener as backup
+            let scrollTimeout;
+            const handleScroll = () => {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    if (!hasPlayed) {
+                        const rect = section.getBoundingClientRect();
+                        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                        if (isVisible) {
+                            ensureVideoPlays();
+                        }
+                    }
+                }, 100);
+            };
+            window.addEventListener('scroll', handleScroll, { passive: true });
         }
 
         setupObserver() {

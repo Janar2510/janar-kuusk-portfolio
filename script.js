@@ -31,13 +31,19 @@ function initializeComponents() {
 }
 
 // Splash Cursor Initialization
-function initializeSplashCursor() {
-    console.log('Attempting to initialize SplashCursorReact...');
+function initializeSplashCursor(retryCount = 0) {
+    const maxRetries = 50; // Maximum 5 seconds of retries (50 * 100ms)
     
     // Wait for SplashCursorReact to be available
     if (typeof SplashCursorReact === 'undefined') {
-        console.log('SplashCursorReact not found, retrying in 100ms...');
-        setTimeout(initializeSplashCursor, 100);
+        if (retryCount >= maxRetries) {
+            console.warn('SplashCursorReact not found after maximum retries. Splash cursor will not be initialized.');
+            return;
+        }
+        if (retryCount === 0) {
+            console.log('Attempting to initialize SplashCursorReact...');
+        }
+        setTimeout(() => initializeSplashCursor(retryCount + 1), 100);
         return;
     }
     

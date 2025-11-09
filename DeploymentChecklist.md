@@ -1,3 +1,10 @@
+## Tooling Updates - 2025-11-07
+- [ ] `npm install` completes without errors and installs Vite dependencies
+- [ ] `npm run dev` serves the site locally via Vite (default: http://localhost:5173)
+- [ ] `npm run build` outputs static assets to the `dist/` directory
+- [ ] `npm run preview` serves the production build without console errors
+- [ ] `.gitignore` excludes `node_modules/` and `dist/` before committing
+
 ## Content & Legal - 2025-01-XX
 - **Privacy Policy Page**: Verify privacy-policy.html loads correctly
 - **Privacy Policy Translations**: Test language toggle switches privacy policy content between English and Estonian
@@ -82,6 +89,8 @@
 - [ ] `styles.css` - Main stylesheet with custom properties
 - [ ] `WorkflowNode.css` - Agent workflow specific styles
 - [ ] `script.js` - Interactive functionality
+- [ ] `package.json` - Node project configuration with Vite scripts
+- [ ] `.gitignore` - Excludes build artifacts and dependencies
 - [ ] `changelog.md` - Version history
 - [ ] `DeploymentChecklist.md` - This checklist
 

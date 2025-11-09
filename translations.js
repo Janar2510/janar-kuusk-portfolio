@@ -132,6 +132,12 @@ const translations = {
                     year: "1997",
                     institution: "Karksi-Nuia Gymnasium",
                     description: "Comprehensive secondary education with focus on science and mathematics."
+                },
+                {
+                    degree: "Ongoing Learning in AI & Development",
+                    year: "Ongoing",
+                    institution: "Multiple Platforms",
+                    description: "Blending technical expertise with business understanding to build smarter digital solutions. I focus on how AI, automation, and code work together to improve real workflows and user experiences. OpenAI Learning Series – AI Tools & Automation. Google – Foundations of Project Management. Codecademy / freeCodeCamp – Web Development & JavaScript. Ongoing personal research and experimentation with AI-driven coding tools."
                 }
             ]
         },
@@ -231,13 +237,7 @@ const translations = {
                 }
             ]
         },
-        video: {
-            title: "Veebi Aplikatsioonide Arhidektuur ja Disain"
-        },
-        websiteDesign: {
-            title: "Veebidisain",
-            subtitle: "Elegantne ja reageeriv liides koos liikumise ja selgusega"
-        },
+        // REMOVE erroneous Estonian values from English locale (moved to et below)
         vision: {
             title: "Vision for the Future",
             subtitle: "Where AI meets human potential",
@@ -463,12 +463,18 @@ const translations = {
                     year: "1997",
                     institution: "Karksi-Nuia Gümnaasium",
                     description: "Põhjalik keskharidus keskendumisega teadusele ja matemaatikale."
+                },
+                {
+                    degree: "Jätkuv õppimine AI ja arenduses",
+                    year: "Jätkuvalt",
+                    institution: "Mitu platvormi",
+                    description: "Tehnilise ekspertiisi ja ärilise mõistmise ühendamine targemate digitaalsete lahenduste loomiseks. Keskendun sellele, kuidas AI, automaatika ja kood koos töötavad, et parandada tõelisi töövoo ja kasutajakogemusi. OpenAI õppesari – AI tööriistad ja automaatika. Google – Projekti juhtimise alused. Codecademy / freeCodeCamp – Veebiarendus ja JavaScript. Jätkuv isiklik uurimistöö ja katsetamine AI-põhiste kodeerimistööriistadega."
                 }
             ]
         },
         projects: {
-            title: "Esitletud Projektid",
-            subtitle: "Uuenduslikud lahendused, mis muudavad olukorda",
+            title: "AI Projektid",
+            subtitle: "Uuenduslikud automatiseeritud, organiseeritud AI veebi ja mobiili aplikatsioonid.",
             items: [
                 {
                     name: "Saletoru CRM",
@@ -493,6 +499,13 @@ const translations = {
         workflow: {
             title: "AI Agendi Töövoog",
             subtitle: "Kuidas intelligentsed süsteemid koos töötavad"
+        },
+        video: {
+            title: "Veebi rakenduste arhitektuur ja disain"
+        },
+        websiteDesign: {
+            title: "Veebidisain",
+            subtitle: "Elegantne ja reageeriv liides koos liikumise ja selgusega"
         },
         skills: {
             title: "Põhilised Oskused ja Teadmised",

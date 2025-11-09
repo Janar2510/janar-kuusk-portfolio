@@ -732,16 +732,38 @@ document.addEventListener('DOMContentLoaded', function() {
         return dt;
     }
     
+    // Cache canvas dimensions to avoid forced reflows
+    let cachedWidth = 0;
+    let cachedHeight = 0;
+    let dimensionsInvalid = true;
+    
     function resizeCanvas() {
-        let width = scaleByPixelRatio(canvas.clientWidth);
-        let height = scaleByPixelRatio(canvas.clientHeight);
-        if (canvas.width !== width || canvas.height !== height) {
-            canvas.width = width;
-            canvas.height = height;
-            return true;
+        // Only check dimensions if they might have changed (avoid forced reflow every frame)
+        if (dimensionsInvalid) {
+            const newWidth = scaleByPixelRatio(canvas.clientWidth);
+            const newHeight = scaleByPixelRatio(canvas.clientHeight);
+            
+            if (canvas.width !== newWidth || canvas.height !== newHeight) {
+                canvas.width = newWidth;
+                canvas.height = newHeight;
+                cachedWidth = newWidth;
+                cachedHeight = newHeight;
+                dimensionsInvalid = false;
+                return true;
+            }
+            dimensionsInvalid = false;
         }
         return false;
     }
+    
+    // Invalidate dimensions cache on resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            dimensionsInvalid = true;
+        }, 100);
+    }, { passive: true });
     
     function updateColors(dt) {
         colorUpdateTimer += dt * config.COLOR_UPDATE_SPEED;

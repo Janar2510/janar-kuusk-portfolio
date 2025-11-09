@@ -180,19 +180,21 @@
   right: 0;
   bottom: 0;
   background: radial-gradient(
-    600px circle at var(--mouse-x) var(--mouse-y),
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
     rgba(0, 229, 255, 0.4),
     rgba(0, 229, 255, 0.2) 30%,
     transparent 50%
   );
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.2s ease;
   pointer-events: none;
   z-index: 1;
+  will-change: background-position, opacity;
 }
 
 .experience-spotlight-card:hover::before,
-.experience-spotlight-card:focus-within::before {
+.experience-spotlight-card:focus-within::before,
+.experience-spotlight-card.is-hovering::before {
   opacity: 1;
 }
 
@@ -451,7 +453,8 @@
 }
 
 .summary-spotlight-card:hover {
-  transform: translateY(-8px);
+  /* Transform is now handled by JavaScript for 3D tilt effect */
+  /* transform: translateY(-8px); - Removed to allow JS 3D tilt */
   border-color: rgba(0, 229, 255, 0.5);
   box-shadow:
     0 20px 40px rgba(0, 0, 0, 0.4),
@@ -467,19 +470,21 @@
   right: 0;
   bottom: 0;
   background: radial-gradient(
-    600px circle at var(--mouse-x) var(--mouse-y),
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
     rgba(0, 229, 255, 0.4),
     rgba(0, 229, 255, 0.2) 30%,
     transparent 50%
   );
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.2s ease;
   pointer-events: none;
   z-index: 1;
+  will-change: background-position, opacity;
 }
 
 .summary-spotlight-card:hover::before,
-.summary-spotlight-card:focus-within::before {
+.summary-spotlight-card:focus-within::before,
+.summary-spotlight-card.is-hovering::before {
   opacity: 1;
 }
 

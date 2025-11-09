@@ -326,23 +326,42 @@ class LanguageSwitcher {
     }
 
     updateEducationCards(items) {
-        const educationCards = document.querySelectorAll('.education-card, .education-spotlight-card');
+        // Education cards now use experience-spotlight-card class for same styling
+        const educationCards = document.querySelectorAll('#education .experience-spotlight-card, .education-card, .education-spotlight-card');
 
         educationCards.forEach((card, index) => {
             if (items[index]) {
                 const item = items[index];
 
-                const degreeEl = card.querySelector('h3, .education-spotlight-title');
-                if (degreeEl) degreeEl.textContent = item.degree;
+                // Check if it's an experience-style card (new format)
+                const isExperienceStyle = card.classList.contains('experience-spotlight-card');
+                
+                if (isExperienceStyle) {
+                    const degreeEl = card.querySelector('.experience-spotlight-title, h3');
+                    if (degreeEl) degreeEl.textContent = item.degree;
 
-                const yearEl = card.querySelector('.education-year, .education-spotlight-year');
-                if (yearEl) yearEl.textContent = item.year;
+                    const yearEl = card.querySelector('.experience-period');
+                    if (yearEl) yearEl.textContent = item.year;
 
-                const institutionEl = card.querySelector('.education-institution, .education-spotlight-institution');
-                if (institutionEl) institutionEl.textContent = item.institution;
+                    const institutionEl = card.querySelector('.experience-company');
+                    if (institutionEl) institutionEl.textContent = item.institution;
 
-                const descEl = card.querySelector('.education-description, .education-spotlight-description');
-                if (descEl) descEl.textContent = item.description;
+                    const descEl = card.querySelector('.experience-description');
+                    if (descEl) descEl.textContent = item.description;
+                } else {
+                    // Old format for backward compatibility
+                    const degreeEl = card.querySelector('h3, .education-spotlight-title');
+                    if (degreeEl) degreeEl.textContent = item.degree;
+
+                    const yearEl = card.querySelector('.education-year, .education-spotlight-year');
+                    if (yearEl) yearEl.textContent = item.year;
+
+                    const institutionEl = card.querySelector('.education-institution, .education-spotlight-institution');
+                    if (institutionEl) institutionEl.textContent = item.institution;
+
+                    const descEl = card.querySelector('.education-description, .education-spotlight-description');
+                    if (descEl) descEl.textContent = item.description;
+                }
             }
         });
     }

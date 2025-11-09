@@ -1,4 +1,129 @@
+## 2025-11-07
+- **Set Up Local Development Tooling**:
+  - Initialized npm project with `package.json` for the static portfolio site
+  - Added Vite as the dev/build tool with `dev`, `build`, and `preview` scripts
+  - Created `.gitignore` to exclude `node_modules` and Vite build artifacts from version control
+
+- **Restored AI Agent Workflow Dotted Wave Animation**:
+  - Fixed `workflow-dotted-surface.js` to target `.workflow-display-container` instead of `.workflow` section
+  - Three.js animated dotted surface now renders behind TRIGGER → AI AGENT → ACTION blocks
+  - Updated fog color to match dark theme background (#0a0a0a)
+  - Animated wave particles create dynamic 3D background effect with purple dots
+  - Removed ES6 module import to use global THREE from CDN for better compatibility
+
+- **Fixed Asset Paths for Vite Development Server**:
+  - Updated all image paths from `public/images/` to `/images/` for Vite compatibility
+  - Updated all video paths from `./public/images/` to `/images/` for proper serving
+  - Fixed Portfolio video, game2.mp4, Solarair.mp4, and Colordesign Studio.mp4 paths
+  - Fixed project images (Saletoru, FusionAI, AgentFlow) and logo paths
+
+- **Standardized Button Design System with Spotlight Animation**:
+  - Redesigned all buttons to match Head of Sales card styling for consistency
+  - All buttons now have dark background (#111) with subtle border (#222)
+  - Added animated gradient border on hover (CYAN ONLY - removed purple)
+  - Added cursor-tracking spotlight effect to all buttons (matches card spotlight)
+  - Spotlight follows mouse movement with radial gradient (400px circle)
+  - Primary buttons: cyan glow emphasis with rgba(0, 229, 255) colors
+  - Secondary buttons: subtle cyan accent (no purple)
+  - Outline buttons: minimal transparent style with cyan accent
+  - Consistent hover effects: translateY(-4px) lift + multi-layered cyan glow shadows
+  - All buttons use same border-radius (1rem) and padding (1rem 2rem)
+  - Smooth 4-second borderShine animation with cyan gradient only
+  - JavaScript spotlight tracking with cached rect for performance
+
 ## 2025-01-XX
+- **Performance Optimizations - Fixed Forced Reflow Violations**:
+  - Optimized spotlight card handlers to cache `getBoundingClientRect()` calls and only recalculate when needed
+  - Added rect caching to avoid forced reflows on every mousemove event
+  - Optimized fluid simulation to cache canvas dimensions and only check on resize events
+  - Reduced forced reflow violations from 30-48ms down to minimal/zero
+  - Used requestAnimationFrame for tilt effects to batch DOM updates
+  - Added throttled resize handlers to invalidate caches only when necessary
+  - Spotlight effect remains responsive while eliminating performance warnings
+
+- **Fixed Summary Cards 3D Tilt Effect**:
+  - Removed conflicting CSS transform rule from `.summary-spotlight-card:hover` that was overriding JavaScript 3D tilt
+  - Added proper initialization for summary spotlight cards with cleanup of conflicting handlers
+  - Increased initialization delay to 200ms for summary cards to ensure DOM is ready
+  - All Professional Summary cards (Professionaalne Kokkuvõte) now have working 3D tilt effect
+
+- **Fixed Spotlight Cursor Tracking and 3D Tilt Issues**:
+  - Fixed spotlight effect to update CSS variables immediately (removed requestAnimationFrame delay)
+  - Added `.is-hovering` class support to all card CSS for spotlight visibility
+  - Removed background transition that was preventing smooth spotlight movement
+  - Added `stopPropagation` to tilt handlers to prevent event conflicts
+  - Increased initialization delay to 200ms to ensure DOM is ready
+  - Added cleanup of conflicting saletoru-effects handlers
+  - Added fallback values (`var(--mouse-x, 50%)`) in CSS for better compatibility
+  - All cards now properly initialize with both spotlight and tilt effects
+
+- **Fixed Spotlight Effect and Added 3D Tilt to All Cards**:
+  - Fixed spotlight/flashlight effect to properly track cursor movement on all cards
+  - Spotlight effect now follows cursor position using CSS custom properties (--mouse-x, --mouse-y)
+  - Added 3D tilt effect to all card types:
+    - Professional Experience cards (.experience-spotlight-card)
+    - Education & Certifications cards (.experience-spotlight-card)
+    - Core Skills & Expertise cards (.skill-category)
+    - Career Journey cards (.career-card)
+    - Professional Summary cards (.summary-spotlight-card)
+  - Created reusable `addTiltEffect()` helper function for consistent 3D tilt across all cards
+  - Cards now have both spotlight cursor tracking AND 3D tilt animations
+  - Spotlight effect uses radial-gradient that follows mouse position
+  - 3D tilt provides perspective rotation up to ±5 degrees based on cursor position
+
+- **Updated Education Cards to Match Experience Card Styling**:
+  - Changed education cards from `.education-card` to `.experience-spotlight-card` class
+  - Education cards now have the same cyan glow, gradient border, and hover animations as experience cards
+  - Updated HTML structure to use `.experience-header`, `.experience-period`, `.experience-company`, `.experience-description`
+  - Updated language switcher to handle both old and new education card formats
+  - All 4 education cards now have the same visual style as "Head of Sales" experience cards
+
+- **Fixed Education Cards - Disabled spotlight-card.js override**:
+  - Commented out code in spotlight-card.js that was clearing and recreating education grid with only 3 cards
+  - This was preventing the 4th education card from displaying
+  - Education cards are now properly managed by HTML and language-switcher.js
+
+- **Added New Education Card - Ongoing Learning in AI & Development**:
+  - Added 4th education card with "Ongoing Learning in AI & Development" title
+  - Includes comprehensive description of ongoing learning platforms and courses
+  - English: "Ongoing Learning in AI & Development" with detailed course listing
+  - Estonian: "Jätkuv õppimine AI ja arenduses" with full Estonian translation
+  - Lists OpenAI Learning Series, Google Project Management, Codecademy/freeCodeCamp courses
+  - Year displays as "Ongoing" (English) / "Jätkuvalt" (Estonian)
+
+- **Fixed mixed-language headings in EN locale**:
+- **Updated ET Projects section heading and subtitle**:
+  - Title: "AI Projektid"
+  - Subtitle: "Uuenduslikud automatiseeritud, organiseeritud AI veebi ja mobiili aplikatsioonid."
+
+  - Removed Estonian strings from `en.video.title` and `en.websiteDesign.*`
+  - Added proper Estonian entries under `et.video.title` and `et.websiteDesign.*`
+  - Now EN shows: "Website design" and "Web application architecture and design"
+  - ET shows: "Veebidisain" and "Veebi rakenduste arhitektuur ja disain"
+
+- **Added Scroll-Triggered Video Autoplay for Website Design Section**:
+  - First video in website design section now starts automatically when scrolled into view
+  - Uses Intersection Observer with 10% threshold and 100px rootMargin to trigger early
+  - Added scroll listener as backup to ensure video plays when section is visible
+  - Improved video readiness checking with retry mechanism
+  - Handles autoplay restrictions with automatic retry and fallback to user interaction
+  - Checks if section is already visible on page load and plays video accordingly
+  - Prevents multiple play attempts with hasPlayed and isPlaying flags
+  - Ensures video is fully loaded before attempting to play
+
+- **Fixed Video Path Issues (404 Errors)**:
+  - Updated all video source paths to use explicit relative paths with `./` prefix
+  - Fixed paths for: game2.mp4, Solarair.mp4, Colordesign Studio.mp4, Portfolio video.mp4
+  - Changed from `public/images/...` to `./public/images/...` for better path resolution
+  - Should resolve 404 errors when videos are properly deployed to server
+
+- **Fixed SplashCursorReact Initialization Error**:
+  - Added missing `splash-cursor-react.js` script tag to index.html before script.js
+  - Fixed infinite retry loop that was causing console errors
+  - Added retry limit (50 attempts, 5 seconds max) to prevent infinite retries
+  - SplashCursorReact now initializes correctly without console spam
+  - Improved error handling with proper warning messages
+
 - **Added Cyan Gradient Glow Effects to Contact Cards and Hero Text**:
   - Contact info card: Pure black background (#000000) with cyan gradient glow
   - Contact form card: Pure black background with matching cyan glow effect

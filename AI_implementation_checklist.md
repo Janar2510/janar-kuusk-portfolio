@@ -1,3 +1,8 @@
+### 2025-11-07 Development Workflow
+- **Local Tooling**: Initialized npm project and added Vite for rapid iteration with hot module replacement
+- **Scripts Added**: `npm run dev`, `npm run build`, and `npm run preview` documented for consistent AI feature testing
+- **Version Control Hygiene**: Introduced `.gitignore` entries for `node_modules/` and `dist/` to keep AI assets and dependencies organized
+
 ### 2025-10-28 Content Accuracy Update
 - **CV Alignment**: Updated all portfolio content to match actual CV credentials
 - **Education Fixed**: Replaced placeholder degrees with real credentials from Tallinn Technical University, Olustvere Technical School, and Karksi-Nuia Gymnasium
@@ -263,6 +268,6 @@
 ---
 
 **AI Implementation Status**: ✅ Complete
-**Last Updated**: 2024-12-19
+**Last Updated**: 2025-11-07
 **Version**: 1.0.0
 **AI Features**: Fully Integrated

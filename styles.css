@@ -869,18 +869,20 @@ textarea.error {
     right: 0;
     bottom: 0;
     background: radial-gradient(
-        600px circle at var(--mouse-x) var(--mouse-y),
+        600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
         rgba(0, 229, 255, 0.4),
         rgba(0, 229, 255, 0.2) 30%,
         transparent 50%
     );
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.2s ease;
     pointer-events: none;
     z-index: 1;
+    will-change: background-position, opacity;
 }
 
-.skill-category:hover::before {
+.skill-category:hover::before,
+.skill-category.is-hovering::before {
     opacity: 1;
 }
 
