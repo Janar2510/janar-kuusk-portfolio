@@ -1,14 +1,13 @@
 ## 2025-11-07
 
-- **Major Performance Optimization**:
-  - Disabled Three.js dotted wave animation (saves ~2MB and heavy CPU usage)
-  - Disabled fluid simulation background effect (CPU intensive)
-  - Disabled splash cursor React effect (unnecessary overhead)
-  - Removed autoplay from all videos (saves bandwidth and CPU)
-  - Videos now only load and play when user interacts with them
-  - Page load time reduced by ~80%
-  - Eliminated lag and hanging issues
-  - Kept essential features: spotlight effects, language switcher, scroll animations
+- **Performance Optimization (Balanced)**:
+  - Re-enabled Three.js dotted wave animation on AI Agent Workflow section (with defer loading)
+  - Re-enabled autoplay for Portfolio video in Web application architecture section
+  - Disabled fluid simulation background effect (CPU intensive - kept off)
+  - Disabled splash cursor React effect (unnecessary overhead - kept off)
+  - Other videos load on-demand only (lazy loading)
+  - Scripts load with defer attribute for non-blocking performance
+  - Balanced performance with visual appeal
 
 - **Fixed Image and Video Loading on Netlify**:
   - Removed spaces and special characters from all image and video filenames
