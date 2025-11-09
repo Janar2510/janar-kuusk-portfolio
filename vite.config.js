@@ -1,6 +1,4 @@
-import { defineConfig } from 'vite'
-
-export default defineConfig({
+export default {
   publicDir: 'public',
   build: {
     outDir: 'dist',
@@ -15,5 +13,5 @@ export default defineConfig({
     port: 5173,
     open: true
   }
-})
+}
 
