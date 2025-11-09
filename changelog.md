@@ -1,4 +1,14 @@
 ## 2025-11-07
+
+- **Fixed Image and Video Loading on Netlify**:
+  - Removed spaces and special characters from all image and video filenames
+  - Renamed files: JanarKuusk-logo.png, AGENT-FLOW.png, FUSIONAI-3.png, Saletoru-Powered-with-ai.png
+  - Renamed videos: Portfolio-video.mp4, Colordesign-Studio.mp4
+  - Updated all file references in HTML
+  - Spaces in URLs were causing 404 errors on deployed Netlify site
+  - All images and videos now load correctly on production
+
+## 2025-11-07 (Earlier)
 - **Set Up Local Development Tooling**:
   - Initialized npm project with `package.json` for the static portfolio site
   - Added Vite as the dev/build tool with `dev`, `build`, and `preview` scripts
