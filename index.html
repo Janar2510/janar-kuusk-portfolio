@@ -481,11 +481,11 @@
         <div class="workflow-video-container">
             <video 
                 class="workflow-video" 
+                autoplay 
                 loop 
                 muted 
                 playsinline
-                preload="none"
-                loading="lazy">
+                preload="metadata">
                 <source src="/images/projects/Portfolio-video.mp4" type="video/mp4">
                 <p style="color: white; padding: 2rem; text-align: center;">
                     Your browser does not support the video tag.
@@ -845,9 +845,11 @@
     <script defer src="/js/contact-form.js"></script>
     <script defer src="/js/website-scroll-animation.js"></script>
     
+    <!-- Three.js for workflow dotted background animation -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script defer src="/js/workflow-dotted-surface.js"></script>
+    
     <!-- Heavy animations disabled for performance -->
-    <!-- <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script> -->
-    <!-- <script defer src="/js/workflow-dotted-surface.js"></script> -->
     <!-- <script defer src="/js/fluid-simulation.js"></script> -->
     <!-- <script defer src="/js/splash-cursor-react.js"></script> -->
     
