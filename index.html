@@ -481,11 +481,10 @@
         <div class="workflow-video-container">
             <video 
                 class="workflow-video" 
-                autoplay 
                 loop 
                 muted 
                 playsinline
-                preload="metadata"
+                preload="none"
                 loading="lazy">
                 <source src="/images/projects/Portfolio-video.mp4" type="video/mp4">
                 <p style="color: white; padding: 2rem; text-align: center;">
@@ -612,7 +611,7 @@
                 <div class="website-scroll-section" data-index="0">
                     <div class="website-outer">
                         <div class="website-inner">
-                            <video class="website-video" autoplay loop muted playsinline preload="none" loading="lazy">
+                            <video class="website-video" loop muted playsinline preload="none" loading="lazy">
                                 <source src="/images/game2.mp4" type="video/mp4">
                             </video>
                             <h2 class="website-heading">Game</h2>
@@ -623,7 +622,7 @@
                 <div class="website-scroll-section" data-index="1">
                     <div class="website-outer">
                         <div class="website-inner">
-                            <video class="website-video" autoplay loop muted playsinline preload="none" loading="lazy">
+                            <video class="website-video" loop muted playsinline preload="none" loading="lazy">
                                 <source src="/images/Solarair.mp4" type="video/mp4">
                             </video>
                             <h2 class="website-heading">Solarair Dynamics</h2>
@@ -634,7 +633,7 @@
                 <div class="website-scroll-section" data-index="2">
                     <div class="website-outer">
                         <div class="website-inner">
-                            <video class="website-video" autoplay loop muted playsinline preload="none" loading="lazy">
+                            <video class="website-video" loop muted playsinline preload="none" loading="lazy">
                                 <source src="/images/Colordesign-Studio.mp4" type="video/mp4">
                             </video>
                             <h2 class="website-heading">ColorDesign Studio</h2>
@@ -846,16 +845,16 @@
     <script defer src="/js/contact-form.js"></script>
     <script defer src="/js/website-scroll-animation.js"></script>
     
-    <!-- Three.js for workflow animation - lazy load -->
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script defer src="/js/workflow-dotted-surface.js"></script>
+    <!-- Heavy animations disabled for performance -->
+    <!-- <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script> -->
+    <!-- <script defer src="/js/workflow-dotted-surface.js"></script> -->
+    <!-- <script defer src="/js/fluid-simulation.js"></script> -->
+    <!-- <script defer src="/js/splash-cursor-react.js"></script> -->
     
     <!-- Optional effects - lowest priority -->
     <script defer src="/js/saletoru-effects.js"></script>
-    <script defer src="/js/fluid-simulation.js"></script>
     <script defer src="/js/profile-card.js"></script>
     <script defer src="/js/components.js"></script>
-    <script defer src="/js/splash-cursor-react.js"></script>
     <script defer src="/js/orbiting-skills.js"></script>
 </body>
 </html>
