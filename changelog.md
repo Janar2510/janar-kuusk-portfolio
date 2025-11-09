@@ -4,6 +4,8 @@
   - Added Vite as the dev/build tool with `dev`, `build`, and `preview` scripts
   - Created `.gitignore` to exclude `node_modules` and Vite build artifacts from version control
   - Added `vite.config.js` to properly configure public directory and build settings
+  - Added `netlify.toml` for proper Netlify deployment configuration
+  - Build process verified to copy all images and videos to dist folder
 
 - **Restored AI Agent Workflow Dotted Wave Animation**:
   - Fixed `workflow-dotted-surface.js` to target `.workflow-display-container` instead of `.workflow` section
