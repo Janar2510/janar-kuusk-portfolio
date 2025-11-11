@@ -465,16 +465,16 @@ class SplashCursor {
       `
     );
 
-    this.copyProgram = new this.Program(baseVertexShader, copyShader);
-    this.clearProgram = new this.Program(baseVertexShader, clearShader);
-    this.splatProgram = new this.Program(baseVertexShader, splatShader);
-    this.advectionProgram = new this.Program(baseVertexShader, advectionShader);
-    this.divergenceProgram = new this.Program(baseVertexShader, divergenceShader);
-    this.curlProgram = new this.Program(baseVertexShader, curlShader);
-    this.vorticityProgram = new this.Program(baseVertexShader, vorticityShader);
-    this.pressureProgram = new this.Program(baseVertexShader, pressureShader);
-    this.gradienSubtractProgram = new this.Program(baseVertexShader, gradientSubtractShader);
-    this.displayMaterial = new this.Material(baseVertexShader, displayShaderSource);
+    this.copyProgram = this.Program(baseVertexShader, copyShader);
+    this.clearProgram = this.Program(baseVertexShader, clearShader);
+    this.splatProgram = this.Program(baseVertexShader, splatShader);
+    this.advectionProgram = this.Program(baseVertexShader, advectionShader);
+    this.divergenceProgram = this.Program(baseVertexShader, divergenceShader);
+    this.curlProgram = this.Program(baseVertexShader, curlShader);
+    this.vorticityProgram = this.Program(baseVertexShader, vorticityShader);
+    this.pressureProgram = this.Program(baseVertexShader, pressureShader);
+    this.gradienSubtractProgram = this.Program(baseVertexShader, gradientSubtractShader);
+    this.displayMaterial = this.Material(baseVertexShader, displayShaderSource);
 
     this.displayMaterial.setKeywords(this.config.SHADING ? ['SHADING'] : []);
   }
