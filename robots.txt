@@ -1,0 +1,12 @@
+# Robots.txt for janarkuuskpro.com
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.janarkuuskpro.com/sitemap.xml
+
+# Disallow access to specific directories (optional)
+Disallow: /node_modules/
+Disallow: /dist/
+
