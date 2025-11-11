@@ -834,29 +834,31 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://assets.codepen.io/16327/Observer.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="saletoru-effects.js"></script>
-    <script src="fluid-simulation.js"></script>
-    <script src="profile-card.js"></script>
-    <script src="spotlight-card.js"></script>
-    <script src="components.js"></script>
-    <script src="splash-cursor.js"></script>
+    <script src="/saletoru-effects.js"></script>
+    <script src="/fluid-simulation.js"></script>
+    <script src="/profile-card.js"></script>
+    <script src="/spotlight-card.js"></script>
+    <script src="/components.js"></script>
+    <script src="/js/splash-cursor.js"></script>
     <script>
         // Initialize Splash Cursor after page load
         window.addEventListener('load', function() {
             if (typeof SplashCursor !== 'undefined') {
                 new SplashCursor();
                 console.log('Splash Cursor initialized');
+            } else {
+                console.error('SplashCursor class not found');
             }
         });
     </script>
-    <script src="script.js"></script>
-    <script src="translations.js"></script>
-    <script src="language-switcher.js"></script>
-    <script src="contact-form.js"></script>
-    <script src="orbiting-skills.js"></script>
-    <script src="website-scroll-animation.js"></script>
+    <script src="/script.js"></script>
+    <script src="/translations.js"></script>
+    <script src="/language-switcher.js"></script>
+    <script src="/contact-form.js"></script>
+    <script src="/orbiting-skills.js"></script>
+    <script src="/website-scroll-animation.js"></script>
     <!-- Three.js library for animated dotted surface -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="workflow-dotted-surface.js"></script>
+    <script src="/workflow-dotted-surface.js"></script>
 </body>
 </html>
