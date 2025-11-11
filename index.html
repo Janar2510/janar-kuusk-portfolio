@@ -839,7 +839,16 @@
     <script src="profile-card.js"></script>
     <script src="spotlight-card.js"></script>
     <script src="components.js"></script>
-    <script src="splash-cursor-react.js"></script>
+    <script src="splash-cursor.js"></script>
+    <script>
+        // Initialize Splash Cursor after page load
+        window.addEventListener('load', function() {
+            if (typeof SplashCursor !== 'undefined') {
+                new SplashCursor();
+                console.log('Splash Cursor initialized');
+            }
+        });
+    </script>
     <script src="script.js"></script>
     <script src="translations.js"></script>
     <script src="language-switcher.js"></script>
