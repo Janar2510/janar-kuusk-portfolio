@@ -660,6 +660,7 @@ class SplashCursor {
   }
 
   resizeFBO(target, w, h, internalFormat, format, type, param) {
+    const gl = this.gl;
     let newFBO = this.createFBO(w, h, internalFormat, format, type, param);
     this.copyProgram.bind();
     gl.uniform1i(this.copyProgram.uniforms.uTexture, target.attach(0));
