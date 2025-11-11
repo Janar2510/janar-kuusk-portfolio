@@ -367,44 +367,6 @@ document.addEventListener('DOMContentLoaded', function() {
       addTiltEffect(card);
     });
   }, 100);
-  
-  // Initialize spotlight effect for buttons
-  setTimeout(() => {
-    const buttons = document.querySelectorAll('.btn');
-    
-    buttons.forEach(button => {
-      let cachedRect = null;
-      let rectInvalid = true;
-      
-      button.addEventListener('mousemove', (e) => {
-        if (!cachedRect || rectInvalid) {
-          cachedRect = button.getBoundingClientRect();
-          rectInvalid = false;
-        }
-        
-        const rect = cachedRect;
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        button.style.setProperty('--mouse-x', `${x}px`);
-        button.style.setProperty('--mouse-y', `${y}px`);
-        button.classList.add('is-hovering');
-      });
-      
-      button.addEventListener('mouseleave', () => {
-        button.classList.remove('is-hovering');
-      });
-      
-      // Invalidate rect cache on resize
-      let resizeTimeout;
-      window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-          rectInvalid = true;
-        }, 100);
-      }, { passive: true });
-    });
-  }, 100);
 }); // End of DOMContentLoaded
 
 // Export for potential module use

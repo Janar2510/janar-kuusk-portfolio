@@ -1,10 +1,3 @@
-## Tooling Updates - 2025-11-07
-- [ ] `npm install` completes without errors and installs Vite dependencies
-- [ ] `npm run dev` serves the site locally via Vite (default: http://localhost:5173)
-- [ ] `npm run build` outputs static assets to the `dist/` directory
-- [ ] `npm run preview` serves the production build without console errors
-- [ ] `.gitignore` excludes `node_modules/` and `dist/` before committing
-
 ## Content & Legal - 2025-01-XX
 - **Privacy Policy Page**: Verify privacy-policy.html loads correctly
 - **Privacy Policy Translations**: Test language toggle switches privacy policy content between English and Estonian
@@ -38,6 +31,13 @@
 - **Container Size**: Verify website design section maintains same size as workflow video card
 - **Mobile Responsiveness**: Test thumbnails and counter scale correctly on mobile devices
 - **Scroll Observer**: Confirm scroll detection works within the website design container only
+
+## UI/UX Changes - 2025-11-11
+- **AI Agent Workflow Dotted Surface**: Confirm animated dotted surface canvas renders behind the workflow card without covering content.
+- **Theme Alignment**: Verify dotted surface colors follow CSS custom properties and adjust correctly for light vs dark themes.
+- **Resize Handling**: Test card resize (window resize + responsive breakpoints) keeps surface aligned and scaled.
+- **Performance**: Ensure animation remains smooth (no dropped frames) and no console errors appear.
+- **Layering**: Confirm workflow blocks, metrics, and particle overlay stay above the dotted surface (z-index integrity).
 
 ## UI/UX Changes - 2025-11-02
 - **Skills Bento Grid**: Verify Core Skills & Expertise displays as bento grid with 2-column spans per card
@@ -89,8 +89,6 @@
 - [ ] `styles.css` - Main stylesheet with custom properties
 - [ ] `WorkflowNode.css` - Agent workflow specific styles
 - [ ] `script.js` - Interactive functionality
-- [ ] `package.json` - Node project configuration with Vite scripts
-- [ ] `.gitignore` - Excludes build artifacts and dependencies
 - [ ] `changelog.md` - Version history
 - [ ] `DeploymentChecklist.md` - This checklist
 

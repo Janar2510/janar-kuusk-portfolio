@@ -1,57 +1,9 @@
-## 2025-11-07
-
-- **Performance Optimization (Balanced)**:
-  - Re-enabled Three.js dotted wave animation on AI Agent Workflow section (with defer loading)
-  - Re-enabled autoplay for Portfolio video in Web application architecture section
-  - Disabled fluid simulation background effect (CPU intensive - kept off)
-  - Disabled splash cursor React effect (unnecessary overhead - kept off)
-  - Other videos load on-demand only (lazy loading)
-  - Scripts load with defer attribute for non-blocking performance
-  - Balanced performance with visual appeal
-
-- **Fixed Image and Video Loading on Netlify**:
-  - Removed spaces and special characters from all image and video filenames
-  - Renamed files: JanarKuusk-logo.png, AGENT-FLOW.png, FUSIONAI-3.png, Saletoru-Powered-with-ai.png
-  - Renamed videos: Portfolio-video.mp4, Colordesign-Studio.mp4
-  - Updated all file references in HTML
-  - Spaces in URLs were causing 404 errors on deployed Netlify site
-  - All images and videos now load correctly on production
-
-## 2025-11-07 (Earlier)
-- **Set Up Local Development Tooling**:
-  - Initialized npm project with `package.json` for the static portfolio site
-  - Added Vite as the dev/build tool with `dev`, `build`, and `preview` scripts
-  - Created `.gitignore` to exclude `node_modules` and Vite build artifacts from version control
-  - Added `vite.config.js` to properly configure public directory and build settings
-  - Added `netlify.toml` for proper Netlify deployment configuration
-  - Build process verified to copy all images and videos to dist folder
-
-- **Restored AI Agent Workflow Dotted Wave Animation**:
-  - Fixed `workflow-dotted-surface.js` to target `.workflow-display-container` instead of `.workflow` section
-  - Three.js animated dotted surface now renders behind TRIGGER → AI AGENT → ACTION blocks
-  - Updated fog color to match dark theme background (#0a0a0a)
-  - Animated wave particles create dynamic 3D background effect with purple dots
-  - Removed ES6 module import to use global THREE from CDN for better compatibility
-
-- **Fixed Asset Paths for Vite Development Server**:
-  - Updated all image paths from `public/images/` to `/images/` for Vite compatibility
-  - Updated all video paths from `./public/images/` to `/images/` for proper serving
-  - Fixed Portfolio video, game2.mp4, Solarair.mp4, and Colordesign Studio.mp4 paths
-  - Fixed project images (Saletoru, FusionAI, AgentFlow) and logo paths
-
-- **Standardized Button Design System with Spotlight Animation**:
-  - Redesigned all buttons to match Head of Sales card styling for consistency
-  - All buttons now have dark background (#111) with subtle border (#222)
-  - Added animated gradient border on hover (CYAN ONLY - removed purple)
-  - Added cursor-tracking spotlight effect to all buttons (matches card spotlight)
-  - Spotlight follows mouse movement with radial gradient (400px circle)
-  - Primary buttons: cyan glow emphasis with rgba(0, 229, 255) colors
-  - Secondary buttons: subtle cyan accent (no purple)
-  - Outline buttons: minimal transparent style with cyan accent
-  - Consistent hover effects: translateY(-4px) lift + multi-layered cyan glow shadows
-  - All buttons use same border-radius (1rem) and padding (1rem 2rem)
-  - Smooth 4-second borderShine animation with cyan gradient only
-  - JavaScript spotlight tracking with cached rect for performance
+## 2025-11-11
+- **AI Agent Workflow Card – Dynamic Dotted Surface Background**:
+  - Replaced the legacy splash cursor integration with a Three.js powered dotted surface that renders directly behind the AI Agent Workflow card.
+  - Added theme-aware color sourcing via CSS custom properties to keep particle and fog colors aligned with the design system (no hardcoded colors).
+  - Implemented ResizeObserver- and matchMedia-driven updates so the surface resizes with the card and adapts to light/dark user preferences.
+  - Updated workflow card styling to use spacing tokens, gradient color mixes, and variables for all glow/border treatments.
 
 ## 2025-01-XX
 - **Performance Optimizations - Fixed Forced Reflow Violations**:

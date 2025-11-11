@@ -1,8 +1,3 @@
-### 2025-11-07 Development Workflow
-- **Local Tooling**: Initialized npm project and added Vite for rapid iteration with hot module replacement
-- **Scripts Added**: `npm run dev`, `npm run build`, and `npm run preview` documented for consistent AI feature testing
-- **Version Control Hygiene**: Introduced `.gitignore` entries for `node_modules/` and `dist/` to keep AI assets and dependencies organized
-
 ### 2025-10-28 Content Accuracy Update
 - **CV Alignment**: Updated all portfolio content to match actual CV credentials
 - **Education Fixed**: Replaced placeholder degrees with real credentials from Tallinn Technical University, Olustvere Technical School, and Karksi-Nuia Gymnasium
@@ -19,6 +14,11 @@
   - Enhanced language switcher to update technology tags dynamically
   - Verified all translations work correctly for project cards
   - Language toggle button functional in bottom-right corner (EN/ET)
+
+### 2025-11-11 Workflow Visualization Upgrade
+- Integrated a Three.js dotted surface background for the AI Agent Workflow card with theme-aware coloring sourced from CSS custom properties.
+- Added resize and color-scheme observers to keep the visualization aligned and adaptive without memory leaks.
+- Updated workflow card styles to reuse spacing tokens and gradient mixes while maintaining gradient border animations.
 
 ### 2025-10-15 UI Consistency
 - Core Skills & Expertise: set `.skills-grid` to flex row, no wrap; horizontal scroll enabled; cards rounded via `var(--radius-xl)`.
@@ -268,6 +268,6 @@
 ---
 
 **AI Implementation Status**: ✅ Complete
-**Last Updated**: 2025-11-07
+**Last Updated**: 2024-12-19
 **Version**: 1.0.0
 **AI Features**: Fully Integrated
