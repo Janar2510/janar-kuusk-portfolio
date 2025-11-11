@@ -22,7 +22,7 @@ class SplashCursor {
     this.canvas = null;
     this.gl = null;
     this.ext = null;
-    this.pointers = [new this.PointerPrototype()];
+    this.pointers = [this.createPointer()];
     this.lastUpdateTime = Date.now();
     this.colorUpdateTimer = 0.0;
     this.animationId = null;
@@ -47,17 +47,19 @@ class SplashCursor {
     this.init();
   }
 
-  PointerPrototype() {
-    this.id = -1;
-    this.texcoordX = 0;
-    this.texcoordY = 0;
-    this.prevTexcoordX = 0;
-    this.prevTexcoordY = 0;
-    this.deltaX = 0;
-    this.deltaY = 0;
-    this.down = false;
-    this.moved = false;
-    this.color = [0, 0, 0];
+  createPointer() {
+    return {
+      id: -1,
+      texcoordX: 0,
+      texcoordY: 0,
+      prevTexcoordX: 0,
+      prevTexcoordY: 0,
+      deltaX: 0,
+      deltaY: 0,
+      down: false,
+      moved: false,
+      color: [0, 0, 0]
+    };
   }
 
   init() {

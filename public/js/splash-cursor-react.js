@@ -1,5 +1,5 @@
-// SplashCursor - React Component Converted to Vanilla JS
-class SplashCursor {
+// SplashCursor React Component - Converted to Vanilla JS
+class SplashCursorReact {
   constructor(options = {}) {
     this.config = {
       SIM_RESOLUTION: 128,
@@ -16,13 +16,14 @@ class SplashCursor {
       COLOR_UPDATE_SPEED: 10,
       BACK_COLOR: { r: 0.5, g: 0, b: 0 },
       TRANSPARENT: true,
+      PAUSED: false,
       ...options
     };
 
     this.canvas = null;
     this.gl = null;
     this.ext = null;
-    this.pointers = [this.createPointer()];
+    this.pointers = [new this.PointerPrototype()];
     this.lastUpdateTime = Date.now();
     this.colorUpdateTimer = 0.0;
     this.animationId = null;
@@ -47,46 +48,72 @@ class SplashCursor {
     this.init();
   }
 
-  createPointer() {
-    return {
-      id: -1,
-      texcoordX: 0,
-      texcoordY: 0,
-      prevTexcoordX: 0,
-      prevTexcoordY: 0,
-      deltaX: 0,
-      deltaY: 0,
-      down: false,
-      moved: false,
-      color: [0, 0, 0]
-    };
+  PointerPrototype() {
+    this.id = -1;
+    this.texcoordX = 0;
+    this.texcoordY = 0;
+    this.prevTexcoordX = 0;
+    this.prevTexcoordY = 0;
+    this.deltaX = 0;
+    this.deltaY = 0;
+    this.down = false;
+    this.moved = false;
+    this.color = [0, 0, 0];
   }
 
   init() {
+    console.log('Starting SplashCursorReact initialization...');
     this.createCanvas();
     this.setupWebGL();
     this.createShaders();
     this.initFramebuffers();
     this.setupEventListeners();
     this.startAnimation();
-    console.log('SplashCursor initialized successfully');
+    console.log('SplashCursorReact initialized successfully');
   }
 
   createCanvas() {
+    console.log('Creating canvas...');
+    
+    // Remove any existing canvas
+    const existing = document.getElementById('fluid-canvas');
+    if (existing) {
+      existing.remove();
+    }
+    
+    // Create container div
+    this.container = document.createElement('div');
+    this.container.id = 'fluid-container';
+    this.container.style.position = 'fixed';
+    this.container.style.top = '0';
+    this.container.style.left = '0';
+    this.container.style.zIndex = '50';
+    this.container.style.pointerEvents = 'none';
+    this.container.style.width = '100%';
+    this.container.style.height = '100%';
+
+    // Create canvas
     this.canvas = document.createElement('canvas');
-    this.canvas.id = 'fluid';
-    this.canvas.style.position = 'fixed';
-    this.canvas.style.top = '0';
-    this.canvas.style.left = '0';
-    this.canvas.style.zIndex = '50';
-    this.canvas.style.pointerEvents = 'none';
+    this.canvas.id = 'fluid-canvas';
     this.canvas.style.width = '100vw';
     this.canvas.style.height = '100vh';
     this.canvas.style.display = 'block';
-    document.body.appendChild(this.canvas);
+    this.canvas.style.background = 'transparent';
+    this.canvas.style.border = '2px solid rgba(0, 255, 0, 0.5)'; // Green border for testing
+
+    this.container.appendChild(this.canvas);
+    document.body.appendChild(this.container);
+    
+    // Set canvas size
+    this.canvas.width = window.innerWidth;
+    this.canvas.height = window.innerHeight;
+    
+    console.log('Canvas created and added to DOM');
+    console.log('Canvas size:', this.canvas.width, 'x', this.canvas.height);
   }
 
   setupWebGL() {
+    console.log('Setting up WebGL...');
     const params = {
       alpha: true,
       depth: false,
@@ -97,6 +124,14 @@ class SplashCursor {
     let gl = this.canvas.getContext('webgl2', params);
     const isWebGL2 = !!gl;
     if (!isWebGL2) gl = this.canvas.getContext('webgl', params) || this.canvas.getContext('experimental-webgl', params);
+
+    if (!gl) {
+      console.error('WebGL not supported, falling back to 2D canvas');
+      this.setup2DFallback();
+      return;
+    }
+
+    console.log('WebGL context created:', isWebGL2 ? 'WebGL2' : 'WebGL');
 
     let halfFloat;
     let supportLinearFiltering;
@@ -133,9 +168,18 @@ class SplashCursor {
       supportLinearFiltering
     };
 
+    console.log('WebGL extensions:', {
+      supportLinearFiltering: !!supportLinearFiltering,
+      halfFloatTexType: !!halfFloatTexType,
+      formatRGBA: !!formatRGBA,
+      formatRG: !!formatRG,
+      formatR: !!formatR
+    });
+
     if (!this.ext.supportLinearFiltering) {
       this.config.DYE_RESOLUTION = 256;
       this.config.SHADING = false;
+      console.log('Linear filtering not supported, reducing resolution and disabling shading');
     }
   }
 
@@ -169,8 +213,14 @@ class SplashCursor {
   }
 
   createShaders() {
+    console.log('Creating shaders...');
     const gl = this.gl;
     const ext = this.ext;
+
+    if (!gl) {
+      console.error('WebGL context not available for shader creation');
+      return;
+    }
 
     const baseVertexShader = this.compileShader(
       gl.VERTEX_SHADER,
@@ -233,6 +283,8 @@ class SplashCursor {
       varying vec2 vT;
       varying vec2 vB;
       uniform sampler2D uTexture;
+      uniform sampler2D uDithering;
+      uniform vec2 ditherScale;
       uniform vec2 texelSize;
 
       vec3 linearToGamma (vec3 color) {
@@ -476,7 +528,7 @@ class SplashCursor {
     this.gradienSubtractProgram = new this.Program(baseVertexShader, gradientSubtractShader);
     this.displayMaterial = new this.Material(baseVertexShader, displayShaderSource);
 
-    this.displayMaterial.setKeywords(this.config.SHADING ? ['SHADING'] : []);
+    this.updateKeywords();
   }
 
   compileShader(type, source, keywords) {
@@ -561,18 +613,21 @@ class SplashCursor {
     return uniforms;
   }
 
-  initFramebuffers() {
-    const gl = this.gl;
-    const ext = this.ext;
+  updateKeywords() {
+    let displayKeywords = [];
+    if (this.config.SHADING) displayKeywords.push('SHADING');
+    this.displayMaterial.setKeywords(displayKeywords);
+  }
 
+  initFramebuffers() {
     let simRes = this.getResolution(this.config.SIM_RESOLUTION);
     let dyeRes = this.getResolution(this.config.DYE_RESOLUTION);
-    const texType = ext.halfFloatTexType;
-    const rgba = ext.formatRGBA;
-    const rg = ext.formatRG;
-    const r = ext.formatR;
-    const filtering = ext.supportLinearFiltering ? gl.LINEAR : gl.NEAREST;
-    gl.disable(gl.BLEND);
+    const texType = this.ext.halfFloatTexType;
+    const rgba = this.ext.formatRGBA;
+    const rg = this.ext.formatRG;
+    const r = this.ext.formatR;
+    const filtering = this.ext.supportLinearFiltering ? this.gl.LINEAR : this.gl.NEAREST;
+    this.gl.disable(this.gl.BLEND);
 
     if (!this.dye)
       this.dye = this.createDoubleFBO(dyeRes.width, dyeRes.height, rgba.internalFormat, rgba.format, texType, filtering);
@@ -592,9 +647,9 @@ class SplashCursor {
         filtering
       );
 
-    this.divergence = this.createFBO(simRes.width, simRes.height, r.internalFormat, r.format, texType, gl.NEAREST);
-    this.curl = this.createFBO(simRes.width, simRes.height, r.internalFormat, r.format, texType, gl.NEAREST);
-    this.pressure = this.createDoubleFBO(simRes.width, simRes.height, r.internalFormat, r.format, texType, gl.NEAREST);
+    this.divergence = this.createFBO(simRes.width, simRes.height, r.internalFormat, r.format, texType, this.gl.NEAREST);
+    this.curl = this.createFBO(simRes.width, simRes.height, r.internalFormat, r.format, texType, this.gl.NEAREST);
+    this.pressure = this.createDoubleFBO(simRes.width, simRes.height, r.internalFormat, r.format, texType, this.gl.NEAREST);
   }
 
   createFBO(w, h, internalFormat, format, type, param) {
@@ -662,7 +717,7 @@ class SplashCursor {
   resizeFBO(target, w, h, internalFormat, format, type, param) {
     let newFBO = this.createFBO(w, h, internalFormat, format, type, param);
     this.copyProgram.bind();
-    gl.uniform1i(this.copyProgram.uniforms.uTexture, target.attach(0));
+    this.gl.uniform1i(this.copyProgram.uniforms.uTexture, target.attach(0));
     this.blit(newFBO);
     return newFBO;
   }
@@ -680,9 +735,16 @@ class SplashCursor {
 
   blit(target, clear = false) {
     const gl = this.gl;
-    gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+    
+    // Create buffers if they don't exist
+    if (!this.vertexBuffer) {
+      this.vertexBuffer = gl.createBuffer();
+      this.indexBuffer = gl.createBuffer();
+    }
+    
+    gl.bindBuffer(gl.ARRAY_BUFFER, this.vertexBuffer);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, -1, 1, 1, 1, 1, -1]), gl.STATIC_DRAW);
-    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, gl.createBuffer());
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.indexBuffer);
     gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array([0, 1, 2, 0, 2, 3]), gl.STATIC_DRAW);
     gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
     gl.enableVertexAttribArray(0);
@@ -702,10 +764,29 @@ class SplashCursor {
   }
 
   startAnimation() {
+    console.log('Starting animation loop...');
+    
+    // Test canvas visibility with a simple colored rectangle
+    if (this.gl) {
+      this.gl.clearColor(0.1, 0.1, 0.3, 0.5);
+      this.gl.clear(this.gl.COLOR_BUFFER_BIT);
+      console.log('Test rectangle drawn to canvas');
+    } else {
+      // Fallback to 2D canvas
+      console.log('WebGL not available, using 2D fallback');
+      this.setup2DFallback();
+      return;
+    }
+    
     this.animationId = requestAnimationFrame(this.updateFrame.bind(this));
   }
 
   updateFrame() {
+    if (!this.gl) {
+      console.error('WebGL context lost, stopping animation');
+      return;
+    }
+    
     const dt = this.calcDeltaTime();
     if (this.resizeCanvas()) this.initFramebuffers();
     this.updateColors(dt);
@@ -724,12 +805,17 @@ class SplashCursor {
   }
 
   resizeCanvas() {
-    const gl = this.gl;
     let width = this.scaleByPixelRatio(this.canvas.clientWidth);
     let height = this.scaleByPixelRatio(this.canvas.clientHeight);
+    
+    // Ensure minimum size
+    width = Math.max(width, 256);
+    height = Math.max(height, 256);
+    
     if (this.canvas.width !== width || this.canvas.height !== height) {
       this.canvas.width = width;
       this.canvas.height = height;
+      console.log('Canvas resized to:', width, 'x', height);
       return true;
     }
     return false;
@@ -828,12 +914,17 @@ class SplashCursor {
   }
 
   drawDisplay(target) {
-    const gl = this.gl;
-    let width = target == null ? gl.drawingBufferWidth : target.width;
-    let height = target == null ? gl.drawingBufferHeight : target.height;
+    let width = target == null ? this.gl.drawingBufferWidth : target.width;
+    let height = target == null ? this.gl.drawingBufferHeight : target.height;
+    
+    if (!this.displayMaterial || !this.displayMaterial.uniforms) {
+      console.error('Display material not properly initialized');
+      return;
+    }
+    
     this.displayMaterial.bind();
-    if (this.config.SHADING) gl.uniform2f(this.displayMaterial.uniforms.texelSize, 1.0 / width, 1.0 / height);
-    gl.uniform1i(this.displayMaterial.uniforms.uTexture, this.dye.read.attach(0));
+    if (this.config.SHADING) this.gl.uniform2f(this.displayMaterial.uniforms.texelSize, 1.0 / width, 1.0 / height);
+    this.gl.uniform1i(this.displayMaterial.uniforms.uTexture, this.dye.read.attach(0));
     this.blit(target);
   }
 
@@ -854,18 +945,17 @@ class SplashCursor {
   }
 
   splat(x, y, dx, dy, color) {
-    const gl = this.gl;
     this.splatProgram.bind();
-    gl.uniform1i(this.splatProgram.uniforms.uTarget, this.velocity.read.attach(0));
-    gl.uniform1f(this.splatProgram.uniforms.aspectRatio, this.canvas.width / this.canvas.height);
-    gl.uniform2f(this.splatProgram.uniforms.point, x, y);
-    gl.uniform3f(this.splatProgram.uniforms.color, dx, dy, 0.0);
-    gl.uniform1f(this.splatProgram.uniforms.radius, this.correctRadius(this.config.SPLAT_RADIUS / 100.0));
+    this.gl.uniform1i(this.splatProgram.uniforms.uTarget, this.velocity.read.attach(0));
+    this.gl.uniform1f(this.splatProgram.uniforms.aspectRatio, this.canvas.width / this.canvas.height);
+    this.gl.uniform2f(this.splatProgram.uniforms.point, x, y);
+    this.gl.uniform3f(this.splatProgram.uniforms.color, dx, dy, 0.0);
+    this.gl.uniform1f(this.splatProgram.uniforms.radius, this.correctRadius(this.config.SPLAT_RADIUS / 100.0));
     this.blit(this.velocity.write);
     this.velocity.swap();
 
-    gl.uniform1i(this.splatProgram.uniforms.uTarget, this.dye.read.attach(0));
-    gl.uniform3f(this.splatProgram.uniforms.color, color.r, color.g, color.b);
+    this.gl.uniform1i(this.splatProgram.uniforms.uTarget, this.dye.read.attach(0));
+    this.gl.uniform3f(this.splatProgram.uniforms.color, color.r, color.g, color.b);
     this.blit(this.dye.write);
     this.dye.swap();
   }
@@ -950,12 +1040,11 @@ class SplashCursor {
   }
 
   getResolution(resolution) {
-    const gl = this.gl;
-    let aspectRatio = gl.drawingBufferWidth / gl.drawingBufferHeight;
+    let aspectRatio = this.gl.drawingBufferWidth / this.gl.drawingBufferHeight;
     if (aspectRatio < 1) aspectRatio = 1.0 / aspectRatio;
     const min = Math.round(resolution);
     const max = Math.round(resolution * aspectRatio);
-    if (gl.drawingBufferWidth > gl.drawingBufferHeight) return { width: max, height: min };
+    if (this.gl.drawingBufferWidth > this.gl.drawingBufferHeight) return { width: max, height: min };
     else return { width: min, height: max };
   }
 
@@ -975,7 +1064,7 @@ class SplashCursor {
   }
 
   setupEventListeners() {
-    this.canvas.addEventListener('mousedown', e => {
+    window.addEventListener('mousedown', e => {
       let pointer = this.pointers[0];
       let posX = this.scaleByPixelRatio(e.clientX);
       let posY = this.scaleByPixelRatio(e.clientY);
@@ -993,7 +1082,7 @@ class SplashCursor {
       document.body.removeEventListener('mousemove', handleFirstMouseMove);
     }.bind(this));
 
-    this.canvas.addEventListener('mousemove', e => {
+    window.addEventListener('mousemove', e => {
       let pointer = this.pointers[0];
       let posX = this.scaleByPixelRatio(e.clientX);
       let posY = this.scaleByPixelRatio(e.clientY);
@@ -1013,7 +1102,7 @@ class SplashCursor {
       document.body.removeEventListener('touchstart', handleFirstTouchStart);
     }.bind(this));
 
-    this.canvas.addEventListener('touchstart', e => {
+    window.addEventListener('touchstart', e => {
       const touches = e.targetTouches;
       let pointer = this.pointers[0];
       for (let i = 0; i < touches.length; i++) {
@@ -1023,7 +1112,7 @@ class SplashCursor {
       }
     });
 
-    this.canvas.addEventListener(
+    window.addEventListener(
       'touchmove',
       e => {
         const touches = e.targetTouches;
@@ -1037,7 +1126,7 @@ class SplashCursor {
       false
     );
 
-    this.canvas.addEventListener('touchend', e => {
+    window.addEventListener('touchend', e => {
       const touches = e.changedTouches;
       let pointer = this.pointers[0];
       for (let i = 0; i < touches.length; i++) {
@@ -1046,15 +1135,56 @@ class SplashCursor {
     });
   }
 
+  setup2DFallback() {
+    console.log('Setting up 2D canvas fallback...');
+    this.ctx2d = this.canvas.getContext('2d');
+    this.particles = [];
+    
+    // Create some simple animated particles
+    for (let i = 0; i < 50; i++) {
+      this.particles.push({
+        x: Math.random() * this.canvas.width,
+        y: Math.random() * this.canvas.height,
+        vx: (Math.random() - 0.5) * 2,
+        vy: (Math.random() - 0.5) * 2,
+        size: Math.random() * 3 + 1,
+        color: `hsl(${Math.random() * 360}, 70%, 60%)`
+      });
+    }
+    
+    this.animate2D();
+  }
+
+  animate2D() {
+    if (!this.ctx2d) return;
+    
+    this.ctx2d.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    
+    this.particles.forEach(particle => {
+      particle.x += particle.vx;
+      particle.y += particle.vy;
+      
+      if (particle.x < 0 || particle.x > this.canvas.width) particle.vx *= -1;
+      if (particle.y < 0 || particle.y > this.canvas.height) particle.vy *= -1;
+      
+      this.ctx2d.fillStyle = particle.color;
+      this.ctx2d.beginPath();
+      this.ctx2d.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+      this.ctx2d.fill();
+    });
+    
+    this.animationId = requestAnimationFrame(this.animate2D.bind(this));
+  }
+
   destroy() {
     if (this.animationId) {
       cancelAnimationFrame(this.animationId);
     }
-    if (this.canvas && this.canvas.parentNode) {
-      this.canvas.parentNode.removeChild(this.canvas);
+    if (this.container && this.container.parentNode) {
+      this.container.parentNode.removeChild(this.container);
     }
   }
 }
 
 // Export for use
-window.SplashCursor = SplashCursor;
+window.SplashCursorReact = SplashCursorReact;
