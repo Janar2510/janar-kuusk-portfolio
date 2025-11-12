@@ -129,84 +129,97 @@ p {
 }
 
 /* Buttons */
-/* SaleToru Brand Buttons */
+/* Consistent with Education & Certifications Cards - Cyan Theme */
 .btn {
     display: inline-flex;
     align-items: center;
     gap: var(--space-sm);
     padding: var(--space-md) var(--space-xl);
-    border: none;
-    border-radius: var(--radius-lg);
+    border: 1px solid #222;
+    border-radius: 1rem;
     font-weight: 600;
     font-size: 1rem;
     text-decoration: none;
     cursor: pointer;
-    transition: all var(--transition-normal);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
-    /* SaleToru brand styling */
-    background-color: #1f2937; /* neutral-800 */
-    color: white;
+    /* Matching Education cards styling */
+    background-color: #111827;
+    color: #00e5ff; /* Cyan text - NO PURPLE */
 }
 
 .btn::before {
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: var(--radius-lg);
+    border-radius: 1rem;
     padding: 2px;
-    background: linear-gradient(90deg, var(--color-primary, #8e2de2), var(--color-secondary, #4a00e0), var(--color-primary, #8e2de2));
+    background: linear-gradient(90deg, #00e5ff, #06b6d4, #00e5ff);
     background-size: 200% 200%;
     animation: borderFlow 6s linear infinite;
     filter: blur(8px);
-    opacity: 0.6;
+    opacity: 0;
     transition: opacity 0.3s ease;
     z-index: -1;
 }
 
 .btn:hover::before {
-    opacity: 1;
-    animation: glowPulse 2s ease-in-out infinite;
+    opacity: 0.6;
 }
 
 .btn:hover {
-    background-color: #374151; /* neutral-700 */
-    transform: translateY(-2px);
+    background-color: #1f2937;
+    transform: translateY(-4px);
+    border-color: rgba(0, 229, 255, 0.5);
+    box-shadow: 
+        0 0 20px rgba(0, 229, 255, 0.3),
+        0 0 40px rgba(0, 229, 255, 0.2),
+        inset 0 0 20px rgba(0, 229, 255, 0.1);
+    color: #67e8f9; /* Cyan-300 on hover */
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--color-primary, #8e2de2), var(--color-secondary, #4a00e0));
-    color: white;
-    box-shadow: 0 0 20px rgba(142, 45, 226, 0.3);
+    background-color: #111827;
+    color: #ffffff;
+    border: 1px solid #222;
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 30px rgba(142, 45, 226, 0.5);
+    transform: translateY(-4px);
+    border-color: rgba(0, 229, 255, 0.5);
+    box-shadow: 
+        0 0 30px rgba(0, 229, 255, 0.4),
+        0 0 60px rgba(0, 229, 255, 0.2),
+        inset 0 0 20px rgba(0, 229, 255, 0.1);
+    color: #67e8f9;
 }
 
 .btn-secondary {
     background: transparent;
-    color: var(--text-primary);
-    border: 2px solid var(--gray-600);
+    color: #00e5ff;
+    border: 1px solid #222;
 }
 
 .btn-secondary:hover {
-    border-color: var(--color-primary, #8e2de2);
-    color: var(--color-primary, #8e2de2);
-    background-color: rgba(142, 45, 226, 0.1);
+    border-color: rgba(0, 229, 255, 0.5);
+    color: #67e8f9;
+    background-color: rgba(0, 229, 255, 0.1);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
 }
 
 .btn-outline {
     background: transparent;
-    color: var(--color-primary, #8e2de2);
-    border: 2px solid var(--color-primary, #8e2de2);
+    color: #00e5ff; /* Cyan - NO PURPLE */
+    border: 1px solid rgba(0, 229, 255, 0.3);
 }
 
 .btn-outline:hover {
-    background: var(--color-primary, #8e2de2);
-    color: white;
-    box-shadow: 0 0 20px rgba(142, 45, 226, 0.4);
+    background-color: rgba(0, 229, 255, 0.1);
+    color: #67e8f9;
+    border-color: rgba(0, 229, 255, 0.5);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
 }
 
 .btn-full {
