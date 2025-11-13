@@ -1,4 +1,33 @@
 ## 2025-11-13
+- **Services Hero Section - Added WebGL Animated Particles Background**:
+  - Created vanilla JavaScript Particles class (converted from React component using OGL library)
+  - Implemented 200 animated white particles with WebGL rendering for smooth performance
+  - Key features:
+    - Floating particle animation with smooth sine wave motion
+    - Mouse hover interaction - particles follow cursor position
+    - Slow rotation animation for 3D depth effect
+    - Configurable options: particle count, spread, speed, colors, base size
+    - Transparent alpha blending for subtle effect (60% opacity)
+  - Technical implementation:
+    - Uses OGL WebGL library (lightweight alternative to Three.js) via CDN
+    - Custom vertex and fragment shaders for particle rendering
+    - Responsive canvas that resizes with window
+    - Proper cleanup methods for resource disposal
+    - Error handling for missing dependencies
+  - Visual integration:
+    - Particles positioned absolutely behind content (z-index layering)
+    - Hero section min-height set to 600px
+    - Flexbox centering for consistent appearance
+    - Particles follow mouse with smooth easing
+    - Subtle rotation animation (0.1 rad/s on X/Y, 0.01 rad/s on Z)
+  - Performance optimized:
+    - Hardware-accelerated WebGL rendering
+    - RequestAnimationFrame for smooth 60fps animation
+    - Minimal CPU usage with GPU-based calculations
+  - Files created:
+    - `public/js/particles.js` - Particles class with full WebGL implementation
+    - `particles.css` - Container styling and positioning
+
 - **Services Page Language Support - Added Estonian Translations and Language Toggle**:
   - Added floating language toggle button (EN/ET) at bottom right of page
   - Integrated language-toggle.css stylesheet for animated gradient border toggle
