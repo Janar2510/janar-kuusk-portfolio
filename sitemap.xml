@@ -9,13 +9,21 @@
     <priority>1.0</priority>
   </url>
   
-  <!-- Privacy Policy Page -->
-  <url>
-    <loc>https://www.janarkuuskpro.com/privacy-policy.html</loc>
-    <lastmod>2025-11-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
+    <!-- Services Page -->
+    <url>
+        <loc>https://www.janarkuuskpro.com/services.html</loc>
+        <lastmod>2025-11-13</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- Privacy Policy Page -->
+    <url>
+        <loc>https://www.janarkuuskpro.com/privacy-policy.html</loc>
+        <lastmod>2025-11-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
 </urlset>
 
