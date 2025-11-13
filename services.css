@@ -3,9 +3,12 @@
 /* Services Hero Section */
 .services-hero {
     padding: 150px 0 80px;
+    min-height: 600px;
     background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
     position: relative;
     overflow: hidden;
+    display: flex;
+    align-items: center;
 }
 
 .services-hero::before {
