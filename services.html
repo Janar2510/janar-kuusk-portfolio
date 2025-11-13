@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="SpotlightCard.css">
     <link rel="stylesheet" href="contact-form.css">
     <link rel="stylesheet" href="services.css">
+    <link rel="stylesheet" href="language-toggle.css">
     
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -56,8 +57,8 @@
     <section class="services-hero">
         <div class="container">
             <div class="services-hero-content" data-aos="fade-up">
-                <h1 class="services-hero-title">AI Solutions & Digital Transformation Services</h1>
-                <p class="services-hero-subtitle">Expert AI solutions architect in Estonia helping businesses implement AI, automate workflows, and transform digitally</p>
+                <h1 class="services-hero-title" data-i18n="services.hero.title">AI Solutions & Digital Transformation Services</h1>
+                <p class="services-hero-subtitle" data-i18n="services.hero.subtitle">Expert AI solutions architect in Estonia helping businesses implement AI, automate workflows, and transform digitally</p>
             </div>
         </div>
     </section>
@@ -70,127 +71,82 @@
                 <!-- AI Implementation Services -->
                 <div class="summary-spotlight-card service-card" data-aos="fade-up">
                     <div class="service-icon">🤖</div>
-                    <h3 class="service-title">AI Implementation Services</h3>
-                    <p class="service-description">
+                    <h3 class="service-title" data-i18n="services.ai.title">AI Implementation Services</h3>
+                    <p class="service-description" data-i18n="services.ai.description">
                         Expert <strong>AI solutions architect in Estonia</strong> helping businesses implement AI effectively. From strategy to deployment.
                     </p>
-                    <div class="service-features">
-                        <span class="feature-tag">AI Strategy</span>
-                        <span class="feature-tag">Custom Solutions</span>
-                        <span class="feature-tag">ML Integration</span>
-                    </div>
                 </div>
 
                 <!-- Business Process Automation -->
                 <div class="summary-spotlight-card service-card" data-aos="fade-up" data-aos-delay="50">
                     <div class="service-icon">⚡</div>
-                    <h3 class="service-title">Business Process Automation</h3>
-                    <p class="service-description">
+                    <h3 class="service-title" data-i18n="services.automation.title">Business Process Automation</h3>
+                    <p class="service-description" data-i18n="services.automation.description">
                         <strong>AI-powered business process optimization</strong> that saves time and reduces errors. Automate repetitive tasks efficiently.
                     </p>
-                    <div class="service-features">
-                        <span class="feature-tag">Workflow Mapping</span>
-                        <span class="feature-tag">Process Design</span>
-                        <span class="feature-tag">Automation</span>
-                    </div>
                 </div>
 
                 <!-- Digital Transformation -->
                 <div class="summary-spotlight-card service-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="service-icon">🚀</div>
-                    <h3 class="service-title">Digital Transformation Consulting</h3>
-                    <p class="service-description">
+                    <h3 class="service-title" data-i18n="services.transformation.title">Digital Transformation Consulting</h3>
+                    <p class="service-description" data-i18n="services.transformation.description">
                         Expert <strong>digital transformation consultant</strong> helping organizations modernize operations and stay competitive in 2024.
                     </p>
-                    <div class="service-features">
-                        <span class="feature-tag">Strategy Planning</span>
-                        <span class="feature-tag">Change Management</span>
-                        <span class="feature-tag">Tech Integration</span>
-                    </div>
                 </div>
 
                 <!-- n8n Workflow Automation -->
                 <div class="summary-spotlight-card service-card" data-aos="fade-up" data-aos-delay="150">
                     <div class="service-icon">🔄</div>
-                    <h3 class="service-title">n8n Workflow Automation</h3>
-                    <p class="service-description">
+                    <h3 class="service-title" data-i18n="services.n8n.title">n8n Workflow Automation</h3>
+                    <p class="service-description" data-i18n="services.n8n.description">
                         <strong>n8n automation expert</strong> building powerful workflows. One of the <strong>best workflow automation tools 2024</strong>.
                     </p>
-                    <div class="service-features">
-                        <span class="feature-tag">Custom Workflows</span>
-                        <span class="feature-tag">API Integration</span>
-                        <span class="feature-tag">Zapier Alternative</span>
-                    </div>
                 </div>
 
                 <!-- Website Design -->
                 <div class="summary-spotlight-card service-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="service-icon">🎨</div>
-                    <h3 class="service-title">Website Design</h3>
-                    <p class="service-description">
+                    <h3 class="service-title" data-i18n="services.webdesign.title">Website Design</h3>
+                    <p class="service-description" data-i18n="services.webdesign.description">
                         Modern, responsive websites with beautiful UI/UX design. Built with latest web technologies for optimal performance.
                     </p>
-                    <div class="service-features">
-                        <span class="feature-tag">UI/UX Design</span>
-                        <span class="feature-tag">Responsive Design</span>
-                        <span class="feature-tag">Figma to Code</span>
-                    </div>
                 </div>
 
                 <!-- Web Application Development -->
                 <div class="summary-spotlight-card service-card" data-aos="fade-up" data-aos-delay="250">
                     <div class="service-icon">🏗️</div>
-                    <h3 class="service-title">Web Application Development</h3>
-                    <p class="service-description">
+                    <h3 class="service-title" data-i18n="services.webapp.title">Web Application Development</h3>
+                    <p class="service-description" data-i18n="services.webapp.description">
                         Full-stack web application architecture and development. Scalable, secure applications using modern frameworks.
                     </p>
-                    <div class="service-features">
-                        <span class="feature-tag">React / Next.js</span>
-                        <span class="feature-tag">Node.js Backend</span>
-                        <span class="feature-tag">API Development</span>
-                    </div>
                 </div>
 
                 <!-- Mobile App Development -->
                 <div class="summary-spotlight-card service-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="service-icon">📱</div>
-                    <h3 class="service-title">Mobile App Development</h3>
-                    <p class="service-description">
+                    <h3 class="service-title" data-i18n="services.mobile.title">Mobile App Development</h3>
+                    <p class="service-description" data-i18n="services.mobile.description">
                         Native and cross-platform mobile applications. Progressive Web Apps with native-like experience.
                     </p>
-                    <div class="service-features">
-                        <span class="feature-tag">React Native</span>
-                        <span class="feature-tag">PWA</span>
-                        <span class="feature-tag">Cross-Platform</span>
-                    </div>
                 </div>
 
                 <!-- Database Design -->
                 <div class="summary-spotlight-card service-card" data-aos="fade-up" data-aos-delay="350">
                     <div class="service-icon">💾</div>
-                    <h3 class="service-title">Database Design & Management</h3>
-                    <p class="service-description">
+                    <h3 class="service-title" data-i18n="services.database.title">Database Design & Management</h3>
+                    <p class="service-description" data-i18n="services.database.description">
                         Scalable database architecture, optimization, and management. SQL and NoSQL solutions for any scale.
                     </p>
-                    <div class="service-features">
-                        <span class="feature-tag">PostgreSQL</span>
-                        <span class="feature-tag">MongoDB</span>
-                        <span class="feature-tag">Supabase</span>
-                    </div>
                 </div>
 
                 <!-- Cloud & DevOps -->
                 <div class="summary-spotlight-card service-card" data-aos="fade-up" data-aos-delay="400">
                     <div class="service-icon">☁️</div>
-                    <h3 class="service-title">Cloud & DevOps</h3>
-                    <p class="service-description">
+                    <h3 class="service-title" data-i18n="services.cloud.title">Cloud & DevOps</h3>
+                    <p class="service-description" data-i18n="services.cloud.description">
                         Cloud deployment, CI/CD pipelines, and infrastructure management. Scalable and reliable hosting solutions.
                     </p>
-                    <div class="service-features">
-                        <span class="feature-tag">AWS / Vercel</span>
-                        <span class="feature-tag">Docker</span>
-                        <span class="feature-tag">CI/CD</span>
-                    </div>
                 </div>
 
             </div>
@@ -201,29 +157,29 @@
     <section class="why-choose-section">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <h2 class="section-title">Why Choose My Services?</h2>
-                <p class="section-subtitle">Digital transformation strategy consultant with proven results</p>
+                <h2 class="section-title" data-i18n="services.whyChoose.title">Why Choose My Services?</h2>
+                <p class="section-subtitle" data-i18n="services.whyChoose.subtitle">Digital transformation strategy consultant with proven results</p>
             </div>
             <div class="benefits-grid">
                 <div class="benefit-card summary-spotlight-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="benefit-icon">🎯</div>
-                    <h4>Results-Driven Approach</h4>
-                    <p>Focus on measurable outcomes and ROI. Every solution is designed to deliver real business value.</p>
+                    <h4 data-i18n="services.benefits.results.title">Results-Driven Approach</h4>
+                    <p data-i18n="services.benefits.results.description">Focus on measurable outcomes and ROI. Every solution is designed to deliver real business value.</p>
                 </div>
                 <div class="benefit-card summary-spotlight-card" data-aos="fade-up" data-aos-delay="150">
                     <div class="benefit-icon">🤝</div>
-                    <h4>Partnership Mindset</h4>
-                    <p>I work as your technology partner, not just a vendor. Your success is my success.</p>
+                    <h4 data-i18n="services.benefits.partnership.title">Partnership Mindset</h4>
+                    <p data-i18n="services.benefits.partnership.description">I work as your technology partner, not just a vendor. Your success is my success.</p>
                 </div>
                 <div class="benefit-card summary-spotlight-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="benefit-icon">⚡</div>
-                    <h4>Fast Implementation</h4>
-                    <p>Agile methodology ensures quick turnaround times without compromising quality.</p>
+                    <h4 data-i18n="services.benefits.fast.title">Fast Implementation</h4>
+                    <p data-i18n="services.benefits.fast.description">Agile methodology ensures quick turnaround times without compromising quality.</p>
                 </div>
                 <div class="benefit-card summary-spotlight-card" data-aos="fade-up" data-aos-delay="250">
                     <div class="benefit-icon">💡</div>
-                    <h4>Innovative Solutions</h4>
-                    <p>Stay ahead with cutting-edge AI and automation technologies tailored to your needs.</p>
+                    <h4 data-i18n="services.benefits.innovative.title">Innovative Solutions</h4>
+                    <p data-i18n="services.benefits.innovative.description">Stay ahead with cutting-edge AI and automation technologies tailored to your needs.</p>
                 </div>
             </div>
         </div>
@@ -233,11 +189,11 @@
     <section class="services-cta-section">
         <div class="container">
             <div class="services-cta-content" data-aos="fade-up">
-                <h2>Ready to Transform Your Business?</h2>
-                <p>Let's discuss how AI implementation and digital transformation can help your business grow in 2024 and beyond.</p>
+                <h2 data-i18n="services.cta.title">Ready to Transform Your Business?</h2>
+                <p data-i18n="services.cta.description">Let's discuss how AI implementation and digital transformation can help your business grow in 2024 and beyond.</p>
                 <div class="cta-buttons">
-                    <a href="index.html#contact" class="hover-button primary-button">Get Started</a>
-                    <a href="case-studies.html" class="hover-button secondary-button">View Case Studies</a>
+                    <a href="index.html#contact" class="hover-button primary-button" data-i18n="services.cta.getStarted">Get Started</a>
+                    <a href="case-studies.html" class="hover-button secondary-button" data-i18n="services.cta.viewCases">View Case Studies</a>
                 </div>
             </div>
         </div>
@@ -289,6 +245,8 @@
     <script src="/js/spotlight-card.js"></script>
     <script src="/js/components.js"></script>
     <script src="/js/script.js"></script>
+    <script src="/js/translations.js"></script>
+    <script src="/js/language-switcher.js"></script>
     <script src="/js/hover-button.js"></script>
     
     <script>

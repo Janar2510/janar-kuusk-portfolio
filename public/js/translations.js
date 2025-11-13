@@ -283,6 +283,76 @@ const translations = {
             contact: "Contact",
             privacy: "Privacy Policy"
         },
+        services: {
+            hero: {
+                title: "AI Solutions & Digital Transformation Services",
+                subtitle: "Expert AI solutions architect in Estonia helping businesses implement AI, automate workflows, and transform digitally"
+            },
+            ai: {
+                title: "AI Implementation Services",
+                description: "Expert AI solutions architect in Estonia helping businesses implement AI effectively. From strategy to deployment."
+            },
+            automation: {
+                title: "Business Process Automation",
+                description: "AI-powered business process optimization that saves time and reduces errors. Automate repetitive tasks efficiently."
+            },
+            transformation: {
+                title: "Digital Transformation Consulting",
+                description: "Expert digital transformation consultant helping organizations modernize operations and stay competitive in 2024."
+            },
+            n8n: {
+                title: "n8n Workflow Automation",
+                description: "n8n automation expert building powerful workflows. One of the best workflow automation tools 2024."
+            },
+            webdesign: {
+                title: "Website Design",
+                description: "Modern, responsive websites with beautiful UI/UX design. Built with latest web technologies for optimal performance."
+            },
+            webapp: {
+                title: "Web Application Development",
+                description: "Full-stack web application architecture and development. Scalable, secure applications using modern frameworks."
+            },
+            mobile: {
+                title: "Mobile App Development",
+                description: "Native and cross-platform mobile applications. Progressive Web Apps with native-like experience."
+            },
+            database: {
+                title: "Database Design & Management",
+                description: "Scalable database architecture, optimization, and management. SQL and NoSQL solutions for any scale."
+            },
+            cloud: {
+                title: "Cloud & DevOps",
+                description: "Cloud deployment, CI/CD pipelines, and infrastructure management. Scalable and reliable hosting solutions."
+            },
+            whyChoose: {
+                title: "Why Choose My Services?",
+                subtitle: "Digital transformation strategy consultant with proven results"
+            },
+            benefits: {
+                results: {
+                    title: "Results-Driven Approach",
+                    description: "Focus on measurable outcomes and ROI. Every solution is designed to deliver real business value."
+                },
+                partnership: {
+                    title: "Partnership Mindset",
+                    description: "I work as your technology partner, not just a vendor. Your success is my success."
+                },
+                fast: {
+                    title: "Fast Implementation",
+                    description: "Agile methodology ensures quick turnaround times without compromising quality."
+                },
+                innovative: {
+                    title: "Innovative Solutions",
+                    description: "Stay ahead with cutting-edge AI and automation technologies tailored to your needs."
+                }
+            },
+            cta: {
+                title: "Ready to Transform Your Business?",
+                description: "Let's discuss how AI implementation and digital transformation can help your business grow in 2024 and beyond.",
+                getStarted: "Get Started",
+                viewCases: "View Case Studies"
+            }
+        },
         privacy: {
             title: "Privacy Policy",
             lastUpdated: "Last updated: January 2025",
@@ -619,6 +689,76 @@ const translations = {
             projects: "Projektid",
             contact: "Kontakt",
             privacy: "Privaatsuspoliitika"
+        },
+        services: {
+            hero: {
+                title: "AI Lahendused ja Digitaalse Transformatsiooni Teenused",
+                subtitle: "Ekspert AI lahenduste arhitekt Eestis, kes aitab ettevõtetel AI-d rakendada, töövoogusid automatiseerida ja digitaalselt transformeeruda"
+            },
+            ai: {
+                title: "AI Implementeerimise Teenused",
+                description: "Ekspert AI lahenduste arhitekt Eestis, kes aitab ettevõtetel AI-d tõhusalt rakendada. Strateegiast kuni juurutamiseni."
+            },
+            automation: {
+                title: "Äriprotsesside Automatiseerimine",
+                description: "AI-põhine äriprotsesside optimeerimine, mis säästab aega ja vähendab vigu. Automatiseerige korduvad ülesanded tõhusalt."
+            },
+            transformation: {
+                title: "Digitaalse Transformatsiooni Nõustamine",
+                description: "Ekspert digitaalse transformatsiooni konsultant, kes aitab organisatsioonidel operatsioone moderniseerida ja 2024. aastal konkurentsivõimeliseks jääda."
+            },
+            n8n: {
+                title: "n8n Töövoo Automatiseerimine",
+                description: "n8n automaatika ekspert, kes loob võimsaid töövoogusid. Üks parimaid töövoo automatiseerimise tööriistu 2024. aastal."
+            },
+            webdesign: {
+                title: "Veebidisain",
+                description: "Kaasaegsed, reageerivad veebisaidid kaunite UI/UX disainidega. Ehitatud uusimate veebitehnoloogiatega optimaalse jõudluse saavutamiseks."
+            },
+            webapp: {
+                title: "Veebirakenduste Arendus",
+                description: "Täisvirna veebirakenduste arhitektuur ja arendus. Skaleeritavad, turvalised rakendused kaasaegseid raamistikke kasutades."
+            },
+            mobile: {
+                title: "Mobiilirakenduste Arendus",
+                description: "Natiivsed ja platvormidevahelised mobiilirakendused. Progressiivsed veebirakendused natiivsarnase kogemusega."
+            },
+            database: {
+                title: "Andmebaasi Disain ja Haldus",
+                description: "Skaleeritav andmebaasi arhitektuur, optimeerimine ja haldus. SQL ja NoSQL lahendused mis tahes suuruses."
+            },
+            cloud: {
+                title: "Pilv ja DevOps",
+                description: "Pilve juurutamine, CI/CD torustikud ja infrastruktuuri haldus. Skaleeritavad ja usaldusväärsed majutuslahendused."
+            },
+            whyChoose: {
+                title: "Miks Valida Minu Teenused?",
+                subtitle: "Digitaalse transformatsiooni strateegia konsultant tõestatud tulemustega"
+            },
+            benefits: {
+                results: {
+                    title: "Tulemustele Orienteeritud Lähenemine",
+                    description: "Keskendume mõõdetavatele tulemustele ja ROI-le. Iga lahendus on loodud pakkuma reaalset äriv äärtust."
+                },
+                partnership: {
+                    title: "Partnerluse Mõtteviis",
+                    description: "Töötan teie tehnoloogilise partnerina, mitte lihtsalt tarnijana. Teie edu on minu edu."
+                },
+                fast: {
+                    title: "Kiire Juurutamine",
+                    description: "Agile metoodika tagab kiire teostusaja ilma kvaliteeti ohverdamata."
+                },
+                innovative: {
+                    title: "Innovatiivsed Lahendused",
+                    description: "Olge ees tipptasemel AI ja automaatikatehnoloogiatega, mis on kohandatud teie vajadustele."
+                }
+            },
+            cta: {
+                title: "Valmis Oma Äri Transformeerima?",
+                description: "Arutame, kuidas AI rakendamine ja digitaalne transformatsioon saavad aidata teie äril kasvada 2024. aastal ja edaspidi.",
+                getStarted: "Alusta",
+                viewCases: "Vaata Kaasuseid"
+            }
         },
         privacy: {
             title: "Privaatsuspoliitika",
