@@ -251,10 +251,11 @@ class WorkflowDottedSurface {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+function initWorkflowDottedSurface() {
     const workflowCard = document.querySelector('.workflow-display-container');
 
     if (!workflowCard) {
+        console.warn('[WorkflowDottedSurface] Container not found: .workflow-display-container');
         return;
     }
 
@@ -269,7 +270,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     window.workflowDottedSurface = new WorkflowDottedSurface(surfaceContainer);
-});
+    console.log('[WorkflowDottedSurface] Initialized successfully');
+}
+
+// Try to initialize immediately if DOM is already loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initWorkflowDottedSurface);
+} else {
+    // DOM already loaded, initialize immediately
+    initWorkflowDottedSurface();
+}
 
 window.WorkflowDottedSurface = WorkflowDottedSurface;
 })();
