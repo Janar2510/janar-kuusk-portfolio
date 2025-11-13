@@ -28,19 +28,17 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <a href="index.html">
-                        <img src="public/images/JanarKuusk logo.png" alt="Janar Kuusk" class="logo-image">
-                        <div class="logo-text-container">
-                            <span class="logo-text">Janar Kuusk</span>
-                        </div>
-                    </a>
+                    <img src="public/images/JanarKuusk logo.png" alt="Janar Kuusk" class="logo-image">
+                    <div class="logo-text-container">
+                        <span class="logo-text">Janar Kuusk</span>
+                    </div>
                 </div>
                 <nav class="main-nav">
-                    <a href="index.html" class="nav-link">Home</a>
-                    <a href="about.html" class="nav-link">About</a>
+                    <a href="index.html" class="nav-link" data-i18n="nav.home">Home</a>
                     <a href="services.html" class="nav-link active">Services</a>
-                    <a href="case-studies.html" class="nav-link">Case Studies</a>
-                    <a href="index.html#contact" class="nav-link">Contact</a>
+                    <a href="index.html#experience" class="nav-link" data-i18n="nav.experience">Experience</a>
+                    <a href="index.html#projects" class="nav-link" data-i18n="nav.projects">Projects</a>
+                    <a href="index.html#contact" class="nav-link" data-i18n="nav.contact">Contact</a>
                 </nav>
                 <button class="mobile-menu-toggle" id="mobileMenuToggle">
                     <span></span>
@@ -64,49 +62,46 @@
         </div>
     </section>
 
-    <!-- Services Bento Grid Section -->
+    <!-- Services Grid Section -->
     <section class="services-section">
         <div class="container">
-            <div class="services-bento-grid">
+            <div class="services-grid">
                 
-                <!-- AI Implementation Services - Large Feature Card -->
-                <div class="summary-spotlight-card service-card bento-large" data-aos="fade-up">
-                    <div class="service-icon-large">🤖</div>
-                    <h2 class="service-title">AI Implementation Services</h2>
+                <!-- AI Implementation Services -->
+                <div class="summary-spotlight-card service-card" data-aos="fade-up">
+                    <div class="service-icon">🤖</div>
+                    <h3 class="service-title">AI Implementation Services</h3>
                     <p class="service-description">
-                        As an <strong>AI solutions architect in Estonia</strong>, I help small and medium businesses implement AI in practical, cost-effective ways. From strategy to deployment, I guide you through the entire AI adoption journey.
-                        <br><br>
-                        <strong>How to implement AI in small business:</strong> Start with clear goals, identify repetitive tasks, choose the right AI tools, train your team, and scale gradually. I provide hands-on support at every step.
+                        Expert <strong>AI solutions architect in Estonia</strong> helping businesses implement AI effectively. From strategy to deployment.
                     </p>
                     <div class="service-features">
-                        <span class="feature-tag">AI Strategy Development</span>
-                        <span class="feature-tag">Custom AI Solutions</span>
-                        <span class="feature-tag">Machine Learning Integration</span>
-                        <span class="feature-tag">AI Training & Support</span>
+                        <span class="feature-tag">AI Strategy</span>
+                        <span class="feature-tag">Custom Solutions</span>
+                        <span class="feature-tag">ML Integration</span>
                     </div>
                 </div>
 
-                <!-- Business Process Automation - Highlight Card -->
-                <div class="summary-spotlight-card service-card bento-highlight" data-aos="fade-up" data-aos-delay="100">
-                    <div class="highlight-icon">⚡</div>
-                    <div class="highlight-text">
-                        <h3>Business Process Automation</h3>
-                        <p><strong>AI-powered business process optimization</strong> that saves time and reduces errors. Automate repetitive tasks and free your team for strategic work.</p>
-                    </div>
+                <!-- Business Process Automation -->
+                <div class="summary-spotlight-card service-card" data-aos="fade-up" data-aos-delay="50">
+                    <div class="service-icon">⚡</div>
+                    <h3 class="service-title">Business Process Automation</h3>
+                    <p class="service-description">
+                        <strong>AI-powered business process optimization</strong> that saves time and reduces errors. Automate repetitive tasks efficiently.
+                    </p>
                     <div class="service-features">
                         <span class="feature-tag">Workflow Mapping</span>
                         <span class="feature-tag">Process Design</span>
-                        <span class="feature-tag">Automation Setup</span>
+                        <span class="feature-tag">Automation</span>
                     </div>
                 </div>
 
-                <!-- Digital Transformation Consulting - Highlight Card -->
-                <div class="summary-spotlight-card service-card bento-highlight" data-aos="fade-up" data-aos-delay="150">
-                    <div class="highlight-icon">🚀</div>
-                    <div class="highlight-text">
-                        <h3>Digital Transformation Consulting</h3>
-                        <p>Expert <strong>digital transformation consultant</strong> helping organizations modernize operations, adopt new technologies, and stay competitive in 2024.</p>
-                    </div>
+                <!-- Digital Transformation -->
+                <div class="summary-spotlight-card service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">🚀</div>
+                    <h3 class="service-title">Digital Transformation Consulting</h3>
+                    <p class="service-description">
+                        Expert <strong>digital transformation consultant</strong> helping organizations modernize operations and stay competitive in 2024.
+                    </p>
                     <div class="service-features">
                         <span class="feature-tag">Strategy Planning</span>
                         <span class="feature-tag">Change Management</span>
@@ -114,29 +109,27 @@
                     </div>
                 </div>
 
-                <!-- n8n Workflow Automation - Large Feature Card -->
-                <div class="summary-spotlight-card service-card bento-medium" data-aos="fade-up" data-aos-delay="200">
+                <!-- n8n Workflow Automation -->
+                <div class="summary-spotlight-card service-card" data-aos="fade-up" data-aos-delay="150">
                     <div class="service-icon">🔄</div>
                     <h3 class="service-title">n8n Workflow Automation</h3>
                     <p class="service-description">
-                        As an <strong>n8n automation expert</strong>, I build powerful workflow automations that connect your tools and automate complex processes. n8n is one of the <strong>best workflow automation tools in 2024</strong> for its flexibility and cost-effectiveness.
+                        <strong>n8n automation expert</strong> building powerful workflows. One of the <strong>best workflow automation tools 2024</strong>.
                     </p>
                     <div class="service-features">
                         <span class="feature-tag">Custom Workflows</span>
-                        <span class="feature-tag">API Integrations</span>
+                        <span class="feature-tag">API Integration</span>
                         <span class="feature-tag">Zapier Alternative</span>
-                        <span class="feature-tag">Self-Hosted Solutions</span>
                     </div>
                 </div>
 
-                <!-- Website Design - Highlight Card with Image -->
-                <div class="summary-spotlight-card service-card bento-highlight service-image-card" data-aos="fade-up" data-aos-delay="250">
-                    <div class="service-image-overlay"></div>
-                    <div class="highlight-icon">🎨</div>
-                    <div class="highlight-text">
-                        <h3>Website Design</h3>
-                        <p>Modern, responsive websites with beautiful UI/UX design. Built with latest web technologies for optimal performance.</p>
-                    </div>
+                <!-- Website Design -->
+                <div class="summary-spotlight-card service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">🎨</div>
+                    <h3 class="service-title">Website Design</h3>
+                    <p class="service-description">
+                        Modern, responsive websites with beautiful UI/UX design. Built with latest web technologies for optimal performance.
+                    </p>
                     <div class="service-features">
                         <span class="feature-tag">UI/UX Design</span>
                         <span class="feature-tag">Responsive Design</span>
@@ -144,46 +137,59 @@
                     </div>
                 </div>
 
-                <!-- Web Application Architecture - Medium Card -->
-                <div class="summary-spotlight-card service-card bento-medium" data-aos="fade-up" data-aos-delay="300">
+                <!-- Web Application Development -->
+                <div class="summary-spotlight-card service-card" data-aos="fade-up" data-aos-delay="250">
                     <div class="service-icon">🏗️</div>
-                    <h3 class="service-title">Web & Mobile Application Development</h3>
+                    <h3 class="service-title">Web Application Development</h3>
                     <p class="service-description">
-                        Full-stack web and mobile application architecture and development. From concept to deployment, I build scalable, secure applications using modern frameworks and best practices.
+                        Full-stack web application architecture and development. Scalable, secure applications using modern frameworks.
                     </p>
                     <div class="service-features">
                         <span class="feature-tag">React / Next.js</span>
                         <span class="feature-tag">Node.js Backend</span>
                         <span class="feature-tag">API Development</span>
-                        <span class="feature-tag">Database Design</span>
-                        <span class="feature-tag">Cloud Deployment</span>
-                        <span class="feature-tag">Progressive Web Apps</span>
                     </div>
                 </div>
 
-                <!-- Tools & Technologies - Wide Card -->
-                <div class="summary-spotlight-card service-card bento-tools" data-aos="fade-up" data-aos-delay="350">
-                    <div class="tools-content">
-                        <div class="highlight-icon">🛠️</div>
-                        <h4>Technologies & Tools I Work With</h4>
-                        <div class="tech-grid">
-                            <div class="tech-category">
-                                <h5>AI & Automation</h5>
-                                <p>OpenAI, Claude AI, n8n, Zapier, Make.com, Custom ML Models</p>
-                            </div>
-                            <div class="tech-category">
-                                <h5>Web Development</h5>
-                                <p>React, Next.js, Vue, HTML/CSS, JavaScript, TypeScript, Tailwind CSS</p>
-                            </div>
-                            <div class="tech-category">
-                                <h5>Backend & Database</h5>
-                                <p>Node.js, Python, Supabase, Firebase, PostgreSQL, MongoDB</p>
-                            </div>
-                            <div class="tech-category">
-                                <h5>Design & Tools</h5>
-                                <p>Figma, Adobe XD, VS Code, Git, GitHub, Vercel, Netlify</p>
-                            </div>
-                        </div>
+                <!-- Mobile App Development -->
+                <div class="summary-spotlight-card service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">📱</div>
+                    <h3 class="service-title">Mobile App Development</h3>
+                    <p class="service-description">
+                        Native and cross-platform mobile applications. Progressive Web Apps with native-like experience.
+                    </p>
+                    <div class="service-features">
+                        <span class="feature-tag">React Native</span>
+                        <span class="feature-tag">PWA</span>
+                        <span class="feature-tag">Cross-Platform</span>
+                    </div>
+                </div>
+
+                <!-- Database Design -->
+                <div class="summary-spotlight-card service-card" data-aos="fade-up" data-aos-delay="350">
+                    <div class="service-icon">💾</div>
+                    <h3 class="service-title">Database Design & Management</h3>
+                    <p class="service-description">
+                        Scalable database architecture, optimization, and management. SQL and NoSQL solutions for any scale.
+                    </p>
+                    <div class="service-features">
+                        <span class="feature-tag">PostgreSQL</span>
+                        <span class="feature-tag">MongoDB</span>
+                        <span class="feature-tag">Supabase</span>
+                    </div>
+                </div>
+
+                <!-- Cloud & DevOps -->
+                <div class="summary-spotlight-card service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-icon">☁️</div>
+                    <h3 class="service-title">Cloud & DevOps</h3>
+                    <p class="service-description">
+                        Cloud deployment, CI/CD pipelines, and infrastructure management. Scalable and reliable hosting solutions.
+                    </p>
+                    <div class="service-features">
+                        <span class="feature-tag">AWS / Vercel</span>
+                        <span class="feature-tag">Docker</span>
+                        <span class="feature-tag">CI/CD</span>
                     </div>
                 </div>
 

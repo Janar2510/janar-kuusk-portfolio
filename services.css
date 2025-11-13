@@ -54,11 +54,11 @@
     background: var(--bg-primary);
 }
 
-/* Services Bento Grid */
-.services-bento-grid {
+/* Services Grid - Simple 3x3 Layout */
+.services-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
     max-width: 1400px;
     margin: 0 auto;
 }
@@ -70,67 +70,32 @@
     padding: 2.5rem;
     position: relative;
     overflow: hidden;
+    min-height: 320px;
 }
 
-/* Bento Grid Sizes for Services */
-.service-card.bento-large {
-    grid-column: span 2;
-    grid-row: span 2;
-}
-
-.service-card.bento-medium {
-    grid-column: span 2;
-    grid-row: span 1;
-}
-
-.service-card.bento-highlight {
-    grid-column: span 1;
-    grid-row: span 1;
-}
-
-.service-card.bento-tools {
-    grid-column: span 4;
-    grid-row: span 1;
-}
-
-/* Service Icons */
-.service-icon-large {
-    font-size: 5rem;
-    margin-bottom: 1.5rem;
-    filter: drop-shadow(0 4px 8px rgba(99, 102, 241, 0.3));
-}
-
+/* Service Icon */
 .service-icon {
     font-size: 3.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     filter: drop-shadow(0 4px 8px rgba(99, 102, 241, 0.3));
 }
 
 /* Service Title */
 .service-title {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--text-primary);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     line-height: 1.3;
-}
-
-.bento-medium .service-title,
-.bento-highlight .service-title {
-    font-size: 1.5rem;
 }
 
 /* Service Description */
 .service-description {
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1.7;
     color: var(--text-secondary);
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     flex-grow: 1;
-}
-
-.bento-medium .service-description {
-    font-size: 1rem;
 }
 
 /* Service Features/Tags */
@@ -159,52 +124,6 @@
     transform: translateY(-2px);
 }
 
-/* Service Image Card */
-.service-image-card {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-    position: relative;
-}
-
-.service-image-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        radial-gradient(circle at 30% 30%, rgba(99, 102, 241, 0.2) 0%, transparent 70%),
-        radial-gradient(circle at 70% 70%, rgba(139, 92, 246, 0.2) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 1;
-}
-
-.service-image-card .highlight-icon,
-.service-image-card .highlight-text,
-.service-image-card .service-features {
-    position: relative;
-    z-index: 2;
-}
-
-/* Tech Grid for Tools Card */
-.tech-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.tech-category h5 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #a5b4fc;
-    margin-bottom: 0.75rem;
-}
-
-.tech-category p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: var(--text-secondary);
-}
 
 /* Why Choose Section */
 .why-choose-section {
@@ -410,12 +329,9 @@
 
 /* Responsive Design */
 @media (max-width: 1200px) {
-    .services-bento-grid {
+    .services-grid {
         grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .service-card.bento-tools {
-        grid-column: span 3;
+        gap: var(--space-md);
     }
 }
 
@@ -424,21 +340,8 @@
         font-size: 2.5rem;
     }
     
-    .services-bento-grid {
+    .services-grid {
         grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .service-card.bento-large {
-        grid-column: span 2;
-        grid-row: span 2;
-    }
-    
-    .service-card.bento-medium {
-        grid-column: span 2;
-    }
-    
-    .service-card.bento-tools {
-        grid-column: span 2;
     }
     
     .benefits-grid {
@@ -468,26 +371,19 @@
         font-size: 1.1rem;
     }
     
-    .services-bento-grid {
+    .services-grid {
         grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    .service-card.bento-large,
-    .service-card.bento-medium,
-    .service-card.bento-highlight,
-    .service-card.bento-tools {
-        grid-column: span 1;
-        grid-row: span 1;
+        gap: var(--space-md);
     }
     
     .service-card {
-        padding: 1.5rem;
+        padding: 2rem;
+        min-height: auto;
     }
     
     .benefits-grid {
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: var(--space-md);
     }
     
     .services-cta-content h2 {
@@ -519,16 +415,16 @@
         font-size: 1.75rem;
     }
     
-    .service-icon-large {
-        font-size: 3.5rem;
-    }
-    
     .service-icon {
         font-size: 2.5rem;
     }
     
     .service-title {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
+    }
+    
+    .service-card {
+        padding: 1.5rem;
     }
     
     .section-title {
