@@ -1,4 +1,29 @@
 ## 2025-11-13
+- **Services Page Language Support - Added Estonian Translations and Language Toggle**:
+  - Added floating language toggle button (EN/ET) at bottom right of page
+  - Integrated language-toggle.css stylesheet for animated gradient border toggle
+  - Added translations.js and language-switcher.js for automatic language switching
+  - Added comprehensive data-i18n attributes to all page elements:
+    - Hero section (title, subtitle)
+    - All 9 service cards (titles and descriptions)
+    - Why Choose Me section (title, subtitle, and all 4 benefit cards)
+    - CTA section (title, description, and buttons)
+  - Created full Estonian translations for all content:
+    - AI Implementeerimise Teenused
+    - Äriprotsesside Automatiseerimine
+    - Digitaalse Transformatsiooni Nõustamine
+    - n8n Töövoo Automatiseerimine
+    - Veebidisain
+    - Veebirakenduste Arendus
+    - Mobiilirakenduste Arendus
+    - Andmebaasi Disain ja Haldus
+    - Pilv ja DevOps
+  - Language preference is saved in localStorage
+  - Auto-detects browser language (Estonian users see Estonian by default)
+  - Smooth animations for language switching
+  - Removed feature tags from service cards for cleaner, more professional look
+  - Toggle button includes gradient border animation and hover effects
+
 - **Services Page Updated to 3x3 Grid Layout**:
   - Changed from complex bento grid to simple, clean 3x3 grid layout with 9 equal-sized service cards
   - Updated header navigation to match homepage (removed About and Case Studies links)
