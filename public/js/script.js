@@ -108,7 +108,13 @@ function setupGlobalEventListeners() {
 
     // Close mobile menu when clicking on a link
     document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
+        link.addEventListener('click', (e) => {
+            // Only close menu, don't prevent navigation for non-hash links
+            const href = link.getAttribute('href');
+            if (href && !href.startsWith('#')) {
+                // Allow normal navigation for non-hash links (like services.html)
+                return;
+            }
             nav.classList.remove('active');
             mobileToggle.classList.remove('active');
         });

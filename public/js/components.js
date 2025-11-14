@@ -125,7 +125,13 @@ class ComponentManager {
 
         // Close menu on nav link click
         navLinks.forEach(link => {
-            link.addEventListener('click', () => {
+            link.addEventListener('click', (e) => {
+                // Only close menu for hash links, allow normal navigation for other links
+                const href = link.getAttribute('href');
+                if (href && !href.startsWith('#')) {
+                    // Allow normal navigation for non-hash links (like services.html)
+                    return;
+                }
                 if (document.querySelector('.main-nav').classList.contains('active')) {
                     this.closeMobileMenu();
                 }
