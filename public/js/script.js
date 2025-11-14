@@ -34,24 +34,28 @@ function initializeComponents() {
 function initializeSplashCursor(retryCount = 0) {
     const maxRetries = 50; // Maximum 5 seconds of retries (50 * 100ms)
     
-    // Wait for SplashCursorReact to be available
-    if (typeof SplashCursorReact === 'undefined') {
+    // Check for SplashCursor (vanilla JS version) first, then SplashCursorReact as fallback
+    const SplashCursorClass = typeof SplashCursor !== 'undefined' ? SplashCursor : 
+                              (typeof SplashCursorReact !== 'undefined' ? SplashCursorReact : undefined);
+    
+    if (!SplashCursorClass) {
         if (retryCount >= maxRetries) {
-            console.warn('SplashCursorReact not found after maximum retries. Splash cursor will not be initialized.');
+            // Suppress warning - SplashCursor is initialized separately in index.html
+            // console.warn('SplashCursor not found after maximum retries. Splash cursor will not be initialized.');
             return;
         }
         if (retryCount === 0) {
-            console.log('Attempting to initialize SplashCursorReact...');
+            // console.log('Attempting to initialize SplashCursor...');
         }
         setTimeout(() => initializeSplashCursor(retryCount + 1), 100);
         return;
     }
     
-    console.log('SplashCursorReact found, initializing...');
+    // console.log('SplashCursor found, initializing...');
     
     try {
         // Initialize splash cursor with custom settings
-        const splashCursor = new SplashCursorReact({
+        const splashCursor = new SplashCursorClass({
             SIM_RESOLUTION: 128,
             DYE_RESOLUTION: 1440,
             CAPTURE_RESOLUTION: 512,
