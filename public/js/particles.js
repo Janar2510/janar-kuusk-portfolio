@@ -36,11 +36,23 @@ class Particles {
     }
 
     init() {
+        // Wait for OGL to load if it's not available yet
         if (!window.OGL) {
-            console.error('OGL library not found. Please include OGL before particles.js');
+            // Try to wait a bit for OGL to load (async script loading)
+            setTimeout(() => {
+                if (window.OGL) {
+                    this.initOGL();
+                } else {
+                    console.error('OGL library not found. Please include OGL before particles.js');
+                }
+            }, 100);
             return;
         }
+        
+        this.initOGL();
+    }
 
+    initOGL() {
         const { Renderer, Camera, Geometry, Program, Mesh } = window.OGL;
 
         // Vertex shader

@@ -85,7 +85,12 @@ class ComponentManager {
         this.register('hero', new HeroComponent());
         this.register('workflow', new WorkflowComponent());
         this.register('particles', new ParticleSystem());
-        this.register('contact', new ContactForm());
+        // ContactForm is initialized separately in contact-form.js
+        // Only register if it exists (loaded after components.js)
+        if (typeof ContactForm !== 'undefined' || typeof window.ContactForm !== 'undefined') {
+            const ContactFormClass = ContactForm || window.ContactForm;
+            this.register('contact', new ContactFormClass());
+        }
         this.register('navigation', new NavigationComponent());
     }
 

@@ -243,8 +243,8 @@
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- OGL WebGL Library for Particles -->
-    <script src="https://cdn.jsdelivr.net/npm/ogl@1/dist/ogl.umd.js"></script>
+    <!-- OGL WebGL Library for Particles - Load first -->
+    <script src="https://cdn.jsdelivr.net/npm/ogl@1/dist/ogl.umd.js" onload="console.log('OGL library loaded')"></script>
     <script src="/js/particles.js"></script>
     <script src="/js/saletoru-effects.js"></script>
     <script src="/js/spotlight-card.js"></script>
@@ -263,22 +263,32 @@
             offset: 100
         });
 
-        // Initialize Particles Background
-        window.addEventListener('load', () => {
+        // Initialize Particles Background - Wait for OGL to load
+        function initParticles() {
             const heroParticlesContainer = document.getElementById('heroParticles');
             if (heroParticlesContainer && window.Particles) {
-                const heroParticles = new Particles(heroParticlesContainer, {
-                    particleColors: ['#ffffff', '#ffffff'],
-                    particleCount: 200,
-                    particleSpread: 10,
-                    speed: 0.1,
-                    particleBaseSize: 100,
-                    moveParticlesOnHover: true,
-                    alphaParticles: false,
-                    disableRotation: false
-                });
-                console.log('Hero particles initialized');
+                if (window.OGL) {
+                    const heroParticles = new Particles(heroParticlesContainer, {
+                        particleColors: ['#ffffff', '#ffffff'],
+                        particleCount: 200,
+                        particleSpread: 10,
+                        speed: 0.1,
+                        particleBaseSize: 100,
+                        moveParticlesOnHover: true,
+                        alphaParticles: false,
+                        disableRotation: false
+                    });
+                    console.log('Hero particles initialized');
+                } else {
+                    // Retry if OGL not loaded yet
+                    setTimeout(initParticles, 200);
+                }
             }
+        }
+        
+        // Try to initialize on load
+        window.addEventListener('load', () => {
+            setTimeout(initParticles, 100);
         });
     </script>
 </body>
