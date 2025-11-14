@@ -126,13 +126,22 @@ class ComponentManager {
         // Close menu on nav link click
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
-                // Only close menu for hash links, allow normal navigation for other links
                 const href = link.getAttribute('href');
+                
+                // For non-hash links (like services.html), allow normal navigation
                 if (href && !href.startsWith('#')) {
-                    // Allow normal navigation for non-hash links (like services.html)
-                    return;
+                    // Don't prevent default - allow normal page navigation
+                    // Just close the mobile menu if it's open
+                    const nav = document.querySelector('.main-nav');
+                    if (nav && nav.classList.contains('active')) {
+                        this.closeMobileMenu();
+                    }
+                    return; // Allow default navigation behavior
                 }
-                if (document.querySelector('.main-nav').classList.contains('active')) {
+                
+                // For hash links, close menu and let smooth scroll handle it
+                const nav = document.querySelector('.main-nav');
+                if (nav && nav.classList.contains('active')) {
                     this.closeMobileMenu();
                 }
             });

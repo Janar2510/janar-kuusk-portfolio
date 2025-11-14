@@ -109,14 +109,28 @@ function setupGlobalEventListeners() {
     // Close mobile menu when clicking on a link
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', (e) => {
-            // Only close menu, don't prevent navigation for non-hash links
             const href = link.getAttribute('href');
+            
+            // For non-hash links (like services.html), allow normal navigation
             if (href && !href.startsWith('#')) {
-                // Allow normal navigation for non-hash links (like services.html)
-                return;
+                // Don't prevent default - allow normal page navigation
+                // Just close the mobile menu if it's open
+                if (nav && nav.classList.contains('active')) {
+                    nav.classList.remove('active');
+                    if (mobileToggle) {
+                        mobileToggle.classList.remove('active');
+                    }
+                }
+                return; // Allow default navigation behavior
             }
-            nav.classList.remove('active');
-            mobileToggle.classList.remove('active');
+            
+            // For hash links, close menu and let smooth scroll handle it
+            if (nav && nav.classList.contains('active')) {
+                nav.classList.remove('active');
+                if (mobileToggle) {
+                    mobileToggle.classList.remove('active');
+                }
+            }
         });
     });
 

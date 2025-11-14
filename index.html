@@ -30,7 +30,7 @@
                 </a>
                 <nav class="main-nav">
                     <a href="index.html" class="nav-link" data-i18n="nav.home">Home</a>
-                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="/services.html" class="nav-link" id="servicesNavLink">Services</a>
                     <a href="#experience" class="nav-link" data-i18n="nav.experience">Experience</a>
                     <a href="#projects" class="nav-link" data-i18n="nav.projects">Projects</a>
                     <a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a>
@@ -870,5 +870,20 @@
     
     <!-- Hover Button with Glow Effect matching Education Cards -->
     <script src="/js/hover-button.js"></script>
+    
+    <!-- Explicit Services Link Handler -->
+    <script>
+        // Ensure Services link navigates correctly
+        document.addEventListener('DOMContentLoaded', function() {
+            const servicesLink = document.getElementById('servicesNavLink');
+            if (servicesLink) {
+                servicesLink.addEventListener('click', function(e) {
+                    // Explicitly allow navigation - don't prevent default
+                    console.log('Services link clicked, navigating to:', this.getAttribute('href'));
+                    // Let the browser handle the navigation naturally
+                });
+            }
+        });
+    </script>
 </body>
 </html>
