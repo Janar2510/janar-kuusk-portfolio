@@ -68,8 +68,8 @@ function initializeSplashCursor(retryCount = 0) {
             TRANSPARENT: true
         });
         
-        console.log('%c💫 Splash cursor initialized successfully!', 'color: #a855f7; font-size: 16px; font-weight: bold;');
-        console.log('SplashCursorReact instance:', splashCursor);
+        // console.log('%c💫 Splash cursor initialized successfully!', 'color: #a855f7; font-size: 16px; font-weight: bold;');
+        // console.log('SplashCursor instance:', splashCursor);
         
         // Store reference for cleanup if needed
         window.splashCursorInstance = splashCursor;
