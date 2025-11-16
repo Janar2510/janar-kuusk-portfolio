@@ -1,39 +1,53 @@
-/* SpotlightCard.css */
+/* SpotlightCard.css - SaleToru Brand Integration */
 
 .card-spotlight {
   position: relative;
   border-radius: 1.5rem;
-  border: 1px solid #222;
-  background-color: #111;
-  padding: 2rem;
+  background: linear-gradient(90deg, var(--color-primary, #8e2de2), var(--color-secondary, #4a00e0), var(--color-primary, #8e2de2));
+  background-size: 200% 200%;
+  animation: borderFlow 6s linear infinite;
+  padding: 2px; /* border thickness */
   overflow: hidden;
-  --mouse-x: 50%;
-  --mouse-y: 50%;
-  --spotlight-color: rgba(255, 255, 255, 0.05);
+  --spotlight-x: 50%;
+  --spotlight-y: 50%;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-spotlight > .card-spotlight-inner {
+  background: var(--color-surface, #13131A);
+  border-radius: calc(1.5rem - 2px);
+  padding: 2rem;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
 .card-spotlight:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 40px rgba(142, 45, 226, 0.3);
 }
 
 .card-spotlight::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), var(--spotlight-color), transparent 80%);
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+  background: #ffffff;
   opacity: 0;
-  transition: opacity 0.5s ease;
+  filter: blur(5rem);
   pointer-events: none;
+  transition: opacity 0.3s ease;
+  left: var(--spotlight-x, 50%);
+  top: var(--spotlight-y, 50%);
+  transform: translate(-50%, -50%);
+  z-index: 1;
 }
 
 .card-spotlight:hover::before,
 .card-spotlight:focus-within::before {
-  opacity: 0.6;
+  opacity: 0.15;
 }
 
 /* Education card specific styles */

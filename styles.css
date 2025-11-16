@@ -3,18 +3,18 @@
 /* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
-/* CSS Custom Properties */
+/* CSS Custom Properties - Integrated with SaleToru Brand */
 :root {
-    /* Brand Colors */
-    --primary-color: #6366f1;
-    --primary-dark: #4f46e5;
-    --secondary-color: #8b5cf6;
-    --accent-color: #06b6d4;
+    /* SaleToru Brand Colors */
+    --primary-color: #8e2de2;    /* neon purple */
+    --primary-dark: #6b21a8;     /* darker purple */
+    --secondary-color: #4a00e0;  /* electric blue */
+    --accent-color: #06b6d4;     /* cyan accent */
     --success-color: #10b981;
     --warning-color: #f59e0b;
     --error-color: #ef4444;
     
-    /* Neutral Colors */
+    /* Neutral Colors - Dark Theme */
     --gray-50: #f9fafb;
     --gray-100: #f3f4f6;
     --gray-200: #e5e7eb;
@@ -26,17 +26,17 @@
     --gray-800: #1f2937;
     --gray-900: #111827;
     
-    /* Background Colors */
-    --bg-primary: #0a0a0a;
-    --bg-secondary: #111111;
+    /* Background Colors - SaleToru Dark Theme */
+    --bg-primary: #0B0B0F;       /* SaleToru dark background */
+    --bg-secondary: #13131A;     /* SaleToru surface */
     --bg-tertiary: #1a1a1a;
-    --bg-card: #1e1e1e;
-    --bg-hover: #2a2a2a;
+    --bg-card: #13131A;          /* SaleToru card background */
+    --bg-hover: #1f2937;         /* neutral-800 */
     
     /* Text Colors */
-    --text-primary: #ffffff;
-    --text-secondary: #a1a1aa;
-    --text-muted: #71717a;
+    --text-primary: #E5E7EB;     /* SaleToru text */
+    --text-secondary: #9CA3AF;   /* SaleToru text muted */
+    --text-muted: #6b7280;
     
     /* Spacing System */
     --space-xs: 0.25rem;
@@ -88,10 +88,12 @@ html {
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
+    background-color: var(--color-bg, var(--bg-primary));
+    color: var(--color-text, var(--text-primary));
     line-height: 1.6;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* Container */
