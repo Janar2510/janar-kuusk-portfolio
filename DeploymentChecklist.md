@@ -1,3 +1,85 @@
+## Content & Legal - 2025-01-XX
+- **Privacy Policy Page**: Verify privacy-policy.html loads correctly
+- **Privacy Policy Translations**: Test language toggle switches privacy policy content between English and Estonian
+- **Privacy Policy Links**: Confirm footer links to privacy policy page work correctly
+- **Privacy Policy Content**: Review all sections (Introduction, Data Collection, Data Use, Storage, Cookies, Third-Party, Rights, Contact, Changes)
+- **Social Media Icons**: Verify all 4 social icons (LinkedIn, GitHub, Twitter, Instagram) display correctly in footer
+- **Social Icon Hover Effects**: Test hover animations on social icons
+- **Social Icon Links**: Update social icon hrefs from # to actual social media profile URLs when ready
+- **Footer Responsive Design**: Test footer layout on mobile devices (should stack vertically)
+
+## UI/UX Changes - 2025-01-XX
+- **Contact Card Glow Effects**: Verify contact info and contact form cards have pure black background (#000000)
+- **Contact Card Cyan Glow**: Test multiple layered box-shadows create radiant cyan halo (rgb(0, 229, 255))
+- **Contact Card Border**: Confirm cyan border (rgba(0, 229, 255, 0.3)) is visible
+- **Contact Card Radial Gradient**: Verify radial gradient overlay creates glow from center
+- **Hero Title Gradient**: Test animated gradient text (white to cyan) with drop-shadow glow
+- **Hero Description Glow**: Confirm cyan text-shadow glow effect on description text
+- **Glow Color Consistency**: Verify all glow effects use electric cyan (#00E5FF / rgb(0, 229, 255))
+- **Navbar Visibility**: Verify navbar is visible only when at the very top of the page (within 10px of top)
+- **Navbar Hide on Scroll**: Confirm navbar disappears immediately when scrolling down
+- **Navbar Show on Scroll Up**: Verify navbar reappears smoothly when scrolling back to top
+- **Navbar Transition**: Test smooth 0.3s transition animation for show/hide
+- **Website Design Scroll Animation**: Verify scroll-based section transitions work with mouse wheel, touch, and pointer
+- **GSAP Observer**: Confirm GSAP Observer plugin loads correctly from CDN
+- **Scroll Sections**: Test all three sections (Saletoru CRM, Solarair Dynamics, ColorDesign Studio) transition smoothly
+- **Horizontal Slide Animation**: Verify sections slide horizontally with image parallax effects
+- **Text Animation**: Confirm heading text animates word-by-word on section change
+- **Thumbnail Navigation**: Test thumbnail clicks navigate to correct section
+- **Thumbnail Active State**: Verify active thumbnail overlay fades out correctly
+- **Counter Animation**: Confirm counter (1/3, 2/3, 3/3) animates smoothly on section change
+- **Container Size**: Verify website design section maintains same size as workflow video card
+- **Mobile Responsiveness**: Test thumbnails and counter scale correctly on mobile devices
+- **Scroll Observer**: Confirm scroll detection works within the website design container only
+
+## UI/UX Changes - 2025-11-11
+- **AI Agent Workflow Dotted Surface**: Confirm animated dotted surface canvas renders behind the workflow card without covering content.
+- **Theme Alignment**: Verify dotted surface colors follow CSS custom properties and adjust correctly for light vs dark themes.
+- **Resize Handling**: Test card resize (window resize + responsive breakpoints) keeps surface aligned and scaled.
+- **Performance**: Ensure animation remains smooth (no dropped frames) and no console errors appear.
+- **Layering**: Confirm workflow blocks, metrics, and particle overlay stay above the dotted surface (z-index integrity).
+
+## UI/UX Changes - 2025-11-02
+- **Skills Bento Grid**: Verify Core Skills & Expertise displays as bento grid with 2-column spans per card
+- **Skills Grid Responsiveness**: Test grid adapts: 4 cols (desktop) → 3 cols (1200px) → 2 cols (991px) → 1 col (mobile)
+- **Skills Card Sizing**: Confirm all cards have minimum 250px height and balanced proportions
+- **Workflow Video Section**: Verify 1102.mp4 plays automatically in continuous loop
+- **Video Spacing**: Confirm 30px spacing from all viewport edges (top, right, bottom, left)
+- **Video Container**: Verify dark container (#0a0a0a) with subtle cyan border and rounded corners
+- **Video Display**: Confirm video fills container width and maintains aspect ratio (object-fit: contain)
+- **Clean Design**: Verify NO spotlight effects, NO hover animations - just clean video presentation
+- **Video Responsiveness**: Test padding scales: 30px (desktop) → 20px (tablet) → 15px (mobile)
+- **Continuous Loop**: Confirm video loops seamlessly without interruption
+- **Bento Grid Layout**: Verify Professional Summary displays as modern bento grid (4 columns on desktop)
+- **Card Styling Match**: Confirm ALL summary cards have EXACT same styling as Head of Sales card (cyan/blue theme)
+- **Animated Borders**: Verify gradient borders animate and shine on hover (cyan to purple gradient)
+- **Spotlight Effects**: Test cyan radial spotlight glow appears on hover for all cards
+- **Grid Responsiveness**: Test bento grid adapts: 4 cols (desktop) → 3 cols (1200px) → 2 cols (991px) → 1 col (mobile)
+- **Card Hover**: Verify all cards lift 8px on hover with cyan glow shadow
+- **Stats Display**: Confirm stats card shows 2x2 grid with cyan gradient numbers
+- **Highlight Cards**: Verify three highlight cards display with centered icons and text
+
+## Content Verification - 2025-10-28
+- **Education Section**: Verify education shows real credentials (Tallinn Technical University, Olustvere Technical School, Karksi-Nuia Gymnasium) - NO fake degrees displayed
+- **Contact Information**: Confirm email is info@janarkuuskpro.com, phone +372 56103001
+- **Employment Dates**: Verify ML System shows "2024 - 2025" (not "Present")
+- **Statistics Accuracy**: Confirm stats show "8+ Years in Sales Leadership" and "4 Companies Led"
+- **Translations**: Verify both English and Estonian versions reflect accurate information
+- **Work Experience**: Confirm all job titles, dates, and descriptions match actual CV
+- **Language Toggle**: Verify EN/ET toggle button is visible in bottom-right corner and functional
+- **Project Links**: Confirm all three featured projects have working GitHub links (Saletoru CRM, FusionAI, AgentFlow)
+- **Project Images**: Verify all project images (PNG files) are loading correctly
+- **Project Translations**: Test language toggle updates project names, descriptions, and tech tags correctly
+
+## UI Checks - 2025-10-17
+- **Project Images**: Verify all project cards display images from `/public/images/projects/` directory with proper fallback to emoji placeholders if images fail to load.
+- **GitHub Integration**: Confirm Saletoru CRM "View Project" button links to https://github.com/Janar2510/AI-Powered-Saleguru-CRM and opens in new tab.
+- **Image Directory Structure**: Verify `/public/images/` folder exists with proper subdirectories (projects/, logos/, avatars/) and README.md documentation.
+- **Image Styling**: Confirm project images have proper hover effects, object-fit scaling, and responsive behavior.
+
+## UI Checks - 2025-10-15
+- Verify `Core Skills & Expertise` section shows cards in a single horizontal row with smooth horizontal scroll on overflow.
+- Confirm `skill-category` cards use `var(--radius-xl)` for rounded corners and maintain gradient border standards.
 # Deployment Checklist
 
 ## Pre-Deployment Setup

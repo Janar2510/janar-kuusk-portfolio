@@ -1,0 +1,148 @@
+/* Contact Form Styles */
+.contact-form {
+    position: relative;
+    margin-top: 50px;
+}
+
+/* Form Notification */
+.form-notification {
+    margin-top: 1.5rem;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.form-notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.form-notification.success {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: #22c55e;
+}
+
+.form-notification.error {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.notification-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.form-notification.success .notification-icon {
+    background: rgba(34, 197, 94, 0.2);
+}
+
+.form-notification.error .notification-icon {
+    background: rgba(239, 68, 68, 0.2);
+}
+
+.notification-message {
+    flex: 1;
+    font-size: 0.95rem;
+}
+
+/* Button spinning animation */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.btn-icon.spinning {
+    animation: spin 1s linear infinite;
+}
+
+/* Form Group Styles */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-purple, #8e2de2);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 3px rgba(142, 45, 226, 0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Button Full Width */
+.btn-full {
+    width: 100%;
+    justify-content: center;
+}
+
+/* Loading State */
+button[disabled] {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Form Validation Styles */
+.form-group input:invalid,
+.form-group textarea:invalid {
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+.form-group input:valid,
+.form-group textarea:valid {
+    border-color: rgba(34, 197, 94, 0.3);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .form-group input,
+    .form-group textarea {
+        padding: 0.875rem;
+        font-size: 0.9rem;
+    }
+
+    .notification-message {
+        font-size: 0.875rem;
+    }
+}
+

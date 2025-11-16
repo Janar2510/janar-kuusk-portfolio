@@ -1,0 +1,8 @@
+node_modules/
+dist/
+# Large video files (over 100MB)
+public/images/1102.mp4
+public/images/*.mov
+
+# Allow smaller project videos
+!public/images/projects/*.mp4

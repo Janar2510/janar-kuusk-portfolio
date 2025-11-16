@@ -107,19 +107,67 @@ class ComponentManager {
 
         // Mobile menu toggle
         const mobileToggle = document.getElementById('mobileMenuToggle');
+        const navOverlay = document.getElementById('navOverlay');
+        const navLinks = document.querySelectorAll('.nav-link');
+
         if (mobileToggle) {
             mobileToggle.addEventListener('click', () => {
                 this.toggleMobileMenu();
             });
         }
+
+        // Close menu on overlay click
+        if (navOverlay) {
+            navOverlay.addEventListener('click', () => {
+                this.closeMobileMenu();
+            });
+        }
+
+        // Close menu on nav link click
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (document.querySelector('.main-nav').classList.contains('active')) {
+                    this.closeMobileMenu();
+                }
+            });
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && document.querySelector('.main-nav').classList.contains('active')) {
+                this.closeMobileMenu();
+            }
+        });
     }
 
     toggleMobileMenu() {
         const nav = document.querySelector('.main-nav');
         const toggle = document.getElementById('mobileMenuToggle');
-        
+        const overlay = document.getElementById('navOverlay');
+
         nav.classList.toggle('active');
         toggle.classList.toggle('active');
+        if (overlay) {
+            overlay.classList.toggle('active');
+        }
+
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+    }
+
+    closeMobileMenu() {
+        const nav = document.querySelector('.main-nav');
+        const toggle = document.getElementById('mobileMenuToggle');
+        const overlay = document.getElementById('navOverlay');
+
+        nav.classList.remove('active');
+        toggle.classList.remove('active');
+        if (overlay) {
+            overlay.classList.remove('active');
+        }
+
+        // Restore body scroll
+        document.body.style.overflow = '';
     }
 }
 
@@ -178,6 +226,11 @@ class WorkflowComponent {
     }
 
     createWorkflowNodes() {
+        if (!this.workflowNodes) {
+            console.warn('WorkflowNodes container not found');
+            return;
+        }
+
         const nodeData = [
             { id: 'input', title: 'Data Input', icon: '📊', color: '#6366f1' },
             { id: 'process', title: 'AI Processing', icon: '🤖', color: '#8b5cf6' },
@@ -333,179 +386,8 @@ class ParticleSystem {
     }
 }
 
-// Contact Form Component
-class ContactForm {
-    constructor() {
-        this.form = document.getElementById('contactForm');
-    }
-
-    init() {
-        if (this.form) {
-            this.setupFormValidation();
-            this.setupFormSubmission();
-        }
-    }
-
-    setupFormValidation() {
-        const inputs = this.form.querySelectorAll('input, textarea');
-        inputs.forEach(input => {
-            input.addEventListener('blur', () => {
-                this.validateField(input);
-            });
-            
-            input.addEventListener('input', () => {
-                this.clearFieldError(input);
-            });
-        });
-    }
-
-    validateField(field) {
-        const value = field.value.trim();
-        const fieldName = field.name;
-        let isValid = true;
-        let errorMessage = '';
-
-        switch (fieldName) {
-            case 'name':
-                if (value.length < 2) {
-                    isValid = false;
-                    errorMessage = 'Name must be at least 2 characters';
-                }
-                break;
-            case 'email':
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(value)) {
-                    isValid = false;
-                    errorMessage = 'Please enter a valid email address';
-                }
-                break;
-            case 'subject':
-                if (value.length < 3) {
-                    isValid = false;
-                    errorMessage = 'Subject must be at least 3 characters';
-                }
-                break;
-            case 'message':
-                if (value.length < 10) {
-                    isValid = false;
-                    errorMessage = 'Message must be at least 10 characters';
-                }
-                break;
-        }
-
-        if (!isValid) {
-            this.showFieldError(field, errorMessage);
-        } else {
-            this.clearFieldError(field);
-        }
-
-        return isValid;
-    }
-
-    showFieldError(field, message) {
-        this.clearFieldError(field);
-        
-        field.classList.add('error');
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'field-error';
-        errorDiv.textContent = message;
-        field.parentNode.appendChild(errorDiv);
-    }
-
-    clearFieldError(field) {
-        field.classList.remove('error');
-        const errorDiv = field.parentNode.querySelector('.field-error');
-        if (errorDiv) {
-            errorDiv.remove();
-        }
-    }
-
-    setupFormSubmission() {
-        this.form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            this.handleFormSubmission();
-        });
-    }
-
-    async handleFormSubmission() {
-        const formData = new FormData(this.form);
-        const data = Object.fromEntries(formData);
-        
-        // Validate all fields
-        const inputs = this.form.querySelectorAll('input, textarea');
-        let isFormValid = true;
-        
-        inputs.forEach(input => {
-            if (!this.validateField(input)) {
-                isFormValid = false;
-            }
-        });
-
-        if (!isFormValid) {
-            this.showFormError('Please fix the errors above');
-            return;
-        }
-
-        // Show loading state
-        const submitBtn = this.form.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = 'Sending...';
-        submitBtn.disabled = true;
-
-        try {
-            // Simulate API call
-            await this.simulateApiCall(data);
-            this.showFormSuccess('Message sent successfully!');
-            this.form.reset();
-        } catch (error) {
-            this.showFormError('Failed to send message. Please try again.');
-        } finally {
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-        }
-    }
-
-    simulateApiCall(data) {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                // Simulate random success/failure
-                if (Math.random() > 0.1) {
-                    resolve(data);
-                } else {
-                    reject(new Error('API Error'));
-                }
-            }, 2000);
-        });
-    }
-
-    showFormSuccess(message) {
-        this.showFormMessage(message, 'success');
-    }
-
-    showFormError(message) {
-        this.showFormMessage(message, 'error');
-    }
-
-    showFormMessage(message, type) {
-        // Remove existing messages
-        const existingMessage = this.form.querySelector('.form-message');
-        if (existingMessage) {
-            existingMessage.remove();
-        }
-
-        const messageDiv = document.createElement('div');
-        messageDiv.className = `form-message form-message-${type}`;
-        messageDiv.textContent = message;
-        this.form.appendChild(messageDiv);
-
-        // Auto-remove after 5 seconds
-        setTimeout(() => {
-            if (messageDiv.parentNode) {
-                messageDiv.remove();
-            }
-        }, 5000);
-    }
-}
+// Contact Form Component  
+// Note: ContactForm is now handled in contact-form.js to avoid duplicate declarations
 
 // Navigation Component
 class NavigationComponent {
@@ -633,4 +515,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Export for use in other files
 window.ComponentManager = ComponentManager;
-window.Utils = Utils;
+// Utils is now defined in script.js to avoid duplicate declarations
+if (typeof window.Utils === 'undefined' && typeof Utils !== 'undefined') {
+    window.Utils = Utils;
+}

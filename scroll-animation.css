@@ -1,0 +1,180 @@
+/* Container Scroll Animation Styles */
+.scroll-animation-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    perspective: 1000px;
+    padding: 6rem 2rem;
+    background: var(--bg-primary);
+}
+
+.scroll-content-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.scroll-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    transform: translateY(0);
+    transition: transform 0.05s linear;
+    will-change: transform;
+}
+
+.scroll-title .section-title {
+    margin-bottom: var(--space-md);
+}
+
+.scroll-title .section-subtitle {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.scroll-card-container {
+    transform-style: preserve-3d;
+    transition: transform 0.05s linear;
+    will-change: transform;
+}
+
+.scroll-card {
+    max-width: 1200px;
+    margin: 0 auto;
+    border: 4px solid rgba(142, 45, 226, 0.3);
+    padding: 2.5rem;
+    background: linear-gradient(135deg, rgba(142, 45, 226, 0.05), rgba(74, 0, 224, 0.05));
+    border-radius: 30px;
+    box-shadow:
+        0 0 60px rgba(142, 45, 226, 0.15),
+        0 9px 20px rgba(0, 0, 0, 0.3),
+        0 37px 37px rgba(0, 0, 0, 0.26),
+        0 84px 50px rgba(0, 0, 0, 0.15),
+        0 149px 60px rgba(0, 0, 0, 0.04),
+        0 233px 65px rgba(0, 0, 0, 0.01);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Gradient border effect */
+.scroll-card::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 30px;
+    padding: 4px;
+    background: linear-gradient(135deg, #8e2de2, #4a00e0, #06b6d4, #8e2de2);
+    background-size: 300% 300%;
+    animation: gradientBorderFlow 8s ease infinite;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+@keyframes gradientBorderFlow {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.scroll-card-inner {
+    position: relative;
+    z-index: 2;
+    background: rgba(17, 17, 17, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 26px;
+    padding: 2rem;
+}
+
+/* Summary content inside scroll card */
+.scroll-card .summary-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3xl);
+    padding: 0;
+}
+
+/* Ensure spotlight cards work inside scroll card */
+.scroll-card .summary-spotlight-card {
+    background: rgba(17, 17, 17, 0.8);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .scroll-animation-container {
+        min-height: auto;
+        padding: 4rem 2rem;
+    }
+
+    .scroll-card {
+        padding: 2rem;
+    }
+
+    .scroll-card .summary-content {
+        grid-template-columns: 1fr;
+        gap: var(--space-2xl);
+    }
+}
+
+@media (max-width: 768px) {
+    .scroll-animation-container {
+        padding: 3rem 1rem;
+    }
+
+    .scroll-title {
+        margin-bottom: 2rem;
+    }
+
+    .scroll-card {
+        padding: 1.5rem;
+        border-width: 2px;
+    }
+
+    .scroll-card-inner {
+        padding: 1.5rem;
+    }
+
+    .scroll-card .summary-content {
+        gap: var(--space-xl);
+    }
+}
+
+@media (max-width: 480px) {
+    .scroll-animation-container {
+        padding: 2rem 1rem;
+    }
+
+    .scroll-card {
+        padding: 1rem;
+    }
+
+    .scroll-card-inner {
+        padding: 1rem;
+    }
+}
+
+/* Performance optimization */
+.scroll-animation-container * {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .scroll-title,
+    .scroll-card-container {
+        transition: none;
+        animation: none;
+    }
+
+    .scroll-card::before {
+        animation: none;
+    }
+}

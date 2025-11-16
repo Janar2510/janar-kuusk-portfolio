@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="components.css">
     <link rel="stylesheet" href="ProfileCard.css">
     <link rel="stylesheet" href="SpotlightCard.css">
+    <link rel="stylesheet" href="language-toggle.css">
+    <link rel="stylesheet" href="orbiting-skills.css">
+    <link rel="stylesheet" href="contact-form.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -27,21 +30,18 @@
     <div class="portfolio-header">
         <div class="container">
             <div class="header-content">
-                <div class="logo">
-                    <span class="logo-text">Janar Kuusk</span>
-                    <span class="logo-subtitle">AI Solutions Architect</span>
-                </div>
+                <a href="index.html" class="logo">
+                    <img src="public/images/JanarKuusk logo.png" alt="Janar Kuusk" class="logo-image">
+                    <div class="logo-text-container">
+                        <span class="logo-text">Janar Kuusk</span>
+                    </div>
+                </a>
                 <nav class="main-nav">
-                    <a href="#hero" class="nav-link">Home</a>
-                    <a href="#summary" class="nav-link">Summary</a>
-                    <a href="#experience" class="nav-link">Experience</a>
-                    <a href="#career" class="nav-link">Career</a>
-                    <a href="#education" class="nav-link">Education</a>
-                    <a href="#projects" class="nav-link">Projects</a>
-                    <a href="#workflow" class="nav-link">Workflow</a>
-                    <a href="#skills" class="nav-link">Skills</a>
-                    <a href="#vision" class="nav-link">Vision</a>
-                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="index.html" class="nav-link" data-i18n="nav.home">Home</a>
+                    <a href="/services.html" class="nav-link" id="servicesNavLink">Services</a>
+                    <a href="#experience" class="nav-link" data-i18n="nav.experience">Experience</a>
+                    <a href="#projects" class="nav-link" data-i18n="nav.projects">Projects</a>
+                    <a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a>
                 </nav>
                 <button class="mobile-menu-toggle" id="mobileMenuToggle">
                     <span></span>
@@ -51,6 +51,9 @@
             </div>
         </div>
     </div>
+
+    <!-- Navigation overlay for mobile -->
+    <div class="nav-overlay" id="navOverlay"></div>
 
     <!-- Hero Section -->
     <section id="hero" class="hero">
@@ -65,18 +68,18 @@
                         <span class="gradient-text">Solutions</span>
                         <span class="gradient-text">Architect</span>
                     </h1>
-                    <p class="hero-description">
-                        Transforming businesses through intelligent automation, 
+                    <p class="hero-description" data-i18n="hero.description">
+                        Transforming businesses through intelligent automation,
                         machine learning, and cutting-edge AI technologies.
                     </p>
                     <div class="hero-actions">
-                        <button class="btn btn-primary" id="exploreBtn">
+                        <button class="btn btn-primary" id="exploreBtn" data-i18n="hero.exploreBtn">
                             Explore My Work
                             <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
                                 <path d="M5 12h14m-7-7l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </button>
-                        <button class="btn btn-secondary" id="contactBtn">
+                        <button class="btn btn-secondary" id="contactBtn" data-i18n="hero.contactBtn">
                             Get In Touch
                         </button>
                     </div>
@@ -92,56 +95,81 @@
     <section id="summary" class="summary">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Professional Summary</h2>
-                <p class="section-subtitle">Results-driven sales leader expanding into digital transformation</p>
+                <h2 class="section-title" data-i18n="summary.title">Professional Summary</h2>
+                <p class="section-subtitle" data-i18n="summary.subtitle">Results-driven sales leader expanding into digital transformation</p>
             </div>
-            <div class="summary-content">
-                <div class="summary-text summary-spotlight-card brand-card" data-aos="fade-right">
-                    <p class="summary-description">
+
+            <div class="summary-bento-grid">
+                <!-- Main Story Card - Large -->
+                <div class="summary-spotlight-card bento-large" data-aos="fade-up">
+                    <p class="summary-description" data-i18n="summary.description">
                         I am a results-driven sales leader with more than eight years of experience building lasting partnerships, leading teams, and driving consistent growth across competitive markets. Over the course of my career, I've guided organizations in renewable energy and technology through key stages of expansion, combining strategic planning with a hands-on, people-first approach.
                         <br><br>
                         In January 2024, I founded Color Disain Studio, a venture focused on digital transformation and the integration of AI into everyday business processes. My work today bridges two worlds I care deeply about: the human side of sales—trust, communication, and relationships—and the future of technology, where automation, design, and intelligence shape how companies operate.
                     </p>
-                    <div class="summary-highlights">
-                        <div class="highlight-item">
-                            <div class="highlight-icon">🎯</div>
-                            <div class="highlight-text">
-                                <h4>Sales Excellence</h4>
-                                <p>Proven track record in sales territory growth and high-value deal closure</p>
-                            </div>
+                </div>
+
+                <!-- Stats Card -->
+                <div class="summary-spotlight-card bento-stats" data-aos="fade-up" data-aos-delay="100">
+                    <div class="summary-stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">8+</div>
+                            <div class="stat-label">Years in Sales Leadership</div>
                         </div>
-                        <div class="highlight-item">
-                            <div class="highlight-icon">🚀</div>
-                            <div class="highlight-text">
-                                <h4>Digital Transformation</h4>
-                                <p>Leading AI implementation, UX/UI design, and web & mobile development</p>
-                            </div>
+                        <div class="stat-item">
+                            <div class="stat-number">4</div>
+                            <div class="stat-label">Companies Led</div>
                         </div>
-                        <div class="highlight-item">
-                            <div class="highlight-icon">⚡</div>
-                            <div class="highlight-text">
-                                <h4>Process Optimization</h4>
-                                <p>Expert in process engineering, risk evaluation, and n8n automations</p>
-                            </div>
+                        <div class="stat-item">
+                            <div class="stat-number">2</div>
+                            <div class="stat-label">Languages</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Digital Focus</div>
                         </div>
                     </div>
                 </div>
-                <div class="summary-stats summary-spotlight-card brand-card" data-aos="fade-left">
-                    <div class="stat-item">
-                        <div class="stat-number">5+</div>
-                        <div class="stat-label">Years in Sales Leadership</div>
+
+                <!-- Sales Excellence Card -->
+                <div class="summary-spotlight-card bento-highlight" data-aos="fade-up" data-aos-delay="200">
+                    <div class="highlight-icon">🎯</div>
+                    <div class="highlight-text">
+                        <h4>Sales Excellence</h4>
+                        <p>Proven track record in sales territory growth and high-value deal closure</p>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-number">3</div>
-                        <div class="stat-label">Companies Led</div>
+                </div>
+
+                <!-- Digital Transformation Card -->
+                <div class="summary-spotlight-card bento-highlight" data-aos="fade-up" data-aos-delay="250">
+                    <div class="highlight-icon">🚀</div>
+                    <div class="highlight-text">
+                        <h4>Digital Transformation</h4>
+                        <p>Leading AI implementation, UX/UI design, and web & mobile development</p>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-number">2</div>
-                        <div class="stat-label">Languages</div>
+                </div>
+
+                <!-- Process Optimization Card -->
+                <div class="summary-spotlight-card bento-highlight" data-aos="fade-up" data-aos-delay="300">
+                    <div class="highlight-icon">⚡</div>
+                    <div class="highlight-text">
+                        <h4>Process Optimization</h4>
+                        <p>Expert in process engineering, risk evaluation, and n8n automations</p>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label">Digital Focus</div>
+                </div>
+
+                <!-- Development & Tools Card -->
+                <div class="summary-spotlight-card bento-tools" data-aos="fade-up" data-aos-delay="350">
+                    <div class="tools-content">
+                        <div class="highlight-icon">💻</div>
+                        <h4 data-i18n="summary.tools.title">Development & Tools</h4>
+                        <p data-i18n="summary.tools.description">
+                            I build modern, responsive websites and web stores using HTML, CSS, JavaScript, React, and Python — combining clean design with strong functionality.
+                            <br><br>
+                            My workflow includes powerful tools like VS Code, Cursor, Git, GitHub, Node.js, Tailwind CSS, Next.js, Vite, Supabase, and Firebase.
+                            <br><br>
+                            I also work efficiently with API integrations, automation platforms (n8n, Zapier), and use Figma for interface design and prototyping.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -152,8 +180,8 @@
     <section id="experience" class="experience">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Professional Experience</h2>
-                <p class="section-subtitle">Building the future with AI and automation</p>
+                <h2 class="section-title" data-i18n="experience.title">Professional Experience</h2>
+                <p class="section-subtitle" data-i18n="experience.subtitle">Building the future with AI and automation</p>
             </div>
             <div class="experience-grid">
                 <div class="experience-spotlight-card brand-card tilt-container" data-aos="fade-up">
@@ -210,19 +238,20 @@
                 </div>
                 <div class="experience-spotlight-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="experience-header">
-                        <h3>Regional Business Development</h3>
-                        <span class="experience-period">2024 - Present</span>
+                        <h3>Regional Manager - BIPV Solutions</h3>
+                        <span class="experience-period">2024 - 2025</span>
                     </div>
                     <p class="experience-company">ML System</p>
                     <p class="experience-description">
                         Leading regional BIPV (Building Integrated Photovoltaics) 
-                        strategy and partnerships across Baltics and Nordics.
+                        strategy and partnerships across Baltics and Nordics. Managing strategic 
+                        partnerships and delivering innovative energy solutions.
                     </p>
                     <div class="experience-skills">
                         <span class="skill-tag">Business Development</span>
-                        <span class="skill-tag">Partnerships</span>
+                        <span class="skill-tag">Strategic Partnerships</span>
                         <span class="skill-tag">BIPV Technology</span>
-                        <span class="skill-tag">Regional Strategy</span>
+                        <span class="skill-tag">Cost Estimation</span>
                     </div>
                 </div>
             </div>
@@ -233,8 +262,8 @@
     <section id="career" class="career">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Career Journey</h2>
-                <p class="section-subtitle">From concept to implementation</p>
+                <h2 class="section-title" data-i18n="career.title">Career Journey</h2>
+                <p class="section-subtitle" data-i18n="career.subtitle">From concept to implementation</p>
             </div>
             <div class="career-grid">
                 <div class="career-card" data-aos="fade-up">
@@ -260,109 +289,51 @@
     <section id="education" class="education">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Education & Certifications</h2>
-                <p class="section-subtitle">Continuous learning in AI and technology</p>
+                <h2 class="section-title" data-i18n="education.title">Education & Certifications</h2>
+                <p class="section-subtitle" data-i18n="education.subtitle">Building technical and business expertise</p>
             </div>
             <div class="education-grid">
-                <div class="education-card" data-aos="fade-up">
-                    <div class="education-header">
-                        <h3>Master of Science in AI</h3>
-                        <span class="education-year">2021</span>
+                <div class="experience-spotlight-card" data-aos="fade-up">
+                    <div class="experience-header">
+                        <h3 class="experience-spotlight-title" data-i18n="education.degree1">Bachelor's Degree in Construction Project Management</h3>
+                        <span class="experience-period">2006</span>
                     </div>
-                    <p class="education-institution">Stanford University</p>
-                    <p class="education-description">
-                        Specialized in machine learning, deep learning, 
-                        and artificial intelligence applications.
+                    <p class="experience-company" data-i18n="education.institution1">Tallinn Technical University</p>
+                    <p class="experience-description" data-i18n="education.description1">
+                        Specialized in construction project management and technical leadership, 
+                        providing a strong foundation in complex project coordination.
                     </p>
                 </div>
-                <div class="education-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="education-header">
-                        <h3>AWS Certified Solutions Architect</h3>
-                        <span class="education-year">2022</span>
+                <div class="experience-spotlight-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="experience-header">
+                        <h3 class="experience-spotlight-title" data-i18n="education.degree2">Vocational Certificate in Construction Technology</h3>
+                        <span class="experience-period">2003</span>
                     </div>
-                    <p class="education-institution">Amazon Web Services</p>
-                    <p class="education-description">
-                        Professional certification in cloud architecture 
-                        and AI/ML services on AWS.
+                    <p class="experience-company" data-i18n="education.institution2">Olustvere Technical and Agricultural School</p>
+                    <p class="experience-description" data-i18n="education.description2">
+                        Technical education focused on construction technology 
+                        and practical engineering skills.
                     </p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Featured Projects</h2>
-                <p class="section-subtitle">Innovative solutions that make a difference</p>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card" data-aos="fade-up">
-                    <div class="project-image">
-                        <div class="project-placeholder">🤖</div>
+                <div class="experience-spotlight-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="experience-header">
+                        <h3 class="experience-spotlight-title" data-i18n="education.degree3">High School Diploma</h3>
+                        <span class="experience-period">1997</span>
                     </div>
-                    <div class="project-content">
-                        <h3>Saletoru CRM</h3>
-                        <p>AI-powered customer relationship management system with intelligent automation and predictive analytics.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">Machine Learning</span>
-                        </div>
-                        <div class="project-actions">
-                            <a href="#" class="btn btn-outline">View Project</a>
-                        </div>
-                    </div>
+                    <p class="experience-company" data-i18n="education.institution3">Karksi-Nuia Gymnasium</p>
+                    <p class="experience-description" data-i18n="education.description3">
+                        Comprehensive secondary education with focus on science and mathematics.
+                    </p>
                 </div>
-                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="project-image">
-                        <div class="project-placeholder">📊</div>
+                <div class="experience-spotlight-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="experience-header">
+                        <h3 class="experience-spotlight-title">Ongoing Learning in AI & Development</h3>
+                        <span class="experience-period">Ongoing</span>
                     </div>
-                    <div class="project-content">
-                        <h3>Predictive Analytics Platform</h3>
-                        <p>Real-time data analysis and forecasting system for business intelligence and decision making.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">Docker</span>
-                        </div>
-                        <div class="project-actions">
-                            <a href="#" class="btn btn-outline">View Project</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="project-image">
-                        <div class="project-placeholder">🔮</div>
-                    </div>
-                    <div class="project-content">
-                        <h3>AI Workflow Automation</h3>
-                        <p>Intelligent workflow management system that automates complex business processes using AI agents.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Vue.js</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">OpenAI API</span>
-                        </div>
-                        <div class="project-actions">
-                            <a href="#" class="btn btn-outline">View Project</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Workflow Section -->
-    <section id="workflow" class="workflow">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">AI Agent Workflow</h2>
-                <p class="section-subtitle">How intelligent systems work together</p>
-            </div>
-            <div class="workflow-container">
-                <div class="workflow-nodes" id="workflowNodes">
-                    <!-- Workflow nodes will be dynamically generated -->
+                    <p class="experience-company">Multiple Platforms</p>
+                    <p class="experience-description">
+                        Blending technical expertise with business understanding to build smarter digital solutions. I focus on how AI, automation, and code work together to improve real workflows and user experiences. OpenAI Learning Series – AI Tools & Automation. Google – Foundations of Project Management. Codecademy / freeCodeCamp – Web Development & JavaScript. Ongoing personal research and experimentation with AI-driven coding tools.
+                    </p>
                 </div>
             </div>
         </div>
@@ -372,8 +343,8 @@
     <section id="skills" class="skills">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Core Skills & Expertise</h2>
-                <p class="section-subtitle">Technical and business capabilities driving digital transformation</p>
+                <h2 class="section-title" data-i18n="skills.title">Core Skills & Expertise</h2>
+                <p class="section-subtitle" data-i18n="skills.subtitle">Technical and business capabilities driving digital transformation</p>
             </div>
             <div class="skills-grid">
                 <div class="skill-category" data-aos="fade-up">
@@ -436,19 +407,259 @@
         </div>
     </section>
 
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="projects.title">Featured Projects</h2>
+                <p class="section-subtitle" data-i18n="projects.subtitle">Innovative solutions that make a difference</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card" data-aos="fade-up">
+                    <div class="project-image">
+                        <img src="public/images/projects/Saletoru Powered with ai.png" alt="Saletoru CRM Dashboard" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="project-placeholder" style="display: none;">🤖</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Saletoru CRM</h3>
+                        <p>AI-powered customer relationship management system with intelligent automation and predictive analytics.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Machine Learning</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/Janar2510/AI-Powered-Saleguru-CRM" target="_blank" rel="noopener noreferrer" class="btn btn-outline">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-image">
+                        <img src="public/images/FUSIONAI (3).png" alt="FusionAI Enterprise Suite" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="project-placeholder" style="display: none;">🚀</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>FusionAI Enterprise Suite</h3>
+                        <p>AI-enhanced modular ERP platform with 23 core modules, multi-agent coordination, and modern glassmorphism UI. Features autonomous workflow capabilities and real-time collaboration.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">LangChain</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/Janar2510/FUSION-AI-Enterprise-Suite-AI-Driven-modular-ERP-Platform" target="_blank" rel="noopener noreferrer" class="btn btn-outline">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-image">
+                        <img src="public/images/AGENT FLOW.png" alt="AI Workflow Automation" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="project-placeholder" style="display: none;">🔮</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>AgentFlow</h3>
+                        <p>Visual Multi-Agent Workflow Designer - drag-and-drop interface for designing, deploying, and monitoring multi-agent systems with enterprise-grade reliability.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">LangChain</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/Janar2510/AgentFlow" target="_blank" rel="noopener noreferrer" class="btn btn-outline">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflow Video Section -->
+    <section class="workflow-video-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="video.title">Web application architecture and design</h2>
+            </div>
+        </div>
+        <div class="workflow-video-container">
+            <video 
+                class="workflow-video" 
+                autoplay 
+                loop 
+                muted 
+                playsinline
+                preload="auto">
+                <source src="./public/images/projects/Portfolio video.mp4" type="video/mp4">
+                <p style="color: white; padding: 2rem; text-align: center;">
+                    Your browser does not support the video tag.
+                </p>
+            </video>
+        </div>
+    </section>
+
+    <!-- Workflow Section -->
+    <section id="workflow" class="workflow">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="workflow.title">AI Agent Workflow</h2>
+                <p class="section-subtitle" data-i18n="workflow.subtitle">How intelligent systems work together</p>
+            </div>
+        </div>
+        <div class="workflow-video-section">
+            <div class="workflow-display-container">
+                <!-- Background effects inside the card -->
+                <div class="workflow-particles"></div>
+                
+                <!-- Workflow Blocks -->
+                <div class="workflow-blocks">
+                    <!-- TRIGGER Block -->
+                    <div class="workflow-block trigger-block">
+                        <div class="block-icon">⚡</div>
+                        <div class="block-text">TRIGGER</div>
+                    </div>
+                    
+                    <!-- Connection Line 1 -->
+                    <div class="workflow-connection">
+                        <div class="connection-line"></div>
+                        <div class="connection-dot dot-1"></div>
+                        <div class="connection-dot dot-2"></div>
+                        <div class="connection-dot dot-3"></div>
+                    </div>
+                    
+                    <!-- AI AGENT Block -->
+                    <div class="workflow-block agent-block">
+                        <div class="block-icon">🧠</div>
+                        <div class="block-text">AI AGENT</div>
+                    </div>
+                    
+                    <!-- Connection Line 2 -->
+                    <div class="workflow-connection">
+                        <div class="connection-line"></div>
+                        <div class="connection-dot dot-1"></div>
+                        <div class="connection-dot dot-2"></div>
+                        <div class="connection-dot dot-3"></div>
+                    </div>
+                    
+                    <!-- ACTION Block -->
+                    <div class="workflow-block action-block">
+                        <div class="block-icon">🚀</div>
+                        <div class="block-text">ACTION</div>
+                    </div>
+                </div>
+                
+                <!-- Performance Metrics -->
+                <div class="workflow-metrics">
+                    <div class="metric-item">
+                        <div class="metric-icon">✓</div>
+                        <div class="metric-value">99.9%</div>
+                        <div class="metric-label">UPTIME</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-icon">⚡</div>
+                        <div class="metric-value">&lt;50ms</div>
+                        <div class="metric-label">RESPONSE</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-icon">👥</div>
+                        <div class="metric-value">1M+</div>
+                        <div class="metric-label">EXECUTIONS</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Website Design Section (same sizing as video) -->
+    <section class="website-design-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="websiteDesign.title">Website design</h2>
+                <p class="section-subtitle" data-i18n="websiteDesign.subtitle">Elegant, responsive interfaces with motion and clarity</p>
+            </div>
+        </div>
+        <div class="website-design-container">
+            <div class="website-scroll-animation" id="websiteScrollAnimation">
+                <!-- Thumbnail navigation -->
+                <div class="website-thumbnails">
+                    <div class="website-thumb" data-index="0">
+                        <video class="thumb-video" muted playsinline preload="metadata">
+                            <source src="/images/game2.mp4" type="video/mp4">
+                        </video>
+                        <div class="thumb-overlay"></div>
+                    </div>
+                    <div class="website-thumb" data-index="1">
+                        <video class="thumb-video" muted playsinline preload="metadata">
+                            <source src="/images/Solarair.mp4" type="video/mp4">
+                        </video>
+                        <div class="thumb-overlay"></div>
+                    </div>
+                    <div class="website-thumb" data-index="2">
+                        <video class="thumb-video" muted playsinline preload="metadata">
+                            <source src="/images/Colordesign-Studio.mp4" type="video/mp4">
+                        </video>
+                        <div class="thumb-overlay"></div>
+                    </div>
+                </div>
+                
+                <!-- Counter -->
+                <div class="website-counter">
+                    <div class="counter-wrapper">
+                        <div class="counter-current">1</div>
+                        <div class="counter-next"></div>
+                    </div>
+                    <span class="counter-total">/ 3</span>
+                </div>
+
+                <!-- Scroll sections -->
+                <div class="website-scroll-section" data-index="0">
+                    <div class="website-outer">
+                        <div class="website-inner">
+                            <video class="website-video" loop muted playsinline preload="metadata">
+                                <source src="/images/game2.mp4" type="video/mp4">
+                            </video>
+                            <h2 class="website-heading">Game</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="website-scroll-section" data-index="1">
+                    <div class="website-outer">
+                        <div class="website-inner">
+                            <video class="website-video" loop muted playsinline preload="metadata">
+                                <source src="/images/Solarair.mp4" type="video/mp4">
+                            </video>
+                            <h2 class="website-heading">Solarair Dynamics</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="website-scroll-section" data-index="2">
+                    <div class="website-outer">
+                        <div class="website-inner">
+                            <video class="website-video" loop muted playsinline preload="metadata">
+                                <source src="/images/Colordesign-Studio.mp4" type="video/mp4">
+                            </video>
+                            <h2 class="website-heading">ColorDesign Studio</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Vision Section -->
     <section id="vision" class="vision">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Vision for the Future</h2>
-                <p class="section-subtitle">Where AI meets human potential</p>
+                <h2 class="section-title" data-i18n="vision.title">Vision for the Future</h2>
+                <p class="section-subtitle" data-i18n="vision.subtitle">Where AI meets human potential</p>
             </div>
             <div class="vision-content">
                 <div class="vision-text" data-aos="fade-right">
-                    <h3>Empowering Human-AI Collaboration</h3>
-                    <p>
-                        I believe in creating AI systems that augment human capabilities 
-                        rather than replace them. The future lies in seamless collaboration 
+                    <h3 data-i18n="vision.mainTitle">Empowering Human-AI Collaboration</h3>
+                    <p data-i18n="vision.mainText">
+                        I believe in creating AI systems that augment human capabilities
+                        rather than replace them. The future lies in seamless collaboration
                         between intelligent machines and human creativity.
                     </p>
                     <div class="vision-points">
@@ -476,12 +687,35 @@
                     </div>
                 </div>
                 <div class="vision-visual" data-aos="fade-left">
-                    <div class="vision-card">
-                        <div class="vision-animation" id="visionAnimation">
-                            <div class="ai-brain">🧠</div>
-                            <div class="connection-lines"></div>
-                        </div>
-                    </div>
+                    <!--
+                    ═══════════════════════════════════════════════════
+                      ORBITING SKILLS - LOGO UPLOAD INSTRUCTIONS
+                    ═══════════════════════════════════════════════════
+
+                    To add your custom logos:
+
+                    1. Prepare your logo images:
+                       - Format: PNG with transparent background
+                       - Size: 256x256px (square)
+                       - File size: Under 100KB
+
+                    2. Upload to: /assets/logos/ folder
+                       (Create this folder if it doesn't exist)
+
+                    3. Open: orbiting-skills.js
+                       Find: CUSTOM_LOGO_PATHS (lines 21-32)
+
+                    4. Update the paths:
+                       html: '/assets/logos/html-custom.png',
+                       css: '/assets/logos/css-custom.png',
+                       // etc...
+
+                    5. Refresh the page to see your custom logos
+
+                    Supported formats: PNG, JPG, SVG, WebP
+                    ═══════════════════════════════════════════════════
+                    -->
+                    <div id="orbitingSkillsContainer"></div>
                 </div>
             </div>
         </div>
@@ -491,40 +725,40 @@
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Let's Build Something Amazing</h2>
-                <p class="section-subtitle">Ready to transform your business with AI?</p>
+                <h2 class="section-title" data-i18n="contact.title">Let's Build Something Amazing</h2>
+                <p class="section-subtitle" data-i18n="contact.subtitle">Ready to transform your business with AI?</p>
             </div>
             <div class="contact-content">
                 <div class="contact-info" data-aos="fade-right">
-                    <h3>Get In Touch</h3>
-                    <p>I'm always excited to discuss new projects and opportunities in AI and automation.</p>
+                    <h3 data-i18n="contact.getInTouch">Get In Touch</h3>
+                    <p data-i18n="contact.description">I'm always excited to discuss new projects and opportunities in AI and automation.</p>
                     <div class="contact-details">
                         <div class="contact-item">
                             <div class="contact-icon">📧</div>
                             <div class="contact-text">
-                                <h4>Email</h4>
-                                <p>janar@colordisainstudio.com</p>
+                                <h4 data-i18n="contact.email">Email</h4>
+                                <p>info@janarkuuskpro.com</p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">📱</div>
                             <div class="contact-text">
-                                <h4>Phone</h4>
+                                <h4 data-i18n="contact.phone">Phone</h4>
                                 <p>+372 56103001</p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">📍</div>
                             <div class="contact-text">
-                                <h4>Location</h4>
+                                <h4 data-i18n="contact.location">Location</h4>
                                 <p>Päikese VKT 6, Päidre, Viljandimaa, Estonia</p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">🌍</div>
                             <div class="contact-text">
-                                <h4>Languages</h4>
-                                <p>Estonian, English</p>
+                                <h4 data-i18n="contact.languages">Languages</h4>
+                                <p data-i18n="contact.languagesValue">Estonian, English</p>
                             </div>
                         </div>
                     </div>
@@ -532,18 +766,18 @@
                 <div class="contact-form" data-aos="fade-left">
                     <form id="contactForm">
                         <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                            <input type="text" id="name" name="name" placeholder="Your Name" data-i18n-placeholder="contact.form.namePlaceholder" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                            <input type="email" id="email" name="email" placeholder="Your Email" data-i18n-placeholder="contact.form.emailPlaceholder" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                            <input type="text" id="subject" name="subject" placeholder="Subject" data-i18n-placeholder="contact.form.subjectPlaceholder" required>
                         </div>
                         <div class="form-group">
-                            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                            <textarea id="message" name="message" placeholder="Your Message" data-i18n-placeholder="contact.form.messagePlaceholder" rows="5" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-full">
+                        <button type="submit" class="btn btn-primary btn-full" data-i18n="contact.form.sendBtn">
                             Send Message
                             <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
                                 <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -563,21 +797,101 @@
                     <p>&copy; 2024 Janar Kuusk. All rights reserved.</p>
                 </div>
                 <div class="footer-links">
-                    <a href="#hero">Home</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#contact">Contact</a>
+                    <a href="#hero" data-i18n="footer.home">Home</a>
+                    <a href="#projects" data-i18n="footer.projects">Projects</a>
+                    <a href="#contact" data-i18n="footer.contact">Contact</a>
+                    <a href="privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-icon" aria-label="LinkedIn" title="LinkedIn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="GitHub" title="GitHub">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Twitter" title="Twitter">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Instagram" title="Instagram">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>
     </footer>
 
     <!-- Scripts -->
+    <!-- GSAP and plugins for scroll animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://assets.codepen.io/16327/Observer.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="saletoru-effects.js"></script>
-    <script src="fluid-simulation.js"></script>
-    <script src="profile-card.js"></script>
-    <script src="spotlight-card.js"></script>
-    <script src="components.js"></script>
-    <script src="script.js"></script>
+    <script src="/js/saletoru-effects.js"></script>
+    <script src="/js/fluid-simulation.js"></script>
+    <script src="/js/profile-card.js"></script>
+    <script src="/js/spotlight-card.js"></script>
+    <script src="/js/components.js"></script>
+    <script src="/js/splash-cursor.js"></script>
+    <script>
+        // Initialize Splash Cursor after page load
+        window.addEventListener('load', function() {
+            if (typeof SplashCursor !== 'undefined') {
+                new SplashCursor();
+                console.log('Splash Cursor initialized');
+            } else {
+                console.error('SplashCursor class not found');
+            }
+        });
+    </script>
+    <script src="/js/script.js"></script>
+    <script src="/js/translations.js"></script>
+    <script src="/js/language-switcher.js"></script>
+    <script src="/js/contact-form.js"></script>
+    <script src="/js/orbiting-skills.js"></script>
+    <script src="/js/website-scroll-animation.js"></script>
+    <!-- Three.js library for animated dotted surface -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="/js/workflow-dotted-surface.js"></script>
+    
+    <!-- Splash Cursor with Glow Effect -->
+    <script src="/js/splash-cursor.js"></script>
+    <script>
+        // Initialize Splash Cursor after page load
+        window.addEventListener('load', function() {
+            if (typeof SplashCursor !== 'undefined') {
+                new SplashCursor();
+                console.log('Splash Cursor initialized');
+            }
+        });
+    </script>
+    
+    <!-- Hover Button with Glow Effect matching Education Cards -->
+    <script src="/js/hover-button.js"></script>
+    
+    <!-- Explicit Services Link Handler -->
+    <script>
+        // Ensure Services link navigates correctly
+        document.addEventListener('DOMContentLoaded', function() {
+            const servicesLink = document.getElementById('servicesNavLink');
+            if (servicesLink) {
+                servicesLink.addEventListener('click', function(e) {
+                    // Explicitly allow navigation - don't prevent default
+                    console.log('Services link clicked, navigating to:', this.getAttribute('href'));
+                    // Let the browser handle the navigation naturally
+                });
+            }
+        });
+    </script>
 </body>
 </html>

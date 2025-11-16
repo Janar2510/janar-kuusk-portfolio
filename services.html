@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Solutions & Digital Transformation Services | Janar Kuusk - Estonia</title>
+    <meta name="description" content="Expert AI implementation services, n8n workflow automation, and digital transformation consulting in Estonia. AI solutions architect specializing in business process optimization and web development.">
+    <meta name="keywords" content="AI solutions architect Estonia, digital transformation consultant, n8n automation expert, AI implementation services, workflow automation tools 2024, business process optimization">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="components.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="SpotlightCard.css">
+    <link rel="stylesheet" href="contact-form.css">
+    <link rel="stylesheet" href="services.css">
+    <link rel="stylesheet" href="language-toggle.css">
+    <link rel="stylesheet" href="particles.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Fixed Header -->
+    <div class="portfolio-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <img src="public/images/JanarKuusk logo.png" alt="Janar Kuusk" class="logo-image">
+                    <div class="logo-text-container">
+                        <span class="logo-text">Janar Kuusk</span>
+                    </div>
+                </a>
+                <nav class="main-nav">
+                    <a href="index.html" class="nav-link" data-i18n="nav.home">Home</a>
+                    <a href="services.html" class="nav-link active">Services</a>
+                    <a href="index.html#experience" class="nav-link" data-i18n="nav.experience">Experience</a>
+                    <a href="index.html#projects" class="nav-link" data-i18n="nav.projects">Projects</a>
+                    <a href="index.html#contact" class="nav-link" data-i18n="nav.contact">Contact</a>
+                </nav>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation overlay for mobile -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- Hero Section -->
+    <section class="services-hero">
+        <div class="particles-container" id="heroParticles"></div>
+        <div class="container">
+            <div class="services-hero-content" data-aos="fade-up">
+                <h1 class="services-hero-title" data-i18n="services.hero.title">AI Solutions & Digital Transformation Services</h1>
+                <p class="services-hero-subtitle" data-i18n="services.hero.subtitle">Expert AI solutions architect in Estonia helping businesses implement AI, automate workflows, and transform digitally</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid Section -->
+    <section class="services-section">
+        <div class="container">
+            <div class="services-grid">
+                
+                <!-- AI Implementation Services -->
+                <div class="summary-spotlight-card service-card" data-aos="fade-up">
+                    <div class="service-icon">🤖</div>
+                    <h3 class="service-title" data-i18n="services.ai.title">AI Implementation Services</h3>
+                    <p class="service-description" data-i18n="services.ai.description">
+                        Expert <strong>AI solutions architect in Estonia</strong> helping businesses implement AI effectively. From strategy to deployment.
+                    </p>
+                </div>
+
+                <!-- Business Process Automation -->
+                <div class="summary-spotlight-card service-card" data-aos="fade-up" data-aos-delay="50">
+                    <div class="service-icon">⚡</div>
+                    <h3 class="service-title" data-i18n="services.automation.title">Business Process Automation</h3>
+                    <p class="service-description" data-i18n="services.automation.description">
+                        <strong>AI-powered business process optimization</strong> that saves time and reduces errors. Automate repetitive tasks efficiently.
+                    </p>
+                </div>
+
+                <!-- Digital Transformation -->
+                <div class="summary-spotlight-card service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">🚀</div>
+                    <h3 class="service-title" data-i18n="services.transformation.title">Digital Transformation Consulting</h3>
+                    <p class="service-description" data-i18n="services.transformation.description">
+                        Expert <strong>digital transformation consultant</strong> helping organizations modernize operations and stay competitive in 2024.
+                    </p>
+                </div>
+
+                <!-- n8n Workflow Automation -->
+                <div class="summary-spotlight-card service-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="service-icon">🔄</div>
+                    <h3 class="service-title" data-i18n="services.n8n.title">n8n Workflow Automation</h3>
+                    <p class="service-description" data-i18n="services.n8n.description">
+                        <strong>n8n automation expert</strong> building powerful workflows. One of the <strong>best workflow automation tools 2024</strong>.
+                    </p>
+                </div>
+
+                <!-- Website Design -->
+                <div class="summary-spotlight-card service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">🎨</div>
+                    <h3 class="service-title" data-i18n="services.webdesign.title">Website Design</h3>
+                    <p class="service-description" data-i18n="services.webdesign.description">
+                        Modern, responsive websites with beautiful UI/UX design. Built with latest web technologies for optimal performance.
+                    </p>
+                </div>
+
+                <!-- Web Application Development -->
+                <div class="summary-spotlight-card service-card" data-aos="fade-up" data-aos-delay="250">
+                    <div class="service-icon">🏗️</div>
+                    <h3 class="service-title" data-i18n="services.webapp.title">Web Application Development</h3>
+                    <p class="service-description" data-i18n="services.webapp.description">
+                        Full-stack web application architecture and development. Scalable, secure applications using modern frameworks.
+                    </p>
+                </div>
+
+                <!-- Mobile App Development -->
+                <div class="summary-spotlight-card service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">📱</div>
+                    <h3 class="service-title" data-i18n="services.mobile.title">Mobile App Development</h3>
+                    <p class="service-description" data-i18n="services.mobile.description">
+                        Native and cross-platform mobile applications. Progressive Web Apps with native-like experience.
+                    </p>
+                </div>
+
+                <!-- Database Design -->
+                <div class="summary-spotlight-card service-card" data-aos="fade-up" data-aos-delay="350">
+                    <div class="service-icon">💾</div>
+                    <h3 class="service-title" data-i18n="services.database.title">Database Design & Management</h3>
+                    <p class="service-description" data-i18n="services.database.description">
+                        Scalable database architecture, optimization, and management. SQL and NoSQL solutions for any scale.
+                    </p>
+                </div>
+
+                <!-- Cloud & DevOps -->
+                <div class="summary-spotlight-card service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-icon">☁️</div>
+                    <h3 class="service-title" data-i18n="services.cloud.title">Cloud & DevOps</h3>
+                    <p class="service-description" data-i18n="services.cloud.description">
+                        Cloud deployment, CI/CD pipelines, and infrastructure management. Scalable and reliable hosting solutions.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Me Section -->
+    <section class="why-choose-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title" data-i18n="services.whyChoose.title">Why Choose My Services?</h2>
+                <p class="section-subtitle" data-i18n="services.whyChoose.subtitle">Digital transformation strategy consultant with proven results</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card summary-spotlight-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="benefit-icon">🎯</div>
+                    <h4 data-i18n="services.benefits.results.title">Results-Driven Approach</h4>
+                    <p data-i18n="services.benefits.results.description">Focus on measurable outcomes and ROI. Every solution is designed to deliver real business value.</p>
+                </div>
+                <div class="benefit-card summary-spotlight-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="benefit-icon">🤝</div>
+                    <h4 data-i18n="services.benefits.partnership.title">Partnership Mindset</h4>
+                    <p data-i18n="services.benefits.partnership.description">I work as your technology partner, not just a vendor. Your success is my success.</p>
+                </div>
+                <div class="benefit-card summary-spotlight-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="benefit-icon">⚡</div>
+                    <h4 data-i18n="services.benefits.fast.title">Fast Implementation</h4>
+                    <p data-i18n="services.benefits.fast.description">Agile methodology ensures quick turnaround times without compromising quality.</p>
+                </div>
+                <div class="benefit-card summary-spotlight-card" data-aos="fade-up" data-aos-delay="250">
+                    <div class="benefit-icon">💡</div>
+                    <h4 data-i18n="services.benefits.innovative.title">Innovative Solutions</h4>
+                    <p data-i18n="services.benefits.innovative.description">Stay ahead with cutting-edge AI and automation technologies tailored to your needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="services-cta-section">
+        <div class="container">
+            <div class="services-cta-content" data-aos="fade-up">
+                <h2 data-i18n="services.cta.title">Ready to Transform Your Business?</h2>
+                <p data-i18n="services.cta.description">Let's discuss how AI implementation and digital transformation can help your business grow in 2024 and beyond.</p>
+                <div class="cta-buttons">
+                    <a href="index.html#contact" class="hover-button primary-button" data-i18n="services.cta.getStarted">Get Started</a>
+                    <a href="case-studies.html" class="hover-button secondary-button" data-i18n="services.cta.viewCases">View Case Studies</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="portfolio-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Janar Kuusk</h3>
+                    <p>AI Solutions Architect & Digital Transformation Consultant</p>
+                    <p>Based in Estonia, serving clients globally</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">AI Implementation</a></li>
+                        <li><a href="#services">Process Automation</a></li>
+                        <li><a href="#services">Digital Transformation</a></li>
+                        <li><a href="#services">Web Development</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Janar Kuusk. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- OGL WebGL Library for Particles - Load first -->
+    <script src="https://cdn.jsdelivr.net/npm/ogl@1/dist/ogl.umd.js" onload="console.log('OGL library loaded')"></script>
+    <script src="/js/particles.js"></script>
+    <script src="/js/saletoru-effects.js"></script>
+    <script src="/js/spotlight-card.js"></script>
+    <script src="/js/components.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/translations.js"></script>
+    <script src="/js/language-switcher.js"></script>
+    <script src="/js/hover-button.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+
+        // Initialize Particles Background - Wait for OGL to load
+        function initParticles() {
+            const heroParticlesContainer = document.getElementById('heroParticles');
+            if (heroParticlesContainer && window.Particles) {
+                if (window.OGL) {
+                    const heroParticles = new Particles(heroParticlesContainer, {
+                        particleColors: ['#ffffff', '#ffffff'],
+                        particleCount: 200,
+                        particleSpread: 10,
+                        speed: 0.1,
+                        particleBaseSize: 100,
+                        moveParticlesOnHover: true,
+                        alphaParticles: false,
+                        disableRotation: false
+                    });
+                    console.log('Hero particles initialized');
+                } else {
+                    // Retry if OGL not loaded yet
+                    setTimeout(initParticles, 200);
+                }
+            }
+        }
+        
+        // Try to initialize on load
+        window.addEventListener('load', () => {
+            setTimeout(initParticles, 100);
+        });
+    </script>
+</body>
+</html>
+
