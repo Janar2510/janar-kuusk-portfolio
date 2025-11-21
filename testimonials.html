@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="components.css">
     <link rel="stylesheet" href="language-toggle.css">
-    <link rel="stylesheet" href="testimonials.css?v=2">
+    <link rel="stylesheet" href="testimonials.css?v=3">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,18 +53,18 @@
     <!-- Navigation overlay for mobile -->
     <div class="nav-overlay" id="navOverlay"></div>
 
-    <!-- Force header visibility -->
+    <!-- Force header visibility with transparent background -->
     <script>
-        // Immediately force header to be visible with !important
+        // Immediately force header to be visible with transparent background
         (function() {
             const header = document.querySelector('.portfolio-header');
             if (header) {
                 header.style.setProperty('transform', 'translateY(0)', 'important');
                 header.style.setProperty('opacity', '1', 'important');
                 header.style.setProperty('visibility', 'visible', 'important');
-                header.style.setProperty('background', 'rgba(11, 11, 15, 0.95)', 'important');
-                header.style.setProperty('backdrop-filter', 'blur(10px)', 'important');
-                header.style.setProperty('border-bottom', '1px solid rgba(255, 255, 255, 0.1)', 'important');
+                header.style.setProperty('background', 'transparent', 'important');
+                header.style.setProperty('backdrop-filter', 'none', 'important');
+                header.style.setProperty('border-bottom', 'none', 'important');
             }
         })();
     </script>
@@ -289,7 +289,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="testimonials-translations.js"></script>
     <script src="language-switcher.js?v=8"></script>
-    <script src="testimonials.js?v=2"></script>
+    <script src="testimonials.js?v=3"></script>
     <script>
         // Initialize AOS
         AOS.init({

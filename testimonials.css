@@ -1,13 +1,13 @@
 /* Testimonials Page Styles - Updated Layout */
 
-/* Header Override - Force visibility on testimonials page */
+/* Header Override - Force visibility on testimonials page with transparent background */
 body .portfolio-header {
     transform: translateY(0) !important;
     opacity: 1 !important;
     visibility: visible !important;
-    background: rgba(11, 11, 15, 0.95) !important;
-    backdrop-filter: blur(10px) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    border-bottom: none !important;
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;

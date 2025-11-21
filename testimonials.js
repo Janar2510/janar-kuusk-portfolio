@@ -291,9 +291,16 @@ class HeaderNavigation {
     }
     
     init() {
-        // Always show header on testimonials page
+        // Always show header on testimonials page with transparent background
         if (this.header) {
+            this.header.classList.remove('header-hidden');
             this.header.classList.add('header-visible');
+            this.header.style.setProperty('transform', 'translateY(0)', 'important');
+            this.header.style.setProperty('opacity', '1', 'important');
+            this.header.style.setProperty('visibility', 'visible', 'important');
+            this.header.style.setProperty('background', 'transparent', 'important');
+            this.header.style.setProperty('backdrop-filter', 'none', 'important');
+            this.header.style.setProperty('border-bottom', 'none', 'important');
         }
         
         // Setup scroll effect
@@ -363,8 +370,21 @@ class HeaderNavigation {
 
 // Initialize slider when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    new TestimonialsSlider();
-    new HeaderNavigation();
+    try {
+        const slider = new TestimonialsSlider();
+        window.testimonialsSliderInstance = slider;
+        console.log('TestimonialsSlider initialized:', slider);
+    } catch (error) {
+        console.error('Error initializing TestimonialsSlider:', error);
+    }
+    
+    try {
+        const headerNav = new HeaderNavigation();
+        window.headerNavigationInstance = headerNav;
+        console.log('HeaderNavigation initialized:', headerNav);
+    } catch (error) {
+        console.error('Error initializing HeaderNavigation:', error);
+    }
 });
 
 // Add smooth scroll behavior for navigation links
