@@ -15,7 +15,32 @@
   status = 200
   force = false
 
-# SPA fallback - catch all other routes
+# Specific routes for static HTML pages (clean URLs)
+[[redirects]]
+  from = "/roi-calculator"
+  to = "/roi-calculator.html"
+  status = 200
+  force = false
+
+[[redirects]]
+  from = "/testimonials"
+  to = "/testimonials.html"
+  status = 200
+  force = false
+
+[[redirects]]
+  from = "/services"
+  to = "/services.html"
+  status = 200
+  force = false
+
+[[redirects]]
+  from = "/privacy-policy"
+  to = "/privacy-policy.html"
+  status = 200
+  force = false
+
+# SPA fallback - catch all other routes (must be last)
 [[redirects]]
   from = "/*"
   to = "/index.html"
