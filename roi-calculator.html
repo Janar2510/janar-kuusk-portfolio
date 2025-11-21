@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FY2YFXEM9Z"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-FY2YFXEM9Z');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI ROI Calculator - Janar Kuusk</title>
+    <link rel="stylesheet" href="saletoru-brand.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="components.css">
+    <link rel="stylesheet" href="language-toggle.css">
+    <link rel="stylesheet" href="roi-calculator.css?v=25">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Fixed Header -->
+    <div class="portfolio-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <img src="public/images/JanarKuusk logo.png" alt="Janar Kuusk" class="logo-image" onerror="this.style.display='none'">
+                    <div class="logo-text-container">
+                        <span class="logo-text">Janar Kuusk</span>
+                    </div>
+                </a>
+                <nav class="main-nav">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="index.html#projects" class="nav-link">Projects</a>
+                    <a href="roi-calculator.html" class="nav-link active">ROI Calculator</a>
+                    <a href="testimonials.html" class="nav-link">Testimonials</a>
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </nav>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation overlay for mobile -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- Hero Section -->
+    <section class="roi-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="gradient-text" data-i18n="roi.hero.title">AI ROI Calculator</span>
+                </h1>
+                <p class="hero-description" data-i18n="roi.hero.subtitle">
+                    Unlock the Value of AI. Calculate your potential Return on Investment 
+                    and get data-driven insights. Free for everyone.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="roi-calculator-section">
+        <div class="container">
+            <div class="calculator-grid">
+                <!-- Left Column: Inputs -->
+                <div class="calculator-inputs">
+                    <!-- Financial Inputs Card -->
+                    <div class="calculator-card">
+                        <h2 class="card-title" data-i18n="roi.financialInputs">Financial Inputs</h2>
+                        
+                        <!-- Industry Selection -->
+                        <div class="input-group">
+                            <label for="industry" class="input-label" data-i18n="roi.industry">Industry</label>
+                            <select id="industry" class="input-select">
+                                <option value="retail" data-i18n="roi.retail">Retail</option>
+                                <option value="manufacturing" data-i18n="roi.manufacturing">Manufacturing</option>
+                                <option value="healthcare" data-i18n="roi.healthcare">Healthcare</option>
+                                <option value="finance" data-i18n="roi.finance">Finance</option>
+                                <option value="custom" data-i18n="roi.custom">Custom</option>
+                            </select>
+                        </div>
+
+                        <!-- Custom Industry Name (hidden by default) -->
+                        <div class="input-group" id="customIndustryGroup" style="display: none;">
+                            <label for="customIndustry" class="input-label" data-i18n="roi.customIndustryName">Custom Industry Name</label>
+                            <input type="text" id="customIndustry" class="input-text" placeholder="Enter industry name">
+                        </div>
+
+                        <!-- Investment Costs -->
+                        <h3 class="section-subtitle" data-i18n="roi.investmentCosts">Investment Costs</h3>
+                        <div class="input-grid">
+                            <div class="input-group">
+                                <label for="initialCost" class="input-label" data-i18n="roi.initialCost">Initial AI Setup Cost</label>
+                                <div class="input-with-prefix">
+                                    <span class="input-prefix">$</span>
+                                    <input type="number" id="initialCost" class="input-number" value="50000" min="0" max="1000000000">
+                                </div>
+                                <span class="input-error" id="initialCost-error"></span>
+                            </div>
+                            <div class="input-group">
+                                <label for="annualCost" class="input-label" data-i18n="roi.annualCost">Annual Subscription</label>
+                                <div class="input-with-prefix">
+                                    <span class="input-prefix">$</span>
+                                    <input type="number" id="annualCost" class="input-number" value="10000" min="0" max="1000000000">
+                                </div>
+                                <span class="input-error" id="annualCost-error"></span>
+                            </div>
+                        </div>
+
+                        <!-- Productivity Gains -->
+                        <h3 class="section-subtitle" data-i18n="roi.productivityGains">Productivity Gains (Cost Savings)</h3>
+                        <div class="input-grid">
+                            <div class="input-group">
+                                <label for="numEmployees" class="input-label" data-i18n="roi.numEmployees">Number of Employees</label>
+                                <input type="number" id="numEmployees" class="input-number" value="10" min="1" max="100000">
+                                <span class="input-error" id="numEmployees-error"></span>
+                            </div>
+                            <div class="input-group">
+                                <label for="hourlyWage" class="input-label" data-i18n="roi.hourlyWage">Avg. Hourly Wage</label>
+                                <div class="input-with-prefix">
+                                    <span class="input-prefix">$</span>
+                                    <input type="number" id="hourlyWage" class="input-number" value="25" min="0" max="1000">
+                                </div>
+                                <span class="input-error" id="hourlyWage-error"></span>
+                            </div>
+                            <div class="input-group">
+                                <label for="hoursPerWeek" class="input-label" data-i18n="roi.hoursPerWeek">Hours/Week on Task</label>
+                                <input type="number" id="hoursPerWeek" class="input-number" value="5" min="0" max="168">
+                                <span class="input-error" id="hoursPerWeek-error"></span>
+                            </div>
+                        </div>
+
+                        <!-- Time Savings Slider -->
+                        <div class="input-group">
+                            <label for="timeSavings" class="input-label">
+                                <span data-i18n="roi.timeSavings">Expected Time Savings</span>
+                                <span class="slider-value" id="timeSavingsValue">40%</span>
+                            </label>
+                            <input type="range" id="timeSavings" class="input-slider" min="0" max="100" value="40">
+                        </div>
+
+                        <!-- Revenue Growth -->
+                        <h3 class="section-subtitle" data-i18n="roi.revenueGrowth">Revenue Growth</h3>
+                        <div class="input-group">
+                            <label for="annualRevenue" class="input-label" data-i18n="roi.annualRevenue">Current Annual Revenue</label>
+                            <div class="input-with-prefix">
+                                <span class="input-prefix">$</span>
+                                <input type="number" id="annualRevenue" class="input-number" value="1000000" min="0" max="10000000000">
+                            </div>
+                            <span class="input-error" id="annualRevenue-error"></span>
+                        </div>
+
+                        <!-- Revenue Increase Slider -->
+                        <div class="input-group">
+                            <label for="revenueIncrease" class="input-label">
+                                <span data-i18n="roi.revenueIncrease">Expected Revenue Increase</span>
+                                <span class="slider-value" id="revenueIncreaseValue">5%</span>
+                            </label>
+                            <input type="range" id="revenueIncrease" class="input-slider" min="0" max="100" value="5">
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons Card -->
+                    <div class="calculator-card">
+                        <h2 class="card-title" data-i18n="roi.calculationAnalysis">Calculation & Analysis</h2>
+                        <div class="button-grid" id="buttonGrid">
+                            <button id="calculateBtn" class="btn btn-primary">
+                                <span data-i18n="roi.calculateROI">Calculate ROI</span>
+                            </button>
+                            <button id="getAnalysisBtn" class="btn btn-secondary hidden">
+                                <span data-i18n="roi.getAnalysis">Get AI Analysis</span>
+                            </button>
+                            <button id="resetBtn" class="btn btn-secondary">
+                                <span data-i18n="roi.reset">Reset</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Results -->
+                <div class="calculator-results">
+                    <!-- Welcome/Instructions Card (shown initially) -->
+                    <div class="calculator-card" id="welcomeCard">
+                        <div class="welcome-content">
+                            <div class="welcome-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                                </svg>
+                            </div>
+                            <h3 data-i18n="roi.welcome.title">Calculate Your AI ROI</h3>
+                            <p data-i18n="roi.welcome.description">
+                                Enter your business parameters on the left to calculate potential 
+                                return on investment from AI implementation. Get instant insights 
+                                into cost savings and revenue growth.
+                            </p>
+                            <ul class="welcome-features">
+                                <li data-i18n="roi.welcome.feature1">Real-time ROI calculations</li>
+                                <li data-i18n="roi.welcome.feature2">Industry benchmarks comparison</li>
+                                <li data-i18n="roi.welcome.feature3">5-year projection visualization</li>
+                                <li data-i18n="roi.welcome.feature4">Free for everyone</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Results Card (hidden initially) -->
+                    <div class="calculator-card" id="resultsCard" style="display: none;">
+                        <h2 class="card-title" data-i18n="roi.results">Results</h2>
+                        <div class="results-grid">
+                            <div class="result-item result-primary">
+                                <div class="result-label" data-i18n="roi.roi">First-Year ROI</div>
+                                <div class="result-value" id="roiValue">--</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label" data-i18n="roi.netGain">Net Gain (Year 1)</div>
+                                <div class="result-value" id="netGainValue">$--</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label" data-i18n="roi.totalAnnualGain">Total Annual Gain</div>
+                                <div class="result-value" id="totalGainValue">$--</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label" data-i18n="roi.costSavings">Cost Savings</div>
+                                <div class="result-value" id="costSavingsValue">$--</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-label" data-i18n="roi.revenueGain">Revenue Gain</div>
+                                <div class="result-value" id="revenueGainValue">$--</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chart Card (hidden initially) -->
+                    <div class="calculator-card" id="chartCard" style="display: none;">
+                        <h2 class="card-title" data-i18n="roi.roiProjectionChart">ROI Projection Chart</h2>
+                        <div class="chart-container">
+                            <canvas id="roiChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Benchmark Card (hidden initially) -->
+                    <div class="calculator-card" id="benchmarkCard" style="display: none;">
+                        <h2 class="card-title" data-i18n="roi.benchmarkComparison">Industry Benchmark Comparison</h2>
+                        <div class="benchmark-grid" id="benchmarkContent">
+                            <!-- Benchmarks will be inserted here -->
+                        </div>
+                    </div>
+
+                    <!-- AI Analysis Card (hidden initially) - kept for PDF export -->
+                    <div class="ai-analysis-card" id="aiAnalysisCard" style="display: none;">
+                        <div class="ai-analysis-header">
+                            <h3 class="ai-analysis-title">
+                                <span data-i18n="roi.geminiAnalysis">AI</span> 
+                                <span class="gradient-text" data-i18n="roi.analysis">Analysis</span>
+                            </h3>
+                        </div>
+                        <div id="aiAnalysisContent">
+                            <div class="ai-analysis-placeholder">
+                                <p data-i18n="roi.aiAnalysisPlaceholder">Click "Get AI Analysis" to receive personalized insights based on your calculations.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feedback Card -->
+                    <div class="feedback-card" id="feedbackCard">
+                        <div id="feedbackForm">
+                            <h3 class="feedback-title" data-i18n="roi.feedbackTitle">Was this calculator helpful?</h3>
+                            <div class="feedback-rating">
+                                <label class="feedback-rating-label" data-i18n="roi.feedbackRatingLabel">Rate your experience</label>
+                                <div class="star-rating" id="starRating">
+                                    <svg class="star" data-rating="1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                    <svg class="star" data-rating="2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                    <svg class="star" data-rating="3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                    <svg class="star" data-rating="4" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                    <svg class="star" data-rating="5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="feedback-comment">
+                                <label class="feedback-comment-label" for="feedbackComment" data-i18n="roi.feedbackCommentLabel">Additional feedback (optional)</label>
+                                <textarea id="feedbackComment" class="feedback-textarea" rows="3" data-i18n-placeholder="roi.feedbackCommentPlaceholder" placeholder="How could we improve?"></textarea>
+                            </div>
+                            <button id="submitFeedbackBtn" class="btn btn-primary" style="width: 100%;" disabled>
+                                <span data-i18n="roi.submitFeedback">Submit Feedback</span>
+                            </button>
+                        </div>
+                        <div id="feedbackSubmitted" class="feedback-submitted" style="display: none;">
+                            <h3 data-i18n="roi.feedbackThanksTitle">Thank You!</h3>
+                            <p data-i18n="roi.feedbackThanksSubtitle">We appreciate your feedback.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="roi-info">
+        <div class="container">
+            <div class="info-card">
+                <h3 data-i18n="roi.info.title">About This Calculator</h3>
+                <p data-i18n="roi.info.description">
+                    This AI ROI Calculator helps you estimate the potential return on investment 
+                    from implementing AI solutions in your business. The calculations are based on 
+                    standard financial formulas and industry benchmarks.
+                </p>
+                <p data-i18n="roi.info.disclaimer">
+                    <strong>Disclaimer:</strong> Results are estimates based on the inputs provided. 
+                    Actual ROI may vary depending on implementation specifics, market conditions, 
+                    and other factors. This tool is for informational purposes only.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2024 Janar Kuusk. All rights reserved.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="index.html#projects">Projects</a>
+                    <a href="roi-calculator.html">ROI Calculator</a>
+                    <a href="#" id="faqLink" class="faq-link" data-i18n="roi.guideFaqLink">User Guide & FAQ</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="roi-calculator-data.js"></script>
+    <script src="roi-calculator-translations.js"></script>
+    <script src="language-switcher.js?v=2"></script>
+    <script src="roi-calculator-faq.js"></script>
+    <script src="roi-calculator-config.js"></script>
+    <script src="roi-calculator-ai-service.js?v=5"></script>
+    <script src="roi-calculator.js?v=25"></script>
+    <script>
+        // Initialize ROI Calculator
+        let roiCalculator;
+        if (typeof ROICalculator !== 'undefined') {
+            roiCalculator = new ROICalculator();
+            window.roiCalculator = roiCalculator;
+        }
+        
+        // Initialize language switcher
+        if (typeof LanguageSwitcher !== 'undefined') {
+            // Wait a bit for translations to load
+            setTimeout(() => {
+                const languageSwitcher = new LanguageSwitcher();
+                window.languageSwitcher = languageSwitcher;
+                console.log('Language switcher initialized');
+            }, 100);
+        }
+    </script>
+
+    <!-- AI Analysis Modal -->
+    <div class="ai-analysis-modal" id="aiAnalysisModal" style="display: none;">
+        <div class="ai-analysis-modal-overlay"></div>
+        <div class="ai-analysis-modal-content">
+            <div class="ai-analysis-modal-header">
+                <h3 class="ai-analysis-modal-title">
+                    <span data-i18n="roi.geminiAnalysis">AI</span> 
+                    <span class="gradient-text" data-i18n="roi.analysis">Analysis</span>
+                </h3>
+                <button class="ai-analysis-modal-close" id="aiAnalysisModalClose" aria-label="Close">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="ai-analysis-modal-body" id="aiAnalysisModalContent">
+                <div class="ai-analysis-placeholder">
+                    <p data-i18n="roi.aiAnalysisPlaceholder">Click "Get AI Analysis" to receive personalized insights based on your calculations.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="roi-calculator.js?v=24"></script>
+    <script>
+        // Initialize ROI Calculator after modal HTML is loaded
+        let roiCalculator;
+        if (typeof ROICalculator !== 'undefined') {
+            roiCalculator = new ROICalculator();
+            window.roiCalculator = roiCalculator;
+            // Ensure modal elements are cached after initialization
+            if (roiCalculator.cacheModalElements) {
+                roiCalculator.cacheModalElements();
+            }
+        }
+        
+        // Initialize language switcher
+        if (typeof LanguageSwitcher !== 'undefined') {
+            // Wait a bit for translations to load
+            setTimeout(() => {
+                const languageSwitcher = new LanguageSwitcher();
+                window.languageSwitcher = languageSwitcher;
+                console.log('Language switcher initialized');
+            }, 100);
+        }
+    </script>
+</body>
+</html>
+

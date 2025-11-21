@@ -1,3 +1,88 @@
+## AI ROI Calculator Page - 2025-11-18
+- **Page Accessibility**: Verify roi-calculator.html loads correctly via navigation and direct URL
+- **Navigation Integration**: Confirm "ROI Calculator" link appears in all page navbars (index, services, testimonials)
+- **Homepage CTA**: Verify ROI Calculator CTA section displays on homepage with animated preview
+- **Hero Section**: Test gradient text and description rendering correctly
+- **Two-Column Layout**: Confirm inputs column (left) and results column (right) display properly on desktop
+- **Industry Selection**: Verify dropdown includes all industries (Retail, Manufacturing, Healthcare, Finance, Custom)
+- **Custom Industry**: Test custom industry input field shows/hides correctly when Custom is selected
+- **Number Inputs**: Verify all financial inputs accept valid numbers with proper formatting
+- **Dollar Prefix**: Confirm $ prefix displays on all currency input fields
+- **Input Validation**: Test validation shows error messages for out-of-range values
+- **Error Messages**: Verify error text displays below invalid inputs in red
+- **Time Savings Slider**: Test slider updates percentage display dynamically (0-100%)
+- **Revenue Increase Slider**: Confirm slider gradient background reflects current value
+- **Slider Thumb**: Verify gradient slider thumb (purple to cyan) scales on hover
+- **Calculate Button**: Test calculation produces results with correct ROI formula
+- **Results Display**: Verify results card shows all 5 metrics (ROI, Net Gain, Total Gain, Cost Savings, Revenue Gain)
+- **Results Animation**: Confirm result cards animate in with staggered timing
+- **Primary Result**: Verify First-Year ROI displays prominently with larger text
+- **Currency Formatting**: Test all dollar amounts format with commas and $ symbol
+- **Percentage Formatting**: Confirm percentages display with % symbol and one decimal
+- **Infinity Handling**: Test ROI shows ∞ symbol when investment is zero
+- **Chart Display**: Verify Chart.js loads and displays 5-year projection bar chart
+- **Chart Styling**: Confirm bars use gradient (purple to cyan) and animate on load
+- **Chart Tooltip**: Test hovering over bars shows formatted currency tooltip
+- **Chart Labels**: Verify x-axis shows Year 1-5, y-axis shows currency values
+- **Benchmark Comparison**: Test industry benchmarks display for non-custom industries
+- **Benchmark Indicators**: Verify "Above Average" and "Below Average" badges display correctly
+- **Benchmark Colors**: Confirm Above = green background, Below = red background
+- **Benchmark Data**: Test correct benchmark values load for each industry
+- **Reset Button**: Verify reset clears results and restores all default values
+- **Reset Behavior**: Confirm reset hides results cards and shows welcome card
+- **Welcome Card**: Test welcome card displays initially before calculations
+- **Welcome Features**: Verify feature list displays with checkmarks
+- **About Section**: Confirm disclaimer text displays at bottom of page
+- **Responsive Layout**: Test calculator switches to single column on tablets/mobile
+- **Mobile Inputs**: Verify all inputs work correctly on touch devices
+- **Mobile Sliders**: Test sliders respond properly to touch gestures
+- **Mobile Chart**: Confirm chart scales down appropriately on small screens
+- **Card Hover Effects**: Verify gradient borders animate on hover (borderFlow animation)
+- **Gradient Borders**: Confirm animated borders use purple-blue-cyan gradient
+- **Glassmorphism**: Test card backgrounds have proper blur and transparency
+- **Header Navigation**: Verify header shows/hides based on scroll position
+- **Mobile Menu**: Test hamburger menu opens/closes correctly
+- **Nav Overlay**: Confirm overlay appears when mobile menu is open
+- **Scroll Behavior**: Test header hides on scroll down, shows on scroll up
+- **Language Toggle**: Verify language toggle button is visible and ready for translations
+- **Print Styles**: Test page prints correctly without header/footer/buttons
+- **Google Analytics**: Verify GA tag tracks calculator page views
+- **Chart.js CDN**: Confirm Chart.js library loads from CDN
+- **Keyboard Shortcuts**: Test Ctrl+Enter triggers calculation
+- **Input Focus**: Verify inputs have cyan glow on focus
+- **Button States**: Test buttons show loading/active states correctly
+- **No Console Errors**: Verify no JavaScript errors in browser console
+- **Performance**: Test calculations execute instantly (<100ms)
+- **Benchmark Performance**: Confirm benchmark comparison updates quickly
+- **Chart Rendering**: Verify chart animation completes smoothly without lag
+
+## Testimonials & Case Studies Page - 2025-11-16
+- **Page Accessibility**: Verify testimonials.html loads correctly via navigation
+- **Navigation Integration**: Confirm "Testimonials" link appears in main nav on all pages
+- **Hero Section**: Test gradient text animation and radial glow background effect
+- **Slider Functionality**: Verify testimonial slider auto-advances every 8 seconds
+- **Manual Controls**: Test prev/next buttons navigate between testimonials correctly
+- **Keyboard Navigation**: Confirm arrow keys (left/right) control slider
+- **Thumbnail Navigation**: Test clicking thumbnails jumps to correct testimonial
+- **Pagination Counter**: Verify current/total counter updates correctly (01/05, 02/05, etc.)
+- **Image Transitions**: Confirm smooth fade transitions (600ms cubic-bezier) for main images
+- **Text Animations**: Test testimonial content slides with proper timing
+- **Image Fallbacks**: Verify placeholder images load if Unsplash images fail
+- **Slider Hover**: Confirm auto-play pauses when hovering over slider
+- **Case Studies Grid**: Test responsive grid layout (3 cols → 1 col on mobile)
+- **Case Study Cards**: Verify hover effects (lift, cyan glow, border animation)
+- **Category Badges**: Confirm glassmorphism badges display over images
+- **Metrics Display**: Test metrics grid shows performance indicators correctly
+- **Case Study Links**: Verify "Read Full Case Study" links have arrow animation
+- **CTA Section**: Test call-to-action section links to contact form
+- **Responsive Layout**: Verify slider adapts to mobile (stacked columns)
+- **Vertical Text**: Confirm "REVIEWS" text rotates correctly on desktop
+- **Mobile Thumbnails**: Test thumbnail scrolling on small screens
+- **Quote Styling**: Verify quotation marks use cyan color (#00e5ff)
+- **Cyan Theme Consistency**: Confirm all accents match site color scheme
+- **AOS Animations**: Test scroll-triggered animations on case study cards
+- **Google Analytics**: Verify GA tag is present and tracking page views
+
 ## Content & Legal - 2025-01-XX
 - **Privacy Policy Page**: Verify privacy-policy.html loads correctly
 - **Privacy Policy Translations**: Test language toggle switches privacy policy content between English and Estonian

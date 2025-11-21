@@ -23,7 +23,7 @@ class SplashCursor {
     this.canvas = null;
     this.gl = null;
     this.ext = null;
-    this.lastUpdateTime = Date.now();
+    this.lastUpdateTime = performance.now();
     this.colorUpdateTimer = 0.0;
     this.animationId = null;
 
@@ -82,7 +82,8 @@ class SplashCursor {
       depth: false,
       stencil: false,
       antialias: false,
-      preserveDrawingBuffer: false
+      preserveDrawingBuffer: false,
+      powerPreference: 'high-performance'
     };
 
     let gl = this.canvas.getContext('webgl2', params);
@@ -714,11 +715,11 @@ class SplashCursor {
     this.applyInputs();
     this.step(dt);
     this.render(null);
-    this.animationId = requestAnimationFrame(() => this.updateFrame());
+    this.animationId = requestAnimationFrame(this.updateFrame.bind(this));
   }
 
   calcDeltaTime() {
-    let now = Date.now();
+    let now = performance.now();
     let dt = (now - this.lastUpdateTime) / 1000;
     dt = Math.min(dt, 0.016666);
     this.lastUpdateTime = now;

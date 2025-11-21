@@ -161,80 +161,165 @@ class LanguageSwitcher {
 
         // Update all elements with data-i18n attribute
         document.querySelectorAll('[data-i18n]').forEach(element => {
-            const key = element.getAttribute('data-i18n');
-            const value = this.getNestedValue(t, key);
+            try {
+                const key = element.getAttribute('data-i18n');
+                if (!key) return;
+                
+                let value = this.getNestedValue(t, key);
+                
+                // If not found in main translations, try ROI translations
+                if (!value && window.roiTranslations && window.roiTranslations[lang]) {
+                    value = this.getNestedValue(window.roiTranslations[lang], key);
+                }
 
-            if (value) {
-                element.textContent = value;
+                if (value) {
+                    // Preserve emoji if present
+                    const currentText = element.textContent || '';
+                    const emojiMatch = currentText.match(/^[📊💪⚠️🎯🚀📋]/);
+                    if (emojiMatch && !value.includes(emojiMatch[0])) {
+                        element.textContent = emojiMatch[0] + ' ' + value;
+                    } else {
+                        element.textContent = value;
+                    }
+                }
+            } catch (error) {
+                console.warn('Error updating element with data-i18n:', element, error);
             }
         });
 
         // Update placeholders
         document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
-            const key = element.getAttribute('data-i18n-placeholder');
-            const value = this.getNestedValue(t, key);
+            try {
+                const key = element.getAttribute('data-i18n-placeholder');
+                if (!key) return;
+                
+                const value = this.getNestedValue(t, key);
 
-            if (value) {
-                element.placeholder = value;
+                if (value) {
+                    element.placeholder = value;
+                }
+            } catch (error) {
+                console.warn('Error updating placeholder:', element, error);
             }
         });
 
-        // Special handling for hero title (gradient spans)
-        this.updateHeroTitle(t.hero.title);
-
-        // Update experience cards
-        this.updateExperienceCards(t.experience.jobs);
-
-        // Update skills section
-        this.updateSkillsSection(t.skills.categories);
-
-        // Update career cards
-        this.updateCareerCards(t.career.cards);
-
-        // Update education cards
-        this.updateEducationCards(t.education.items);
-
-        // Update project cards
-        this.updateProjectCards(t.projects.items);
-
-        // Update vision points
-        this.updateVisionPoints(t.vision.points);
-
-        // Update summary highlights
-        this.updateSummaryHighlights(t.summary.highlights);
-
-        // Update summary stats
-        this.updateSummaryStats(t.summary.stats);
-
-        // Force update website design section with retry
-        setTimeout(() => {
-            const websiteTitle = document.querySelector('[data-i18n="websiteDesign.title"]');
-            const websiteSubtitle = document.querySelector('[data-i18n="websiteDesign.subtitle"]');
-            if (websiteTitle && t.websiteDesign && t.websiteDesign.title) {
-                websiteTitle.textContent = t.websiteDesign.title;
-                console.log('Updated websiteDesign.title to:', t.websiteDesign.title);
+        // Special handling for hero title (gradient spans) - only if hero exists and title is valid
+        if (t.hero && t.hero.title && Array.isArray(t.hero.title)) {
+            try {
+                this.updateHeroTitle(t.hero.title);
+            } catch (error) {
+                console.warn('Error updating hero title:', error);
             }
-            if (websiteSubtitle && t.websiteDesign && t.websiteDesign.subtitle) {
-                websiteSubtitle.textContent = t.websiteDesign.subtitle;
-                console.log('Updated websiteDesign.subtitle to:', t.websiteDesign.subtitle);
-            }
+        }
 
-            // Update video section
-            const videoTitle = document.querySelector('[data-i18n="video.title"]');
-            if (videoTitle && t.video && t.video.title) {
-                videoTitle.textContent = t.video.title;
-                console.log('Updated video.title to:', t.video.title);
-            }
-        }, 50);
+        // Update experience cards - only if experience exists
+        if (t.experience && t.experience.jobs) {
+            this.updateExperienceCards(t.experience.jobs);
+        }
+
+        // Update skills section - only if skills exists
+        if (t.skills && t.skills.categories) {
+            this.updateSkillsSection(t.skills.categories);
+        }
+
+        // Update career cards - only if career exists
+        if (t.career && t.career.cards) {
+            this.updateCareerCards(t.career.cards);
+        }
+
+        // Update education cards - only if education exists
+        if (t.education && t.education.items) {
+            this.updateEducationCards(t.education.items);
+        }
+
+        // Update project cards - only if projects exists
+        if (t.projects && t.projects.items) {
+            this.updateProjectCards(t.projects.items);
+        }
+
+        // Update vision points - only if vision exists
+        if (t.vision && t.vision.points) {
+            this.updateVisionPoints(t.vision.points);
+        }
+
+        // Update summary highlights - only if summary exists
+        if (t.summary && t.summary.highlights) {
+            this.updateSummaryHighlights(t.summary.highlights);
+        }
+
+        // Update summary stats - only if summary exists
+        if (t.summary && t.summary.stats) {
+            this.updateSummaryStats(t.summary.stats);
+        }
+
+        // Force update website design section with retry - only if websiteDesign exists
+        if (t.websiteDesign) {
+            setTimeout(() => {
+                const websiteTitle = document.querySelector('[data-i18n="websiteDesign.title"]');
+                const websiteSubtitle = document.querySelector('[data-i18n="websiteDesign.subtitle"]');
+                if (websiteTitle && t.websiteDesign.title) {
+                    websiteTitle.textContent = t.websiteDesign.title;
+                    console.log('Updated websiteDesign.title to:', t.websiteDesign.title);
+                }
+                if (websiteSubtitle && t.websiteDesign.subtitle) {
+                    websiteSubtitle.textContent = t.websiteDesign.subtitle;
+                    console.log('Updated websiteDesign.subtitle to:', t.websiteDesign.subtitle);
+                }
+            }, 50);
+        }
+
+        // Update video section - only if video exists
+        if (t.video) {
+            setTimeout(() => {
+                const videoTitle = document.querySelector('[data-i18n="video.title"]');
+                if (videoTitle && t.video.title) {
+                    videoTitle.textContent = t.video.title;
+                    console.log('Updated video.title to:', t.video.title);
+                }
+            }, 50);
+        }
+        
+        // Update ROI calculator specific content if it exists
+        if (window.roiCalculator && window.roiCalculator.updateLanguage) {
+            setTimeout(() => {
+                window.roiCalculator.updateLanguage(lang);
+            }, 100);
+        }
+        
+        // Update window.currentLanguage for ROI calculator
+        window.currentLanguage = lang;
     }
 
     getNestedValue(obj, path) {
-        return path.split('.').reduce((current, key) => current?.[key], obj);
+        if (!obj || !path) {
+            return null;
+        }
+        try {
+            return path.split('.').reduce((current, key) => {
+                if (current === null || current === undefined) {
+                    return null;
+                }
+                return current[key];
+            }, obj);
+        } catch (error) {
+            console.warn('Error getting nested value for path:', path, error);
+            return null;
+        }
     }
 
     updateHeroTitle(titleArray) {
+        if (!titleArray || !Array.isArray(titleArray)) {
+            console.warn('updateHeroTitle called with invalid titleArray:', titleArray);
+            return;
+        }
+        
         const heroTitle = document.querySelector('.hero-title');
-        if (heroTitle && Array.isArray(titleArray)) {
+        if (!heroTitle) {
+            // Hero title element doesn't exist on this page (e.g., ROI calculator page)
+            return;
+        }
+        
+        try {
             heroTitle.innerHTML = titleArray.map(text =>
                 `<span class="gradient-text">${text}</span>`
             ).join('\n                        ');
@@ -253,27 +338,36 @@ class LanguageSwitcher {
                     });
                 }
             }, 500);
+        } catch (error) {
+            console.error('Error in updateHeroTitle:', error);
         }
     }
 
     updateExperienceCards(jobs) {
+        if (!jobs || !Array.isArray(jobs)) {
+            return;
+        }
+        
         const experienceCards = document.querySelectorAll('.experience-spotlight-card');
+        if (experienceCards.length === 0) {
+            return; // No experience cards on this page
+        }
 
         experienceCards.forEach((card, index) => {
             if (jobs[index]) {
                 const job = jobs[index];
 
                 const titleEl = card.querySelector('.experience-header h3');
-                if (titleEl) titleEl.textContent = job.title;
+                if (titleEl && job.title) titleEl.textContent = job.title;
 
                 const periodEl = card.querySelector('.experience-period');
-                if (periodEl) periodEl.textContent = job.period;
+                if (periodEl && job.period) periodEl.textContent = job.period;
 
                 const companyEl = card.querySelector('.experience-company');
-                if (companyEl) companyEl.textContent = job.company;
+                if (companyEl && job.company) companyEl.textContent = job.company;
 
                 const descEl = card.querySelector('.experience-description');
-                if (descEl) descEl.textContent = job.description;
+                if (descEl && job.description) descEl.textContent = job.description;
 
                 // Update skill tags
                 const skillsContainer = card.querySelector('.experience-skills');
@@ -290,14 +384,21 @@ class LanguageSwitcher {
     }
 
     updateSkillsSection(categories) {
+        if (!categories || !Array.isArray(categories)) {
+            return;
+        }
+        
         const skillCategories = document.querySelectorAll('.skill-category');
+        if (skillCategories.length === 0) {
+            return; // No skill categories on this page
+        }
 
         skillCategories.forEach((category, index) => {
             if (categories[index]) {
                 const cat = categories[index];
 
                 const titleEl = category.querySelector('h3');
-                if (titleEl) titleEl.textContent = cat.title;
+                if (titleEl && cat.title) titleEl.textContent = cat.title;
 
                 const skillTags = category.querySelectorAll('.skill-tag');
                 skillTags.forEach((tag, i) => {
@@ -310,14 +411,21 @@ class LanguageSwitcher {
     }
 
     updateCareerCards(cards) {
+        if (!cards || !Array.isArray(cards)) {
+            return;
+        }
+        
         const careerCards = document.querySelectorAll('.career-card');
+        if (careerCards.length === 0) {
+            return; // No career cards on this page
+        }
 
         careerCards.forEach((card, index) => {
             if (cards[index]) {
                 const cardData = cards[index];
 
                 const titleEl = card.querySelector('h3');
-                if (titleEl) titleEl.textContent = cardData.title;
+                if (titleEl && cardData.title) titleEl.textContent = cardData.title;
 
                 const descEl = card.querySelector('p');
                 if (descEl) descEl.textContent = cardData.description;
@@ -326,8 +434,15 @@ class LanguageSwitcher {
     }
 
     updateEducationCards(items) {
+        if (!items || !Array.isArray(items)) {
+            return;
+        }
+        
         // Education cards now use experience-spotlight-card class for same styling
         const educationCards = document.querySelectorAll('#education .experience-spotlight-card, .education-card, .education-spotlight-card');
+        if (educationCards.length === 0) {
+            return; // No education cards on this page
+        }
 
         educationCards.forEach((card, index) => {
             if (items[index]) {
@@ -367,14 +482,21 @@ class LanguageSwitcher {
     }
 
     updateProjectCards(items) {
+        if (!items || !Array.isArray(items)) {
+            return;
+        }
+        
         const projectCards = document.querySelectorAll('.project-card');
+        if (projectCards.length === 0) {
+            return; // No project cards on this page
+        }
 
         projectCards.forEach((card, index) => {
             if (items[index]) {
                 const item = items[index];
 
                 const nameEl = card.querySelector('h3');
-                if (nameEl) nameEl.textContent = item.name;
+                if (nameEl && item.name) nameEl.textContent = item.name;
 
                 const descEl = card.querySelector('p');
                 if (descEl) descEl.textContent = item.description;
@@ -396,14 +518,21 @@ class LanguageSwitcher {
     }
 
     updateVisionPoints(points) {
+        if (!points || !Array.isArray(points)) {
+            return;
+        }
+        
         const visionPoints = document.querySelectorAll('.vision-point');
+        if (visionPoints.length === 0) {
+            return; // No vision points on this page
+        }
 
         visionPoints.forEach((point, index) => {
             if (points[index]) {
                 const pointData = points[index];
 
                 const titleEl = point.querySelector('h4');
-                if (titleEl) titleEl.textContent = pointData.title;
+                if (titleEl && pointData.title) titleEl.textContent = pointData.title;
 
                 const textEl = point.querySelector('p');
                 if (textEl) textEl.textContent = pointData.text;
@@ -412,7 +541,15 @@ class LanguageSwitcher {
     }
 
     updateSummaryHighlights(highlights) {
+        if (!highlights || typeof highlights !== 'object') {
+            return;
+        }
+        
         const highlightItems = document.querySelectorAll('.highlight-item');
+        if (highlightItems.length === 0) {
+            return; // No highlight items on this page
+        }
+        
         const highlightData = [highlights.sales, highlights.digital, highlights.process];
 
         highlightItems.forEach((item, index) => {
@@ -420,7 +557,7 @@ class LanguageSwitcher {
                 const data = highlightData[index];
 
                 const titleEl = item.querySelector('h4');
-                if (titleEl) titleEl.textContent = data.title;
+                if (titleEl && data.title) titleEl.textContent = data.title;
 
                 const textEl = item.querySelector('p');
                 if (textEl) textEl.textContent = data.text;
@@ -429,7 +566,15 @@ class LanguageSwitcher {
     }
 
     updateSummaryStats(stats) {
+        if (!stats || typeof stats !== 'object') {
+            return;
+        }
+        
         const statItems = document.querySelectorAll('.stat-item');
+        if (statItems.length === 0) {
+            return; // No stat items on this page
+        }
+        
         const statsData = [
             { number: stats.years, label: stats.yearsLabel },
             { number: stats.companies, label: stats.companiesLabel },

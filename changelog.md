@@ -1,3 +1,185 @@
+## 2025-11-18 (Latest)
+- **ROI Calculator - PDF Preview & Enhanced AI Analysis**:
+  - **PDF Preview Modal** - Users now see a preview before downloading:
+    - Professional modal with PDF preview in iframe
+    - Options to Download, Email, or Share the report
+    - Clean, modern UI matching portfolio design
+  - **Enhanced AI Analysis** - More comprehensive and detailed:
+    - Increased AI token limit from 2048 to 4096 for longer analysis
+    - Enhanced prompt requesting 1500-2000 word comprehensive analysis
+    - New sections: Detailed Implementation Action Plan (4 phases), Strategic Recommendations, Financial Projections & Sensitivity Analysis
+    - More detailed Executive Summary (4-5 sentences with recommendations)
+    - 5-6 detailed strengths with specific data points
+    - 5-6 risks with mitigation strategies
+    - Phased action plan with specific milestones, deliverables, and timelines
+    - Week-by-week and month-by-month action items
+    - Best-case, base-case, and worst-case financial scenarios
+  - **PDF Report Improvements**:
+    - Extracts all new AI analysis sections for comprehensive reports
+    - Professional formatting with section headers and underlines
+    - Multi-page support with proper pagination
+    - Footer with page numbers on all pages
+  - Updated cache-busting parameters (CSS v4, JS v6) to ensure latest features load
+
+## 2025-11-18 (Previous)
+- **ROI Calculator - Real AI Integration (Google Gemini)**:
+  - Integrated Google Gemini AI API for professional, data-driven analysis
+  - Created `roi-calculator-ai-service.js` with comprehensive AI service class
+  - Professional prompt engineering for executive-level business analysis
+  - **Developer API Key Configuration** - Simple setup via `roi-calculator-config.js`
+  - **Zero-friction user experience** - Users just click "Get AI Analysis" and it works
+  - No user API key input required - uses developer's API key automatically
+  - Graceful fallback to basic analysis if API key not configured
+  - Real-time AI analysis generation based on actual ROI calculations
+  - Structured analysis output with Executive Summary, Key Strengths, Risks, Recommendations, and Next Steps
+  - Error handling with automatic fallback
+  - All analysis sections properly formatted and translatable
+  - Uses Gemini 1.5 Flash model for optimal speed and cost
+
+## 2025-11-18 (Updated)
+- **ROI Calculator - Bug Fixes & UI Improvements**:
+  - Fixed star rating hover effects:
+    - Stars now display as gray/transparent by default
+    - Added grayscale filter for inactive stars
+    - Hover shows gold color (#fbbf24) with scale animation (1.15x)
+    - Filled stars display gold with slight scale (1.05x)
+  - Implemented "Get AI Analysis" button visibility logic:
+    - Added `.hidden` class with proper CSS rules
+    - Updated JavaScript to use classList methods for show/hide
+  - Known issues:
+    - "Get AI Analysis" button doesn't auto-show after clicking "Calculate ROI" (requires manual console intervention)
+    - AI Analysis card remains hidden after button click
+    - Requires debugging of event listeners and display logic
+
+- **Testimonials Page - Case Studies Layout Improvement**:
+  - Changed case study cards from 3-column grid to single-column horizontal layout
+  - Each card now displays with image on left (400px) and content on right
+  - Improved text readability and spacing for all metrics
+  - Fixed "Solar Energy CRM Revolution" card text overflow issue
+  - Metrics now use flexbox with proper spacing and nowrap text
+  - Smaller, uppercase metric labels (0.75rem) for better visual hierarchy
+  - Responsive: switches to vertical stacked layout on tablets/mobile
+  - Note: Hard refresh (Cmd+Shift+R / Ctrl+Shift+R) may be needed to see changes due to browser caching
+
+## 2025-11-18 (New)
+- **AI ROI Calculator - Complete Implementation**:
+  - Created standalone ROI Calculator page with full functionality
+  - Key features:
+    - Real-time ROI calculations with instant results
+    - Industry-specific benchmarks (Retail, Manufacturing, Healthcare, Finance, Custom)
+    - 5-year ROI projection chart with Chart.js integration
+    - Input validation with error messages
+    - Animated gradient borders and glassmorphism design
+    - Two-column responsive layout (inputs | results)
+    - Welcome card with feature highlights
+    - Reset functionality to restore defaults
+  - Calculation capabilities:
+    - Initial AI setup costs and annual subscription tracking
+    - Productivity gains calculation based on employee time savings
+    - Revenue growth projections
+    - Total annual gain and net first-year gain
+    - Cost savings vs revenue gain breakdown
+    - ROI percentage with benchmark comparison
+  - Technical implementation:
+    - Pure vanilla JavaScript with OOP class structure
+    - Chart.js for data visualization (5-year projection bars)
+    - Industry benchmark comparison with visual indicators
+    - Slider inputs with gradient backgrounds and value display
+    - Number formatting utilities (currency, percentage)
+    - Header navigation with scroll effects and mobile menu
+    - Input validation with min/max constraints
+    - Animated result cards with staggered transitions
+  - Design consistency:
+    - Matches existing purple/cyan gradient theme
+    - Uses CSS custom properties throughout
+    - Animated gradient borders (borderFlow animation)
+    - Glassmorphism effects with backdrop blur
+    - Spotlight card hover effects
+    - Responsive design for all screen sizes
+  - Integration:
+    - Added to all page navigation bars (index, services, testimonials)
+    - Created prominent CTA section on homepage with animated preview
+    - Homepage CTA includes visual mock chart and metrics
+    - Google Analytics tracking included
+    - Language toggle support ready (translations prepared)
+  - Files created:
+    - `roi-calculator.html` - Main calculator page with two-column layout
+    - `roi-calculator.css` - Complete styling (responsive, 330+ lines)
+    - `roi-calculator.js` - Core calculator logic and UI handlers
+    - `roi-calculator-data.js` - Industry benchmarks and validation rules
+    - `roi-calculator-translations.js` - EN/ET translations for internationalization
+  - Homepage enhancements:
+    - Added ROI Calculator CTA section before Vision section
+    - Animated preview card with growing chart bars
+    - Feature list with checkmarks
+    - Gradient icon and title
+    - "Try Calculator" button with arrow icon animation
+    - Responsive two-column layout (content | visual preview)
+  - Navigation updates:
+    - Updated index.html, services.html, testimonials.html navigation
+    - Consistent placement between Projects and Testimonials links
+  - Free for everyone - no payment or authentication required
+
+## 2025-11-16 (Updated)
+- **Testimonials Page - Navbar & Language Toggle Fix**:
+  - Fixed missing navbar by adding CSS overrides to show header immediately
+  - Added language toggle button with full Estonian translations
+  - Integrated mobile menu functionality
+  - Created testimonials-translations.js with Estonian/English support
+  - Added nav overlay for mobile menu backdrop
+  - Header now has proper background and blur effects
+  - Mobile menu closes on nav link click
+  - Files updated:
+    - `testimonials.html` - Added language-toggle.css, translations scripts, nav overlay
+    - `testimonials.css` - Added header override styles with !important flags
+    - `testimonials.js` - Enhanced HeaderNavigation class with mobile menu support
+    - `testimonials-translations.js` - Created with full Estonian translations
+
+- **Testimonials & Case Studies Page - Complete Implementation**:
+  - Created dedicated testimonials page with animated slider component
+  - Key features:
+    - Animated testimonials slider with smooth transitions
+    - Three-column layout: pagination/thumbnails | main image | testimonial content
+    - Auto-advancing slider (8-second intervals) with manual controls
+    - Thumbnail navigation showing next 3 testimonials
+    - Keyboard navigation support (arrow keys)
+    - Responsive design adapting to all screen sizes
+  - Case Studies Section:
+    - Grid layout showcasing client success stories
+    - Image overlays with category badges
+    - Metrics display showing key performance indicators
+    - Hover effects with cyan glow matching site theme
+    - Links to full case study pages
+  - Technical implementation:
+    - Pure vanilla JavaScript (no dependencies on React/Framer Motion)
+    - CSS custom properties for consistent theming
+    - Smooth cubic-bezier transitions (0.4, 0, 0.2, 1)
+    - Image fallbacks for missing assets
+    - AOS scroll animations integration
+  - Design consistency:
+    - Matches existing cyan (#00e5ff) color scheme
+    - Uses same card styles and spotlight effects
+    - Gradient backgrounds and glassmorphism elements
+    - Consistent spacing with CSS variables
+  - Content structure:
+    - 5 client testimonials with profile images
+    - 3 detailed case studies with metrics
+    - CTA section encouraging contact
+    - Unsplash placeholder images with fallbacks
+  - Files created:
+    - `testimonials.html` - Full page structure with navigation
+    - `testimonials.css` - Complete styling (responsive, 400+ lines)
+    - `testimonials.js` - Slider functionality with auto-play
+  - Integration:
+    - Added testimonials link to main navigation
+    - Google Analytics tracking included
+    - Cross-linked with main portfolio sections
+
+- **Google Analytics Integration**:
+  - Added Google Analytics tracking tag (G-FY2YFXEM9Z)
+  - Placed immediately after <head> element as recommended
+  - Tracking active on all pages
+
 ## 2025-11-13
 - **Services Hero Section - Added WebGL Animated Particles Background**:
   - Created vanilla JavaScript Particles class (converted from React component using OGL library)

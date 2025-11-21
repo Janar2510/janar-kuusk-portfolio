@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FY2YFXEM9Z"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-FY2YFXEM9Z');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Testimonials & Case Studies - Janar Kuusk</title>
+    <link rel="stylesheet" href="saletoru-brand.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="components.css">
+    <link rel="stylesheet" href="language-toggle.css">
+    <link rel="stylesheet" href="testimonials.css?v=2">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Fixed Header -->
+    <div class="portfolio-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <img src="public/images/JanarKuusk logo.png" alt="Janar Kuusk" class="logo-image" onerror="this.style.display='none'">
+                    <div class="logo-text-container">
+                        <span class="logo-text">Janar Kuusk</span>
+                    </div>
+                </a>
+                <nav class="main-nav">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="index.html#projects" class="nav-link">Projects</a>
+                    <a href="roi-calculator.html" class="nav-link">ROI Calculator</a>
+                    <a href="testimonials.html" class="nav-link active">Testimonials</a>
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </nav>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation overlay for mobile -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- Force header visibility -->
+    <script>
+        // Immediately force header to be visible with !important
+        (function() {
+            const header = document.querySelector('.portfolio-header');
+            if (header) {
+                header.style.setProperty('transform', 'translateY(0)', 'important');
+                header.style.setProperty('opacity', '1', 'important');
+                header.style.setProperty('visibility', 'visible', 'important');
+                header.style.setProperty('background', 'rgba(11, 11, 15, 0.95)', 'important');
+                header.style.setProperty('backdrop-filter', 'blur(10px)', 'important');
+                header.style.setProperty('border-bottom', '1px solid rgba(255, 255, 255, 0.1)', 'important');
+            }
+        })();
+    </script>
+
+    <!-- Hero Section -->
+    <section class="testimonials-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="gradient-text" data-i18n="testimonials.hero.title1">Client Success</span>
+                    <span class="gradient-text" data-i18n="testimonials.hero.title2">Stories</span>
+                </h1>
+                <p class="hero-description" data-i18n="testimonials.hero.description">
+                    Real results from real partnerships. Discover how we've helped businesses 
+                    transform through AI implementation and digital innovation.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Slider Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="testimonials-slider" id="testimonialsSlider">
+                <!-- Left Column: Meta and Thumbnails -->
+                <div class="slider-left">
+                    <div class="slider-meta">
+                        <span class="pagination-counter">
+                            <span class="current-number">01</span> / 
+                            <span class="total-number">05</span>
+                        </span>
+                        <h2 class="vertical-text">REVIEWS</h2>
+                    </div>
+                    <div class="thumbnail-nav" id="thumbnailNav">
+                        <!-- Thumbnails will be inserted here by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Center Column: Main Image -->
+                <div class="slider-center">
+                    <div class="main-image-container" id="mainImageContainer">
+                        <!-- Main image will be inserted here by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Right Column: Text and Navigation -->
+                <div class="slider-right">
+                    <div class="testimonial-content" id="testimonialContent">
+                        <!-- Content will be inserted here by JavaScript -->
+                    </div>
+                    <div class="slider-controls">
+                        <button class="control-btn btn-prev" id="prevBtn" aria-label="Previous testimonial">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                        </button>
+                        <button class="control-btn btn-next" id="nextBtn" aria-label="Next testimonial">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Grid -->
+    <section class="case-studies-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="testimonials.caseStudies.title">Featured Case Studies</h2>
+                <p class="section-subtitle" data-i18n="testimonials.caseStudies.subtitle">Deep dives into successful transformations</p>
+            </div>
+            
+            <div class="case-studies-grid">
+                <!-- Case Study 1 -->
+                <div class="case-study-card" data-aos="fade-up">
+                    <div class="case-study-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop" 
+                             alt="Data Analytics Dashboard" 
+                             onerror="this.src='https://via.placeholder.com/800x600/1a1a1a/00e5ff?text=Analytics+Dashboard'">
+                        <div class="case-study-overlay">
+                            <span class="case-study-category">AI Implementation</span>
+                        </div>
+                    </div>
+                    <div class="case-study-content">
+                        <h3 data-i18n="testimonials.caseStudies.case1.title">E-Commerce Sales Optimization</h3>
+                        <p class="case-study-client" data-i18n="testimonials.caseStudies.case1.client">TechRetail Solutions</p>
+                        <p class="case-study-description" data-i18n="testimonials.caseStudies.case1.description">
+                            Implemented AI-powered sales forecasting and inventory management, 
+                            resulting in 35% reduction in overhead costs and 28% increase in revenue.
+                        </p>
+                        <div class="case-study-metrics">
+                            <div class="metric">
+                                <span class="metric-value">+35%</span>
+                                <span class="metric-label" data-i18n="testimonials.caseStudies.case1.metric1Label">Cost Reduction</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">+28%</span>
+                                <span class="metric-label" data-i18n="testimonials.caseStudies.case1.metric2Label">Revenue Growth</span>
+                            </div>
+                        </div>
+                        <a href="#" class="case-study-link">
+                            <span data-i18n="testimonials.caseStudies.readMore">Read Full Case Study</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14m-7-7l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Case Study 2 -->
+                <div class="case-study-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="case-study-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop" 
+                             alt="Business Growth Charts" 
+                             onerror="this.src='https://via.placeholder.com/800x600/1a1a1a/00e5ff?text=Growth+Analytics'">
+                        <div class="case-study-overlay">
+                            <span class="case-study-category">Process Automation</span>
+                        </div>
+                    </div>
+                    <div class="case-study-content">
+                        <h3 data-i18n="testimonials.caseStudies.case2.title">Manufacturing Workflow Automation</h3>
+                        <p class="case-study-client" data-i18n="testimonials.caseStudies.case2.client">Nordic Manufacturing Group</p>
+                        <p class="case-study-description" data-i18n="testimonials.caseStudies.case2.description">
+                            Streamlined production workflows with AI-driven automation, 
+                            cutting processing time by 45% and improving quality control accuracy to 99.2%.
+                        </p>
+                        <div class="case-study-metrics">
+                            <div class="metric">
+                                <span class="metric-value">-45%</span>
+                                <span class="metric-label" data-i18n="testimonials.caseStudies.case2.metric1Label">Process Time</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">99.2%</span>
+                                <span class="metric-label" data-i18n="testimonials.caseStudies.case2.metric2Label">Accuracy</span>
+                            </div>
+                        </div>
+                        <a href="#" class="case-study-link">
+                            <span data-i18n="testimonials.caseStudies.readMore">Read Full Case Study</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14m-7-7l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Case Study 3 -->
+                <div class="case-study-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="case-study-image">
+                        <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&auto=format&fit=crop" 
+                             alt="Digital Workspace" 
+                             onerror="this.src='https://via.placeholder.com/800x600/1a1a1a/00e5ff?text=Digital+Transformation'">
+                        <div class="case-study-overlay">
+                            <span class="case-study-category">Digital Transformation</span>
+                        </div>
+                    </div>
+                    <div class="case-study-content">
+                        <h3 data-i18n="testimonials.caseStudies.case3.title">Solar Energy CRM Revolution</h3>
+                        <p class="case-study-client" data-i18n="testimonials.caseStudies.case3.client">SolarTech Enterprises</p>
+                        <p class="case-study-description" data-i18n="testimonials.caseStudies.case3.description">
+                            Complete digital transformation with custom CRM and AI analytics, 
+                            boosting sales team productivity by 52% and customer satisfaction to 4.8/5.
+                        </p>
+                        <div class="case-study-metrics">
+                            <div class="metric">
+                                <span class="metric-value">+52%</span>
+                                <span class="metric-label" data-i18n="testimonials.caseStudies.case3.metric1Label">Productivity</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">4.8/5</span>
+                                <span class="metric-label" data-i18n="testimonials.caseStudies.case3.metric2Label">Satisfaction</span>
+                            </div>
+                        </div>
+                        <a href="#" class="case-study-link">
+                            <span data-i18n="testimonials.caseStudies.readMore">Read Full Case Study</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14m-7-7l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="testimonials-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 data-i18n="testimonials.cta.title">Ready to Transform Your Business?</h2>
+                <p data-i18n="testimonials.cta.description">Join these successful companies and start your digital transformation journey today.</p>
+                <a href="index.html#contact" class="btn btn-primary">
+                    <span data-i18n="testimonials.cta.button">Get Started</span>
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 12h14m-7-7l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2024 Janar Kuusk. All rights reserved.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="index.html#projects">Projects</a>
+                    <a href="testimonials.html">Testimonials</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="testimonials-translations.js"></script>
+    <script src="language-switcher.js?v=8"></script>
+    <script src="testimonials.js?v=2"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+        
+        // Initialize language switcher after translations are loaded
+        // Use a small delay to ensure translations are available
+        // Also check if one already exists to prevent duplicates
+        setTimeout(() => {
+            if (typeof LanguageSwitcher !== 'undefined') {
+                // Remove any existing language switcher instance
+                if (window.languageSwitcher) {
+                    console.log('Removing existing language switcher instance');
+                    const oldContainer = document.querySelector('.language-toggle-container');
+                    if (oldContainer) {
+                        oldContainer.remove();
+                    }
+                }
+                
+                console.log('Initializing language switcher...');
+                console.log('Translations available:', !!window.translations);
+                console.log('Testimonials translations available:', !!window.testimonialsTranslations);
+                const languageSwitcher = new LanguageSwitcher();
+                window.languageSwitcher = languageSwitcher;
+                console.log('Language switcher initialized:', languageSwitcher);
+            } else {
+                console.error('LanguageSwitcher not defined!');
+            }
+        }, 150);
+    </script>
+</body>
+</html>
+
