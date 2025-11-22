@@ -253,6 +253,12 @@ class LanguageSwitcher {
                     value = this.getNestedValue(window.testimonialsTranslations[lang], key);
                     console.log('Value from testimonials translations:', value);
                 }
+                
+                // If not found, try AI Readiness translations
+                if (!value && window.aiReadinessTranslations && window.aiReadinessTranslations[lang]) {
+                    value = this.getNestedValue(window.aiReadinessTranslations[lang], key);
+                    console.log('Value from AI Readiness translations:', value);
+                }
 
                 if (value) {
                     // Preserve emoji if present
@@ -281,11 +287,18 @@ class LanguageSwitcher {
             }, 100);
         }
         
-        // Update window.currentLanguage for ROI calculator
+        // Update AI Readiness Assessment if it exists
+        if (window.aiReadinessAssessment && window.aiReadinessAssessment.updateLanguage) {
+            setTimeout(() => {
+                window.aiReadinessAssessment.updateLanguage(lang);
+            }, 100);
+        }
+        
+        // Update window.currentLanguage
         window.currentLanguage = lang;
         
-        // Dispatch custom event for testimonials slider
-        window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
+        // Dispatch custom event for testimonials slider and AI Readiness Assessment
+        window.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: lang } }));
 
         // Update placeholders
         document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {

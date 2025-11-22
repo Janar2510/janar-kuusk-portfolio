@@ -10,6 +10,7 @@ export default {
       input: {
         main: './index.html',
         'roi-calculator': './roi-calculator.html',
+        'ai-readiness-assessment': './ai-readiness-assessment.html',
         'testimonials': './testimonials.html',
         'services': './services.html',
         'privacy-policy': './privacy-policy.html'
@@ -34,6 +35,8 @@ export default {
           'roi-calculator-config.js',
           'roi-calculator-ai-service.js',
           'roi-calculator.js',
+          'ai-readiness-assessment-translations.js',
+          'ai-readiness-assessment.js',
           'grid-scan.js',
           'language-switcher.js'
         ];

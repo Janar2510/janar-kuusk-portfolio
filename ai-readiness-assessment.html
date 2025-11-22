@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FY2YFXEM9Z"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-FY2YFXEM9Z');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Readiness Assessment - Janar Kuusk</title>
+    <link rel="stylesheet" href="saletoru-brand.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="components.css">
+    <link rel="stylesheet" href="language-toggle.css">
+    <link rel="stylesheet" href="ai-readiness-assessment.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Fixed Header -->
+    <div class="portfolio-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <img src="public/images/JanarKuusk logo.png" alt="Janar Kuusk" class="logo-image" onerror="this.style.display='none'">
+                    <div class="logo-text-container">
+                        <span class="logo-text">Janar Kuusk</span>
+                    </div>
+                </a>
+                <nav class="main-nav">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="index.html#projects" class="nav-link">Projects</a>
+                    <a href="roi-calculator.html" class="nav-link">ROI Calculator</a>
+                    <a href="ai-readiness-assessment.html" class="nav-link active">AI Readiness</a>
+                    <a href="testimonials.html" class="nav-link">Testimonials</a>
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </nav>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation overlay for mobile -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- Hero Section -->
+    <section class="ai-readiness-hero">
+        <div class="grid-scan-container" id="gridScanContainer"></div>
+        <div class="container">
+            <div class="ai-readiness-hero-content">
+                <h1 class="ai-readiness-hero-title">
+                    <span class="gradient-text" data-i18n="aiReadiness.hero.title">AI Readiness Assessment</span>
+                </h1>
+                <p class="ai-readiness-hero-subtitle" data-i18n="aiReadiness.hero.subtitle">
+                    Evaluate how ready your company is for AI adoption. Get a personalized transformation roadmap.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Assessment Section -->
+    <section class="ai-readiness-section">
+        <div class="container">
+            <!-- Welcome Card -->
+            <div class="calculator-card" id="welcomeCard">
+                <h2 class="card-title" data-i18n="aiReadiness.welcome.title">Assess Your AI Readiness</h2>
+                <p class="card-description" data-i18n="aiReadiness.welcome.description">
+                    Answer 10 questions about your organization's AI capabilities across key dimensions. 
+                    Get instant insights into your maturity level and receive a personalized improvement plan.
+                </p>
+                <div class="welcome-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">📊</span>
+                        <span data-i18n="aiReadiness.welcome.feature1">10-dimension assessment</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🎯</span>
+                        <span data-i18n="aiReadiness.welcome.feature2">Maturity tier scoring</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🚀</span>
+                        <span data-i18n="aiReadiness.welcome.feature3">90-day action plan</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">📋</span>
+                        <span data-i18n="aiReadiness.welcome.feature4">12-month roadmap</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Assessment Questions -->
+            <div class="assessment-questions" id="assessmentQuestions">
+                <!-- Questions will be dynamically generated -->
+            </div>
+
+            <!-- Calculate Button -->
+            <div class="button-container">
+                <button id="calculateAssessmentBtn" class="btn btn-primary" data-i18n="aiReadiness.calculateAssessment">
+                    Calculate My AI Readiness
+                </button>
+                <button id="resetAssessmentBtn" class="btn btn-secondary" data-i18n="aiReadiness.reset" style="display: none;">
+                    Reset Assessment
+                </button>
+            </div>
+
+            <!-- Results Section (hidden initially) -->
+            <div id="resultsSection" style="display: none;">
+                <!-- Score Card -->
+                <div class="calculator-card" id="scoreCard">
+                    <h2 class="card-title" data-i18n="aiReadiness.results.yourScore">Your AI Readiness Score</h2>
+                    <div class="score-display">
+                        <div class="score-value" id="scoreValue">0</div>
+                        <div class="score-max">/ 100</div>
+                    </div>
+                    <div class="maturity-tier" id="maturityTier">
+                        <span class="tier-badge" id="tierBadge">Emerging</span>
+                        <p class="tier-description" id="tierDescription"></p>
+                    </div>
+                </div>
+
+                <!-- Strategic Summary -->
+                <div class="calculator-card" id="strategicSummaryCard">
+                    <h2 class="card-title" data-i18n="aiReadiness.results.strategicSummary">Strategic Summary</h2>
+                    <div id="strategicSummaryContent" class="card-content"></div>
+                </div>
+
+                <!-- Top Weak Areas -->
+                <div class="calculator-card" id="weakAreasCard">
+                    <h2 class="card-title" data-i18n="aiReadiness.results.topWeakAreas">Top Areas for Improvement</h2>
+                    <div id="weakAreasContent" class="weak-areas-list"></div>
+                </div>
+
+                <!-- 90-Day Plan -->
+                <div class="calculator-card" id="ninetyDayPlanCard">
+                    <h2 class="card-title" data-i18n="aiReadiness.results.ninetyDayPlan">90-Day Transformation Plan</h2>
+                    <div id="ninetyDayPlanContent" class="plan-content"></div>
+                </div>
+
+                <!-- 12-Month Roadmap -->
+                <div class="calculator-card" id="roadmapCard">
+                    <h2 class="card-title" data-i18n="aiReadiness.results.twelveMonthRoadmap">12-Month Roadmap</h2>
+                    <div id="roadmapContent" class="roadmap-content"></div>
+                </div>
+
+                <!-- Recommended Tools -->
+                <div class="calculator-card" id="toolsCard">
+                    <h2 class="card-title" data-i18n="aiReadiness.results.recommendedTools">Recommended Tools</h2>
+                    <div id="toolsContent" class="tools-list"></div>
+                </div>
+
+                <!-- CTA Card -->
+                <div class="calculator-card" id="ctaCard">
+                    <h2 class="card-title" data-i18n="aiReadiness.results.ctaTitle">Ready to Transform?</h2>
+                    <p class="card-description" data-i18n="aiReadiness.results.ctaDescription">
+                        Book a free AI roadmap consultation call to discuss your transformation strategy.
+                    </p>
+                    <a href="index.html#contact" class="btn btn-primary" data-i18n="aiReadiness.results.bookCall">
+                        Book Free AI Roadmap Call
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Janar Kuusk</h3>
+                    <p>AI Solutions Architect & Digital Transformation Consultant</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="roi-calculator.html">ROI Calculator</a></li>
+                        <li><a href="ai-readiness-assessment.html">AI Readiness</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Estonia</p>
+                    <p><a href="mailto:janar@janarkuusk.com">janar@janarkuusk.com</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Janar Kuusk. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Three.js for GridScan animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Post-processing library for effects -->
+    <script src="https://cdn.jsdelivr.net/npm/postprocessing@6.35.0/dist/postprocessing.umd.js"></script>
+    <script src="ai-readiness-assessment-translations.js"></script>
+    <script src="language-switcher.js?v=2"></script>
+    <script src="grid-scan.js"></script>
+    <script src="ai-readiness-assessment.js"></script>
+    <script>
+        // Set header initial state - will be handled by setupHeaderNavigation
+        (function() {
+            const header = document.querySelector('.portfolio-header');
+            if (header) {
+                header.style.setProperty('background', 'transparent', 'important');
+                header.style.setProperty('backdrop-filter', 'none', 'important');
+                header.style.setProperty('border-bottom', 'none', 'important');
+            }
+        })();
+
+        // Initialize AI Readiness Assessment
+        let aiReadinessAssessment;
+        if (typeof AIReadinessAssessment !== 'undefined') {
+            aiReadinessAssessment = new AIReadinessAssessment();
+            window.aiReadinessAssessment = aiReadinessAssessment;
+        }
+        
+        // Initialize language switcher
+        if (typeof LanguageSwitcher !== 'undefined') {
+            setTimeout(() => {
+                const languageSwitcher = new LanguageSwitcher();
+                window.languageSwitcher = languageSwitcher;
+                console.log('Language switcher initialized');
+            }, 100);
+        }
+        
+        // Initialize GridScan animation with Chrome-optimized settings
+        window.addEventListener('load', () => {
+            // Delay initialization slightly to let page settle (helps Chrome)
+            setTimeout(() => {
+                if (typeof GridScan !== 'undefined' && typeof THREE !== 'undefined') {
+                    const container = document.getElementById('gridScanContainer');
+                    if (container) {
+                        try {
+                            const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+                            
+                            window.gridScanInstance = new GridScan(container, {
+                                sensitivity: isChrome ? 0.3 : 0.4, // Even lower for Chrome
+                                lineThickness: 1,
+                                linesColor: '#1a0d2e',
+                                scanColor: '#8e2de2',
+                                gridScale: isChrome ? 0.15 : 0.12, // Larger grid = fewer calculations in Chrome
+                                scanOpacity: isChrome ? 0.25 : 0.3, // Lower opacity for Chrome
+                                enablePost: false, // Always disabled for performance
+                                bloomIntensity: 0,
+                                chromaticAberration: 0,
+                                noiseIntensity: isChrome ? 0.003 : 0.005 // Less noise for Chrome
+                            });
+                            
+                            // Throttle resize handler more aggressively for Chrome
+                            let resizeTimeout;
+                            const resizeHandler = () => {
+                                clearTimeout(resizeTimeout);
+                                resizeTimeout = setTimeout(() => {
+                                    if (window.gridScanInstance && window.gridScanInstance.resize) {
+                                        window.gridScanInstance.resize();
+                                    }
+                                }, isChrome ? 250 : 150);
+                            };
+                            window.addEventListener('resize', resizeHandler, { passive: true });
+                            
+                            // Pause animation when tab is hidden (Chrome optimization)
+                            document.addEventListener('visibilitychange', () => {
+                                if (document.hidden && window.gridScanInstance) {
+                                    // Animation will auto-pause in animate() method
+                                }
+                            });
+                            
+                            console.log('GridScan initialized', isChrome ? '(Chrome optimized)' : '');
+                        } catch (error) {
+                            console.error('Error initializing GridScan:', error);
+                        }
+                    }
+                } else {
+                    console.warn('GridScan or THREE.js not available');
+                }
+            }, 100); // Small delay for Chrome
+        });
+    </script>
+</body>
+</html>
+

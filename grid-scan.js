@@ -57,9 +57,19 @@ class GridScan {
       return;
     }
 
-    // Create renderer
-    this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    // Create renderer with Chrome-optimized settings
+    const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+    this.renderer = new THREE.WebGLRenderer({ 
+      antialias: false, // Disable for better Chrome performance
+      alpha: true,
+      powerPreference: 'high-performance',
+      preserveDrawingBuffer: false, // Better performance in Chrome
+      stencil: false, // Not needed
+      depth: false // Not needed for 2D shader
+    });
+    // Limit pixel ratio more aggressively for Chrome
+    const maxPixelRatio = isChrome ? 1.5 : 2;
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, maxPixelRatio));
     this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
     this.renderer.toneMapping = THREE.NoToneMapping;
@@ -426,23 +436,43 @@ class GridScan {
     const maxSpeed = Infinity;
     const yBoost = THREE.MathUtils.lerp(1.2, 1.6, s);
 
+    const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
     let leaveTimer = null;
+    let moveRAF = null;
+    let rect = this.container.getBoundingClientRect();
 
+    // Throttle mousemove for Chrome using requestAnimationFrame
     const onMove = (e) => {
       if (leaveTimer) {
         clearTimeout(leaveTimer);
         leaveTimer = null;
       }
 
-      const rect = this.container.getBoundingClientRect();
-      const nx = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-      const ny = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
-
-      this.lookTarget.set(nx, ny);
+      if (isChrome) {
+        // Throttle mouse move updates in Chrome
+        if (!moveRAF) {
+          moveRAF = requestAnimationFrame(() => {
+            rect = this.container.getBoundingClientRect();
+            const nx = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+            const ny = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
+            this.lookTarget.set(nx, ny);
+            moveRAF = null;
+          });
+        }
+      } else {
+        // Direct update for other browsers
+        const nx = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+        const ny = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
+        this.lookTarget.set(nx, ny);
+      }
     };
 
     const onLeave = () => {
       if (leaveTimer) clearTimeout(leaveTimer);
+      if (moveRAF) {
+        cancelAnimationFrame(moveRAF);
+        moveRAF = null;
+      }
       leaveTimer = window.setTimeout(() => {
         this.lookTarget.set(0, 0);
         this.tiltTarget = 0;
@@ -450,14 +480,22 @@ class GridScan {
       }, 250);
     };
 
-    this.container.addEventListener('mousemove', onMove);
+    // Update rect on resize
+    const updateRect = () => {
+      rect = this.container.getBoundingClientRect();
+    };
+    window.addEventListener('resize', updateRect, { passive: true });
+
+    this.container.addEventListener('mousemove', onMove, { passive: true });
     this.container.addEventListener('mouseleave', onLeave);
 
     // Store cleanup function
     this.cleanupEvents = () => {
       this.container.removeEventListener('mousemove', onMove);
       this.container.removeEventListener('mouseleave', onLeave);
+      window.removeEventListener('resize', updateRect);
       if (leaveTimer) clearTimeout(leaveTimer);
+      if (moveRAF) cancelAnimationFrame(moveRAF);
     };
   }
 
@@ -511,6 +549,15 @@ class GridScan {
     if (!this.renderer || !this.material) return;
 
     let last = performance.now();
+    let frameCount = 0;
+    let lastFpsCheck = performance.now();
+    const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+    
+    // Chrome-specific: Limit frame rate to 30fps for better performance
+    const targetFPS = isChrome ? 30 : 60;
+    const frameInterval = 1000 / targetFPS;
+    let lastFrameTime = 0;
+    
     const s = THREE.MathUtils.clamp(this.options.sensitivity, 0, 1);
     const skewScale = THREE.MathUtils.lerp(0.06, 0.2, s);
     const tiltScale = THREE.MathUtils.lerp(0.12, 0.3, s);
@@ -519,7 +566,23 @@ class GridScan {
     const maxSpeed = Infinity;
     const yBoost = THREE.MathUtils.lerp(1.2, 1.6, s);
 
-    const tick = () => {
+    const tick = (currentTime) => {
+      // Pause animation when page is hidden (Chrome optimization)
+      if (document.hidden) {
+        this.rafId = requestAnimationFrame(tick);
+        return;
+      }
+
+      // Frame rate limiting for Chrome
+      if (isChrome) {
+        const elapsed = currentTime - lastFrameTime;
+        if (elapsed < frameInterval) {
+          this.rafId = requestAnimationFrame(tick);
+          return;
+        }
+        lastFrameTime = currentTime - (elapsed % frameInterval);
+      }
+
       const now = performance.now();
       const dt = Math.max(0, Math.min(0.1, (now - last) / 1000));
       last = now;
@@ -581,16 +644,36 @@ class GridScan {
 
   resize() {
     if (!this.renderer || !this.container) return;
-    this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
-    if (this.material) {
-      this.material.uniforms.iResolution.value.set(
-        this.container.clientWidth,
-        this.container.clientHeight,
-        this.renderer.getPixelRatio()
-      );
+    
+    // Throttle resize operations for Chrome
+    const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+    const width = this.container.clientWidth;
+    const height = this.container.clientHeight;
+    
+    // Use requestAnimationFrame for smoother resizing in Chrome
+    if (isChrome && this._resizeRAF) {
+      cancelAnimationFrame(this._resizeRAF);
     }
-    if (this.composer) {
-      this.composer.setSize(this.container.clientWidth, this.container.clientHeight);
+    
+    const doResize = () => {
+      this.renderer.setSize(width, height);
+      if (this.material) {
+        this.material.uniforms.iResolution.value.set(
+          width,
+          height,
+          this.renderer.getPixelRatio()
+        );
+      }
+      if (this.composer) {
+        this.composer.setSize(width, height);
+      }
+      this._resizeRAF = null;
+    };
+    
+    if (isChrome) {
+      this._resizeRAF = requestAnimationFrame(doResize);
+    } else {
+      doResize();
     }
   }
 

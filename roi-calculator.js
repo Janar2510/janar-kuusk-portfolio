@@ -18,6 +18,7 @@ class ROICalculator {
         this.setupHeaderNavigation();
         this.setupFeedback();
         this.setupAIAnalysis();
+        this.setupSpotlightEffects();
     }
 
     cacheElements() {
@@ -553,28 +554,52 @@ class ROICalculator {
             this.getAIAnalysis();
         });
         
-        // Setup modal close handlers
-        if (this.aiAnalysisModalClose) {
-            this.aiAnalysisModalClose.addEventListener('click', () => {
+        // Setup modal close handlers - use event delegation for dynamically created elements
+        this.setupModalCloseHandlers();
+    }
+    
+    setupModalCloseHandlers() {
+        // Use event delegation on document for close button
+        document.addEventListener('click', (e) => {
+            // Check if clicked element is the close button or its child
+            if (e.target.closest('#aiAnalysisModalClose')) {
+                e.preventDefault();
+                e.stopPropagation();
                 this.closeAIAnalysisModal();
-            });
-        }
-        
-        if (this.aiAnalysisModal) {
-            // Close on overlay click
-            this.aiAnalysisModal.addEventListener('click', (e) => {
-                if (e.target.classList.contains('ai-analysis-modal-overlay')) {
-                    this.closeAIAnalysisModal();
-                }
-            });
+                return;
+            }
             
-            // Close on Escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && this.aiAnalysisModal && this.aiAnalysisModal.style.display !== 'none') {
+            // Check if clicked on overlay
+            if (e.target.classList.contains('ai-analysis-modal-overlay')) {
+                this.closeAIAnalysisModal();
+                return;
+            }
+        });
+        
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                // Try to find modal if not cached
+                if (!this.aiAnalysisModal) {
+                    this.aiAnalysisModal = document.getElementById('aiAnalysisModal');
+                }
+                if (this.aiAnalysisModal && this.aiAnalysisModal.style.display !== 'none') {
                     this.closeAIAnalysisModal();
                 }
-            });
-        }
+            }
+        });
+        
+        // Also try direct attachment as fallback
+        setTimeout(() => {
+            this.cacheModalElements();
+            if (this.aiAnalysisModalClose) {
+                this.aiAnalysisModalClose.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.closeAIAnalysisModal();
+                });
+            }
+        }, 100);
     }
     
     openAIAnalysisModal() {
@@ -601,9 +626,15 @@ class ROICalculator {
     }
     
     closeAIAnalysisModal() {
+        // Try to find modal if not cached
+        if (!this.aiAnalysisModal) {
+            this.aiAnalysisModal = document.getElementById('aiAnalysisModal');
+        }
+        
         if (this.aiAnalysisModal) {
             this.aiAnalysisModal.style.display = 'none';
             document.body.style.overflow = ''; // Restore scrolling
+            console.log('Modal closed');
         }
     }
     
@@ -1912,6 +1943,32 @@ class ROICalculator {
                     document.body.style.overflow = '';
                 }
             });
+        });
+    }
+    
+    setupSpotlightEffects() {
+        // Add spotlight effect to all calculator cards
+        const cards = document.querySelectorAll('.calculator-card');
+        
+        cards.forEach(card => {
+            const handleMouseMove = (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+                card.classList.add('is-hovering');
+            };
+            
+            const handleMouseLeave = () => {
+                card.style.setProperty('--mouse-x', '50%');
+                card.style.setProperty('--mouse-y', '50%');
+                card.classList.remove('is-hovering');
+            };
+            
+            card.addEventListener('mousemove', handleMouseMove);
+            card.addEventListener('mouseleave', handleMouseLeave);
         });
     }
 }

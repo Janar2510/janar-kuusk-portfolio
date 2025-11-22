@@ -173,11 +173,49 @@ body .portfolio-header {
     border: 1px solid #222;
     position: relative;
     transition: all 0.3s ease;
+    overflow: hidden;
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+}
+
+.calculator-card > * {
+    position: relative;
+    z-index: 2;
 }
 
 .calculator-card:hover {
-    border-color: rgba(0, 229, 255, 0.3);
-    box-shadow: 0 0 20px rgba(0, 229, 255, 0.1);
+    border-color: rgba(0, 229, 255, 0.5);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 60px rgba(0, 229, 255, 0.3),
+        inset 0 0 40px rgba(0, 229, 255, 0.1);
+    transform: translateY(-4px);
+}
+
+/* Spotlight effect */
+.calculator-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(0, 229, 255, 0.4),
+        rgba(0, 229, 255, 0.2) 30%,
+        transparent 50%
+    );
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    z-index: 1;
+    will-change: background-position, opacity;
+}
+
+.calculator-card:hover::before,
+.calculator-card.is-hovering::before {
+    opacity: 1;
 }
 
 /* Animated gradient border */

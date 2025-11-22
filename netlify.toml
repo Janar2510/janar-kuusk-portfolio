@@ -23,6 +23,12 @@
   force = false
 
 [[redirects]]
+  from = "/ai-readiness-assessment"
+  to = "/ai-readiness-assessment.html"
+  status = 200
+  force = false
+
+[[redirects]]
   from = "/testimonials"
   to = "/testimonials.html"
   status = 200
