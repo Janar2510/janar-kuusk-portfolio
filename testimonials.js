@@ -291,19 +291,14 @@ class HeaderNavigation {
     }
     
     init() {
-        // Always show header on testimonials page with transparent background
+        // Set header to transparent background (scroll behavior will handle visibility)
         if (this.header) {
-            this.header.classList.remove('header-hidden');
-            this.header.classList.add('header-visible');
-            this.header.style.setProperty('transform', 'translateY(0)', 'important');
-            this.header.style.setProperty('opacity', '1', 'important');
-            this.header.style.setProperty('visibility', 'visible', 'important');
             this.header.style.setProperty('background', 'transparent', 'important');
             this.header.style.setProperty('backdrop-filter', 'none', 'important');
             this.header.style.setProperty('border-bottom', 'none', 'important');
         }
         
-        // Setup scroll effect
+        // Setup scroll effect (same as home page)
         this.setupScrollEffect();
         
         // Setup mobile menu
@@ -311,27 +306,61 @@ class HeaderNavigation {
     }
     
     setupScrollEffect() {
-        let lastScrollTop = 0;
+        if (!this.header) return;
         
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        // Header scroll effect - same as home page: visible only at top, disappears when scrolling
+        const topThreshold = 10; // Show header when within 10px of top
+        
+        // Function to check scroll position and update header visibility
+        const checkScrollPosition = () => {
+            const currentScrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
             
-            if (scrollTop <= 10) {
-                // At the top - show header
-                this.header.classList.add('header-visible');
+            // Show header only when at the very top of the page
+            if (currentScrollY <= topThreshold) {
+                // Show header - use both classes and direct styles for reliability
                 this.header.classList.remove('header-hidden');
-            } else if (scrollTop > lastScrollTop) {
-                // Scrolling down - hide header
+                this.header.classList.add('header-visible');
+                this.header.style.setProperty('transform', 'translateY(0)', 'important');
+                this.header.style.setProperty('opacity', '1', 'important');
+                this.header.style.setProperty('visibility', 'visible', 'important');
+            } else {
+                // Hide header when scrolled down - use both classes and direct styles
                 this.header.classList.remove('header-visible');
                 this.header.classList.add('header-hidden');
-            } else {
-                // Scrolling up - show header
-                this.header.classList.add('header-visible');
-                this.header.classList.remove('header-hidden');
+                this.header.style.setProperty('transform', 'translateY(-100%)', 'important');
+                this.header.style.setProperty('opacity', '0', 'important');
+                this.header.style.setProperty('visibility', 'hidden', 'important');
             }
-            
-            lastScrollTop = scrollTop;
+        };
+        
+        // Set initial state - hidden, then check after page settles
+        this.header.style.setProperty('transform', 'translateY(-100%)', 'important');
+        this.header.style.setProperty('opacity', '0', 'important');
+        this.header.style.setProperty('visibility', 'hidden', 'important');
+        
+        // Check initial state after a delay to allow page to settle
+        setTimeout(() => {
+            checkScrollPosition();
+        }, 100);
+        
+        // Set up scroll event listener
+        let lastScrollTop = -1;
+        const scrollHandler = () => {
+            const currentScrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+            // Check if scroll position actually changed
+            if (Math.abs(currentScrollY - lastScrollTop) >= 1) {
+                checkScrollPosition();
+                lastScrollTop = currentScrollY;
+            }
+        };
+        
+        window.addEventListener('scroll', scrollHandler, { passive: true });
+        
+        // Also check on load and resize
+        window.addEventListener('load', () => {
+            setTimeout(checkScrollPosition, 100);
         });
+        window.addEventListener('resize', checkScrollPosition);
     }
     
     setupMobileMenu() {

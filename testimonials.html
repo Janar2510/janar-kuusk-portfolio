@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="components.css">
     <link rel="stylesheet" href="language-toggle.css">
-    <link rel="stylesheet" href="testimonials.css?v=3">
+    <link rel="stylesheet" href="testimonials.css?v=4">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,15 +53,12 @@
     <!-- Navigation overlay for mobile -->
     <div class="nav-overlay" id="navOverlay"></div>
 
-    <!-- Force header visibility with transparent background -->
+    <!-- Set header transparent background (scroll behavior handled by JS) -->
     <script>
-        // Immediately force header to be visible with transparent background
+        // Set header to transparent background - scroll behavior will be handled by HeaderNavigation
         (function() {
             const header = document.querySelector('.portfolio-header');
             if (header) {
-                header.style.setProperty('transform', 'translateY(0)', 'important');
-                header.style.setProperty('opacity', '1', 'important');
-                header.style.setProperty('visibility', 'visible', 'important');
                 header.style.setProperty('background', 'transparent', 'important');
                 header.style.setProperty('backdrop-filter', 'none', 'important');
                 header.style.setProperty('border-bottom', 'none', 'important');
@@ -289,7 +286,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="testimonials-translations.js"></script>
     <script src="language-switcher.js?v=8"></script>
-    <script src="testimonials.js?v=3"></script>
+    <script src="testimonials.js?v=4"></script>
     <script>
         // Initialize AOS
         AOS.init({
@@ -300,24 +297,41 @@
         
         // Initialize language switcher after translations are loaded
         // Use a small delay to ensure translations are available
-        // Also check if one already exists to prevent duplicates
         setTimeout(() => {
             if (typeof LanguageSwitcher !== 'undefined') {
-                // Remove any existing language switcher instance
-                if (window.languageSwitcher) {
-                    console.log('Removing existing language switcher instance');
-                    const oldContainer = document.querySelector('.language-toggle-container');
-                    if (oldContainer) {
-                        oldContainer.remove();
+                try {
+                    // Remove any existing language switcher instance
+                    if (window.languageSwitcher) {
+                        console.log('Removing existing language switcher instance');
+                        const oldContainer = document.querySelector('.language-toggle-container');
+                        if (oldContainer) {
+                            oldContainer.remove();
+                        }
                     }
+                    
+                    console.log('Initializing language switcher...');
+                    console.log('Translations available:', !!window.translations);
+                    console.log('Testimonials translations available:', !!window.testimonialsTranslations);
+                    const languageSwitcher = new LanguageSwitcher();
+                    window.languageSwitcher = languageSwitcher;
+                    console.log('Language switcher initialized:', languageSwitcher);
+                    
+                    // Double-check that toggle button was created
+                    setTimeout(() => {
+                        const toggleContainer = document.querySelector('.language-toggle-container');
+                        if (!toggleContainer) {
+                            console.warn('Language toggle container not found, recreating...');
+                            if (languageSwitcher.createToggleButton) {
+                                languageSwitcher.createToggleButton();
+                                languageSwitcher.attachEventListeners();
+                            }
+                        } else {
+                            console.log('Language toggle container found:', toggleContainer);
+                        }
+                    }, 200);
+                } catch (error) {
+                    console.error('Error initializing language switcher:', error);
                 }
-                
-                console.log('Initializing language switcher...');
-                console.log('Translations available:', !!window.translations);
-                console.log('Testimonials translations available:', !!window.testimonialsTranslations);
-                const languageSwitcher = new LanguageSwitcher();
-                window.languageSwitcher = languageSwitcher;
-                console.log('Language switcher initialized:', languageSwitcher);
             } else {
                 console.error('LanguageSwitcher not defined!');
             }

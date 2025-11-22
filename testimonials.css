@@ -1,10 +1,7 @@
 /* Testimonials Page Styles - Updated Layout */
 
-/* Header Override - Force visibility on testimonials page with transparent background */
+/* Header Override - Transparent background, scroll behavior handled by JS */
 body .portfolio-header {
-    transform: translateY(0) !important;
-    opacity: 1 !important;
-    visibility: visible !important;
     background: transparent !important;
     backdrop-filter: none !important;
     border-bottom: none !important;
@@ -13,14 +10,6 @@ body .portfolio-header {
     left: 0 !important;
     right: 0 !important;
     z-index: 1030 !important;
-}
-
-/* Override all possible header states */
-body .portfolio-header.header-hidden,
-body .portfolio-header.header-visible {
-    transform: translateY(0) !important;
-    opacity: 1 !important;
-    visibility: visible !important;
 }
 
 /* Hero Section */

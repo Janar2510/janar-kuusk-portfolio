@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="components.css">
     <link rel="stylesheet" href="language-toggle.css">
-    <link rel="stylesheet" href="roi-calculator.css?v=25">
+    <link rel="stylesheet" href="roi-calculator.css?v=27">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -357,7 +357,7 @@
     <script src="roi-calculator-faq.js"></script>
     <script src="roi-calculator-config.js"></script>
     <script src="roi-calculator-ai-service.js?v=5"></script>
-    <script src="roi-calculator.js?v=25"></script>
+    <script src="roi-calculator.js?v=27"></script>
     <script>
         // Initialize ROI Calculator
         let roiCalculator;
@@ -366,15 +366,6 @@
             window.roiCalculator = roiCalculator;
         }
         
-        // Initialize language switcher
-        if (typeof LanguageSwitcher !== 'undefined') {
-            // Wait a bit for translations to load
-            setTimeout(() => {
-                const languageSwitcher = new LanguageSwitcher();
-                window.languageSwitcher = languageSwitcher;
-                console.log('Language switcher initialized');
-            }, 100);
-        }
     </script>
 
     <!-- AI Analysis Modal -->
