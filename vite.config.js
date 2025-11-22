@@ -34,6 +34,7 @@ export default {
           'roi-calculator-config.js',
           'roi-calculator-ai-service.js',
           'roi-calculator.js',
+          'grid-scan.js',
           'language-switcher.js'
         ];
         

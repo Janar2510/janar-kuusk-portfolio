@@ -54,12 +54,13 @@
 
     <!-- Hero Section -->
     <section class="roi-hero">
+        <div class="grid-scan-container" id="gridScanContainer"></div>
         <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">
+            <div class="roi-hero-content">
+                <h1 class="roi-hero-title">
                     <span class="gradient-text" data-i18n="roi.hero.title">AI ROI Calculator</span>
                 </h1>
-                <p class="hero-description" data-i18n="roi.hero.subtitle">
+                <p class="roi-hero-subtitle" data-i18n="roi.hero.subtitle">
                     Unlock the Value of AI. Calculate your potential Return on Investment 
                     and get data-driven insights. Free for everyone.
                 </p>
@@ -349,6 +350,10 @@
     </footer>
 
     <!-- Scripts -->
+    <!-- Three.js for GridScan animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Post-processing library for effects -->
+    <script src="https://cdn.jsdelivr.net/npm/postprocessing@6.35.0/dist/postprocessing.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="roi-calculator-data.js"></script>
@@ -357,6 +362,7 @@
     <script src="roi-calculator-faq.js"></script>
     <script src="roi-calculator-config.js"></script>
     <script src="roi-calculator-ai-service.js?v=5"></script>
+    <script src="grid-scan.js"></script>
     <script src="roi-calculator.js?v=27"></script>
     <script>
         // Initialize ROI Calculator
@@ -364,8 +370,58 @@
         if (typeof ROICalculator !== 'undefined') {
             roiCalculator = new ROICalculator();
             window.roiCalculator = roiCalculator;
+            // Ensure modal elements are cached after initialization
+            if (roiCalculator.cacheModalElements) {
+                roiCalculator.cacheModalElements();
+            }
         }
         
+        // Initialize language switcher
+        if (typeof LanguageSwitcher !== 'undefined') {
+            // Wait a bit for translations to load
+            setTimeout(() => {
+                const languageSwitcher = new LanguageSwitcher();
+                window.languageSwitcher = languageSwitcher;
+                console.log('Language switcher initialized');
+            }, 100);
+        }
+        
+        // Initialize GridScan animation
+        window.addEventListener('load', () => {
+            if (typeof GridScan !== 'undefined' && typeof THREE !== 'undefined') {
+                const container = document.getElementById('gridScanContainer');
+                if (container) {
+                    try {
+                        window.gridScanInstance = new GridScan(container, {
+                            sensitivity: 0.55,
+                            lineThickness: 1,
+                            linesColor: '#1a0d2e', // Darker purple
+                            scanColor: '#8e2de2', // Purple matching theme
+                            gridScale: 0.1,
+                            scanOpacity: 0.4,
+                            enablePost: true,
+                            bloomIntensity: 0.6,
+                            chromaticAberration: 0.002,
+                            noiseIntensity: 0.01
+                        });
+                        
+                        // Handle resize
+                        const resizeHandler = () => {
+                            if (window.gridScanInstance) {
+                                window.gridScanInstance.resize();
+                            }
+                        };
+                        window.addEventListener('resize', resizeHandler);
+                        
+                        console.log('GridScan initialized');
+                    } catch (error) {
+                        console.error('Error initializing GridScan:', error);
+                    }
+                }
+            } else {
+                console.warn('GridScan or THREE.js not available');
+            }
+        });
     </script>
 
     <!-- AI Analysis Modal -->
@@ -414,6 +470,43 @@
                 console.log('Language switcher initialized');
             }, 100);
         }
+        
+        // Initialize GridScan animation
+        window.addEventListener('load', () => {
+            if (typeof GridScan !== 'undefined' && typeof THREE !== 'undefined') {
+                const container = document.getElementById('gridScanContainer');
+                if (container) {
+                    try {
+                        window.gridScanInstance = new GridScan(container, {
+                            sensitivity: 0.55,
+                            lineThickness: 1,
+                            linesColor: '#1a0d2e', // Darker purple
+                            scanColor: '#8e2de2', // Purple matching theme
+                            gridScale: 0.1,
+                            scanOpacity: 0.4,
+                            enablePost: true,
+                            bloomIntensity: 0.6,
+                            chromaticAberration: 0.002,
+                            noiseIntensity: 0.01
+                        });
+                        
+                        // Handle resize
+                        const resizeHandler = () => {
+                            if (window.gridScanInstance) {
+                                window.gridScanInstance.resize();
+                            }
+                        };
+                        window.addEventListener('resize', resizeHandler);
+                        
+                        console.log('GridScan initialized');
+                    } catch (error) {
+                        console.error('Error initializing GridScan:', error);
+                    }
+                }
+            } else {
+                console.warn('GridScan or THREE.js not available');
+            }
+        });
     </script>
 </body>
 </html>
